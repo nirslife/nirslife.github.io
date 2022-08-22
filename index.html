@@ -2,46 +2,41 @@
 <html>
 <style>
 
-.LangFrom {
-  width: 47%;
+.dv1 {
+  width: 45%;
   height: 80px;
   background: #d9d9d9;
   color: #555;
   float: left;
   text-align: center;  
   font-size: 25px;
-  margin-right: 10px;
-  margin-left: 0px;
   margin-top: 10px;
   margin-bottom: 10px;  
-  
-  padding-right: 5px;
-  padding-left: 5px;
   padding-top: 5px;
   padding-bottom: 5px;  
-  
- display: block;
+  cursor: pointer;
+  border-color: black;
+  border: 2px solid;  
+}
+
+.LangFrom {
+  margin-right: 10px;
+  margin-left: 0px;
+  padding-right: 5px;
+  padding-left: 5px;  
+  display: block;
 }
 
 .LangTo{
-  width: 47%;
-  height: 80px;  
-  background: #d9d9d9;
-  color: #555;
-  float: left;
-  text-align: center;  
-  font-size: 25px;
   margin-right: 0px;
   margin-left: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;      
-  
   padding-right: 5px;
   padding-left: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;  
-  
- display: block;  
+  display: block;  
+}
+
+.active1{
+  border-color: #2196F3;  
 }
 
 
@@ -60,22 +55,49 @@ let text = '{"arrwords":[' +
 
 const obj = JSON.parse(text);
 
+let prevSelLangFrom;
+
 let cntr = document.getElementById("m_container1");
   for (i = 0; i < obj.arrwords.length; i++) {
     AddItemToHtml(cntr,obj.arrwords[i]); 
   }
+
+
+function speak(text) {
+            const message = new SpeechSynthesisUtterance();
+            message.lang = "en-EN";
+            message.text = text;
+            window.speechSynthesis.speak(message)
+        }
+
+
+function clickLangFrom(aNode)
+{
+  if (prevSelLangFrom) {
+    prevSelLangFrom.className = "dv1 LangFrom";          
+  }
+  prevSelLangFrom = aNode;        
+  aNode.className = "dv1 LangFrom active1";
+  speak(aNode.innerText);
+}
+
   
 function AddItemToHtml(aToNode,aInObj)
   {
    const LangFrom = document.createElement("div");
    LangFrom.innerText = aInObj.Eng;
-   LangFrom.className = "LangFrom";
+   LangFrom.className = "dv1 LangFrom";
+   const att2 = document.createAttribute("onclick");
+   att2.value = "clickLangFrom(this)";  
+   LangFrom.setAttributeNode(att2);        
    aToNode.appendChild(LangFrom);
+
+
    
  
    const LangTo = document.createElement("div");
    LangTo.innerText = aInObj.Rus;
-   LangTo.className = "LangTo";
+   LangTo.className = "dv1 LangTo";
    aToNode.appendChild(LangTo);      
 
 
