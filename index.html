@@ -105,8 +105,9 @@ function clickLangFrom(aNode)
   }
   prevSelLangFrom = aNode;        
   aNode.className = "dv1 LangFrom active1";
-  speak(aNode.innerText);
-  console.log(aNode.getAttribute("arrnum"));
+  //speak(aNode.innerText);
+  speak(aNode.getAttribute("atext"));
+  //console.log(aNode.getAttribute("arrnum"));
 }
 
 function clickLangTo(aNode)
@@ -129,7 +130,8 @@ function AddItemToHtml(aToNode,obj)
   InitRandomArr(obj.arrw.length, rArr);
   for (i = 0; i < obj.arrw.length; i++) {  
    const LangFrom = document.createElement("div");
-   LangFrom.innerText = obj.arrw[i].Eng;
+   //LangFrom.innerText = obj.arrw[i].Eng;
+   LangFrom.innerText = "Eng"+i;
    LangFrom.className = "dv1 LangFrom";
    const att1 = document.createAttribute("onclick");
    att1.value = "clickLangFrom(this)";  
@@ -137,6 +139,9 @@ function AddItemToHtml(aToNode,obj)
    const att12 = document.createAttribute("arrnum");
    att12.value = i;  
    LangFrom.setAttributeNode(att12);              
+   const att13 = document.createAttribute("atext");
+   att13.value = obj.arrw[i].Eng;  
+   LangFrom.setAttributeNode(att13);                 
    aToNode.appendChild(LangFrom);   
    
    
