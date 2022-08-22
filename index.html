@@ -35,6 +35,14 @@
   display: block;  
 }
 
+.Null {
+  background: #ffffff;
+  color: #ffffff;
+  cursor: auto;
+  user-select: none; 
+}
+
+
 .active1{
   border-color: #2196F3;  
 }
@@ -48,19 +56,38 @@
 </div>
 
 <script>
-let text = '{"arrwords":[' +
+let text = '{"arrw":[' +
 '{"Eng":"Apple","Rus":"Яблоко" },' +
 '{"Eng":"Road","Rus":"Дорога" },' +
+'{"Eng":"Earn","Rus":"зарабатывать" },' +
+'{"Eng":"take place","Rus":"происходят, состояться" },' +
+'{"Eng":"arguing","Rus":"спорят" },' +
 '{"Eng":"Yelow","Rus":"Желтый" }]}';
 
-const obj = JSON.parse(text);
+const List1 = JSON.parse(text);
 
 let prevSelLangFrom;
 
 let cntr = document.getElementById("m_container1");
-  for (i = 0; i < obj.arrwords.length; i++) {
-    AddItemToHtml(cntr,obj.arrwords[i]); 
+AddItemToHtml(cntr,List1); 
+
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function InitRandomArr(max, Arr1) {
+  for (i = 0; i < max; i++) {
+    Arr1[i] = i;     
   }
+  let j; let a;
+  for (i = max - 1; i >= 0; i--) {    
+    j = getRandomInt(max - 1);  
+	a = Arr1[i];
+    Arr1[i] = Arr1[j];
+	Arr1[j] = a;
+  }  
+}
 
 
 function speak(text) {
@@ -79,27 +106,51 @@ function clickLangFrom(aNode)
   prevSelLangFrom = aNode;        
   aNode.className = "dv1 LangFrom active1";
   speak(aNode.innerText);
+  console.log(aNode.getAttribute("arrnum"));
+}
+
+function clickLangTo(aNode)
+{
+  if (prevSelLangFrom) {
+    if (prevSelLangFrom.getAttribute("arrnum") == aNode.getAttribute("arrnum")){	  
+      aNode.removeAttribute("onclick"); 
+	  aNode.className = "dv1 LangTo Null";	  
+	  prevSelLangFrom.removeAttribute("onclick");
+	  prevSelLangFrom.className = "dv1 LangFrom Null";	  
+	  prevSelLangFrom = 0;
+	}
+  }  
 }
 
   
-function AddItemToHtml(aToNode,aInObj)
+function AddItemToHtml(aToNode,obj)
   {
+  const rArr = [];   
+  InitRandomArr(obj.arrw.length, rArr);
+  for (i = 0; i < obj.arrw.length; i++) {  
    const LangFrom = document.createElement("div");
-   LangFrom.innerText = aInObj.Eng;
+   LangFrom.innerText = obj.arrw[i].Eng;
    LangFrom.className = "dv1 LangFrom";
-   const att2 = document.createAttribute("onclick");
-   att2.value = "clickLangFrom(this)";  
-   LangFrom.setAttributeNode(att2);        
-   aToNode.appendChild(LangFrom);
-
-
+   const att1 = document.createAttribute("onclick");
+   att1.value = "clickLangFrom(this)";  
+   LangFrom.setAttributeNode(att1);        
+   const att12 = document.createAttribute("arrnum");
+   att12.value = i;  
+   LangFrom.setAttributeNode(att12);              
+   aToNode.appendChild(LangFrom);   
    
- 
+   
    const LangTo = document.createElement("div");
-   LangTo.innerText = aInObj.Rus;
+   LangTo.innerText = obj.arrw[rArr[i]].Rus;
+   const att2 = document.createAttribute("arrnum");
+   att2.value = rArr[i];  
+   LangTo.setAttributeNode(att2);           
    LangTo.className = "dv1 LangTo";
+   const att22 = document.createAttribute("onclick");
+   att22.value = "clickLangTo(this)";  
+   LangTo.setAttributeNode(att22);           
    aToNode.appendChild(LangTo);      
-
+ }
 
 /*   const att12 = document.createAttribute("LngVa");
    att12.value = lon1;
