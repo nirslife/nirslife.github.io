@@ -27,7 +27,7 @@
   display: block;
 }
 
-.LangTo{
+.LangTo {
   margin-right: 0px;
   margin-left: 10px;
   padding-right: 5px;
@@ -43,8 +43,9 @@
 }
 
 
-.active1{
-  border-color: #2196F3;  
+.active1 {
+  border-color: #2196F3;
+  background: #21f3d8;    
 }
 
 
@@ -131,7 +132,7 @@ function AddItemToHtml(aToNode,obj)
   for (i = 0; i < obj.arrw.length; i++) {  
    const LangFrom = document.createElement("div");
    //LangFrom.innerText = obj.arrw[i].Eng;
-   LangFrom.innerText = "Eng"+i;
+   LangFrom.innerText = "Eng "+i;
    LangFrom.className = "dv1 LangFrom";
    const att1 = document.createAttribute("onclick");
    att1.value = "clickLangFrom(this)";  
