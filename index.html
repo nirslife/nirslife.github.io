@@ -60,9 +60,21 @@
 
 const UrlArray1 = "https://nirslife.github.io/array2.json";
 
-let prevSelLangFrom;
+const blockdiv_id1 = "blockbutton1";
+const PartLenght = 7; // длина порции
+let CountPart; // кол-во порций
+let CurPart = 3; // текущая порция
+let LastCountItem = 0; // кол-во оставщихся позиций 
+let ListLesson; // весь массив слов загружаем из UrlArray1
+let ModeLesson = 1; // режим урока 1 - показывать англ слова, 2 - не показывать англ слова
 
-StartLoadPage();
+
+
+let prevSelLangFrom; // текущий выделенный блок/позиция 
+
+MainLoadPage();
+
+
 
 async function LoadArray() {
   const response = await fetch(UrlArray1);
@@ -71,15 +83,16 @@ async function LoadArray() {
 //  console.log(names);   
 }
 
+
 function InitLoadPage2() {
  LoadArray();
 }
 
-function CallBackForInitLoadPage2(aText){
+function CallBackForInitLoadPage2(aArr){
   //let List1 = JSON.parse(aText);
-  let List1 = aText;
-  let cntr = document.getElementById("m_container1");
-  AddItemToHtml(cntr,List1); 
+  ListLesson = aArr;
+  //let cntr = document.getElementById("m_container1");
+  AddItemToHtml(ListLesson); 
 }
 
 function InitLoadPage1() {
@@ -90,12 +103,12 @@ let text = '{"arrw":[' +
 '{"Eng":"take place","Rus":"происходят, состояться" },' +
 '{"Eng":"arguing","Rus":"спорят" },' +
 '{"Eng":"Yelow","Rus":"Желтый" }]}';
-  let List1 = JSON.parse(text);
-  let cntr = document.getElementById("m_container1");
-  AddItemToHtml(cntr,List1); 
+  ListLesson = JSON.parse(text);
+  //let cntr = document.getElementById("m_container1");
+  AddItemToHtml(cntr,ListLesson); 
 }
 
-function StartLoadPage() {
+function MainLoadPage() {
   InitLoadPage2();
 }
 
@@ -104,7 +117,7 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-function InitRandomArr(max, Arr1) {
+function InitRandomArr(max, incval, Arr1) {
   for (i = 0; i < max; i++) {
     Arr1[i] = i;     
   }
@@ -115,15 +128,19 @@ function InitRandomArr(max, Arr1) {
     Arr1[i] = Arr1[j];
 	Arr1[j] = a;
   }  
+  for (i = 0; i < max; i++) {    
+    Arr1[i+incval] = Arr1[i]+incval; 
+  }
 }
 
 
 function speak(text) {
-            const message = new SpeechSynthesisUtterance();
-            message.lang = "en-EN";
-            message.text = text;
-            window.speechSynthesis.speak(message)
-        }
+  const message = new SpeechSynthesisUtterance();
+  message.lang = "en-EN";
+  message.text = text;
+  message.rate = 0.8;
+  window.speechSynthesis.speak(message)
+}
 
 
 function clickLangFrom(aNode)
@@ -147,43 +164,80 @@ function clickLangTo(aNode)
 	  prevSelLangFrom.removeAttribute("onclick");
 	  prevSelLangFrom.className = "dv1 LangFrom Null";	  
 	  prevSelLangFrom = 0;
+	  LastCountItem = LastCountItem - 1;
+      if (LastCountItem < 1){
+	    ReInitItem(); 
+	  } 	   
 	}
   }  
 }
 
+function ReInitItem(){
+  CurPart = CurPart + 1; 
+  if (CurPart == CountPart){
+    CurPart = 0;
+  }
+  const element = document.getElementById(blockdiv_id1);
+  element.remove(); 
+  AddItemToHtml(ListLesson); 
+}
+
+function InitParts(){
+
+}
  
-function AddItemToHtml(aToNode,obj)
-  {
-  const rArr = [];   
-  InitRandomArr(obj.arrw.length, rArr);
-  for (i = 0; i < obj.arrw.length; i++) {  
-   const LangFrom = document.createElement("div");
-   //LangFrom.innerText = obj.arrw[i].Eng;
-   LangFrom.innerText = "Eng "+i;
-   LangFrom.className = "dv1 LangFrom";
-   const att1 = document.createAttribute("onclick");
-   att1.value = "clickLangFrom(this)";  
-   LangFrom.setAttributeNode(att1);        
-   const att12 = document.createAttribute("arrnum");
-   att12.value = i;  
-   LangFrom.setAttributeNode(att12);              
-   const att13 = document.createAttribute("atext");
-   att13.value = obj.arrw[i].Eng;  
-   LangFrom.setAttributeNode(att13);                 
-   aToNode.appendChild(LangFrom);   
+//function AddItemToHtml(aMainNode,obj){
+function AddItemToHtml(obj){  
+  // весь массив слов нужно разметить на порции
+  
+  // CountPart - кол-во порций
+  CountPart = Math.floor(obj.arrw.length/PartLenght) + 1;    
+  let begi = CurPart * PartLenght; // начальный индекс порции
+  let endi = begi + PartLenght;    // конечный индекс порции  
+  if (CurPart == CountPart-1){
+    endi = obj.arrw.length;     
+  }
+  let lenp = endi - begi;   // длина порции
+  LastCountItem = lenp;
+  console.log("begi:"+begi+"  endi:"+endi+"  lenp:"+lenp);  
+  const rArr = [];    
+  InitRandomArr(lenp, begi, rArr); 
+  const aToNode = document.createElement("div");
+  aToNode.id = blockdiv_id1;
+  for (i = begi; i < endi; i++) {  
+    const LangFrom = document.createElement("div");
+	if (ModeLesson == 1){
+	  LangFrom.innerText = obj.arrw[i].Eng;
+	}
+	if (ModeLesson == 2){
+	  LangFrom.innerText = "Eng "+i;
+	}    
+    LangFrom.className = "dv1 LangFrom";
+    const att1 = document.createAttribute("onclick");
+    att1.value = "clickLangFrom(this)";  
+    LangFrom.setAttributeNode(att1);        
+    const att12 = document.createAttribute("arrnum");
+    att12.value = i;  
+    LangFrom.setAttributeNode(att12);              
+    const att13 = document.createAttribute("atext");
+    att13.value = obj.arrw[i].Eng;  
+    LangFrom.setAttributeNode(att13);                 
+    aToNode.appendChild(LangFrom);   
    
    
-   const LangTo = document.createElement("div");
-   LangTo.innerText = obj.arrw[rArr[i]].Rus;
-   const att2 = document.createAttribute("arrnum");
-   att2.value = rArr[i];  
-   LangTo.setAttributeNode(att2);           
-   LangTo.className = "dv1 LangTo";
-   const att22 = document.createAttribute("onclick");
-   att22.value = "clickLangTo(this)";  
-   LangTo.setAttributeNode(att22);           
-   aToNode.appendChild(LangTo);      
- }
+    const LangTo = document.createElement("div");
+    LangTo.innerText = obj.arrw[rArr[i]].Rus;
+    const att2 = document.createAttribute("arrnum");
+    att2.value = rArr[i];  
+    LangTo.setAttributeNode(att2);           
+    LangTo.className = "dv1 LangTo";
+    const att22 = document.createAttribute("onclick");
+    att22.value = "clickLangTo(this)";  
+    LangTo.setAttributeNode(att22);           
+    aToNode.appendChild(LangTo);        
+  }
+  document.getElementById("m_container1").appendChild(aToNode); 
+  //aMainNode.appendChild(aToNode);
 }   // end of function
 
 </script>
