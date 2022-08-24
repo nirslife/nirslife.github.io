@@ -57,6 +57,45 @@
 </div>
 
 <script>
+
+let prevSelLangFrom;
+
+StartLoadPage();
+
+async function loadNames() {
+  const response = await fetch("https://nirslife.github.io/array1.json");
+  const names = await response.json();
+  CallBackForInitLoadPage2(names);
+  console.log(names); 
+  // logs [{ name: 'Joker'}, { name: 'Batman' }]
+}
+
+function GetJsonArray1() {	       
+       fetch("https://nirslife.github.io/array1.json", 
+	           { 
+			      method: 'GET'
+               }
+        ).then(function(response) {  
+		    let ret = response.json();
+		//	CallBackForInitLoadPage2(ret);  
+            }, function(error) {
+                 alert(error.message); //=> String
+             })          
+    } 
+
+function InitLoadPage2() {
+ //GetJsonArray1();
+ loadNames();
+}
+
+function CallBackForInitLoadPage2(aText){
+  //let List1 = JSON.parse(aText);
+  let List1 = aText;
+  let cntr = document.getElementById("m_container1");
+  AddItemToHtml(cntr,List1); 
+}
+
+function InitLoadPage1() {
 let text = '{"arrw":[' +
 '{"Eng":"Apple","Rus":"Яблоко" },' +
 '{"Eng":"Road","Rus":"Дорога" },' +
@@ -64,13 +103,14 @@ let text = '{"arrw":[' +
 '{"Eng":"take place","Rus":"происходят, состояться" },' +
 '{"Eng":"arguing","Rus":"спорят" },' +
 '{"Eng":"Yelow","Rus":"Желтый" }]}';
+  let List1 = JSON.parse(text);
+  let cntr = document.getElementById("m_container1");
+  AddItemToHtml(cntr,List1); 
+}
 
-const List1 = JSON.parse(text);
-
-let prevSelLangFrom;
-
-let cntr = document.getElementById("m_container1");
-AddItemToHtml(cntr,List1); 
+function StartLoadPage() {
+  InitLoadPage2();
+}
 
 
 function getRandomInt(max) {
@@ -124,7 +164,7 @@ function clickLangTo(aNode)
   }  
 }
 
-  
+ 
 function AddItemToHtml(aToNode,obj)
   {
   const rArr = [];   
@@ -157,77 +197,8 @@ function AddItemToHtml(aToNode,obj)
    LangTo.setAttributeNode(att22);           
    aToNode.appendChild(LangTo);      
  }
+}   // end of function
 
-/*   const att12 = document.createAttribute("LngVa");
-   att12.value = lon1;
-   AddrItem.setAttributeNode(att12); 
-
-   const att2 = document.createAttribute("onclick");
-   att2.value = "clickDivItem(this)";  
-   AddrItem.setAttributeNode(att2);     
-   
-   const att3 = document.createAttribute("onmousemove");
-   att3.value = "mousemoveDivItem(this)";
-   AddrItem.setAttributeNode(att3);   
-   
-   const att4 = document.createAttribute("onmouseleave");
-   att4.value = "onmouseleaveDivItem(this)";
-   AddrItem.setAttributeNode(att4);      
-
-   const att5 = document.createAttribute("ondblclick");
-   att5.value = "dblclickDivItem(this)";     
-   AddrItem.setAttributeNode(att5);  
-   
-   const LLItem = document.createElement("div");
-   LLItem.innerText =  lat1 +', ' + lon1;
-   AddrItem.appendChild(LLItem);
-
-   document.getElementById("listaddr").appendChild(AddrItem);   */
-  }   
-
-
-
-function filterSelection(c) {
-  var x, i;
-  x = document.getElementsByClassName("filterDiv");
-  if (c == "all") c = "";
-  for (i = 0; i < x.length; i++) {
-    w3RemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-  }
-}
-
-function w3AddClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-  }
-}
-
-function w3RemoveClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);     
-    }
-  }
-  element.className = arr1.join(" ");
-}
-
-// Add active class to the current button (highlight it)
-var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
 </script>
 
 </body>
