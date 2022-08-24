@@ -42,7 +42,8 @@
 
 .dv1 {
   width: 45%;
-  height: 65px;
+  //height: 65px;
+  height: 15mm;
   background: #d9d9d9;
   color: #555;
   float: left;
@@ -267,7 +268,7 @@ function AddItemToHtml(obj){
   }
   let lenp = endi - begi;   // длина порции
   LastCountItem = lenp;
-  console.log("begi:"+begi+"  endi:"+endi+"  lenp:"+lenp);  
+//  console.log("begi:"+begi+"  endi:"+endi+"  lenp:"+lenp);  
   const rArr = [];    
   InitRandomArr(lenp, begi, rArr); 
   const aToNode = document.createElement("div");
