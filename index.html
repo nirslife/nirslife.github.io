@@ -2,6 +2,44 @@
 <html>
 <style>
 
+#header1 {
+  height: 80px;
+  width: 100%;
+  display: block;
+  margin-bottom: 30px;  
+  overflow: hidden;
+}
+
+#m_container1{
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.confblock {
+  width: 150px;
+  height: 50px;
+  background: #e0fee6; //#25c94a;
+  color: #555;
+  float: left;
+  text-align: center;  
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;  
+  padding-top: 5px;
+  padding-bottom: 5px;  
+  cursor: pointer;
+  border-color: #2196F3;
+  border: 2px solid;  
+  display: inline;
+}
+
+.active2 {
+  border-color: #2196F3;
+  background: #25c94a;    
+}
+
+
 .dv1 {
   width: 45%;
   height: 65px;
@@ -53,6 +91,10 @@
 </style>
 <body>
 
+<div id="header1">
+
+</div>
+
 <div id="m_container1">
 </div>
 
@@ -60,14 +102,14 @@
 
 const UrlArray1 = "https://nirslife.github.io/array2.json";
 
-const blockdiv_id1 = "blockbutton1";
+const confEngOnOff_id1 = "confEngOnOffid1"; // показывать англ слова
+const blockdiv_id1 = "blockbutton1"; // контейнер позиций
 const PartLenght = 7; // длина порции
 let CountPart; // кол-во порций
-let CurPart = 3; // текущая порция
+let CurPart = 0; // текущая порция
 let LastCountItem = 0; // кол-во оставщихся позиций 
 let ListLesson; // весь массив слов загружаем из UrlArray1
 let ModeLesson = 1; // режим урока 1 - показывать англ слова, 2 - не показывать англ слова
-
 
 
 let prevSelLangFrom; // текущий выделенный блок/позиция 
@@ -92,6 +134,7 @@ function CallBackForInitLoadPage2(aArr){
   //let List1 = JSON.parse(aText);
   ListLesson = aArr;
   //let cntr = document.getElementById("m_container1");
+  InitConfBlocks();
   AddItemToHtml(ListLesson); 
 }
 
@@ -166,14 +209,14 @@ function clickLangTo(aNode)
 	  prevSelLangFrom = 0;
 	  LastCountItem = LastCountItem - 1;
       if (LastCountItem < 1){
+	    CurPart = CurPart + 1;  
 	    ReInitItem(); 
 	  } 	   
 	}
   }  
 }
 
-function ReInitItem(){
-  CurPart = CurPart + 1; 
+function ReInitItem(){   
   if (CurPart == CountPart){
     CurPart = 0;
   }
@@ -182,8 +225,33 @@ function ReInitItem(){
   AddItemToHtml(ListLesson); 
 }
 
-function InitParts(){
 
+function clickEngOnOff(aNode){
+  let str = aNode.className; 
+  if(str.indexOf("active2") > 0){
+    str = str.replaceAll("active2","");
+	ModeLesson = 2;	
+	aNode.className = str;
+	aNode.innerText = "Off";
+  }else{
+    aNode.className = "confblock active2";
+	aNode.innerText = "On";	
+    ModeLesson = 1;	
+  }	
+  ReInitItem();
+}
+
+
+function InitConfBlocks(){
+  const Elem1 = document.createElement("div");
+  Elem1.id = confEngOnOff_id1;
+  Elem1.className = "confblock";
+  Elem1.innerText = "Off";
+  ModeLesson = 2;
+  const att1 = document.createAttribute("onclick");
+  att1.value = "clickEngOnOff(this)";  
+  Elem1.setAttributeNode(att1);          
+  document.getElementById("header1").appendChild(Elem1); 
 }
  
 //function AddItemToHtml(aMainNode,obj){
