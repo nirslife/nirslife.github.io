@@ -90,6 +90,85 @@
   background: #21f3d8;    
 }
 
+#textfrom1 {
+  height: 80px;
+  width: 100%;
+  color: #555;
+  float: left;  
+  font-size: 33px;
+  margin-top: 10px;  
+  padding-top: 5px;
+  padding-bottom: 5px;  
+  cursor: pointer;
+  border-color: black;
+  border: 2px solid;    
+  display: block;
+  margin-bottom: 20px;  
+  overflow: hidden;
+}
+
+.inputblock {  
+  height: 50px;
+  background: #e0fee6; 
+  color: #555;
+  float: left;
+  text-align: center;  
+  font-size: 33px;
+  margin-top: 10px;
+  margin-bottom: 10px;  
+  margin-right: 15px;
+  margin-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;    
+  cursor: pointer;
+  border-color: #2196F3;
+  border: 2px solid;  
+  display: inline;
+}
+
+
+.puzzleblock {  
+  height: 50px;
+  background: #e0fee6; 
+  color: #555;
+  float: left;
+  text-align: center;  
+  font-size: 33px;
+  margin-top: 10px;
+  margin-bottom: 10px;  
+  margin-right: 15px;
+  margin-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;    
+  padding-right: 5px;
+  padding-left: 5px;
+  
+  cursor: pointer;
+  border-color: #2196F3;
+  border: 2px solid;  
+  display: inline;
+}
+
+
+#inputtextfrom1 {
+  height: 160px;
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;  
+  overflow: hidden;
+}
+
+
+#puzzletextfrom1 {
+  height: 250px;
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;  
+  overflow: hidden;
+}
+
+
+
 
 
 </style>
@@ -99,17 +178,33 @@
 
 </div>
 
+<div id="textfrom1">
+
+</div>
+
+<div id="inputtextfrom1">
+
+</div>
+
+<div id="puzzletextfrom1">
+
+</div>
+
+
 <div id="m_container1">
 </div>
 
 <script>
 
-const UrlArrP1 = "https://nirslife.github.io/array";
+const UrlArrP1 = "https://nirslife.github.io/arr_sentences";
 const UrlArrP2 = ".json";
 let UrlArray1;
 
+
 const cnfEngOnOff_id1 = "confEngOnOffid1"; // показывать англ слова
+
 const cnfLessonNum_id1 = "confLessonNumid1"; // номер урока 
+
 
 const blockdiv_id1 = "blockbutton1"; // контейнер позиций
 const PartLenght = 7; // длина порции
@@ -118,8 +213,11 @@ let CurPart = 0; // текущая порция
 let LastCountItem = 0; // кол-во оставщихся позиций 
 let ListLesson; // весь массив слов загружаем из UrlArray1
 let ModeLesson = 1; // режим урока 1 - показывать англ слова, 2 - не показывать англ слова
-let LessonNum = 2; // номер массива/урока
-const CountLessonNum = 3; // кол-во уроков
+
+let CurSentences = 0; // текущая предложение
+
+let LessonNum = 1; // номер массива/урока
+const CountLessonNum = 1; // кол-во уроков
 
 let prevSelLangFrom; // текущий выделенный блок/позиция 
 
@@ -135,37 +233,35 @@ function InitUrlArray1() {
 async function LoadArray() {
   const response = await fetch(InitUrlArray1());
   const array1 = await response.json();
-  CallBackForInitLoadPage2(array1);
+  CallBackForInitLoadPage1(array1);
 //  console.log(names);   
 }
 
-function InitLoadPage2() {  
-  LoadArray();
+function InitLoadPage1() {  
+  LoadArray();  
 }
 
-function CallBackForInitLoadPage2(aArr){
-  //let List1 = JSON.parse(aText);
-  ListLesson = aArr;
-  //let cntr = document.getElementById("m_container1");
-  AddItemToHtml(ListLesson); 
+//перемешивание массива случайным образом
+function MixArray(aObj) {  
+  const rArr = []; 
+  const vObj = {"arrw":[]};
+  InitRandomArr(aObj.arrw.length, 0, rArr);
+  for (i = 0; i < aObj.arrw.length; i++) {
+    vObj.arrw[i] = aObj.arrw[rArr[i]];    
+  } 
+  return vObj;
 }
 
-function InitLoadPage1() {
-let text = '{"arrw":[' +
-'{"Eng":"Apple","Rus":"Яблоко" },' +
-'{"Eng":"Road","Rus":"Дорога" },' +
-'{"Eng":"Earn","Rus":"зарабатывать" },' +
-'{"Eng":"take place","Rus":"происходят, состояться" },' +
-'{"Eng":"arguing","Rus":"спорят" },' +
-'{"Eng":"Yelow","Rus":"Желтый" }]}';
-  ListLesson = JSON.parse(text);
-  //let cntr = document.getElementById("m_container1");
-  AddItemToHtml(cntr,ListLesson); 
+function CallBackForInitLoadPage1(aArr){    
+  ListLesson = MixArray(aArr);   // перемешиваем
+  DisplayExercise(ListLesson,CurSentences);
+//  AddItemToHtml(ListLesson); 
 }
+
 
 function MainLoadPage() {
   InitConfBlocks(); 
-  InitLoadPage2();
+  InitLoadPage1();
 }
 
 
@@ -173,6 +269,9 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+// перемешивание случайным образом массива индексов
+// max - [0..max-1], incval- величина смещение индекса [0+incval..max+incval-1] = [0..max-1] + incval
+// Arr1 - массив [0..max-1]
 function InitRandomArr(max, incval, Arr1) {
   for (i = 0; i < max; i++) {
     Arr1[i] = i;     
@@ -293,55 +392,52 @@ function InitConfBlocks(){
   document.getElementById("header1").appendChild(Elem2); 
   document.getElementById("header1").appendChild(Elem1);     
 }
- 
-//function AddItemToHtml(aMainNode,obj){
-function AddItemToHtml(obj){  
-  // весь массив слов нужно разметить на порции
-  
-  // CountPart - кол-во порций
-  CountPart = Math.floor(obj.arrw.length/PartLenght) + 1;    
-  let begi = CurPart * PartLenght; // начальный индекс порции
-  let endi = begi + PartLenght;    // конечный индекс порции  
-  if (CurPart == CountPart-1){
-    endi = obj.arrw.length;     
+
+// разрезаем предложение по пробелам
+function SliceSentence(aSenten){
+  let str = aSenten;
+  let s1;
+  let i;  
+  let j = 0;
+  let arrsen = [];
+  //str = str.replaceAll("}","");  
+  while (str.length > 0) {
+    i = str.indexOf(" ");
+    if (i < 1){ i = str.length; }
+    s1 = str.substr(0, i);
+    str = str.slice(i+1, str.length);  
+    arrsen[j] = s1.replaceAll(" ","");   // убираем пробелы
+	j++;
+  }   
+  return arrsen;
+}
+
+
+function DisplayExercise(obj,Indx){    
+  let EngArr; 
+  EngArr = SliceSentence(obj.arrw[Indx].Eng);
+  for (i = 0; i < EngArr.length; i++) {    
+    const InpBl = document.createElement("div");
+    InpBl.innerText = EngArr[i];
+    InpBl.className = "puzzleblock";    
+	document.getElementById("puzzletextfrom1").appendChild(InpBl);    
   }
-  let lenp = endi - begi;   // длина порции
-  LastCountItem = lenp;
-//  console.log("begi:"+begi+"  endi:"+endi+"  lenp:"+lenp);  
-  const rArr = [];    
-  InitRandomArr(lenp, begi, rArr); 
+  
+  
+  document.getElementById("textfrom1").innerText = obj.arrw[Indx].Rus; 
+  
+  
   const aToNode = document.createElement("div");
-  aToNode.id = blockdiv_id1;
-  for (i = begi; i < endi; i++) {  
+  aToNode.id = blockdiv_id1; 
+  textfrom1
+  for (i = 0; i < obj.arrw.length; i++) {  
     const LangFrom = document.createElement("div");
-	if (ModeLesson == 1){
-	  LangFrom.innerText = obj.arrw[i].Eng;
-	}
-	if (ModeLesson == 2){
-	  LangFrom.innerText = "Eng "+i;
-	}    
+    LangFrom.innerText = obj.arrw[i].Eng;
     LangFrom.className = "dv1 LangFrom";
-    const att1 = document.createAttribute("onclick");
-    att1.value = "clickLangFrom(this)";  
-    LangFrom.setAttributeNode(att1);        
-    const att12 = document.createAttribute("arrnum");
-    att12.value = i;  
-    LangFrom.setAttributeNode(att12);              
-    const att13 = document.createAttribute("atext");
-    att13.value = obj.arrw[i].Eng;  
-    LangFrom.setAttributeNode(att13);                 
-    aToNode.appendChild(LangFrom);   
-   
+    aToNode.appendChild(LangFrom);      
    
     const LangTo = document.createElement("div");
-    LangTo.innerText = obj.arrw[rArr[i]].Rus;
-    const att2 = document.createAttribute("arrnum");
-    att2.value = rArr[i];  
-    LangTo.setAttributeNode(att2);           
-    LangTo.className = "dv1 LangTo";
-    const att22 = document.createAttribute("onclick");
-    att22.value = "clickLangTo(this)";  
-    LangTo.setAttributeNode(att22);           
+    LangTo.innerText = obj.arrw[i].Rus;
     aToNode.appendChild(LangTo);        
   }
   document.getElementById("m_container1").appendChild(aToNode); 
