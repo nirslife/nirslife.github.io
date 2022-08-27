@@ -183,13 +183,21 @@
   display: block;
   margin-bottom: 20px;  
   margin-right: 35px;
-  margin-left: 35px;    
+  margin-left: 35px;   
+  border-bottom: solid;  
   overflow: hidden;
 }
 
-
-
-
+#testbutt {
+  height: 50px;
+  width: 250;
+  background-color: DodgerBlue;
+  color: #fff;
+  border-radius: 10px; 
+  margin-right: 35px;
+  margin-left: 35px;    
+  cursor: pointer;
+}
 
 </style>
 <body>
@@ -210,9 +218,11 @@
 
 </div>
 
-<button onclick="myFunction()">TEST TEST</button>
+
 
 <div id="m_container1">
+ <input type="button" id="testbutt" value="Verify-проверить" onclick="TestSentOnClick()">
+<!-- <button onclick="myFunction()">TEST TEST</button> -->
 </div>
 
 <script>
@@ -443,6 +453,10 @@ function SliceSentence(aSenten){
 	j++;
   }   
   return arrsen;
+}
+
+function TestSentOnClick() {
+
 }
 
 function clickInputtext(aThis) {
