@@ -121,8 +121,8 @@
   margin-bottom: 10px;  
   margin-right: 10px;
   margin-left: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;    
+  padding-top: 3px;
+  padding-bottom: 3px;    
   padding-right: 30px;
   padding-left: 30px;  
   cursor: pointer;
@@ -132,10 +132,20 @@
   display: inline;
 }
 
+.inpoff {  
+  background: #555555; 
+  cursor: auto;
+  user-select: none; 
+}
+
+.inpon {  
+  background: #e0fee6; 
+  cursor: pointer;
+}
+
 
 .puzzleblock {  
   height: 50px;
-  background: #e0fee6; 
   color: #555;
   float: left;
   text-align: center;  
@@ -149,7 +159,6 @@
   padding-right: 15px;
   padding-left: 15px;
   border-radius: 10px;  
-  cursor: pointer;
   border-color: #2196F3;
   border: 2px solid;  
   display: inline;
@@ -169,7 +178,7 @@
 
 
 #puzzletextfrom1 {
-  height: 250px;
+  height: 350px;
   width: 100%;
   display: block;
   margin-bottom: 20px;  
@@ -201,6 +210,7 @@
 
 </div>
 
+<button onclick="myFunction()">TEST TEST</button>
 
 <div id="m_container1">
 </div>
@@ -234,6 +244,16 @@ let prevSelLangFrom; // текущий выделенный блок/позиц�
 
 MainLoadPage();
 
+
+
+
+function myFunction() {
+  const myCollection = document.getElementsByClassName("inputtext");
+  for (let i = 0; i < myCollection.length; i++) {
+    //myCollection[i].style.color = "red";
+	myCollection[i].innerHTML = myCollection[i].innerHTML + i;
+  }
+}
 
 
 function InitUrlArray1() {
@@ -271,7 +291,7 @@ function CallBackForInitLoadPage1(aArr){
 
 
 function MainLoadPage() {
-  InitConfBlocks(); 
+ // InitConfBlocks(); 
   InitLoadPage1();
 }
 
@@ -425,49 +445,80 @@ function SliceSentence(aSenten){
   return arrsen;
 }
 
+function clickInputtext(aThis) {
+
+  const InpBl = document.getElementById("Puzzid"+aThis.getAttribute("IndexArr"));  
+  InpBl.className = "puzzleblock inpon";    
+  const att1 = document.createAttribute("onclick");
+  att1.value = "clickPuzzletext(this)";  
+  InpBl.setAttributeNode(att1);        
+  aThis.remove(); 
+
+}
+
+function clickPuzzletext(aThis) {
+  
+  aThis.removeAttribute("onclick");
+  aThis.className = "inpoff puzzleblock";
+  
+  const InTxt = document.createElement("div");
+  InTxt.innerText = aThis.innerText;
+  InTxt.className = "inputtext";    
+  const att1 = document.createAttribute("onclick");
+  att1.value = "clickInputtext(this)";  
+  InTxt.setAttributeNode(att1);             
+  const att2 = document.createAttribute("IndexArr");
+  att2.value = aThis.getAttribute("IndexArr");  
+  InTxt.setAttributeNode(att2);               
+  document.getElementById("inputtextfrom1").appendChild(InTxt);  
+  speak(aThis.innerText);
+}
+
 
 function DisplayExercise(obj,Indx){    
-  let EngArr; 
-  let EngArrNei;
-  let IndxNei = Indx;
+  let EngArrDbl; 
+  let EngArrNei;  
+  let IndxNei = Indx + 1;
   if (IndxNei >= obj.arrw.lenght){IndxNei = 0;}   
-  EngArr = SliceSentence(obj.arrw[Indx].Eng);
-  EngArrNei = SliceSentence(obj.arrw[IndxNei].Eng);
+  EngArrDbl = SliceSentence(obj.arrw[Indx].Eng); // разбивка англ. варианта пары
+  EngArrNei = SliceSentence(obj.arrw[IndxNei].Eng); // разбивка англ. из соседней пары для подмешивания 
   
-  for (i = 0; i < EngArr.length; i++) {    
+  let LenSrc = EngArrDbl.lenght; // длина массива
+  // добавляем к EngArrDbl массив EngArrNei
+  for (i = 0; i < EngArrNei.length; i++) {
+    EngArrDbl.push(EngArrNei[i]);
+    //EngArrDbl[j+i] = EngArrNei[i];	
+  }	  
+  
+  
+  let MixArr = [];	
+  InitRandomArr(EngArrDbl.length, 0, MixArr);
+  
+  for (i = 0; i < EngArrDbl.length; i++) {    
     const InpBl = document.createElement("div");
-    InpBl.innerText = EngArr[i];
-    InpBl.className = "puzzleblock";    
+    InpBl.innerText = EngArrDbl[MixArr[i]];
+    InpBl.className = "puzzleblock inpon";    
+    const att1 = document.createAttribute("onclick");
+    att1.value = "clickPuzzletext(this)";  
+    InpBl.setAttributeNode(att1);        
+    const att2 = document.createAttribute("IndexArr");
+    att2.value = i;  
+	InpBl.id = "Puzzid"+i;
+    InpBl.setAttributeNode(att2);        	
+	
 	document.getElementById("puzzletextfrom1").appendChild(InpBl);    
   }
 
-  for (i = 0; i < EngArr.length; i++) {    
-    const InpIT = document.createElement("div");
-    InpIT.innerText = EngArr[i];
-    InpIT.className = "inputtext";    
-	document.getElementById("inputtextfrom1").appendChild(InpIT);    
-  }
+
+//    InpIT.className = "inputtext";    
+//	document.getElementById("inputtextfrom1").appendChild(InpIT);    
+
   
   
   
   document.getElementById("textfrom1").innerText = obj.arrw[Indx].Rus; 
   
-  
-  const aToNode = document.createElement("div");
-  aToNode.id = blockdiv_id1; 
-  textfrom1
-  for (i = 0; i < obj.arrw.length; i++) {  
-    const LangFrom = document.createElement("div");
-    LangFrom.innerText = obj.arrw[i].Eng;
-    LangFrom.className = "dv1 LangFrom";
-    aToNode.appendChild(LangFrom);      
-   
-    const LangTo = document.createElement("div");
-    LangTo.innerText = obj.arrw[i].Rus;
-    aToNode.appendChild(LangTo);        
-  }
-  document.getElementById("m_container1").appendChild(aToNode); 
-  //aMainNode.appendChild(aToNode);
+ 
 }   // end of function
 
 </script>
