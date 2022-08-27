@@ -107,7 +107,7 @@
   overflow: hidden;
 }
 
-.inputblock {  
+.inputtext {  
   height: 50px;
   background: #e0fee6; 
   color: #555;
@@ -116,13 +116,16 @@
   font-size: 33px;
   margin-top: 10px;
   margin-bottom: 10px;  
-  margin-right: 15px;
-  margin-left: 15px;
+  margin-right: 3px;
+  margin-left: 3px;
   padding-top: 5px;
   padding-bottom: 5px;    
+  padding-right: 5px;
+  padding-left: 5px;  
   cursor: pointer;
   border-color: #2196F3;
   border: 2px solid;  
+  border-radius: 10px;
   display: inline;
 }
 
@@ -142,7 +145,7 @@
   padding-bottom: 5px;    
   padding-right: 5px;
   padding-left: 5px;
-  
+  border-radius: 10px;  
   cursor: pointer;
   border-color: #2196F3;
   border: 2px solid;  
@@ -415,13 +418,26 @@ function SliceSentence(aSenten){
 
 function DisplayExercise(obj,Indx){    
   let EngArr; 
+  let EngArrNei;
+  let IndxNei = Indx;
+  if (IndxNei >= obj.arrw.lenght){IndxNei = 0;}   
   EngArr = SliceSentence(obj.arrw[Indx].Eng);
+  EngArrNei = SliceSentence(obj.arrw[IndxNei].Eng);
+  
   for (i = 0; i < EngArr.length; i++) {    
     const InpBl = document.createElement("div");
     InpBl.innerText = EngArr[i];
     InpBl.className = "puzzleblock";    
 	document.getElementById("puzzletextfrom1").appendChild(InpBl);    
   }
+
+  for (i = 0; i < EngArr.length; i++) {    
+    const InpIT = document.createElement("div");
+    InpIT.innerText = EngArr[i];
+    InpIT.className = "inputtext";    
+	document.getElementById("inputtextfrom1").appendChild(InpIT);    
+  }
+  
   
   
   document.getElementById("textfrom1").innerText = obj.arrw[Indx].Rus; 
