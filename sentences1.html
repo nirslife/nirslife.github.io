@@ -300,8 +300,9 @@ let LastCountItem = 0; // кол-во оставщихся позиций
 let ListLesson; // весь массив слов загружаем из UrlArray1
 let ModeLesson = 1; // режим урока 1 - показывать англ слова, 2 - не показывать англ слова
 
-let CurSentences = 0; // текущее предложение
 
+const MaxMixWordsAdd = 7;
+let CurSentences = 0; // текущее предложение
 let LessonNum = 1; // номер массива/урока
 const CountLessonNum = 1; // кол-во уроков
 
@@ -639,8 +640,11 @@ function DisplayExercise(obj,Indx){
   EngArrNei = SliceSentence(obj.arrw[IndxNei].Eng); // разбивка англ. из соседней пары для подмешивания 
   
   let LenSrc = EngArrDbl.lenght; // длина массива
+  
   // добавляем к EngArrDbl массив EngArrNei
-  for (i = 0; i < EngArrNei.length; i++) {
+  t1 = EngArrNei.length;
+  if (t1 > MaxMixWordsAdd ){ t1 = MaxMixWordsAdd;} // добавляем не больше чем MaxMixWordsAdd-слов
+  for (i = 0; i < t1; i++) {
     EngArrDbl.push(EngArrNei[i]);
     //EngArrDbl[j+i] = EngArrNei[i];	
   }	  
