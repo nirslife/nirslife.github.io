@@ -120,8 +120,8 @@
   margin-left: 5px;
   padding-top: 5px;
   padding-bottom: 5px;    
-  padding-right: 7px;
-  padding-left: 7px;  
+  padding-right: 15px;
+  padding-left: 15px;  
   cursor: pointer;
   border-color: #2196F3;
   border: 2px solid;  
@@ -143,8 +143,8 @@
   margin-left: 15px;
   padding-top: 5px;
   padding-bottom: 5px;    
-  padding-right: 5px;
-  padding-left: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
   border-radius: 10px;  
   cursor: pointer;
   border-color: #2196F3;
@@ -158,6 +158,8 @@
   width: 100%;
   display: block;
   margin-bottom: 20px;  
+  margin-right: 35px;
+  margin-left: 35px;  
   overflow: hidden;
 }
 
@@ -167,6 +169,8 @@
   width: 100%;
   display: block;
   margin-bottom: 20px;  
+  margin-right: 35px;
+  margin-left: 35px;    
   overflow: hidden;
 }
 
@@ -409,7 +413,9 @@ function SliceSentence(aSenten){
     if (i < 1){ i = str.length; }
     s1 = str.substr(0, i);
     str = str.slice(i+1, str.length);  
-    arrsen[j] = s1.replaceAll(" ","");   // убираем пробелы
+    s1 = s1.replaceAll(" ","");   // убираем пробелы	
+	if (s1.length == 1) {s1 = s1 + " ";} 
+	arrsen[j] = s1;
 	j++;
   }   
   return arrsen;
