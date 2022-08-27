@@ -188,16 +188,67 @@
   overflow: hidden;
 }
 
-#testbutt {
-  height: 50px;
-  width: 250;
+.footerbutt {
+  height: 60px;
+  width: 250px;
+  text-align: center;  
+  font-size: 33px;  
   background-color: DodgerBlue;
   color: #fff;
+  margin-top: 15px;
+  margin-bottom: 15px;    
   border-radius: 10px; 
   margin-right: 35px;
   margin-left: 35px;    
   cursor: pointer;
+  display: inline-block;  
 }
+
+
+#verify_cont1 {
+  height: 450px;
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;  
+  margin-right: 10px;
+  margin-left: 10px;     
+  overflow: hidden;
+}
+
+.verify_def {
+  background: #FFFFFF; 
+}
+
+
+.verify_red {
+  background: #f6112b; 
+  color: #FFFFFF;
+}
+
+.verify_green {
+  background: #4caf50; 
+  color: #FFFFFF;
+}
+
+.verify_info {
+  width: 100%;
+  float: left;  
+  font-size: 20px;
+  margin-top: 10px;  
+  margin-bottom: 10px;  
+  padding-top: 3px;
+  padding-bottom: 3px; 
+  padding-right: 10px;
+  padding-left: 10px;    
+  cursor: auto;
+  border-color: black;
+  border: 2px solid;      
+  border-radius: 10px;
+//  overflow: hidden;
+  display: block;  
+}
+
+
 
 </style>
 <body>
@@ -220,9 +271,12 @@
 
 
 
-<div id="m_container1">
- <input type="button" id="testbutt" value="Verify-проверить" onclick="TestSentOnClick()">
+<div id="m_container1"> 
 <!-- <button onclick="myFunction()">TEST TEST</button> -->
+</div>
+
+<div id="verify_cont1">
+
 </div>
 
 <script>
@@ -245,7 +299,7 @@ let LastCountItem = 0; // кол-во оставщихся позиций
 let ListLesson; // весь массив слов загружаем из UrlArray1
 let ModeLesson = 1; // режим урока 1 - показывать англ слова, 2 - не показывать англ слова
 
-let CurSentences = 0; // текущая предложение
+let CurSentences = 0; // текущее предложение
 
 let LessonNum = 1; // номер массива/урока
 const CountLessonNum = 1; // кол-во уроков
@@ -293,9 +347,35 @@ function MixArray(aObj) {
   return vObj;
 }
 
+
+function AddFooterButton() {
+//m_container1
+//<input type="button" id="testbutt" value="Verify-проверить" onclick="TestSentOnClick()">
+  const Butt1 = document.createElement("div");
+  Butt1.id = "testbutt";
+  Butt1.className = "footerbutt";  
+  Butt1.innerText = "Verify-проверить";
+  const att1 = document.createAttribute("onclick");
+  att1.value = "TestSentOnClick()";  
+  Butt1.setAttributeNode(att1);             
+  
+  const Butt2 = document.createElement("div");
+  Butt2.id = "nextsentbutt";
+  Butt2.className = "footerbutt";  
+  Butt2.innerText = "Next sentence";
+  const att2 = document.createAttribute("onclick");
+  att2.value = "NextSentenceOnClick()";  
+  Butt2.setAttributeNode(att2);               
+  
+  document.getElementById("m_container1").appendChild(Butt1);  
+  document.getElementById("m_container1").appendChild(Butt2);  
+
+}
+
 function CallBackForInitLoadPage1(aArr){    
   ListLesson = MixArray(aArr);   // перемешиваем
   DisplayExercise(ListLesson,CurSentences);
+  AddFooterButton(); // кнопки внизу: "проверить" и "следующее"
 //  AddItemToHtml(ListLesson); 
 }
 
@@ -455,8 +535,66 @@ function SliceSentence(aSenten){
   return arrsen;
 }
 
-function TestSentOnClick() {
+function NextSentenceOnClick() {
+  CurSentences++;
+  if (ListLesson.arrw.lenght == CurSentences){CurSentences = 0;}
+  const rNode1 = document.getElementById("div_puzzletextfrom1");
+  const rNode2 = document.getElementById("div_inputtextfrom1");
+  if (rNode1){rNode1.remove();}
+  if (rNode2){rNode2.remove();}
+  DisplayExercise(ListLesson,CurSentences);
+  const remNode = document.getElementById("div_verify_cont1"); 
+  if (remNode){remNode.remove();}  
+  document.getElementById("verify_cont1").className = "verify_def";  //verify_def
+}
 
+function TestSentOnClick() {  
+  let inpstr = ""; 
+  let srcstr = "";
+  const myCollection = document.getElementsByClassName("inputtext");
+  for (let i = 0; i < myCollection.length; i++) {
+    //myCollection[i].style.color = "red";
+	inpstr = inpstr + myCollection[i].innerHTML;
+  }  
+  inpstr = inpstr.replaceAll(" ","");
+  inpstr = inpstr.toUpperCase();
+  srcstr = ListLesson.arrw[CurSentences].Eng.replaceAll(" ","");
+  srcstr = srcstr.toUpperCase();
+  
+  const remNode = document.getElementById("div_verify_cont1");
+  if (remNode){remNode.remove();}
+  
+  const vrfNode = document.getElementById("verify_cont1");  
+  const rootDiv = document.createElement("div");
+  rootDiv.id = "div_verify_cont1";
+  const bInfo = document.createElement("div");  
+  bInfo.className = "verify_info";
+  
+  const EngSrcSen = document.createElement("div");  
+  EngSrcSen.className = "verify_info";
+  EngSrcSen.innerText = ListLesson.arrw[CurSentences].Eng;
+  
+  const EngSrc = document.createElement("div");  
+  EngSrc.className = "verify_info";
+  EngSrc.innerText = srcstr;
+  const EngInp = document.createElement("div");  
+  EngInp.className = "verify_info";
+  EngInp.innerText = inpstr;
+  if (inpstr == srcstr){
+    vrfNode.className = "verify_green";   
+    bInfo.innerText = "ХОРОШО!";  	  
+  }
+  else{
+    vrfNode.className = "verify_red"; 
+	bInfo.innerText = "НЕ ВЕРНО!";  	  
+  }
+  rootDiv.appendChild(bInfo); 
+  rootDiv.appendChild(EngSrcSen);  
+  rootDiv.appendChild(EngSrc);
+  rootDiv.appendChild(EngInp);    
+  vrfNode.appendChild(rootDiv);  
+
+  
 }
 
 function clickInputtext(aThis) {
@@ -483,8 +621,9 @@ function clickPuzzletext(aThis) {
   InTxt.setAttributeNode(att1);             
   const att2 = document.createAttribute("IndexArr");
   att2.value = aThis.getAttribute("IndexArr");  
-  InTxt.setAttributeNode(att2);               
-  document.getElementById("inputtextfrom1").appendChild(InTxt);  
+  InTxt.setAttributeNode(att2);   
+  
+  document.getElementById("div_inputtextfrom1").appendChild(InTxt);  
   speak(aThis.innerText);
 }
 
@@ -493,7 +632,8 @@ function DisplayExercise(obj,Indx){
   let EngArrDbl; 
   let EngArrNei;  
   let IndxNei = Indx + 1;
-  if (IndxNei >= obj.arrw.lenght){IndxNei = 0;}   
+  let t1 = obj.arrw.length;
+  if (IndxNei >= t1){IndxNei = 0;}   
   EngArrDbl = SliceSentence(obj.arrw[Indx].Eng); // разбивка англ. варианта пары
   EngArrNei = SliceSentence(obj.arrw[IndxNei].Eng); // разбивка англ. из соседней пары для подмешивания 
   
@@ -507,7 +647,8 @@ function DisplayExercise(obj,Indx){
   
   let MixArr = [];	
   InitRandomArr(EngArrDbl.length, 0, MixArr);
-  
+  const rootDiv = document.createElement("div");
+  rootDiv.id = "div_puzzletextfrom1";
   for (i = 0; i < EngArrDbl.length; i++) {    
     const InpBl = document.createElement("div");
     InpBl.innerText = EngArrDbl[MixArr[i]];
@@ -518,21 +659,16 @@ function DisplayExercise(obj,Indx){
     const att2 = document.createAttribute("IndexArr");
     att2.value = i;  
 	InpBl.id = "Puzzid"+i;
-    InpBl.setAttributeNode(att2);        	
-	
-	document.getElementById("puzzletextfrom1").appendChild(InpBl);    
+    InpBl.setAttributeNode(att2);        		
+	rootDiv.appendChild(InpBl);    
   }
-
-
-//    InpIT.className = "inputtext";    
-//	document.getElementById("inputtextfrom1").appendChild(InpIT);    
-
+  document.getElementById("puzzletextfrom1").appendChild(rootDiv); 
   
-  
-  
+  const inpDiv = document.createElement("div");
+  inpDiv.id = "div_inputtextfrom1";
+  document.getElementById("inputtextfrom1").appendChild(inpDiv); 
+
   document.getElementById("textfrom1").innerText = obj.arrw[Indx].Rus; 
-  
- 
 }   // end of function
 
 </script>
