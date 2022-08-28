@@ -607,7 +607,7 @@ function clickInputtext(aThis) {
   const InpBl = document.getElementById("Puzzid"+aThis.getAttribute("IndexArr"));  
   InpBl.className = "puzzleblock inpon";    
   //const att1 = document.createAttribute("onclick");
-  const att1 = document.createAttribute("touchstart");
+  const att1 = document.createAttribute("ontouchstart");
   
   att1.value = "clickPuzzletext(this)";  
   InpBl.setAttributeNode(att1);        
@@ -625,7 +625,7 @@ function clickPuzzletext(aThis) {
   InTxt.innerText = aThis.innerText;
   InTxt.className = "inputtext";    
 //  const att1 = document.createAttribute("onclick");// touchstart
-  const att1 = document.createAttribute("touchstart");//   
+  const att1 = document.createAttribute("ontouchstart");//   
   att1.value = "clickInputtext(this)";  
   InTxt.setAttributeNode(att1);             
   const att2 = document.createAttribute("IndexArr");
