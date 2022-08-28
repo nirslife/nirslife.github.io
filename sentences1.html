@@ -653,6 +653,7 @@ function DisplayExercise(obj,Indx){
   // добавляем к EngArrDbl массив EngArrNei
   t1 = EngArrNei.length;
   if (t1 > MaxMixWordsAdd ){ t1 = MaxMixWordsAdd;} // добавляем не больше чем MaxMixWordsAdd-слов
+  if (LenSrc > 30){ t1 = 0; } // если слов больше 30 то не подмешиваем
   for (i = 0; i < t1; i++) {
     EngArrDbl.push(EngArrNei[i]);
     //EngArrDbl[j+i] = EngArrNei[i];	
