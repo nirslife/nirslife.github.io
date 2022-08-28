@@ -416,7 +416,7 @@ function speak(text) {
   const message = new SpeechSynthesisUtterance();
   message.lang = "en-EN";
   message.text = text;
-  message.rate = 1.0;
+  message.rate = 0.7;
   window.speechSynthesis.speak(message)
 }
 
