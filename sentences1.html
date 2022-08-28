@@ -303,8 +303,8 @@ let ModeLesson = 1; // режим урока 1 - показывать англ �
 
 const MaxMixWordsAdd = 7;
 let CurSentences = 0; // текущее предложение
-let LessonNum = 1; // номер массива/урока
-const CountLessonNum = 1; // кол-во уроков
+let LessonNum = 2; // номер массива/урока
+const CountLessonNum = 2; // кол-во уроков
 
 let prevSelLangFrom; // текущий выделенный блок/позиция 
 
@@ -376,15 +376,14 @@ function AddFooterButton() {
 
 function CallBackForInitLoadPage1(aArr){    
   ListLesson = MixArray(aArr);   // перемешиваем
-  DisplayExercise(ListLesson,CurSentences);
-  AddFooterButton(); // кнопки внизу: "проверить" и "следующее"
-//  AddItemToHtml(ListLesson); 
+  DisplayExercise(ListLesson, CurSentences);  
 }
 
 
 function MainLoadPage() {
- // InitConfBlocks(); 
+  InitConfBlocks(); 
   InitLoadPage1();
+  AddFooterButton(); // кнопки внизу: "проверить" и "следующее"
 }
 
 
@@ -484,9 +483,10 @@ function clickLessonNum(aNode){
   const Elem1 = document.getElementById(cnfLessonNum_id1);
   Elem1.innerText = "Lesson#"+LessonNum; 
   
-  const element = document.getElementById(blockdiv_id1);
-  if (element){ element.remove(); }
-  InitLoadPage2();
+//  const element = document.getElementById(blockdiv_id1);
+//  if (element){ element.remove(); }
+
+  InitLoadPage1();
 }
 
 
@@ -513,7 +513,7 @@ function InitConfBlocks(){
 //  Elem2.setAttributeNode(att3);          
 
   document.getElementById("header1").appendChild(Elem2); 
-  document.getElementById("header1").appendChild(Elem1);     
+ // document.getElementById("header1").appendChild(Elem1);     
 }
 
 // разрезаем предложение по пробелам
@@ -540,10 +540,10 @@ function SliceSentence(aSenten){
 function NextSentenceOnClick() {
   CurSentences++;
   if (ListLesson.arrw.length == CurSentences){CurSentences = 0;}
-  const rNode1 = document.getElementById("div_puzzletextfrom1");
-  const rNode2 = document.getElementById("div_inputtextfrom1");
-  if (rNode1){rNode1.remove();}
-  if (rNode2){rNode2.remove();}
+//  const rNode1 = document.getElementById("div_puzzletextfrom1");
+//  const rNode2 = document.getElementById("div_inputtextfrom1");
+//  if (rNode1){rNode1.remove();}
+//  if (rNode2){rNode2.remove();}
   DisplayExercise(ListLesson,CurSentences);
   const remNode = document.getElementById("div_verify_cont1"); 
   if (remNode){remNode.remove();}  
@@ -631,6 +631,14 @@ function clickPuzzletext(aThis) {
 
 
 function DisplayExercise(obj,Indx){    
+
+  // очищаем старое, если есть
+  const rNode1 = document.getElementById("div_puzzletextfrom1");
+  const rNode2 = document.getElementById("div_inputtextfrom1");
+  if (rNode1){rNode1.remove();}
+  if (rNode2){rNode2.remove();}
+
+
   let EngArrDbl; 
   let EngArrNei;  
   let IndxNei = Indx + 1;
