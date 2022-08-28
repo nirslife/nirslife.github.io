@@ -674,7 +674,7 @@ function DisplayExercise(obj,Indx){
     const InpBl = document.createElement("div");
     InpBl.innerText = EngArrDbl[MixArr[i]];
     InpBl.className = "puzzleblock inpon";    
-    const att1 = document.createAttribute("touchstart"); //onclick 
+    const att1 = document.createAttribute("ontouchstart"); //onclick 
     att1.value = "clickPuzzletext(this)";  
     InpBl.setAttributeNode(att1);        
     const att2 = document.createAttribute("IndexArr");
