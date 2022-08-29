@@ -286,7 +286,7 @@
 <script>
 
  const devices = new RegExp('Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini', "i");
- const eventvalue;
+ let eventvalue;
 
  if (devices.test(navigator.userAgent)) {
    eventvalue = "ontouchend"; // ontouchstart ontouchend
@@ -322,6 +322,7 @@ let LessonNum = 2; // номер массива/урока
 const CountLessonNum = 2; // кол-во уроков
 
 let prevSelLangFrom; // текущий выделенный блок/позиция 
+const msgspeak = new SpeechSynthesisUtterance();
 
 MainLoadPage();
 
@@ -427,11 +428,11 @@ function InitRandomArr(max, incval, Arr1) {
 
 
 function speak(text) {
-  const message = new SpeechSynthesisUtterance();
-  message.lang = "en-EN";
-  message.text = text;
-  message.rate = 1.5;
-  window.speechSynthesis.speak(message)
+//  const msgspeak = new SpeechSynthesisUtterance();
+  msgspeak.lang = "en-EN";
+  msgspeak.text = text;
+  msgspeak.rate = 1.2;
+  window.speechSynthesis.speak(msgspeak)
 }
 
 
@@ -644,8 +645,8 @@ function clickPuzzletext(aThis) {
   att2.value = aThis.getAttribute("IndexArr");  
   InTxt.setAttributeNode(att2);   
   
-  document.getElementById("div_inputtextfrom1").appendChild(InTxt);  
   speak(aThis.innerText);
+  document.getElementById("div_inputtextfrom1").appendChild(InTxt);  
 }
 
 
@@ -700,9 +701,23 @@ function DisplayExercise(obj,Indx){
   const inpDiv = document.createElement("div");
   inpDiv.id = "div_inputtextfrom1";
   document.getElementById("inputtextfrom1").appendChild(inpDiv); 
-
-  document.getElementById("textfrom1").innerText = obj.arrw[Indx].Rus; 
+  
+  textR = document.getElementById("textfrom1");
+  textR.innerText = obj.arrw[Indx].Rus; 
+  const att3 = document.createAttribute("onmousedown"); //onclick //ontouchstart
+  att3.value = "clickTextfrom(this)";  
+  textR.setAttributeNode(att3);          
 }   // end of function
+
+function clickTextfrom(aThis) {
+  let inpstr = ""; 
+  const myCollection = document.getElementsByClassName("inputtext");
+  for (let i = 0; i < myCollection.length; i++) {    
+	inpstr = inpstr + " " + myCollection[i].innerHTML;
+  }  
+
+  speak(inpstr);
+}
 
 </script>
 
