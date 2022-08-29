@@ -410,7 +410,7 @@ function getRandomInt(max) {
 // перемешивание случайным образом массива индексов
 // max - [0..max-1], incval- величина смещение индекса [0+incval..max+incval-1] = [0..max-1] + incval
 // Arr1 - массив [0..max-1]
-function OLD_InitRandomArr(max, incval, Arr1) {  // копия кода старая: function InitRandomArr(max, incval, Arr1) {
+function InitRandomArr(max, incval, Arr1) {  // копия кода старая: function InitRandomArr(max, incval, Arr1) {
   for (i = 0; i < max; i++) {
     Arr1[i] = i;     
   }
@@ -429,7 +429,7 @@ function OLD_InitRandomArr(max, incval, Arr1) {  // копия кода стар
 // перемешивание случайным образом массива индексов
 // max - [0..max-1], incval- величина смещение индекса [0+incval..max+incval-1] = [0..max-1] + incval
 // Arr1 - массив [0..max-1]
-function InitRandomArr(lenarr, step, incval, Arr1) {
+function NEW_InitRandomArr(lenarr, step, incval, Arr1) {
   for (i = 0; i < lenarr; i++) {
     Arr1[i] = i;     
   }
