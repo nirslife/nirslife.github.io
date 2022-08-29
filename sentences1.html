@@ -429,7 +429,7 @@ function InitRandomArr(max, incval, Arr1) {  // копия кода старая
 // перемешивание случайным образом массива индексов
 // max - [0..max-1], incval- величина смещение индекса [0+incval..max+incval-1] = [0..max-1] + incval
 // Arr1 - массив [0..max-1]
-function NEW_InitRandomArr(lenarr, step, incval, Arr1) {
+function InitRandomArrStep(lenarr, step, incval, Arr1) {
   for (i = 0; i < lenarr; i++) {
     Arr1[i] = i;     
   }
@@ -447,11 +447,11 @@ function NEW_InitRandomArr(lenarr, step, incval, Arr1) {
 
 
 
-function speak(text) {
+function speak(text, arate) {
 //  const msgspeak = new SpeechSynthesisUtterance();
   msgspeak.lang = "en-EN";
   msgspeak.text = text;
-  msgspeak.rate = 1.2;
+  msgspeak.rate = arate;
   window.speechSynthesis.speak(msgspeak)
 }
 
@@ -464,7 +464,7 @@ function clickLangFrom(aNode)
   prevSelLangFrom = aNode;        
   aNode.className = "dv1 LangFrom active1";
   //speak(aNode.innerText);
-  speak(aNode.getAttribute("atext"));
+  speak(aNode.getAttribute("atext"),1.2);
   //console.log(aNode.getAttribute("arrnum"));
 }
 
@@ -665,7 +665,7 @@ function clickPuzzletext(aThis) {
   att2.value = aThis.getAttribute("IndexArr");  
   InTxt.setAttributeNode(att2);   
   
-  speak(aThis.innerText);
+  speak(aThis.innerText, 1.2);
   document.getElementById("div_inputtextfrom1").appendChild(InTxt);  
 }
 
@@ -736,7 +736,7 @@ function clickTextfrom(aThis) {
 	inpstr = inpstr + " " + myCollection[i].innerHTML;
   }  
 
-  speak(inpstr);
+  speak(inpstr,0.8);
 }
 
 </script>
