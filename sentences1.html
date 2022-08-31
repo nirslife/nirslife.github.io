@@ -316,10 +316,11 @@ let ListLesson; // весь массив слов загружаем из UrlArr
 let ModeLesson = 1; // режим урока 1 - показывать англ слова, 2 - не показывать англ слова
 
 
+const StepMix = 7; // перемешиваем не весь массив целиков, а порциями StepMix
 const MaxMixWordsAdd = 7;
 let CurSentences = 0; // текущее предложение
-let LessonNum = 2; // номер массива/урока
-const CountLessonNum = 2; // кол-во уроков
+let LessonNum = 3; // номер массива/урока
+const CountLessonNum = 3; // кол-во уроков
 
 let prevSelLangFrom; // текущий выделенный блок/позиция 
 const msgspeak = new SpeechSynthesisUtterance();
@@ -426,25 +427,34 @@ function InitRandomArr(max, incval, Arr1) {  // копия кода старая
   }
 }
 
-// перемешивание случайным образом массива индексов
-// max - [0..max-1], incval- величина смещение индекса [0+incval..max+incval-1] = [0..max-1] + incval
-// Arr1 - массив [0..max-1]
-function InitRandomArrStep(lenarr, step, incval, Arr1) {
-  for (i = 0; i < lenarr; i++) {
+
+// IN: alength = 14, astep = 4
+// [1,2,3,4, 5,6,7,8, 9,10,11,12, 13,14]
+// OUT: Result:
+// [2,4,1,3, 5,7,8,6, 10,11,9,12, 14,13] 
+function InitRandomArr3(alength, astep) {  
+  let Arr1 = [];
+  for (i = 0; i < alength; i++) {
     Arr1[i] = i;     
   }
+  let ap = 0;      
   let j; let a;
-  for (i = 0; i < lenarr; i++) {    
-    j = getRandomInt(max - 1);  
+  //[1,2] astep=4
+  // ap=2
+  for (i = 0; i < alength; i++) {    
+    if(ap == 0){   
+      ap = astep;    
+      if(ap > alength){ap = alength;}      
+	  if((alength - i) < ap ){ap = alength - i;}
+	}  
+    j = getRandomInt(ap) + i;  
 	a = Arr1[i];
     Arr1[i] = Arr1[j];
 	Arr1[j] = a;
+	ap--;
   }  
-  for (i = 0; i < max; i++) {    
-    Arr1[i+incval] = Arr1[i]+incval; 
-  }
+  return Arr1; 
 }
-
 
 
 function speak(text, arate) {
@@ -699,8 +709,9 @@ function DisplayExercise(obj,Indx){
   }	  
   
   
-  let MixArr = [];	
-  InitRandomArr(EngArrDbl.length, 0, MixArr);
+  //old// let MixArr = [];	
+  //old// InitRandomArr(EngArrDbl.length, 0, MixArr);
+  let MixArr = InitRandomArr3(EngArrDbl.length, StepMix);
   const rootDiv = document.createElement("div");
   rootDiv.id = "div_puzzletextfrom1";
   for (i = 0; i < EngArrDbl.length; i++) {    
