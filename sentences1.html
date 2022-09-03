@@ -466,61 +466,6 @@ function speak(text, arate) {
 }
 
 
-function clickLangFrom(aNode)
-{
-  if (prevSelLangFrom) {
-    prevSelLangFrom.className = "dv1 LangFrom";          
-  }
-  prevSelLangFrom = aNode;        
-  aNode.className = "dv1 LangFrom active1";
-  //speak(aNode.innerText);
-  speak(aNode.getAttribute("atext"),1.2);
-  //console.log(aNode.getAttribute("arrnum"));
-}
-
-function clickLangTo(aNode)
-{
-  if (prevSelLangFrom) {
-    if (prevSelLangFrom.getAttribute("arrnum") == aNode.getAttribute("arrnum")){	  
-      aNode.removeAttribute("onclick"); 
-	  aNode.className = "dv1 LangTo Null";	  
-	  prevSelLangFrom.removeAttribute("onclick");
-	  prevSelLangFrom.className = "dv1 LangFrom Null";	  
-	  prevSelLangFrom = 0;
-	  LastCountItem = LastCountItem - 1;
-      if (LastCountItem < 1){
-	    CurPart = CurPart + 1;  
-	    ReInitItem(); 
-	  } 	   
-	}
-  }  
-}
-
-function ReInitItem(){   
-  if (CurPart == CountPart){
-    CurPart = 0;
-  }
-  const element = document.getElementById(blockdiv_id1);
-  element.remove(); 
-  AddItemToHtml(ListLesson); 
-}
-
-
-function clickEngOnOff(aNode){
-  let str = aNode.className; 
-  if(str.indexOf("active2") > 0){
-    str = str.replaceAll("active2","");
-	ModeLesson = 2;	
-	aNode.className = str;
-	aNode.innerText = "Off";
-  }else{
-    aNode.className = "confblock active2";
-	aNode.innerText = "On";	
-    ModeLesson = 1;	
-  }	
-  ReInitItem();
-}
-
 function clickLessonNum(aNode){
   
   LessonNum = LessonNum + 1;
@@ -536,17 +481,28 @@ function clickLessonNum(aNode){
 }
 
 
-function InitConfBlocks(){
-  const Elem1 = document.createElement("div");
-  Elem1.id = cnfEngOnOff_id1;
+function clickClearInput(aThis){
+///******************************
+///******************************
+///******************************
+///******************************
+  InpNode = document.getElementById("div_inputtextfrom1");
+  if (InpNode) {
+    while (InpNode.firstChild) {
+      clickInputtext(InpNode.firstChild);
+    }
+  }	
+}
+
+
+function InitConfBlocks(){  
+  const Elem1 = document.createElement("div");  
   Elem1.className = "confblock";
-  Elem1.innerText = "Off";
-  ModeLesson = 2;
+  Elem1.innerText = "Стереть";   
   const att1 = document.createAttribute("onclick");
-  att1.value = "clickEngOnOff(this)";  
+  att1.value = "clickClearInput(this)";  
   Elem1.setAttributeNode(att1);          
 
-  
   const Elem2 = document.createElement("div");
   Elem2.id = cnfLessonNum_id1;
   Elem2.className = "confblock";
@@ -554,10 +510,8 @@ function InitConfBlocks(){
   const att2 = document.createAttribute("onclick");
   att2.value = "clickLessonNum(this)";  
   Elem2.setAttributeNode(att2);          
-//  const att3 = document.createAttribute("LessonNum");
-//  att3.value = LessonNum;  
-//  Elem2.setAttributeNode(att3);          
 
+  document.getElementById("header1").appendChild(Elem1); 
   document.getElementById("header1").appendChild(Elem2); 
  // document.getElementById("header1").appendChild(Elem1);     
 }
@@ -661,7 +615,7 @@ function clickInputtext(aThis) {
 function clickPuzzletext(aThis) {
   
   //aThis.removeAttribute("onclick");
-  aThis.removeAttribute("touchstart");
+  aThis.removeAttribute(eventvalue);
   aThis.className = "inpoff puzzleblock";
   
   const InTxt = document.createElement("div");
@@ -715,7 +669,8 @@ function DisplayExercise(obj,Indx){
   const rootDiv = document.createElement("div");
   rootDiv.id = "div_puzzletextfrom1";
   for (i = 0; i < EngArrDbl.length; i++) {    
-    const InpBl = document.createElement("div");
+    const
+	InpBl = document.createElement("div");
     InpBl.innerText = EngArrDbl[MixArr[i]];
     InpBl.className = "puzzleblock inpon";    
     const att1 = document.createAttribute(eventvalue); //onclick //ontouchstart
