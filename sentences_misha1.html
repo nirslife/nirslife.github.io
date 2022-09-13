@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+#header1 {
+  height: 80px;
+  width: 100%;
+  display: block;
+  margin-bottom: 30px;  
+  overflow: hidden;
+}
+
+#m_container1{
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.confblock {
+  width: 250px;
+  height: 50px;
+  background: #555555; //#25c94a;
+  color: #FFFFFF;
+  float: left;
+  text-align: center;  
+  font-size: 33px;
+  margin-top: 10px;
+  margin-bottom: 10px;  
+  margin-right: 15px;
+  margin-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;    
+  cursor: pointer;
+  border-color: #2196F3;
+  border: 2px solid; 
+  border-radius: 30px;  
+  display: inline;
+}
+
+.active2 {
+  border-color: #2196F3;
+  background: #25c94a;    
+}
+
+<!-- 
+.dv1 {
+  width: 45%;
+  //height: 65px;
+  height: 25mm;  
+  color: #555;
+  float: left;
+  text-align: center;  
+  font-size: 33px;
+  margin-top: 10px;
+  margin-bottom: 10px;  
+  padding-top: 5px;
+  padding-bottom: 5px;  
+  cursor: pointer;
+  border-color: black;
+  border: 2px solid;  
+}
+
+.LangFrom {
+  background: #d2dcfb;
+  margin-right: 10px;
+  margin-left: 0px;
+  padding-right: 5px;
+  padding-left: 5px;  
+  display: block;
+}
+
+.LangTo {
+  background: #d9d9d9; 
+  margin-right: 0px;
+  margin-left: 10px;
+  padding-right: 5px;
+  padding-left: 5px;
+  display: block;  
+}
+ -->
+.Null {
+  background: #ffffff;
+  color: #ffffff;
+  cursor: auto;
+  user-select: none; 
+}
+
+
+.active1 {
+  border-color: #2196F3;
+  background: #21f3d8;    
+}
+
+#textfrom1 {
+  height: 120px;
+  width: 100%;
+  color: #555;
+  float: left;  
+  font-size: 33px;
+  margin-top: 10px;  
+  margin-bottom: 10px;  
+  padding-top: 10px;
+  padding-bottom: 10px; 
+  padding-right: 10px;
+  padding-left: 10px;    
+  cursor: pointer;
+  border-color: black;
+  border: 2px solid;      
+  border-radius: 20px;
+  overflow: hidden;
+  display: block;  
+}
+
+.inputtext {  
+ // height: 40px;
+  background: #e0fee6; 
+  color: #555;
+  float: left;
+  text-align: center;  
+  font-size: 33px;
+  margin-top: 20px;
+  margin-bottom: 20px;  
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-top: 3px;
+  padding-bottom: 7px;    
+  padding-right: 15px;
+  padding-left: 15px;  
+  cursor: pointer;
+  border-color: #2196F3;
+  border: 2px solid;  
+  border-radius: 10px;
+  user-select: none; 
+  display: inline;
+}
+
+.inpoff {  
+  background: #555555; 
+  cursor: auto;
+  user-select: none; 
+}
+
+.inpon {  
+  background: #e0fee6; 
+  cursor: pointer;
+}
+
+
+.puzzleblock {  
+  height: 50px;
+  color: #555;
+  float: left;
+  text-align: center;  
+  font-size: 33px;
+  margin-top: 20px;
+  margin-bottom: 20px;  
+  margin-right: 15px;
+  margin-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;    
+  padding-right: 30px;
+  padding-left: 30px;
+  border-radius: 10px;  
+  border-color: #2196F3;
+  user-select: none; 
+  border: 2px solid;  
+  display: inline;
+}
+
+
+#inputtextfrom1 {
+  height: 450px;
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;  
+  margin-right: 5px;
+  margin-left: 5px;  
+  border-bottom: solid;
+  overflow: hidden;
+}
+
+
+#puzzletextfrom1 {
+  height: 750px;
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;  
+  margin-right: 35px;
+  margin-left: 35px;   
+  border-bottom: solid;  
+  overflow: hidden;
+}
+
+.footerbutt {
+  height: 60px;
+  width: 250px;
+  text-align: center;  
+  font-size: 33px;  
+  background-color: DodgerBlue;
+  color: #fff;
+  margin-top: 15px;
+  margin-bottom: 15px;    
+  border-radius: 10px; 
+  margin-right: 35px;
+  margin-left: 35px;    
+  cursor: pointer;
+  user-select: none; 
+  display: inline-block;  
+}
+
+#footerinfcount {
+  height: 60px;
+  width: 170px;
+  text-align: center;  
+  font-size: 27px;  
+  background: #555555; 
+  color: #FFFFFF;
+  margin-top: 0px;
+  margin-bottom: 10px;    
+  margin-right: 35px;
+  margin-left: 35px;  
+  padding-top: 7px;
+  padding-bottom: 0px;    
+  border-radius: 30px;   
+  user-select: none; 
+  display: inline-block;  
+}
+
+
+
+#verify_cont1 {
+  height: 450px;
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;  
+  margin-right: 10px;
+  margin-left: 10px;     
+  overflow: hidden;
+}
+
+.verify_def {
+  background: #FFFFFF; 
+}
+
+
+.verify_red {
+  background: #f6112b; 
+  color: #FFFFFF;
+}
+
+.verify_green {
+  background: #4caf50; 
+  color: #FFFFFF;
+}
+
+.verify_info {
+  width: 100%;
+  float: left;  
+  font-size: 25px;
+  margin-top: 10px;  
+  margin-bottom: 10px;  
+  padding-top: 3px;
+  padding-bottom: 3px; 
+  padding-right: 10px;
+  padding-left: 10px;    
+  cursor: auto;
+  border-color: black;
+  border: 2px solid;      
+  border-radius: 10px;
+//  overflow: hidden;
+  display: block;  
+}
+
+
+
+</style>
+<body>
+
+<div id="header1">
+
+</div>
+
+<div id="textfrom1">
+
+</div>
+
+<div id="inputtextfrom1">
+
+</div>
+
+<div id="puzzletextfrom1">
+
+</div>
+
+
+
+<div id="m_container1"> 
+<!-- <button onclick="myFunction()">TEST TEST</button> -->
+</div>
+
+<div id="verify_cont1">
+
+</div>
+
+<script>
+
+ const devices = new RegExp('Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini', "i");
+ let eventvalue;
+
+ if (devices.test(navigator.userAgent)) {
+   eventvalue = "ontouchend"; // ontouchstart ontouchend
+ //               alert("Вы используете мобильное устройство (телефон или планшет).")
+ }
+ else{
+   eventvalue = "onclick";
+ //              alert("Вы используете ПК.")
+ }
+
+const UrlArrP1 = "https://nirslife.github.io/arr_sentences";
+const UrlArrP2 = ".json";
+let UrlArray1;
+
+
+const cnfEngOnOff_id1 = "confEngOnOffid1"; // показывать англ слова
+
+const cnfLessonNum_id1 = "confLessonNumid1"; // номер урока 
+
+
+const blockdiv_id1 = "blockbutton1"; // контейнер позиций
+const PartLenght = 7; // длина порции
+let CountPart; // кол-во порций
+let CurPart = 0; // текущая порция
+let LastCountItem = 0; // кол-во оставщихся позиций 
+let ListLesson; // весь массив слов загружаем из UrlArray1
+let ModeLesson = 1; // режим урока 1 - показывать англ слова, 2 - не показывать англ слова
+
+
+const StepMix = 7; // перемешиваем не весь массив целиков, а порциями StepMix
+const MaxMixWordsAdd = 7;
+let CurSentences = 0; // текущее предложение
+let LessonNum = 5; // номер массива/урока
+const CountLessonNum = 5; // кол-во уроков
+
+let prevSelLangFrom; // текущий выделенный блок/позиция 
+const msgspeak = new SpeechSynthesisUtterance();
+
+MainLoadPage();
+
+
+
+
+function myFunction() {
+  const myCollection = document.getElementsByClassName("inputtext");
+  for (let i = 0; i < myCollection.length; i++) {
+    //myCollection[i].style.color = "red";
+	myCollection[i].innerHTML = myCollection[i].innerHTML + i;
+  }
+}
+
+
+function InitUrlArray1() {
+  UrlArray1 = UrlArrP1 + LessonNum + UrlArrP2;
+  return UrlArray1; 
+}
+
+async function LoadArray() {
+  const response = await fetch(InitUrlArray1());
+  const array1 = await response.json();
+  CallBackForInitLoadPage1(array1);
+//  console.log(names);   
+}
+
+function InitLoadPage1() {  
+  LoadArray();  
+}
+
+//перемешивание массива случайным образом
+function MixArray(aObj) {  
+  const rArr = []; 
+  const vObj = {"arrw":[]};
+  InitRandomArr(aObj.arrw.length, 0, rArr);
+  for (i = 0; i < aObj.arrw.length; i++) {
+    vObj.arrw[i] = aObj.arrw[rArr[i]];    
+  } 
+  return vObj;
+}
+
+
+function AddFooterButton() {
+//m_container1
+//<input type="button" id="testbutt" value="Verify-проверить" onclick="TestSentOnClick()">
+  const Butt1 = document.createElement("div");
+  Butt1.id = "testbutt";
+  Butt1.className = "footerbutt";  
+  Butt1.innerText = "Verify-проверить";
+  const att1 = document.createAttribute("onclick");
+  att1.value = "TestSentOnClick()";  
+  Butt1.setAttributeNode(att1);             
+  
+  const Butt2 = document.createElement("div");
+  Butt2.id = "nextsentbutt";
+  Butt2.className = "footerbutt";  
+  Butt2.innerText = "Next sentence";
+  const att2 = document.createAttribute("onclick");
+  att2.value = "NextSentenceOnClick()";  
+  Butt2.setAttributeNode(att2);               
+  
+  const Butt3 = document.createElement("div");
+  Butt3.id = "footerinfcount";  
+  Butt3.innerText = "Null";  
+  
+  
+  document.getElementById("m_container1").appendChild(Butt1);  
+  document.getElementById("m_container1").appendChild(Butt2);  
+  document.getElementById("m_container1").appendChild(Butt3);  
+
+}
+
+function CallBackForInitLoadPage1(aArr){    
+  ListLesson = MixArray(aArr);   // перемешиваем
+  DisplayExercise(ListLesson, CurSentences);  
+}
+
+
+function MainLoadPage() {
+  InitConfBlocks(); 
+  InitLoadPage1();
+  AddFooterButton(); // кнопки внизу: "проверить" и "следующее"
+}
+
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+// перемешивание случайным образом массива индексов
+// max - [0..max-1], incval- величина смещение индекса [0+incval..max+incval-1] = [0..max-1] + incval
+// Arr1 - массив [0..max-1]
+function InitRandomArr(max, incval, Arr1) {  // копия кода старая: function InitRandomArr(max, incval, Arr1) {
+  for (i = 0; i < max; i++) {
+    Arr1[i] = i;     
+  }
+  let j; let a;
+  for (i = max - 1; i >= 0; i--) {    
+    j = getRandomInt(max - 1);  
+	a = Arr1[i];
+    Arr1[i] = Arr1[j];
+	Arr1[j] = a;
+  }  
+  for (i = 0; i < max; i++) {    
+    Arr1[i+incval] = Arr1[i]+incval; 
+  }
+}
+
+
+// IN: alength = 14, astep = 4
+// [1,2,3,4, 5,6,7,8, 9,10,11,12, 13,14]
+// OUT: Result:
+// [2,4,1,3, 5,7,8,6, 10,11,9,12, 14,13] 
+function InitRandomArr3(alength, astep) {  
+  let Arr1 = [];
+  for (i = 0; i < alength; i++) {
+    Arr1[i] = i;     
+  }
+  let ap = 0;      
+  let j; let a;
+  //[1,2] astep=4
+  // ap=2
+  for (i = 0; i < alength; i++) {    
+    if(ap == 0){   
+      ap = astep;    
+      if(ap > alength){ap = alength;}      
+	  if((alength - i) < ap ){ap = alength - i;}
+	}  
+    j = getRandomInt(ap) + i;  
+	a = Arr1[i];
+    Arr1[i] = Arr1[j];
+	Arr1[j] = a;
+	ap--;
+  }  
+  return Arr1; 
+}
+
+
+function speak(text, arate) {
+//  const msgspeak = new SpeechSynthesisUtterance();
+  msgspeak.lang = "en-EN";
+  msgspeak.text = text;
+  msgspeak.rate = arate;
+  window.speechSynthesis.speak(msgspeak)
+}
+
+
+function clickLessonNum(aNode){
+  
+  LessonNum = LessonNum + 1;
+  if (LessonNum > CountLessonNum){ LessonNum = 1;}
+  
+  const Elem1 = document.getElementById(cnfLessonNum_id1);
+  Elem1.innerText = "Lesson#"+LessonNum; 
+  
+//  const element = document.getElementById(blockdiv_id1);
+//  if (element){ element.remove(); }
+
+  InitLoadPage1();
+}
+
+
+function clickClearInput(aThis){
+///******************************
+///******************************
+///******************************
+///******************************
+  InpNode = document.getElementById("div_inputtextfrom1");
+  if (InpNode) {
+    while (InpNode.firstChild) {
+      clickInputtext(InpNode.firstChild);
+    }
+  }	
+}
+
+
+function InitConfBlocks(){  
+  const Elem1 = document.createElement("div");  
+  Elem1.className = "confblock";
+  Elem1.innerText = "Стереть";   
+  const att1 = document.createAttribute("onclick");
+  att1.value = "clickClearInput(this)";  
+  Elem1.setAttributeNode(att1);          
+
+  const Elem2 = document.createElement("div");
+  Elem2.id = cnfLessonNum_id1;
+  Elem2.className = "confblock";
+  Elem2.innerText = "Lesson#"+LessonNum;   
+  const att2 = document.createAttribute("onclick");
+  att2.value = "clickLessonNum(this)";  
+  Elem2.setAttributeNode(att2);          
+
+  document.getElementById("header1").appendChild(Elem1); 
+  document.getElementById("header1").appendChild(Elem2); 
+ // document.getElementById("header1").appendChild(Elem1);     
+}
+
+// разрезаем предложение по пробелам
+function SliceSentence(aSenten){
+  let str = aSenten;
+  let s1;
+  let i;  
+  let j = 0;
+  let arrsen = [];
+  //str = str.replaceAll("}","");  
+  while (str.length > 0) {
+    i = str.indexOf(" ");
+    if (i < 1){ i = str.length; }
+    s1 = str.substr(0, i);
+    str = str.slice(i+1, str.length);  
+    s1 = s1.replaceAll(" ","");   // убираем пробелы	
+	if (s1.length == 1) {s1 = s1 + " ";} 
+	arrsen[j] = s1;
+	j++;
+  }   
+  return arrsen;
+}
+
+function NextSentenceOnClick() {
+  CurSentences++;
+  if (ListLesson.arrw.length == CurSentences){CurSentences = 0;}
+//  const rNode1 = document.getElementById("div_puzzletextfrom1");
+//  const rNode2 = document.getElementById("div_inputtextfrom1");
+//  if (rNode1){rNode1.remove();}
+//  if (rNode2){rNode2.remove();}
+  DisplayExercise(ListLesson,CurSentences);
+  const remNode = document.getElementById("div_verify_cont1"); 
+  if (remNode){remNode.remove();}  
+  document.getElementById("verify_cont1").className = "verify_def";  //verify_def
+}
+
+function TestSentOnClick() {  
+  let inpstr = ""; 
+  let srcstr = "";
+  const myCollection = document.getElementsByClassName("inputtext");
+  for (let i = 0; i < myCollection.length; i++) {
+    //myCollection[i].style.color = "red";
+	inpstr = inpstr + myCollection[i].innerHTML;
+  }  
+  inpstr = inpstr.replaceAll(" ","");
+  inpstr = inpstr.toUpperCase();
+  srcstr = ListLesson.arrw[CurSentences].Eng.replaceAll(" ","");
+  srcstr = srcstr.toUpperCase();
+  
+  const remNode = document.getElementById("div_verify_cont1");
+  if (remNode){remNode.remove();}
+  
+  const vrfNode = document.getElementById("verify_cont1");  
+  const rootDiv = document.createElement("div");
+  rootDiv.id = "div_verify_cont1";
+  const bInfo = document.createElement("div");  
+  bInfo.className = "verify_info";
+  
+  const EngSrcSen = document.createElement("div");  
+  EngSrcSen.className = "verify_info";
+  EngSrcSen.innerText = ListLesson.arrw[CurSentences].Eng;
+  
+  const EngSrc = document.createElement("div");  
+  EngSrc.className = "verify_info";
+  EngSrc.innerText = srcstr;
+  const EngInp = document.createElement("div");  
+  EngInp.className = "verify_info";
+  EngInp.innerText = inpstr;
+  if (inpstr == srcstr){
+    vrfNode.className = "verify_green";   
+    bInfo.innerText = "ХОРОШО!";  	  
+  }
+  else{
+    vrfNode.className = "verify_red"; 
+	bInfo.innerText = "НЕ ВЕРНО!";  	  
+  }
+//  rootDiv.appendChild(bInfo); 
+  rootDiv.appendChild(EngSrcSen);  
+  rootDiv.appendChild(EngSrc);
+  rootDiv.appendChild(EngInp);    
+  vrfNode.appendChild(rootDiv);  
+
+  
+}
+
+function clickInputtext(aThis) {
+
+  const InpBl = document.getElementById("Puzzid"+aThis.getAttribute("IndexArr"));  
+  InpBl.className = "puzzleblock inpon";    
+  //const att1 = document.createAttribute("onclick");
+  const att1 = document.createAttribute(eventvalue);
+  
+  att1.value = "clickPuzzletext(this)";  
+  InpBl.setAttributeNode(att1);        
+  aThis.remove(); 
+
+}
+
+function clickPuzzletext(aThis) {
+  
+  //aThis.removeAttribute("onclick");
+  aThis.removeAttribute(eventvalue);
+  aThis.className = "inpoff puzzleblock";
+  
+  const InTxt = document.createElement("div");
+  InTxt.innerText = aThis.innerText;
+  InTxt.className = "inputtext";    
+//  const att1 = document.createAttribute("onclick");// ontouchstart ontouchend
+  const att1 = document.createAttribute(eventvalue);//   
+  att1.value = "clickInputtext(this)";  
+  InTxt.setAttributeNode(att1);             
+  const att2 = document.createAttribute("IndexArr");
+  att2.value = aThis.getAttribute("IndexArr");  
+  InTxt.setAttributeNode(att2);   
+  
+  speak(aThis.innerText, 1.2);
+  document.getElementById("div_inputtextfrom1").appendChild(InTxt);  
+}
+
+
+function DisplayExercise(obj,Indx){    
+
+  // очищаем старое, если есть
+  const rNode1 = document.getElementById("div_puzzletextfrom1");
+  const rNode2 = document.getElementById("div_inputtextfrom1");
+  if (rNode1){rNode1.remove();}
+  if (rNode2){rNode2.remove();}
+
+
+  let EngArrDbl; 
+  let EngArrNei;  
+  let IndxNei = Indx + 1;
+  let t1 = obj.arrw.length;
+  if (IndxNei >= t1){IndxNei = 0;}   
+  EngArrDbl = SliceSentence(obj.arrw[Indx].Eng); // разбивка англ. варианта пары
+  EngArrNei = SliceSentence(obj.arrw[IndxNei].Eng); // разбивка англ. из соседней пары для подмешивания 
+  
+  let LenSrc = EngArrDbl.lenght; // длина массива
+  
+  // добавляем к EngArrDbl массив EngArrNei
+  t1 = EngArrNei.length;
+  if (t1 > MaxMixWordsAdd ){ t1 = MaxMixWordsAdd;} // добавляем не больше чем MaxMixWordsAdd-слов
+  if (LenSrc > 30){ t1 = 0; } // если слов больше 30 то не подмешиваем
+  for (i = 0; i < t1; i++) {
+    EngArrDbl.push(EngArrNei[i]);
+    //EngArrDbl[j+i] = EngArrNei[i];	
+  }	  
+  
+  
+  //old// let MixArr = [];	
+  //old// InitRandomArr(EngArrDbl.length, 0, MixArr);
+  let MixArr = InitRandomArr3(EngArrDbl.length, StepMix);
+  const rootDiv = document.createElement("div");
+  rootDiv.id = "div_puzzletextfrom1";
+  for (i = 0; i < EngArrDbl.length; i++) {    
+    const
+	InpBl = document.createElement("div");
+    InpBl.innerText = EngArrDbl[MixArr[i]];
+    InpBl.className = "puzzleblock inpon";    
+    const att1 = document.createAttribute(eventvalue); //onclick //ontouchstart
+    att1.value = "clickPuzzletext(this)";  
+    InpBl.setAttributeNode(att1);        
+    const att2 = document.createAttribute("IndexArr");
+    att2.value = i;  
+	InpBl.id = "Puzzid"+i;
+    InpBl.setAttributeNode(att2);        		
+	rootDiv.appendChild(InpBl);    
+  }
+  document.getElementById("puzzletextfrom1").appendChild(rootDiv); 
+  
+  const inpDiv = document.createElement("div");
+  inpDiv.id = "div_inputtextfrom1";
+  document.getElementById("inputtextfrom1").appendChild(inpDiv); 
+  
+  textR = document.getElementById("textfrom1");
+  textR.innerText = obj.arrw[Indx].Rus; 
+  const att3 = document.createAttribute("onmousedown"); //onclick //ontouchstart
+  att3.value = "clickTextfrom(this)";  
+  textR.setAttributeNode(att3);         
+
+  document.getElementById("footerinfcount").innerText = Indx + " of " + obj.arrw.length;  
+}   // end of function
+
+function clickTextfrom(aThis) {
+  let inpstr = ""; 
+  const myCollection = document.getElementsByClassName("inputtext");
+  for (let i = 0; i < myCollection.length; i++) {    
+	inpstr = inpstr + " " + myCollection[i].innerHTML;
+  }  
+
+  speak(inpstr,0.8);
+}
+
+</script>
+
+</body>
+</html>
