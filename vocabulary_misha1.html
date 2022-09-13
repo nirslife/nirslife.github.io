@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+#header1 {
+  height: 80px;
+  width: 100%;
+  display: block;
+  margin-bottom: 30px;  
+  overflow: hidden;
+}
+
+#m_container1{
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.confblock {
+  width: 150px;
+  height: 50px;
+  background: #e0fee6; //#25c94a;
+  color: #555;
+  float: left;
+  text-align: center;  
+  font-size: 33px;
+  margin-top: 10px;
+  margin-bottom: 10px;  
+  margin-right: 15px;
+  margin-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;    
+  cursor: pointer;
+  border-color: #2196F3;
+  border: 2px solid;  
+  display: inline;
+}
+
+.active2 {
+  border-color: #2196F3;
+  background: #25c94a;    
+}
+
+
+.dv1 {
+  width: 45%;
+  //height: 65px;
+  height: 25mm;  
+  color: #555;
+  float: left;
+  text-align: center;  
+  font-size: 33px;
+  margin-top: 10px;
+  margin-bottom: 10px;  
+  padding-top: 5px;
+  padding-bottom: 5px;  
+  cursor: pointer;
+  border-color: black;
+  border: 2px solid;  
+}
+
+.LangFrom {
+  background: #d2dcfb;
+  margin-right: 10px;
+  margin-left: 0px;
+  padding-right: 5px;
+  padding-left: 5px;  
+  display: block;
+}
+
+.LangTo {
+  background: #d9d9d9; 
+  margin-right: 0px;
+  margin-left: 10px;
+  padding-right: 5px;
+  padding-left: 5px;
+  display: block;  
+}
+
+.Null {
+  background: #ffffff;
+  color: #ffffff;
+  cursor: auto;
+  user-select: none; 
+}
+
+
+.active1 {
+  border-color: #2196F3;
+  background: #21f3d8;    
+}
+
+
+
+</style>
+<body>
+
+<div id="header1">
+
+</div>
+
+<div id="m_container1">
+</div>
+
+<script>
+
+const UrlArrP1 = "https://nirslife.github.io/array";
+const UrlArrP2 = ".json";
+let UrlArray1;
+
+const cnfEngOnOff_id1 = "confEngOnOffid1"; // показывать англ слова
+const cnfLessonNum_id1 = "confLessonNumid1"; // номер урока 
+
+const blockdiv_id1 = "blockbutton1"; // контейнер позиций
+const PartLenght = 7; // длина порции
+let CountPart; // кол-во порций
+let CurPart = 0; // текущая порция
+let LastCountItem = 0; // кол-во оставщихся позиций 
+let ListLesson; // весь массив слов загружаем из UrlArray1
+let ModeLesson = 1; // режим урока 1 - показывать англ слова, 2 - не показывать англ слова
+let LessonNum = 2; // номер массива/урока
+const CountLessonNum = 3; // кол-во уроков
+
+let prevSelLangFrom; // текущий выделенный блок/позиция 
+
+MainLoadPage();
+
+
+
+function InitUrlArray1() {
+  UrlArray1 = UrlArrP1 + LessonNum + UrlArrP2;
+  return UrlArray1; 
+}
+
+async function LoadArray() {
+  const response = await fetch(InitUrlArray1());
+  const array1 = await response.json();
+  CallBackForInitLoadPage2(array1);
+//  console.log(names);   
+}
+
+function InitLoadPage2() {  
+  LoadArray();
+}
+
+function CallBackForInitLoadPage2(aArr){
+  //let List1 = JSON.parse(aText);
+  ListLesson = aArr;
+  //let cntr = document.getElementById("m_container1");
+  AddItemToHtml(ListLesson); 
+}
+
+function InitLoadPage1() {
+let text = '{"arrw":[' +
+'{"Eng":"Apple","Rus":"Яблоко" },' +
+'{"Eng":"Road","Rus":"Дорога" },' +
+'{"Eng":"Earn","Rus":"зарабатывать" },' +
+'{"Eng":"take place","Rus":"происходят, состояться" },' +
+'{"Eng":"arguing","Rus":"спорят" },' +
+'{"Eng":"Yelow","Rus":"Желтый" }]}';
+  ListLesson = JSON.parse(text);
+  //let cntr = document.getElementById("m_container1");
+  AddItemToHtml(cntr,ListLesson); 
+}
+
+function MainLoadPage() {
+  InitConfBlocks(); 
+  InitLoadPage2();
+}
+
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function InitRandomArr(max, incval, Arr1) {
+  for (i = 0; i < max; i++) {
+    Arr1[i] = i;     
+  }
+  let j; let a;
+  for (i = max - 1; i >= 0; i--) {    
+    j = getRandomInt(max - 1);  
+	a = Arr1[i];
+    Arr1[i] = Arr1[j];
+	Arr1[j] = a;
+  }  
+  for (i = 0; i < max; i++) {    
+    Arr1[i+incval] = Arr1[i]+incval; 
+  }
+}
+
+
+function speak(text) {
+  const message = new SpeechSynthesisUtterance();
+  message.lang = "en-EN";
+  message.text = text;
+  message.rate = 1.0;
+  window.speechSynthesis.speak(message)
+}
+
+
+function clickLangFrom(aNode)
+{
+  if (prevSelLangFrom) {
+    prevSelLangFrom.className = "dv1 LangFrom";          
+  }
+  prevSelLangFrom = aNode;        
+  aNode.className = "dv1 LangFrom active1";
+  //speak(aNode.innerText);
+  speak(aNode.getAttribute("atext"));
+  //console.log(aNode.getAttribute("arrnum"));
+}
+
+function clickLangTo(aNode)
+{
+  if (prevSelLangFrom) {
+    if (prevSelLangFrom.getAttribute("arrnum") == aNode.getAttribute("arrnum")){	  
+      aNode.removeAttribute("onclick"); 
+	  aNode.className = "dv1 LangTo Null";	  
+	  prevSelLangFrom.removeAttribute("onclick");
+	  prevSelLangFrom.className = "dv1 LangFrom Null";	  
+	  prevSelLangFrom = 0;
+	  LastCountItem = LastCountItem - 1;
+      if (LastCountItem < 1){
+	    CurPart = CurPart + 1;  
+	    ReInitItem(); 
+	  } 	   
+	}
+  }  
+}
+
+function ReInitItem(){   
+  if (CurPart == CountPart){
+    CurPart = 0;
+  }
+  const element = document.getElementById(blockdiv_id1);
+  element.remove(); 
+  AddItemToHtml(ListLesson); 
+}
+
+
+function clickEngOnOff(aNode){
+  let str = aNode.className; 
+  if(str.indexOf("active2") > 0){
+    str = str.replaceAll("active2","");
+	ModeLesson = 2;	
+	aNode.className = str;
+	aNode.innerText = "Off";
+  }else{
+    aNode.className = "confblock active2";
+	aNode.innerText = "On";	
+    ModeLesson = 1;	
+  }	
+  ReInitItem();
+}
+
+function clickLessonNum(aNode){
+  
+  LessonNum = LessonNum + 1;
+  if (LessonNum > CountLessonNum){ LessonNum = 1;}
+  
+  const Elem1 = document.getElementById(cnfLessonNum_id1);
+  Elem1.innerText = "Lesson#"+LessonNum; 
+  
+  const element = document.getElementById(blockdiv_id1);
+  if (element){ element.remove(); }
+  InitLoadPage2();
+}
+
+
+function InitConfBlocks(){
+  const Elem1 = document.createElement("div");
+  Elem1.id = cnfEngOnOff_id1;
+  Elem1.className = "confblock";
+  Elem1.innerText = "Off";
+  ModeLesson = 2;
+  const att1 = document.createAttribute("onclick");
+  att1.value = "clickEngOnOff(this)";  
+  Elem1.setAttributeNode(att1);          
+
+  
+  const Elem2 = document.createElement("div");
+  Elem2.id = cnfLessonNum_id1;
+  Elem2.className = "confblock";
+  Elem2.innerText = "Lesson#"+LessonNum;   
+  const att2 = document.createAttribute("onclick");
+  att2.value = "clickLessonNum(this)";  
+  Elem2.setAttributeNode(att2);          
+//  const att3 = document.createAttribute("LessonNum");
+//  att3.value = LessonNum;  
+//  Elem2.setAttributeNode(att3);          
+
+  document.getElementById("header1").appendChild(Elem2); 
+  document.getElementById("header1").appendChild(Elem1);     
+}
+ 
+//function AddItemToHtml(aMainNode,obj){
+function AddItemToHtml(obj){  
+  // весь массив слов нужно разметить на порции
+  
+  // CountPart - кол-во порций
+  CountPart = Math.floor(obj.arrw.length/PartLenght) + 1;    
+  let begi = CurPart * PartLenght; // начальный индекс порции
+  let endi = begi + PartLenght;    // конечный индекс порции  
+  if (CurPart == CountPart-1){
+    endi = obj.arrw.length;     
+  }
+  let lenp = endi - begi;   // длина порции
+  LastCountItem = lenp;
+//  console.log("begi:"+begi+"  endi:"+endi+"  lenp:"+lenp);  
+  const rArr = [];    
+  InitRandomArr(lenp, begi, rArr); 
+  const aToNode = document.createElement("div");
+  aToNode.id = blockdiv_id1;
+  for (i = begi; i < endi; i++) {  
+    const LangFrom = document.createElement("div");
+	if (ModeLesson == 1){
+	  LangFrom.innerText = obj.arrw[i].Eng;
+	}
+	if (ModeLesson == 2){
+	  LangFrom.innerText = "Eng "+i;
+	}    
+    LangFrom.className = "dv1 LangFrom";
+    const att1 = document.createAttribute("onclick");
+    att1.value = "clickLangFrom(this)";  
+    LangFrom.setAttributeNode(att1);        
+    const att12 = document.createAttribute("arrnum");
+    att12.value = i;  
+    LangFrom.setAttributeNode(att12);              
+    const att13 = document.createAttribute("atext");
+    att13.value = obj.arrw[i].Eng;  
+    LangFrom.setAttributeNode(att13);                 
+    aToNode.appendChild(LangFrom);   
+   
+   
+    const LangTo = document.createElement("div");
+    LangTo.innerText = obj.arrw[rArr[i]].Rus;
+    const att2 = document.createAttribute("arrnum");
+    att2.value = rArr[i];  
+    LangTo.setAttributeNode(att2);           
+    LangTo.className = "dv1 LangTo";
+    const att22 = document.createAttribute("onclick");
+    att22.value = "clickLangTo(this)";  
+    LangTo.setAttributeNode(att22);           
+    aToNode.appendChild(LangTo);        
+  }
+  document.getElementById("m_container1").appendChild(aToNode); 
+  //aMainNode.appendChild(aToNode);
+}   // end of function
+
+</script>
+
+</body>
+</html>
