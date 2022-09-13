@@ -104,7 +104,7 @@
 
 <script>
 
-const UrlArrP1 = "https://nirslife.github.io/array";
+const UrlArrP1 = "https://nirslife.github.io/vocab_misha";
 const UrlArrP2 = ".json";
 let UrlArray1;
 
@@ -118,8 +118,8 @@ let CurPart = 0; // текущая порция
 let LastCountItem = 0; // кол-во оставщихся позиций 
 let ListLesson; // весь массив слов загружаем из UrlArray1
 let ModeLesson = 1; // режим урока 1 - показывать англ слова, 2 - не показывать англ слова
-let LessonNum = 2; // номер массива/урока
-const CountLessonNum = 3; // кол-во уроков
+let LessonNum = 1; // номер массива/урока
+const CountLessonNum = 1; // кол-во уроков
 
 let prevSelLangFrom; // текущий выделенный блок/позиция 
 
@@ -192,7 +192,7 @@ function InitRandomArr(max, incval, Arr1) {
 
 function speak(text) {
   const message = new SpeechSynthesisUtterance();
-  message.lang = "en-EN";
+  message.lang = "uk-UA";
   message.text = text;
   message.rate = 1.0;
   window.speechSynthesis.speak(message)
@@ -315,10 +315,10 @@ function AddItemToHtml(obj){
   for (i = begi; i < endi; i++) {  
     const LangFrom = document.createElement("div");
 	if (ModeLesson == 1){
-	  LangFrom.innerText = obj.arrw[i].Eng;
+	  LangFrom.innerText = obj.arrw[i].L1;
 	}
 	if (ModeLesson == 2){
-	  LangFrom.innerText = "Eng "+i;
+	  LangFrom.innerText = "Word "+i;
 	}    
     LangFrom.className = "dv1 LangFrom";
     const att1 = document.createAttribute("onclick");
@@ -328,13 +328,13 @@ function AddItemToHtml(obj){
     att12.value = i;  
     LangFrom.setAttributeNode(att12);              
     const att13 = document.createAttribute("atext");
-    att13.value = obj.arrw[i].Eng;  
+    att13.value = obj.arrw[i].L1;  
     LangFrom.setAttributeNode(att13);                 
     aToNode.appendChild(LangFrom);   
    
    
     const LangTo = document.createElement("div");
-    LangTo.innerText = obj.arrw[rArr[i]].Rus;
+    LangTo.innerText = obj.arrw[rArr[i]].L2;
     const att2 = document.createAttribute("arrnum");
     att2.value = rArr[i];  
     LangTo.setAttributeNode(att2);           
