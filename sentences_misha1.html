@@ -316,7 +316,7 @@
  //              alert("Вы используете ПК.")
  }
 
-const UrlArrP1 = "https://nirslife.github.io/arr_sentences";
+const UrlArrP1 = "https://nirslife.github.io/senten_misha";
 const UrlArrP2 = ".json";
 let UrlArray1;
 
@@ -338,8 +338,8 @@ let ModeLesson = 1; // режим урока 1 - показывать англ �
 const StepMix = 7; // перемешиваем не весь массив целиков, а порциями StepMix
 const MaxMixWordsAdd = 7;
 let CurSentences = 0; // текущее предложение
-let LessonNum = 5; // номер массива/урока
-const CountLessonNum = 5; // кол-во уроков
+let LessonNum = 1; // номер массива/урока
+const CountLessonNum = 1; // кол-во уроков
 
 let prevSelLangFrom; // текущий выделенный блок/позиция 
 const msgspeak = new SpeechSynthesisUtterance();
@@ -484,7 +484,7 @@ function InitRandomArr3(alength, astep) {
 
 function speak(text, arate) {
 //  const msgspeak = new SpeechSynthesisUtterance();
-  msgspeak.lang = "en-EN";
+  msgspeak.lang = "uk-UA";
   msgspeak.text = text;
   msgspeak.rate = arate;
   window.speechSynthesis.speak(msgspeak)
@@ -585,7 +585,7 @@ function TestSentOnClick() {
   }  
   inpstr = inpstr.replaceAll(" ","");
   inpstr = inpstr.toUpperCase();
-  srcstr = ListLesson.arrw[CurSentences].Eng.replaceAll(" ","");
+  srcstr = ListLesson.arrw[CurSentences].L1.replaceAll(" ","");
   srcstr = srcstr.toUpperCase();
   
   const remNode = document.getElementById("div_verify_cont1");
@@ -599,7 +599,7 @@ function TestSentOnClick() {
   
   const EngSrcSen = document.createElement("div");  
   EngSrcSen.className = "verify_info";
-  EngSrcSen.innerText = ListLesson.arrw[CurSentences].Eng;
+  EngSrcSen.innerText = ListLesson.arrw[CurSentences].L1;
   
   const EngSrc = document.createElement("div");  
   EngSrc.className = "verify_info";
@@ -673,8 +673,8 @@ function DisplayExercise(obj,Indx){
   let IndxNei = Indx + 1;
   let t1 = obj.arrw.length;
   if (IndxNei >= t1){IndxNei = 0;}   
-  EngArrDbl = SliceSentence(obj.arrw[Indx].Eng); // разбивка англ. варианта пары
-  EngArrNei = SliceSentence(obj.arrw[IndxNei].Eng); // разбивка англ. из соседней пары для подмешивания 
+  EngArrDbl = SliceSentence(obj.arrw[Indx].L1); // разбивка англ. варианта пары
+  EngArrNei = SliceSentence(obj.arrw[IndxNei].L1); // разбивка англ. из соседней пары для подмешивания 
   
   let LenSrc = EngArrDbl.lenght; // длина массива
   
@@ -714,7 +714,7 @@ function DisplayExercise(obj,Indx){
   document.getElementById("inputtextfrom1").appendChild(inpDiv); 
   
   textR = document.getElementById("textfrom1");
-  textR.innerText = obj.arrw[Indx].Rus; 
+  textR.innerText = "Натисни - МОВИТИ РЕЧЕННЯ";// obj.arrw[Indx].L2; 
   const att3 = document.createAttribute("onmousedown"); //onclick //ontouchstart
   att3.value = "clickTextfrom(this)";  
   textR.setAttributeNode(att3);         
