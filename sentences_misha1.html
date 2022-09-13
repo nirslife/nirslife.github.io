@@ -344,6 +344,7 @@ const CountLessonNum = 1; // кол-во уроков
 let prevSelLangFrom; // текущий выделенный блок/позиция 
 const msgspeak = new SpeechSynthesisUtterance();
 
+
 MainLoadPage();
 
 
@@ -729,7 +730,8 @@ function clickTextfrom(aThis) {
 	inpstr = inpstr + " " + myCollection[i].innerHTML;
   }  
 
-  speak(inpstr,0.8);
+  //speak(inpstr,0.8);
+  speak(ListLesson.arrw[CurSentences].L1,0.8);
 }
 
 </script>
