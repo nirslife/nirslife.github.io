@@ -19,7 +19,7 @@
 .confblock {
   width: 250px;
   height: 50px;
-  background: #555555; //#25c94a;
+  background: #555555; /* //#25c94a; */
   color: #FFFFFF;
   float: left;
   text-align: center;  
@@ -42,42 +42,6 @@
   background: #25c94a;    
 }
 
-<!-- 
-.dv1 {
-  width: 45%;
-  //height: 65px;
-  height: 25mm;  
-  color: #555;
-  float: left;
-  text-align: center;  
-  font-size: 33px;
-  margin-top: 10px;
-  margin-bottom: 10px;  
-  padding-top: 5px;
-  padding-bottom: 5px;  
-  cursor: pointer;
-  border-color: black;
-  border: 2px solid;  
-}
-
-.LangFrom {
-  background: #d2dcfb;
-  margin-right: 10px;
-  margin-left: 0px;
-  padding-right: 5px;
-  padding-left: 5px;  
-  display: block;
-}
-
-.LangTo {
-  background: #d9d9d9; 
-  margin-right: 0px;
-  margin-left: 10px;
-  padding-right: 5px;
-  padding-left: 5px;
-  display: block;  
-}
- -->
 .Null {
   background: #ffffff;
   color: #ffffff;
@@ -112,7 +76,7 @@
 }
 
 .inputtext {  
- // height: 40px;
+ /* // height: 40px; */
   background: #e0fee6; 
   color: #555;
   float: left;
@@ -267,7 +231,7 @@
   border-color: black;
   border: 2px solid;      
   border-radius: 10px;
-//  overflow: hidden;
+/* //  overflow: hidden; */
   display: block;  
 }
 
@@ -321,18 +285,18 @@ const UrlArrP2 = ".json";
 let UrlArray1;
 
 
-const cnfEngOnOff_id1 = "confEngOnOffid1"; // показывать англ слова
+//const cnfEngOnOff_id1 = "confEngOnOffid1"; // показывать англ слова
 
 const cnfLessonNum_id1 = "confLessonNumid1"; // номер урока 
 
 
-const blockdiv_id1 = "blockbutton1"; // контейнер позиций
-const PartLenght = 7; // длина порции
-let CountPart; // кол-во порций
-let CurPart = 0; // текущая порция
-let LastCountItem = 0; // кол-во оставщихся позиций 
-let ListLesson; // весь массив слов загружаем из UrlArray1
-let ModeLesson = 1; // режим урока 1 - показывать англ слова, 2 - не показывать англ слова
+//const blockdiv_id1 = "blockbutton1"; // контейнер позиций
+//const PartLenght = 7; // длина порции
+//let CountPart; // кол-во порций
+//let CurPart = 0; // текущая порция
+//let LastCountItem = 0; // кол-во оставщихся позиций 
+//let ListLesson; // весь массив слов загружаем из UrlArray1
+//let ModeLesson = 1; // режим урока 1 - показывать англ слова, 2 - не показывать англ слова
 
 
 const StepMix = 7; // перемешиваем не весь массив целиков, а порциями StepMix
@@ -348,14 +312,11 @@ MainLoadPage();
 
 
 
+function HTML_BODY_AppendChild() {
 
-function myFunction() {
-  const myCollection = document.getElementsByClassName("inputtext");
-  for (let i = 0; i < myCollection.length; i++) {
-    //myCollection[i].style.color = "red";
-	myCollection[i].innerHTML = myCollection[i].innerHTML + i;
-  }
 }
+
+
 
 
 function InitUrlArray1() {
@@ -495,13 +456,8 @@ function clickLessonNum(aNode){
   
   LessonNum = LessonNum + 1;
   if (LessonNum > CountLessonNum){ LessonNum = 1;}
-  
   const Elem1 = document.getElementById(cnfLessonNum_id1);
   Elem1.innerText = "Lesson#"+LessonNum; 
-  
-//  const element = document.getElementById(blockdiv_id1);
-//  if (element){ element.remove(); }
-
   InitLoadPage1();
 }
 
@@ -659,6 +615,34 @@ function clickPuzzletext(aThis) {
 }
 
 
+// формирование массива пазлов-слов (состоит из всех слов ответа и подмешиваем слова из соседнего предложения) 
+// obj - обьект предложений,  
+// Indx - индекс предложения
+function FormArr_puzzletextfrom(obj,Indx){
+
+  // IndxNei - индекс предложения для подмешивания слов
+  let IndxNei = Indx + 1;   
+  if (IndxNei >= obj.arrw.length){IndxNei = 0;}   
+
+  // 
+  let EngArrDbl = SliceSentence(obj.arrw[Indx].Eng); // разбивка англ. варианта пары
+  let EngArrNei = SliceSentence(obj.arrw[IndxNei].Eng); // разбивка англ. из соседней пары для подмешивания 
+  
+  // добавляем к EngArrDbl массив EngArrNei
+  let lnei = EngArrNei.length;
+  let ldbl = EngArrDbl.lenght;
+  if (lnei > MaxMixWordsAdd ){ lnei = MaxMixWordsAdd;} // добавляем не больше чем MaxMixWordsAdd-слов
+  if (ldbl > 30){ lnei = 0; } // если слов больше 30 то не подмешиваем
+  for (i = 0; i < lnei; i++) {
+    EngArrDbl.push(EngArrNei[i]);    
+  }	    
+  
+  return EngArrDbl;
+
+}
+
+// obj - обьект предложений,  
+// Indx - индекс предложения
 function DisplayExercise(obj,Indx){    
 
   // очищаем старое, если есть
@@ -668,7 +652,9 @@ function DisplayExercise(obj,Indx){
   if (rNode2){rNode2.remove();}
 
 
-  let EngArrDbl; 
+  
+/*
+  let EngArrDbl;
   let EngArrNei;  
   let IndxNei = Indx + 1;
   let t1 = obj.arrw.length;
@@ -686,16 +672,15 @@ function DisplayExercise(obj,Indx){
     EngArrDbl.push(EngArrNei[i]);
     //EngArrDbl[j+i] = EngArrNei[i];	
   }	  
+ */  
+ 
+  let EngArrDbl = FormArr_puzzletextfrom(obj,Indx);    
   
-  
-  //old// let MixArr = [];	
-  //old// InitRandomArr(EngArrDbl.length, 0, MixArr);
   let MixArr = InitRandomArr3(EngArrDbl.length, StepMix);
   const rootDiv = document.createElement("div");
   rootDiv.id = "div_puzzletextfrom1";
   for (i = 0; i < EngArrDbl.length; i++) {    
-    const
-	InpBl = document.createElement("div");
+    const InpBl = document.createElement("div");
     InpBl.innerText = EngArrDbl[MixArr[i]];
     InpBl.className = "puzzleblock inpon";    
     const att1 = document.createAttribute(eventvalue); //onclick //ontouchstart
