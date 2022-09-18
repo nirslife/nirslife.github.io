@@ -1,0 +1,181 @@
+<html> 
+<head> 
+<script type="text/javascript"> 
+ let outlongitude;
+ let outlatitude;
+ const UrlTrans1 = "https://translate.google.com/?sl=en&tl=ru&text=lesson&op=translate" 
+
+ 
+function initialize(){
+
+     
+} 
+
+     
+function BtnTest(){
+  
+}   
+
+  
+async function LoadTrans() {  
+  const response = await fetch(UrlTrans1, {
+  mode: 'no-cors',
+  headers: {
+    'Access-Control-Allow-Origin':'*'
+  }
+});  
+  const httxt = await response.text();
+  CallBackOutPut(httxt);
+//  console.log(names);   
+}
+  
+function CallBackOutPut(aTxt){
+
+  document.getElementById("map_canvas").innerHTML = aTxt;
+
+}
+
+ 
+function Btn1OnClick(){
+  LoadTrans();        
+}   
+  
+  
+
+ 
+</script> 
+<style>
+
+body {
+  font-size: 75%;
+}
+
+.footer1 {
+  width: 100%
+  height: 15px
+  background: #E5D3BD;
+  display: block;
+ }
+ 
+.header1 {
+  width: 100%;
+  height: 15px;
+  background: #E5D3BD;
+  display: block;
+}
+
+.rightblock {  
+  margin-left: 354px;
+}
+
+.leftblock { 
+  width: 352px;
+  float:left;  
+ 
+}
+
+
+#listaddr {  
+
+  width: 350px;
+  float:left;
+  cursor: default;
+  user-select: none;  
+}
+
+#BlockForSearch{  
+  height: 90px;
+  width: 350px;
+  border: 1px solid;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+#LatLngForSend{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#BlockForSend {  
+  height: 50px;
+  width: 350px;
+  border: 2px solid;
+  display: table-cell;
+  vertical-align: bottom; 
+  position: relative;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  background: #f4f4f4;  
+}
+
+
+
+.itemlistgreen {  
+  width: 350px;
+  height: 40px;
+  float:left;  
+  background: #92f2b2;  
+  border: 1px solid;  
+  display: block;  
+}
+
+.itemlistred {  
+  width: 350px;
+  height: 40px;
+  float:left;  
+  background: #f4cbcb; 
+  border: 1px solid;  
+  display: block;
+}
+
+.itemlistblue {  
+  width: 350px;
+  height: 40px;
+  float:left;  
+  background: #dce5fd; 
+   border: 1px solid; 
+  display: block;
+}
+
+
+
+
+</style>
+
+</head> 
+<body onload="initialize()"> 
+
+ <div class="leftblock"> 
+ 
+  
+<div id="BlockForSearch">
+   <TEXTAREA name="thetext" id="AdrNameValue" rows="10" cols="44" style="font-size:12px; width: 350px">
+    </TEXTAREA>   
+	 <input type="button" value="Btn1OnClick" onclick="Btn1OnClick()">
+	 
+
+	 
+</div>
+
+ 
+ </div>   
+
+
+
+ 
+ <div class="rightblock">  
+   <input type="label" id="HLatID" name="HLat" value=""> 
+   <input type="label" id="HLangID" name="HLang" value="" >  
+    <input type="hidden" id="AdrMarkerVisible" > 
+ <div id="map_canvas" style="width:100%; height:94%"></div> 
+ </div>   
+ 
+  <div class="footer1">  
+
+ </div>  
+ 
+</body> 
+</html> 
