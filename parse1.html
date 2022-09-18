@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+#input1 {
+
+  display: block;  
+}
+
+#output1 {
+
+  display: block;  
+}
+
+
+</style>
+<body>
+
+<div id="m_container1">
+<div id="input1">
+giant circuit - гигантская цепь}}consisting of a battery - состоящий из батареи}}two wires - два провода}}reach - достигать}}above - выше}}simplifying - упрощение}}assumptions - предположения}}resistance - сопротивление}}otherwise - в противном случае}}immeddiately - немедленно}}current - поток, течение, текущий}}passes - проходит}}commit - совершить}}relates - относится}}a power plant - электростанция, plant - завод, фабрика}}unlike - в отличие}}the electricity in the grid - электричество в сети}}alternating current, AC - переменный ток}}wiggling - покачиваться, извиваться}}forth - вперед}}are just wiggling back and forth - просто качаются туда-сюда}}flexible - гибкий}}essentially - по сути}}encounter - сталкиваться}}resistance - сопротивление}}encounter resistance - столкнуться с сопротивлением}}dissipate - рассеять}}conducting wire - токопроводящая проволока}}gaps - пробелы}}coil - катушка}}coil of wire is wrapped - моток проволоки намотан}}taught  - учил}}these are the lies you were taught about electricity - это ложь, которой вас учили об электричестве}}themselves - сами себя}}claim - требовать}}realized - осуществленный, реализованный}}oscillating - колеблющийся}}equations - уравнения}}he works out the equations - он решает уравнение}}govern - управлять}}hence - следовательно}}conversation - беседа}}conserved - законсервированный}}trace - след}}flux - поток}}naught - ничего}}permeability - проницаемость}}is the cross product - перекрестное произведение}}particular - конкретный}}multiplying - умножение}}and curl them - и завить их}}thumb - большой палец}}the kicker - футболист}}coinciding - совпадающий}}consider - рассмотреть возможность}}since - с, после, со времени, поскольку}}surfaces - поверхности}}accumulate - накапливать}}depleted - истощенный}}elsewhere - в другом месте}}preferentially - преимущественно}}velocity - скорость, быстрота}}extremely - очень сильно, крайне}}conventional - общепринятый}}conventional current - обычный ток}}opposite - противоположный}}the motion - движение}}according - в соответствии}}outwards - наружу}}filament - нить}}toward - к, в направлении}}transmitted - передается}}counterintuitive - противоречащий здравому смыслу}}to notice - уведомлять}}flip - кувырок, сальто}}instant - мгновенный}}exact - точный, настоятельно требовать}}explains - объясняет}}oscillate - колебаться}}greatly - сильно}}exaggerated - преувеличенный}}either - либо}}was laid - был заложен (laid - проложенный)}}properly - правильно}}distortions - искажения}}enormous - громадный}}lengthened - удлиненный}}differentiate dots - дифференцировать точки}}dashes - тире}}failure - отказ}}rubber - резина}}argued - утверждал}}ultimately - в конечном счете}}proved - доказал}}insulate - изолировать}}copper - медь}}coated - с покрытием}}encased - заключенный}}sheath - оболочка}}meant - имел ввиду}}strengthen - укреплять}}interfered - вмешался}}propagation - распространение}}capacitance - емкость}}suspended - приостановленный}}damp - влажный}}gap - зазор}}instanteously - мгновенно}}roughly - грубо}}matters - имеет значение}}propagate - распространять}}entire - весь}}immediately - немедленно}}impedance - импеданс}}definitely - определенно}}flick - щелчок}}leading - ведущий}}
+</div>
+
+<div id="output1">
+</div>
+
+</div>
+
+<script>
+
+let cntr = document.getElementById("input1");
+ParseEngTrans(cntr.innerText); 
+
+
+function ParseEngTrans(astr) {  
+  const arrw =[];
+  //const arrw =[{}];
+ // let x = {Eng: "n", Rus: "k"};
+  let s1;
+  let s2;
+  let str;
+  let is;
+  //const arrwd = astr.split(/.+\s/);
+  const arrwd = astr.match(/(.+?)\}/g);  
+ // is = astr.indexOf("\r"); 
+// const arrwd = astr.matchAll(/.+?\,/gms);  
+  
+  for (i = 0; i < arrwd.length; i++) {    
+    str = arrwd[i];
+	str = str.replaceAll("}","");
+    s1 = str.substr(0, str.indexOf("-")-1);
+    s2 = str.substr(str.indexOf("-")+1, str.length-1);	
+    let x = {};	
+	x.Eng = s1;
+	x.Rus = s2;
+	arrw[i] = x;		
+  } 
+
+  const myJSON = JSON.stringify(arrw);
+  var txt1 = document.createTextNode(myJSON);
+  document.getElementById("output1").appendChild(txt1);    
+  
+  //console.log(arrwd); 
+  
+/*  for (i = 0; is <= astr.length; i++) {
+    str = astr.substr(0, is-1);
+    s1 = str.substr(0, str.indexOf("-")-1);
+    s2 = str.substr(str.indexOf("-")+1, str.length-1);	
+	x.Eng = s1;
+	x.Rus = s2;
+	arrw[i] = x;	
+	is = astr.indexOf("\n", is+1);  
+  } 
+  
+  const myJSON = JSON.stringify(arrw);
+  var txt1 = document.createTextNode(myJSON);
+  document.getElementById("output1").appendChild(txt1);    
+ */ 
+}
+
+</script>
+
+</body>
+</html>
