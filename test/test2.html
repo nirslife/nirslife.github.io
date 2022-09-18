@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo1"></p>
+
+<script>
+
+let arre = InitRandomArr3(5, 5);
+
+document.getElementById("demo1").innerHTML = arre;
+
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+// IN: alength = 14, astep = 4
+// [1,2,3,4, 5,6,7,8, 9,10,11,12, 13,14]
+// OUT: Result:
+// [2,4,1,3, 5,7,8,6, 10,11,9,12, 14,13] 
+function InitRandomArr3(alength, astep) {  
+  let Arr1 = [];
+  for (i = 0; i < alength; i++) {
+    Arr1[i] = i;     
+  }
+  let ap = 0;      
+  let j; let a;
+  //[1,2] astep=4
+  // ap=2
+  for (i = 0; i < alength; i++) {    
+    if(ap == 0){   
+      ap = astep;    
+      if(ap > alength){ap = alength;}      
+	  if((alength - i) < ap ){ap = alength - i;}
+	}  
+    j = getRandomInt(ap) + i;  
+	a = Arr1[i];
+    Arr1[i] = Arr1[j];
+	Arr1[j] = a;
+	ap--;
+  }  
+  return Arr1; 
+}
+ 
+
+</script>
+
+</body>
+</html>
