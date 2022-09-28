@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+  <script src="/js/htmlbody.js"></script>
+  <script src="/js/htmlobject.js"></script>
 <body>
 
 <div id="demo1"></div>
 <input type="button" value="Btn4OnClick" onclick="Btn4OnClick()">
-
+<!-- 
 <script>
 
 
@@ -25,16 +27,16 @@ function createElementByObj(aObjItem) {
   }
 }
 
-function HTML_BODY_AppendChilds() {
-  for (let i = 0; i < BodyObj.length; i++) {
-    createElementByObj(BodyObj[i]);
-	document.body.appendChild(BodyObj[i].pointobj);	
+function HTML_BODY_AppendChilds(aBodyObj) {
+  for (let i = 0; i < aBodyObj.length; i++) {
+    createElementByObj(aBodyObj[i]);
+    document.body.appendChild(aBodyObj[i].pointobj);	
   } 
 }
 
 
 function Btn4OnClick(){
-  HTML_BODY_AppendChilds();
+  HTML_BODY_AppendChilds(BodyObj);
 }
 
 
@@ -74,6 +76,6 @@ function speak(text) {
  
 
 </script>
-
+ -->
 </body>
 </html>
