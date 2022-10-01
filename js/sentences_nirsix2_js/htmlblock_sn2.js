@@ -14,7 +14,7 @@ function createitemctrlbutton(gv) {
 
   const Elem1 = document.createElement("div");  
   Elem1.className = "confblock";
-  Elem1.innerText = "Стереть";   
+  Elem1.innerText = "Стереть1";   
   const att1 = document.createAttribute("onclick");
   att1.value = "clickClearInput(this)";  
   Elem1.setAttributeNode(att1);          
