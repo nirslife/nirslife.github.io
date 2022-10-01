@@ -1,4 +1,6 @@
-{"arrw":[{"Eng":"Please don't make so much noise. I'm trying to work.","Rus":"Пожалуйста, не поднимайте так много шума. Я пытаюсь работать."},
+{"arrw":
+[
+{"Eng":"Please don't make so much noise. I'm trying to work.","Rus":"Пожалуйста, не поднимайте так много шума. Я пытаюсь работать."},
 {"Eng":"Where's Mark? He's having a shower.","Rus":"Где Марк? Он принимает душ."},
 {"Eng":"Let's go out now. It isn't raining any more.","Rus":"Выйдем сейчас. Дождя больше нет."},
 {"Eng":"Hi, jane. Are you enjoying the party?","Rus":"Привет, Джейн. Тебе нравится вечеринка?"},
@@ -38,4 +40,6 @@
 {"Eng":"The situation is already bad and it is getting worse.","Rus":"Ситуация уже плохая и ухудшается."},
 {"Eng":"The cost of living is rising. Every year things are more expensive.","Rus":"Стоимость жизни растет. С каждым годом вещи дорожают."},
 {"Eng":"The weather is starting to improve. The rain has stopped, and the wind isn't as strong.","Rus":"Погода начинает улучшаться. Дождь прекратился, и ветер не такой сильный."},
-{"Eng":"__end__","Rus":"__end__"}]}
+{"Eng":"__end__","Rus":"__end__"}
+]
+}
