@@ -11,31 +11,14 @@ function createitemctrlbutton(gv) {
     gv.pvoiceitemctrl = document.createElement("div"); 
     gv.pvoiceitemctrl.className = "blockvoiceitemctrl";    
     
-    const DivEl1 = document.createElement("div");
+/*     const DivEl1 = document.createElement("div");
     DivEl1.className = "confbuttctrl";
     DivEl1.innerText = "Delete";
     const DivEl2 = document.createElement("div");
     DivEl2.className = "confbuttctrl";
     DivEl2.innerText = "Delete OK";
-    const DivEl3 = document.createElement("div");
-    DivEl3.className = "confbuttctrl";
-    DivEl3.innerText = "  -  ";
-    const DivEl4 = document.createElement("div");
-    DivEl4.className = "confbuttctrl";
-    DivEl4.innerText = gv.StepMix;
-    const DivEl5 = document.createElement("div");
-    DivEl5.className = "confbuttctrl";
-    DivEl5.innerText = "  +  ";
-    
-    gv.pvoiceitemctrl.appendChild(DivEl1);
-    gv.pvoiceitemctrl.appendChild(DivEl2);
-    gv.pvoiceitemctrl.appendChild(DivEl3);
-    gv.pvoiceitemctrl.appendChild(DivEl4);
-    gv.pvoiceitemctrl.appendChild(DivEl5);
-}
-  
-function Create_HeaderBlock(gv) {  
-    createitemctrlbutton(gv);
+ */    
+
     const Elem1 = document.createElement("div");  
     Elem1.className = "confblock";
     Elem1.innerText = "Стереть";   
@@ -50,13 +33,37 @@ function Create_HeaderBlock(gv) {
     const att2 = document.createAttribute("onclick");
     att2.value = "clickLessonNum(this)";  
     Elem2.setAttributeNode(att2);     
+
+
+    const DivEl3 = document.createElement("div");
+    DivEl3.className = "confbuttctrl";
+    DivEl3.innerText = "  -  ";
+    const DivEl4 = document.createElement("div");
+    DivEl4.className = "confbuttctrl";
+    DivEl4.innerText = gv.StepMix;
+    const DivEl5 = document.createElement("div");
+    DivEl5.className = "confbuttctrl";
+    DivEl5.innerText = "  +  ";
     
-    const DivEl2 = document.createElement("div"); 
-    DivEl2.className = "downctrlblock";  
-    DivEl2.innerText = "V";
-    const att3 = document.createAttribute(gv.eventvalue); //onclick //ontouchstart
-    att3.value = "clickButtondownctrlblock(this)";  
-    DivEl2.setAttributeNode(att3); 
+//    gv.pvoiceitemctrl.appendChild(DivEl1);
+//    gv.pvoiceitemctrl.appendChild(DivEl2);
+  gv.pvoiceitemctrl.appendChild(Elem1);
+  gv.pvoiceitemctrl.appendChild(Elem2);
+
+  gv.pvoiceitemctrl.appendChild(DivEl3);
+  gv.pvoiceitemctrl.appendChild(DivEl4);
+  gv.pvoiceitemctrl.appendChild(DivEl5);
+}
+  
+function Create_HeaderBlock(gv) {  
+  createitemctrlbutton(gv);
+    
+  const DivEl2 = document.createElement("div"); 
+  DivEl2.className = "downctrlblock";  
+  DivEl2.innerText = "V";
+  const att3 = document.createAttribute(gv.eventvalue);
+  att3.value = "clickButtondownctrlblock(this)";  
+  DivEl2.setAttributeNode(att3); 
 
     /*
     pvoiceitemctrl = document.createElement("div"); 
@@ -64,11 +71,9 @@ function Create_HeaderBlock(gv) {
     createitemctrlbutton(gv.pvoiceitemctrl);
     */
   
-    let hdobj = gv.HtmlBodyObj.GetpObj("header1");
-    hdobj.appendChild(Elem1); 
-    hdobj.appendChild(Elem2); 
-    hdobj.appendChild(DivEl2);   
-    hdobj.appendChild(gv.pvoiceitemctrl);   
+  let hdobj = gv.HtmlBodyObj.GetpObj("header1");
+  hdobj.appendChild(DivEl2);   
+  hdobj.appendChild(gv.pvoiceitemctrl);   
 }
   
   
