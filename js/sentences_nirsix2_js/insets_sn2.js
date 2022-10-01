@@ -72,17 +72,30 @@ function CallBackGetLesson(gv, vdata) {
   gv.KeyLess = lesskey;
   gv.ArrSens = vdata[lesskey];
   gv.CountLessonNum = gv.ListLess.length;  
+  gv.CurSentences = 0;
+  if (gv.ListLess[gv.InxLess].CurSentences) {gv.CurSentences = gv.ListLess[gv.InxLess].CurSentences;}
   gv.MaxStepMix = vdata["MaxStepMix"] * 1; // * на 1 для уст. типа число
   gv.DefStepMix = vdata["DefStepMix"] * 1; // * на 1 для уст. типа число
   gv.funCBAfterLoadArrLesson(gv);
 }
 
-function SendToBDArrSens(gv){
+function SendToBDArrSens(gv) {
   let text = '{ "' + gv.KeyLess + '":[]}';
   let vobj = JSON.parse(text);
   vobj[gv.KeyLess] = gv.ArrSens;  
   RequestArrFireBase(gv, vobj, 'PATCH')
 }
+
+function SendToBDCurSentences(gv) {
+  let text = '{ "varlist":[]}';
+  let vobj = JSON.parse(text);
+  gv.ListLess[gv.InxLess].CurSentences = gv.CurSentences;
+  vobj["varlist"] = gv.ListLess;  
+  RequestArrFireBase(gv, vobj, 'PATCH')
+}
+
+
+
 
 //************** END BD *****************/
 
