@@ -106,6 +106,13 @@ function Get_HtmlAnyElem(gv) {
       },
       { elname:"div",         
         atr:[
+          {name:"id", value:"blocktemctrlid1"},
+          {name:"class", value:"blocktemctrl"}          
+        ],
+        pobj:null
+      },      
+      { elname:"div",         
+        atr:[
           {name:"id", value:"StepMix1"},
           {name:"class", value:"confbuttctrl"}          
         ],
