@@ -72,9 +72,9 @@ function Create_FooterBlock(gv) {
   let AnyObj = gv.HtmlAnyObj; 
   m_cobj.appendChild(Butt1);
   m_cobj.appendChild(Butt2);     
-  m_cobj.appendChild(AnyObj.createElemByInx("StepMixS_2","  2  "));
-  m_cobj.appendChild(AnyObj.createElemByInx("StepMixS_4","  4  "));
-  m_cobj.appendChild(AnyObj.createElemByInx("StepMixS_7","  7  "));
+  m_cobj.appendChild(AnyObj.createElemByInx("StepMixS_2","2"));
+  m_cobj.appendChild(AnyObj.createElemByInx("StepMixS_4","4"));
+  m_cobj.appendChild(AnyObj.createElemByInx("StepMixS_7","7"));
 }
 
 function clickButtondownctrlblock(athis) {
@@ -228,6 +228,7 @@ function DisplayExercise(gv){
     obj[Indx].StepMix = StepMix;
     SendToBDArrSens(gv);
   }
+
   AnyObj.kp["StepMix1"].innerText = StepMix;
 
   // очищаем старое, если есть
