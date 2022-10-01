@@ -1,16 +1,8 @@
-// gv.pvoiceitemctrl
-// gv.LessonNum
-// gv.CountLessonNum
-// gv.CurSentences
-// ListLesson
-// gv.ListLesson.arrw.
-// gv.MaxMixWordsAdd
-// obj.arrw[Indx].Rus; 
-
 function createitemctrlbutton(gv) {      
   let AnyObj = gv.HtmlAnyObj;   
-  gv.pvoiceitemctrl = document.createElement("div"); 
-  gv.pvoiceitemctrl.className = "blockvoiceitemctrl";
+  AnyObj.createElemByInx("blocktemctrlid1","");
+  let vObj = AnyObj.kp["blocktemctrlid1"];
+  vObj.style.display = "block";
 
   const Elem1 = document.createElement("div");  
   Elem1.className = "confblock";
@@ -27,12 +19,11 @@ function createitemctrlbutton(gv) {
   att2.value = "clickLessonNum(this)";  
   Elem2.setAttributeNode(att2);
 
-  gv.pvoiceitemctrl.appendChild(Elem1);
-  gv.pvoiceitemctrl.appendChild(Elem2);
-
-  gv.pvoiceitemctrl.appendChild(AnyObj.createElemByInx("StepMixDec1","  -  "));
-  gv.pvoiceitemctrl.appendChild(AnyObj.createElemByInx("StepMix1","4"));
-  gv.pvoiceitemctrl.appendChild(AnyObj.createElemByInx("StepMixInc1","  +  "));
+  vObj.appendChild(Elem1);
+  vObj.appendChild(Elem2);
+  vObj.appendChild(AnyObj.createElemByInx("StepMixDec1","  -  "));
+  vObj.appendChild(AnyObj.createElemByInx("StepMix1","4"));
+  vObj.appendChild(AnyObj.createElemByInx("StepMixInc1","  +  "));
 }
   
 function Create_HeaderBlock(gv) {  
@@ -40,14 +31,14 @@ function Create_HeaderBlock(gv) {
     
   const DivEl2 = document.createElement("div"); 
   DivEl2.className = "downctrlblock";  
-  DivEl2.innerText = "V";
+  DivEl2.innerText = "V";  
   const att3 = document.createAttribute(gv.eventvalue);
   att3.value = "clickButtondownctrlblock(this)";  
   DivEl2.setAttributeNode(att3); 
 
   let hdobj = gv.HtmlBodyObj.kp["header1"]; //GetpObj("header1");
   hdobj.appendChild(DivEl2);   
-  hdobj.appendChild(gv.pvoiceitemctrl);   
+  hdobj.appendChild(gv.HtmlAnyObj.kp["blocktemctrlid1"]);   
 }
   
   
@@ -103,7 +94,6 @@ function clickLessonNum(aNode){
   if (gv.LessonNum > gv.CountLessonNum){ gv.LessonNum = 1;}
   const Elem1 = document.getElementById("confLessonNumid1");
   Elem1.innerText = "Lesson#"+gv.LessonNum; 
-//    InitLoadPage1();
 }
 
 function NextSentenceOnClick() {
@@ -120,77 +110,77 @@ function NextSentenceOnClick() {
 }
 
 function TestSentOnClick() {
-    let gv = Get_GlobalVar();  
-    let inpstr = ""; 
-    let srcstr = "";
-    const myCollection = document.getElementsByClassName("inputtext");
-    for (let i = 0; i < myCollection.length; i++) {
-      //myCollection[i].style.color = "red";
-      inpstr = inpstr + myCollection[i].innerHTML;
-    }  
-    inpstr = inpstr.replaceAll(" ","");
-    inpstr = inpstr.toUpperCase();
-    srcstr = gv.ArrSens[gv.CurSentences].Eng.replaceAll(" ","");
-    srcstr = srcstr.toUpperCase();
+  let gv = Get_GlobalVar();  
+  let inpstr = ""; 
+  let srcstr = "";
+  const myCollection = document.getElementsByClassName("inputtext");
+  for (let i = 0; i < myCollection.length; i++) {
+    //myCollection[i].style.color = "red";
+    inpstr = inpstr + myCollection[i].innerHTML;
+  }  
+  inpstr = inpstr.replaceAll(" ","");
+  inpstr = inpstr.toUpperCase();
+  srcstr = gv.ArrSens[gv.CurSentences].Eng.replaceAll(" ","");
+  srcstr = srcstr.toUpperCase();
     
-    const remNode = document.getElementById("div_verify_cont1");
-    if (remNode){remNode.remove();}
+  const remNode = document.getElementById("div_verify_cont1");
+  if (remNode){remNode.remove();}
     
-    const vrfNode = document.getElementById("verify_cont1");  
-    const rootDiv = document.createElement("div");
-    rootDiv.id = "div_verify_cont1";
-    const bInfo = document.createElement("div");  
-    bInfo.className = "verify_info";
+  const vrfNode = document.getElementById("verify_cont1");  
+  const rootDiv = document.createElement("div");
+  rootDiv.id = "div_verify_cont1";
+  const bInfo = document.createElement("div");  
+  bInfo.className = "verify_info";
+   
+  const EngSrcSen = document.createElement("div");  
+  EngSrcSen.className = "verify_info";
+  EngSrcSen.innerText = gv.ArrSens[gv.CurSentences].Eng;
     
-    const EngSrcSen = document.createElement("div");  
-    EngSrcSen.className = "verify_info";
-    EngSrcSen.innerText = gv.ArrSens[gv.CurSentences].Eng;
-    
-    const EngSrc = document.createElement("div");  
-    EngSrc.className = "verify_info";
-    EngSrc.innerText = srcstr;
-    const EngInp = document.createElement("div");  
-    EngInp.className = "verify_info";
-    EngInp.innerText = inpstr;
-    if (inpstr == srcstr){
-      vrfNode.className = "verify_green";   
-      bInfo.innerText = "ХОРОШО!";  	  
-    }
-    else{
-      vrfNode.className = "verify_red"; 
-      bInfo.innerText = "НЕ ВЕРНО!";  	  
-    }  
-    rootDiv.appendChild(EngSrcSen);  
-    rootDiv.appendChild(EngSrc);
-    rootDiv.appendChild(EngInp);    
-    vrfNode.appendChild(rootDiv);      
+  const EngSrc = document.createElement("div");  
+  EngSrc.className = "verify_info";
+  EngSrc.innerText = srcstr;
+  const EngInp = document.createElement("div");  
+  EngInp.className = "verify_info";
+  EngInp.innerText = inpstr;
+  if (inpstr == srcstr){
+    vrfNode.className = "verify_green";   
+    bInfo.innerText = "ХОРОШО!";  	  
+  }
+  else{
+    vrfNode.className = "verify_red"; 
+    bInfo.innerText = "НЕ ВЕРНО!";  	  
+  }  
+  rootDiv.appendChild(EngSrcSen);  
+  rootDiv.appendChild(EngSrc);
+  rootDiv.appendChild(EngInp);    
+  vrfNode.appendChild(rootDiv);      
 }
     
 function clickInputtext(aThis) {
-    let gv = Get_GlobalVar();  
-    const InpBl = document.getElementById("Puzzid"+aThis.getAttribute("IndexArr"));  
-    InpBl.className = "puzzleblock inpon";        
-    const att1 = document.createAttribute(gv.eventvalue);    
-    att1.value = "clickPuzzletext(this)";  
-    InpBl.setAttributeNode(att1);        
-    aThis.remove();   
+  let gv = Get_GlobalVar();  
+  const InpBl = document.getElementById("Puzzid"+aThis.getAttribute("IndexArr"));  
+  InpBl.className = "puzzleblock inpon";        
+  const att1 = document.createAttribute(gv.eventvalue);    
+  att1.value = "clickPuzzletext(this)";  
+  InpBl.setAttributeNode(att1);        
+  aThis.remove();   
 }
 
 function clickPuzzletext(aThis) {
-    let gv = Get_GlobalVar();  
-    aThis.removeAttribute(gv.eventvalue);
-    aThis.className = "inpoff puzzleblock";    
-    const InTxt = document.createElement("div");
-    InTxt.innerText = aThis.innerText;
-    InTxt.className = "inputtext";      
-    const att1 = document.createAttribute(gv.eventvalue);//   
-    att1.value = "clickInputtext(this)";  
-    InTxt.setAttributeNode(att1);             
-    const att2 = document.createAttribute("IndexArr");
-    att2.value = aThis.getAttribute("IndexArr");  
-    InTxt.setAttributeNode(att2);       
-    speak(gv, aThis.innerText, 1.2);
-    document.getElementById("div_inputtextfrom1").appendChild(InTxt);  
+  let gv = Get_GlobalVar();  
+  aThis.removeAttribute(gv.eventvalue);
+  aThis.className = "inpoff puzzleblock";    
+  const InTxt = document.createElement("div");
+  InTxt.innerText = aThis.innerText;
+  InTxt.className = "inputtext";      
+  const att1 = document.createAttribute(gv.eventvalue);//   
+  att1.value = "clickInputtext(this)";  
+  InTxt.setAttributeNode(att1);             
+  const att2 = document.createAttribute("IndexArr");
+  att2.value = aThis.getAttribute("IndexArr");  
+  InTxt.setAttributeNode(att2);       
+  speak(gv, aThis.innerText, 1.2);
+  document.getElementById("div_inputtextfrom1").appendChild(InTxt);  
 }
 
 
