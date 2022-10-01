@@ -1,7 +1,6 @@
 #header1 {
   width: 100%;
   display: block;
-  margin-bottom: 30px; 
   background: #dff9e5;   
 }
 
@@ -222,6 +221,23 @@
   display: inline-block;  
 }
 
+.footerbutt2 {
+  height: 60px;  
+  text-align: center;  
+  font-size: 33px;  
+  background-color: DodgerBlue;
+  color: #fff;
+  margin-top: 15px;
+  margin-bottom: 15px;    
+  border-radius: 10px; 
+  margin-right: 35px;
+  margin-left: 35px;    
+  cursor: pointer;
+  user-select: none; 
+  display: inline-block;  
+}
+
+
 #footerinfcount {
   height: 60px;
   width: 170px;
@@ -239,8 +255,6 @@
   user-select: none; 
   display: inline-block;  
 }
-
-
 
 #verify_cont1 {
   height: 450px;
