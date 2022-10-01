@@ -1,7 +1,8 @@
 #header1 {
   width: 100%;
   display: block;
-  margin-bottom: 30px;    
+  margin-bottom: 30px; 
+  background: #dff9e5;   
 }
 
 #m_container1{
@@ -13,7 +14,7 @@
 .confblock {
   width: 250px;
   height: 50px;
-  background: #555555; /* //#25c94a; */
+  background: #555555; 
   color: #FFFFFF;
   float: left;
   text-align: center;  
@@ -58,7 +59,7 @@
     border-color: black;
     border: 2px solid;    
     background-color: rgb(255, 199, 30);   
-  /*  border-radius: 20px;    */
+    border-radius: 7px;    
     display: none;  
 }
 
@@ -119,7 +120,7 @@
   cursor: pointer;
   border-color: black;
   border: 2px solid;      
-  border-radius: 20px;
+  border-radius: 7px;
   overflow: hidden;
   display: block;  
 }
