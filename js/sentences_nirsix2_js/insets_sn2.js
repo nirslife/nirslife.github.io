@@ -65,11 +65,23 @@ async function RequestArrFireBase(gv, vobj, ametod) {
 }
 
 function CallBackGetLesson(gv, vdata) {  
-  let key1 = vdata["SavedArrLessKey1"];
-  gv.ArrSens = vdata[key1];  
   gv.ListLess = vdata["varlist"];
+  let inx = vdata["SavedArrLessKey1"];
+  gv.InxLess = inx;  
+  let lesskey = gv.ListLess[inx].idvarname;  
+  gv.KeyLess = lesskey;
+  gv.ArrSens = vdata[lesskey];
   gv.CountLessonNum = gv.ListLess.length;  
+  gv.MaxStepMix = vdata["MaxStepMix"] * 1; // * на 1 для уст. типа число
+  gv.DefStepMix = vdata["DefStepMix"] * 1; // * на 1 для уст. типа число
   gv.funCBAfterLoadArrLesson(gv);
+}
+
+function SendToBDArrSens(gv){
+  let text = '{ "' + gv.KeyLess + '":[]}';
+  let vobj = JSON.parse(text);
+  vobj[gv.KeyLess] = gv.ArrSens;  
+  RequestArrFireBase(gv, vobj, 'PATCH')
 }
 
 //************** END BD *****************/
