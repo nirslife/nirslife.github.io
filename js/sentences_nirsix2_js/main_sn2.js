@@ -35,7 +35,8 @@ function MainDBForFunction() {
     jsname:"object_sn2.js",
     fa:
     [
-      {func:"Get_HtmlBodyObj"}
+      {func:"Get_HtmlBodyElem"},
+      {func:"Get_HtmlAnyElem"}      
     ]
   }  
 
@@ -75,10 +76,10 @@ function MainDBForFunction() {
  
 function Main_Init_VarObj_Start(gv) {
   gv.eventvalue = Init_Eventvalue_Devices();
-  gv.HtmlBodyObj = Get_HtmlBodyObj();  
+  gv.HtmlBodyObj = Get_HtmlBodyElem();  
+  gv.HtmlAnyObj = Get_HtmlAnyElem(gv);
   gv.msgspeak = Init_SpeechSynthesisUtterance();   
-  gv.FBSets = Init_LoginFireBaseSets();
-  gv.DefStepMix = 5;
+  gv.FBSets = Init_LoginFireBaseSets();  
   gv.CurSentences = 0;
   gv.LessonNum = 3;
   //инит gv.CountLessonNum перенесен в function CallBackGetLesson(gv, vdata)   
@@ -87,7 +88,7 @@ function Main_Init_VarObj_Start(gv) {
 }
 
 function Create_HTML_BODY_Start(gv) {  
-  gv.HtmlBodyObj.createThis();
+  gv.HtmlBodyObj.createThis_AddChilds();
   Create_HeaderBlock(gv);
   Create_FooterBlock(gv);  
   LoginFireBase(gv);
