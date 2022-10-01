@@ -109,7 +109,10 @@ function clickLessonNum(aNode){
 function NextSentenceOnClick() {
   let gv = Get_GlobalVar();
   gv.CurSentences++;
-  if (gv.ArrSens.length == gv.CurSentences){gv.CurSentences = 0;}
+  if (gv.ArrSens.length == gv.CurSentences) {
+    gv.CurSentences = 0;    
+  }
+  SendToBDCurSentences(gv);
   DisplayExercise(gv);
   const remNode = document.getElementById("div_verify_cont1"); 
   if (remNode){remNode.remove();}  
