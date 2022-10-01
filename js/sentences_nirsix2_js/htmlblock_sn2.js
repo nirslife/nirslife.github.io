@@ -7,52 +7,32 @@
 // gv.MaxMixWordsAdd
 // obj.arrw[Indx].Rus; 
 
-function createitemctrlbutton(gv) {       
-    gv.pvoiceitemctrl = document.createElement("div"); 
-    gv.pvoiceitemctrl.className = "blockvoiceitemctrl";    
-    
-/*     const DivEl1 = document.createElement("div");
-    DivEl1.className = "confbuttctrl";
-    DivEl1.innerText = "Delete";
-    const DivEl2 = document.createElement("div");
-    DivEl2.className = "confbuttctrl";
-    DivEl2.innerText = "Delete OK";
- */    
+function createitemctrlbutton(gv) {      
+  let AnyObj = gv.HtmlAnyObj;   
+  gv.pvoiceitemctrl = document.createElement("div"); 
+  gv.pvoiceitemctrl.className = "blockvoiceitemctrl";
 
-    const Elem1 = document.createElement("div");  
-    Elem1.className = "confblock";
-    Elem1.innerText = "Стереть";   
-    const att1 = document.createAttribute("onclick");
-    att1.value = "clickClearInput(this)";  
-    Elem1.setAttributeNode(att1);          
+  const Elem1 = document.createElement("div");  
+  Elem1.className = "confblock";
+  Elem1.innerText = "Стереть";   
+  const att1 = document.createAttribute("onclick");
+  att1.value = "clickClearInput(this)";  
+  Elem1.setAttributeNode(att1);          
   
-    const Elem2 = document.createElement("div");
-    Elem2.id = "confLessonNumid1";
-    Elem2.className = "confblock";
-    Elem2.innerText = "Lesson#"+gv.LessonNum;   
-    const att2 = document.createAttribute("onclick");
-    att2.value = "clickLessonNum(this)";  
-    Elem2.setAttributeNode(att2);     
+  const Elem2 = document.createElement("div");
+  Elem2.id = "confLessonNumid1";
+  Elem2.className = "confblock";
+  Elem2.innerText = "Lesson#"+gv.LessonNum;   
+  const att2 = document.createAttribute("onclick");
+  att2.value = "clickLessonNum(this)";  
+  Elem2.setAttributeNode(att2);
 
-
-    const DivEl3 = document.createElement("div");
-    DivEl3.className = "confbuttctrl";
-    DivEl3.innerText = "  -  ";
-    const DivEl4 = document.createElement("div");
-    DivEl4.className = "confbuttctrl";
-    DivEl4.innerText = gv.StepMix;
-    const DivEl5 = document.createElement("div");
-    DivEl5.className = "confbuttctrl";
-    DivEl5.innerText = "  +  ";
-    
-//    gv.pvoiceitemctrl.appendChild(DivEl1);
-//    gv.pvoiceitemctrl.appendChild(DivEl2);
   gv.pvoiceitemctrl.appendChild(Elem1);
   gv.pvoiceitemctrl.appendChild(Elem2);
 
-  gv.pvoiceitemctrl.appendChild(DivEl3);
-  gv.pvoiceitemctrl.appendChild(DivEl4);
-  gv.pvoiceitemctrl.appendChild(DivEl5);
+  gv.pvoiceitemctrl.appendChild(AnyObj.createElemByInx("StepMixDec1","  -  "));
+  gv.pvoiceitemctrl.appendChild(AnyObj.createElemByInx("StepMix1","4"));
+  gv.pvoiceitemctrl.appendChild(AnyObj.createElemByInx("StepMixInc1","  +  "));
 }
   
 function Create_HeaderBlock(gv) {  
@@ -65,44 +45,37 @@ function Create_HeaderBlock(gv) {
   att3.value = "clickButtondownctrlblock(this)";  
   DivEl2.setAttributeNode(att3); 
 
-    /*
-    pvoiceitemctrl = document.createElement("div"); 
-    pvoiceitemctrl.className = "blockvoiceitemctrl";
-    createitemctrlbutton(gv.pvoiceitemctrl);
-    */
-  
-  let hdobj = gv.HtmlBodyObj.GetpObj("header1");
+  let hdobj = gv.HtmlBodyObj.kp["header1"]; //GetpObj("header1");
   hdobj.appendChild(DivEl2);   
   hdobj.appendChild(gv.pvoiceitemctrl);   
 }
   
   
-  function Create_FooterBlock(gv) {
-    const Butt1 = document.createElement("div");
-    Butt1.id = "testbutt";
-    Butt1.className = "footerbutt";  
-    Butt1.innerText = "Verify-проверить";
-    const att1 = document.createAttribute("onclick");
-    att1.value = "TestSentOnClick()";  
-    Butt1.setAttributeNode(att1);             
+function Create_FooterBlock(gv) {
+  const Butt1 = document.createElement("div");
+  Butt1.id = "testbutt";
+  Butt1.className = "footerbutt";  
+  Butt1.innerText = "Verify";
+  const att1 = document.createAttribute("onclick");
+  att1.value = "TestSentOnClick()";  
+  Butt1.setAttributeNode(att1);             
     
-    const Butt2 = document.createElement("div");
-    Butt2.id = "nextsentbutt";
-    Butt2.className = "footerbutt";  
-    Butt2.innerText = "Next sentence";
-    const att2 = document.createAttribute("onclick");
-    att2.value = "NextSentenceOnClick()";  
-    Butt2.setAttributeNode(att2);               
+  const Butt2 = document.createElement("div");
+  Butt2.id = "nextsentbutt";
+  Butt2.className = "footerbutt";  
+  Butt2.innerText = "Next";
+  const att2 = document.createAttribute("onclick");
+  att2.value = "NextSentenceOnClick()";  
+  Butt2.setAttributeNode(att2);                   
     
-    const Butt3 = document.createElement("div");
-    Butt3.id = "footerinfcount";  
-    Butt3.innerText = "Null";  
-    
-    let m_cobj = gv.HtmlBodyObj.GetpObj("m_container1");
-    m_cobj.appendChild(Butt1);
-    m_cobj.appendChild(Butt2);
-    m_cobj.appendChild(Butt3);
-  }
+  let m_cobj = gv.HtmlBodyObj.kp["m_container1"]; //GetpObj("m_container1");  
+  let AnyObj = gv.HtmlAnyObj; 
+  m_cobj.appendChild(Butt1);
+  m_cobj.appendChild(Butt2);     
+  m_cobj.appendChild(AnyObj.createElemByInx("StepMixS_2","  2  "));
+  m_cobj.appendChild(AnyObj.createElemByInx("StepMixS_4","  4  "));
+  m_cobj.appendChild(AnyObj.createElemByInx("StepMixS_7","  7  "));
+}
 
 function clickButtondownctrlblock(athis) {
   let gv = Get_GlobalVar();
@@ -245,10 +218,18 @@ function DisplayExercise(gv){
 // obj - обьект предложений,  
 // Indx - индекс предложения
 
-  obj = gv.ArrSens;
-  Indx = gv.CurSentences;  
+  let obj = gv.ArrSens;
+  let Indx = gv.CurSentences;  
+  let AnyObj = gv.HtmlAnyObj;   
   let StepMix = gv.DefStepMix;
-  if(obj[Indx].StepMix){StepMix = obj[Indx].StepMix;};
+  if (obj[Indx].StepMix) { 
+    StepMix = obj[Indx].StepMix;    
+  }else{
+    obj[Indx].StepMix = StepMix;
+    SendToBDArrSens(gv);
+  }
+  AnyObj.kp["StepMix1"].innerText = StepMix;
+
   // очищаем старое, если есть
   const rNode1 = document.getElementById("div_puzzletextfrom1");
   const rNode2 = document.getElementById("div_inputtextfrom1");
@@ -283,7 +264,9 @@ function DisplayExercise(gv){
   att3.value = "clickTextfrom(this)";  
   textR.setAttributeNode(att3);         
   
-  document.getElementById("footerinfcount").innerText = Indx + " of " + obj.length;  
+  //document.getElementById("footerinfcount").innerText = Indx + " of " + obj.length;
+  document.getElementById("nextsentbutt").innerText = Indx + " of " + obj.length;
+  //
 }   // end of function
   
 function clickTextfrom(aThis) {
@@ -295,9 +278,37 @@ function clickTextfrom(aThis) {
   } 
   speak(gv, inpstr, 0.8);
 }
-  
-  
-  
-  
-  
-  
+
+function clickStepMixChange(athis) {
+  let e1 = 0;    
+  if (athis.id == "StepMixDec1") {e1 = -1;}
+  if (athis.id == "StepMixInc1") {e1 = 1;}    
+  let gv = Get_GlobalVar();        
+  let maxm = gv.MaxStepMix / 1;
+  obj = gv.ArrSens; Indx = gv.CurSentences; 
+  let aValue = obj[Indx].StepMix;   
+  if (aValue) {       
+    aValue = aValue + e1;
+    if (aValue == 0) {aValue = 1;}
+    if (aValue >= maxm + 1) {aValue = maxm;}
+  };
+  if (aValue != obj[Indx].StepMix) {
+    obj[Indx].StepMix = aValue;
+    SendToBDArrSens(gv);
+    DisplayExercise(gv);
+  }
+}    
+
+function clickStepMixSet(athis) {
+  let gv = Get_GlobalVar();
+  obj = gv.ArrSens; Indx = gv.CurSentences; 
+  let aValue = 2;  
+  if (athis.id == "StepMixS_2") {aValue = 2;}
+  if (athis.id == "StepMixS_4") {aValue = 4;}
+  if (athis.id == "StepMixS_7") {aValue = 7;}  
+  if (aValue != obj[Indx].StepMix) {
+    obj[Indx].StepMix = aValue;
+    SendToBDArrSens(gv);
+    DisplayExercise(gv);
+  }
+}
