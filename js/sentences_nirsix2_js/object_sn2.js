@@ -117,7 +117,23 @@ function Get_HtmlAnyElem(gv) {
           {name:"class", value:"confbuttctrl"}          
         ],
         pobj:null
-      }            
+      },
+      { elname:"div",         
+        atr:[
+          {name:"id", value:"confLessonNumid1"},
+          {name:"class", value:"confblock"},
+          {name:eval, value:"clickLessonNum(this)"}
+        ],
+        pobj:null
+      },
+      { elname:"div",         
+        atr:[
+          {name:"id", value:"ClearInputid1"},
+          {name:"class", value:"confblock"},
+          {name:eval, value:"clickClearInput(this)"}
+        ],
+        pobj:null
+      }
     ],
     ki:[],
     kp:[],
