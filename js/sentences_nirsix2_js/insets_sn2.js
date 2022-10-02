@@ -66,14 +66,12 @@ async function RequestArrFireBase(gv, vobj, ametod) {
 
 function CallBackGetLesson(gv, vdata) {  
   gv.ListLess = vdata["varlist"];
-  let inx = vdata["SavedArrLessKey1"];
-  gv.InxLess = inx;  
-  let lesskey = gv.ListLess[inx].idvarname;  
-  gv.KeyLess = lesskey;
-  gv.ArrSens = vdata[lesskey];
-  gv.CountLessonNum = gv.ListLess.length;  
+  gv.LessonNum = vdata["SavedArrLessKey1"] * 1;  // * на 1 для уст. типа число
+  gv.KeyLess = gv.ListLess[gv.LessonNum].idvarname;    
+  gv.ArrSens = vdata[gv.KeyLess];
+  gv.CountLessons = gv.ListLess.length;  
   gv.CurSentences = 0;
-  if (gv.ListLess[gv.InxLess].CurSentences) {gv.CurSentences = gv.ListLess[gv.InxLess].CurSentences;}
+  if (gv.ListLess[gv.LessonNum].CurSentences) {gv.CurSentences = gv.ListLess[gv.LessonNum].CurSentences;}
   gv.MaxStepMix = vdata["MaxStepMix"] * 1; // * на 1 для уст. типа число
   gv.DefStepMix = vdata["DefStepMix"] * 1; // * на 1 для уст. типа число
   gv.funCBAfterLoadArrLesson(gv);
@@ -89,10 +87,17 @@ function SendToBDArrSens(gv) {
 function SendToBDCurSentences(gv) {
   let text = '{ "varlist":[]}';
   let vobj = JSON.parse(text);
-  gv.ListLess[gv.InxLess].CurSentences = gv.CurSentences;
+  gv.ListLess[gv.LessonNum].CurSentences = gv.CurSentences;
   vobj["varlist"] = gv.ListLess;  
   RequestArrFireBase(gv, vobj, 'PATCH')
 }
+
+function SendToBDCurLesson(gv) {  
+  let vobj = {};  
+  vobj["SavedArrLessKey1"] = gv.LessonNum;  
+  RequestArrFireBase(gv, vobj, 'PATCH')
+}
+
 
 
 
