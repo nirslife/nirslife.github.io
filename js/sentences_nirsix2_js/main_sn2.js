@@ -80,11 +80,11 @@ function Main_Init_VarObj_Start(gv) {
   gv.HtmlAnyObj = Get_HtmlAnyElem(gv);
   gv.msgspeak = Init_SpeechSynthesisUtterance();   
   gv.FBSets = Init_LoginFireBaseSets();  
-  gv.CurSentences = 0;
-  gv.LessonNum = 3;
-  //инит gv.CountLessonNum перенесен в function CallBackGetLesson(gv, vdata)   
+       //gv.CurSentences = 0;
+       //gv.LessonNum = 3;
+  //инит gv.CountLesson перенесен в function CallBackGetLesson(gv, vdata)   
   gv.pvoiceitemctrl = null; 
-  gv.funCBAfterLoadArrLesson = DisplayExercise;
+  gv.funCBAfterLoadArrLesson = AfterLoadArrLesson;
 }
 
 function Create_HTML_BODY_Start(gv) {  
