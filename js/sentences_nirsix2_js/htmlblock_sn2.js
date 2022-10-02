@@ -3,24 +3,8 @@ function createitemctrlbutton(gv) {
   AnyObj.createElemByInx("blocktemctrlid1","");
   let vObj = AnyObj.kp["blocktemctrlid1"];
   vObj.style.display = "block";
-
-  const Elem1 = document.createElement("div");  
-  Elem1.className = "confblock";
-  Elem1.innerText = "Стереть1";   
-  const att1 = document.createAttribute("onclick");
-  att1.value = "clickClearInput(this)";  
-  Elem1.setAttributeNode(att1);          
-  
-  const Elem2 = document.createElement("div");
-  Elem2.id = "confLessonNumid1";
-  Elem2.className = "confblock";
-  Elem2.innerText = "Lesson#"+gv.LessonNum;   
-  const att2 = document.createAttribute("onclick");
-  att2.value = "clickLessonNum(this)";  
-  Elem2.setAttributeNode(att2);
-
-  vObj.appendChild(Elem1);
-  vObj.appendChild(Elem2);
+  vObj.appendChild(AnyObj.createElemByInx("ClearInputid1","Стереть1"));
+  vObj.appendChild(AnyObj.createElemByInx("confLessonNumid1","Lesson#"));
   vObj.appendChild(AnyObj.createElemByInx("StepMixDec1","  -  "));
   vObj.appendChild(AnyObj.createElemByInx("StepMix1","4"));
   vObj.appendChild(AnyObj.createElemByInx("StepMixInc1","  +  "));
@@ -31,7 +15,7 @@ function Create_HeaderBlock(gv) {
     
   const DivEl2 = document.createElement("div"); 
   DivEl2.className = "downctrlblock";  
-  DivEl2.innerText = "V";  
+  DivEl2.innerText = "X";  
   const att3 = document.createAttribute(gv.eventvalue);
   att3.value = "clickButtondownctrlblock(this)";  
   DivEl2.setAttributeNode(att3); 
@@ -72,10 +56,10 @@ function clickButtondownctrlblock(athis) {
   let gv = Get_GlobalVar();
   if (athis.innerText == "V"){
     athis.innerText = "X";
-    gv.pvoiceitemctrl.style.display = "block";
+    gv.HtmlAnyObj.kp["blocktemctrlid1"].style.display = "block";
   }else{
     athis.innerText = "V";
-    gv.pvoiceitemctrl.style.display = "none"; 
+    gv.HtmlAnyObj.kp["blocktemctrlid1"].style.display = "none";    
   }  
 }
 
@@ -90,10 +74,12 @@ function clickClearInput(aThis){
 
 function clickLessonNum(aNode){  
   let gv = Get_GlobalVar();
-  gv.LessonNum = gv.LessonNum + 1;
-  if (gv.LessonNum > gv.CountLessonNum){ gv.LessonNum = 1;}
-  const Elem1 = document.getElementById("confLessonNumid1");
-  Elem1.innerText = "Lesson#"+gv.LessonNum; 
+  gv.LessonNum++;
+  if (gv.LessonNum > gv.CountLessons - 1){ gv.LessonNum = 0;}
+  let ln = gv.LessonNum + 1;
+  gv.HtmlAnyObj.kp["confLessonNumid1"].innerText = "Lesson#"+ln;    
+  SendToBDCurLesson(gv);
+  DisplayExercise(gv);
 }
 
 function NextSentenceOnClick() {
@@ -207,7 +193,12 @@ function FormArr_puzzletextfrom(gv){
   return EngArrDbl; 
 }
 
-function DisplayExercise(gv){    
+function AfterLoadArrLesson(gv) {
+  gv.HtmlAnyObj.kp["confLessonNumid1"].innerText = "Lesson#"+(gv.LessonNum+1)*1;
+  DisplayExercise(gv);
+}
+
+function DisplayExercise(gv) {    
 // obj - обьект предложений,  
 // Indx - индекс предложения
 
@@ -302,7 +293,7 @@ function clickStepMixSet(athis) {
   if (athis.id == "StepMixS_7") {aValue = 7;}  
   if (aValue != obj[Indx].StepMix) {
     obj[Indx].StepMix = aValue;
-    SendToBDArrSens(gv);
+    SendToBDArrSens(gv); // сохраняем урок в базу (хотя нужно сохранить только StepMix)
     DisplayExercise(gv);
   }
 }
