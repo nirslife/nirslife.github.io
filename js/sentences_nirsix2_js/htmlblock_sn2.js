@@ -3,7 +3,7 @@ function createitemctrlbutton(gv) {
   AnyObj.createElemByInx("blocktemctrlid1","");
   let vObj = AnyObj.kp["blocktemctrlid1"];
   vObj.style.display = "block";
-  vObj.appendChild(AnyObj.createElemByInx("ClearInputid1","Стереть1"));
+  vObj.appendChild(AnyObj.createElemByInx("ClearInputid1","Стереть2"));
   vObj.appendChild(AnyObj.createElemByInx("confLessonNumid1","Lesson#"));
   vObj.appendChild(AnyObj.createElemByInx("StepMixDec1","  -  "));
   vObj.appendChild(AnyObj.createElemByInx("StepMix1","4"));
@@ -12,7 +12,7 @@ function createitemctrlbutton(gv) {
   
 function Create_HeaderBlock(gv) {  
   createitemctrlbutton(gv);
-    
+ 
   const DivEl2 = document.createElement("div"); 
   DivEl2.className = "downctrlblock";  
   DivEl2.innerText = "X";  
@@ -69,27 +69,27 @@ function clickClearInput(aThis){
     while (InpNode.firstChild) {
        clickInputtext(InpNode.firstChild);
     }
-  }	
+  }
 }
 
 function clickLessonNum(aNode){  
   let gv = Get_GlobalVar();
   gv.LessonNum++;
-  if (gv.LessonNum > gv.CountLessons - 1){ gv.LessonNum = 0;}
+  if (gv.LessonNum > gv.ListLess.length - 1){ gv.LessonNum = 0;}
   let ln = gv.LessonNum + 1;
   gv.HtmlAnyObj.kp["confLessonNumid1"].innerText = "Lesson#"+ln;    
-  SendToBDCurLesson(gv);
-  DisplayExercise(gv);
+  SendToBDLessonNum(gv);
+  Check_DisplayExercise(gv);
 }
 
 function NextSentenceOnClick() {
   let gv = Get_GlobalVar();
   gv.CurSentences++;
   if (gv.ArrSens.length == gv.CurSentences) {
-    gv.CurSentences = 0;    
+    gv.CurSentences = 0;
   }
   SendToBDCurSentences(gv);
-  DisplayExercise(gv);
+  Check_DisplayExercise(gv);
   const remNode = document.getElementById("div_verify_cont1"); 
   if (remNode){remNode.remove();}  
   document.getElementById("verify_cont1").className = "verify_def";  
@@ -195,10 +195,14 @@ function FormArr_puzzletextfrom(gv){
 
 function AfterLoadArrLesson(gv) {
   gv.HtmlAnyObj.kp["confLessonNumid1"].innerText = "Lesson#"+(gv.LessonNum+1)*1;
+  Check_DisplayExercise(gv);
+}
+
+function Check_DisplayExercise(gv) {
   DisplayExercise(gv);
 }
 
-function DisplayExercise(gv) {    
+function DisplayExercise(gv) {
 // obj - обьект предложений,  
 // Indx - индекс предложения
 
@@ -280,7 +284,7 @@ function clickStepMixChange(athis) {
   if (aValue != obj[Indx].StepMix) {
     obj[Indx].StepMix = aValue;
     SendToBDArrSens(gv);
-    DisplayExercise(gv);
+    Check_DisplayExercise(gv);
   }
 }    
 
@@ -294,6 +298,6 @@ function clickStepMixSet(athis) {
   if (aValue != obj[Indx].StepMix) {
     obj[Indx].StepMix = aValue;
     SendToBDArrSens(gv); // сохраняем урок в базу (хотя нужно сохранить только StepMix)
-    DisplayExercise(gv);
+    Check_DisplayExercise(gv);
   }
 }
