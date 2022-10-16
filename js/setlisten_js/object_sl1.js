@@ -46,7 +46,7 @@ function Get_HtmlBodyElem() {
     createThis_AddChilds: function(){
       // создает Тело документа HtmlBody и наполняет его элементами
       for (let i = 0; i < this.ar.length; i++) {
-        this.createElem(i);    
+        this.createElem(i);
         document.body.appendChild(this.ar[i].pobj);	
       }
     },
@@ -494,7 +494,7 @@ function DataHtmlTst_i(gv) {
     {elname:"div",
       atr:[
         {name:"id", value:"blvi_2divbuttctrl_i", Add_i:1},
-        {name:"class", value:"blvi_2divbuttctrl_i"}          
+        {name:"class", value:"blvi_2divbuttctrl_i"}
       ],
       pobj:null
     },
@@ -516,6 +516,21 @@ function DataHtmlTst_i(gv) {
     },
     {elname:"div",
       atr:[
+        {name:"id", value:"blvi_space_i", Add_i:1},
+        {name:"class", value:"confbuttctrl"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"blvi_nextlesson_i", Add_i:1},
+        {name:"class", value:"confbuttctrl"},
+        {name:eval, value:"click_blvi_nextlesson_i(this)"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
         {name:"id", value:"blvi_Generate1", Add_i:1},
         {name:"class", value:"confbuttctrl"},
         {name:eval, value:"clickGenerate1(this)"}
@@ -525,7 +540,8 @@ function DataHtmlTst_i(gv) {
     {elname:"div",
       atr:[
         {name:"id", value:"blvi_Generate2", Add_i:1},
-        {name:"class", value:"confbuttctrl"}          
+        {name:"class", value:"confbuttctrl"},
+        {name:eval, value:"clickGenerate2(this)"}        
       ],
       pobj:null
     }
