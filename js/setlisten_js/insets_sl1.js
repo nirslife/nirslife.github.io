@@ -72,13 +72,26 @@ function BeforeLoadAfterPatch(gv, vdata) {
   // ничего не делает пока
 }
 
+function StartReLoadLesson(gv) {
+  gv.funInit_LessonVarObj = Load_VoiceLessonOnRun;
+  let arr1;
+  RequestArrFireBase(gv, arr1, 'GET');
+}
+
 
 function AfterPutBeforeLoadLesson(gv, vdata) {
   gv.funInit_LessonVarObj(gv, vdata); //Init_LessonVarObj
   gv.funCBAfterLoadArrLesson(gv); //AfterLoadArrLesson
 }
 
+function Load_VoiceLessonOnRun(gv, vdata) {
+  gv.KeyVoiceLess = gv.ListBV[gv.LessVoiceNum].idvarname;
+  gv.BVSens = vdata[gv.KeyVoiceLess];
+  gv.ArVP.ar = FormVoiceArrCurSentence(gv);
+}
+
 function Init_LessonVarObj(gv, vdata) {
+  gv.vdata1 = vdata;
   gv.ListLess = vdata["varlist"];
   gv.ListBV = vdata["varBVlist"];
   gv.LessonNum = vdata["SavedArrLessKey1"] * 1;  // * на 1 для уст. типа число
@@ -133,21 +146,26 @@ function SendToBDLessonNum(gv) {
 }
 
 function SendToBDVarBV(gv) {
-  let aar = [
+
+  /*let aar = [
     {idvarname:"arrBVles1", longdesc:"Start VoiceLesson 1", recid:"1", shortdesc:"Start VoiceLesson 1"},
     {idvarname:"arrBVles2", longdesc:"Start VoiceLesson 2", recid:"2", shortdesc:"Start VoiceLesson 2"},
     {idvarname:"arrBVles3", longdesc:"Start VoiceLesson 3", recid:"3", shortdesc:"Start VoiceLesson 3"}
-  ];
+  ];*/
+  let arr = gv.ListLess;
+  for (let j=0; j < arr.length; j++){
+    arr[j].idvarname = "arrBVles"+(j+1);
+  }  
   let text = '{ "varBVlist":[]}';
   let vobj = JSON.parse(text);  
-  vobj["varBVlist"] = aar;
+  vobj["varBVlist"] = arr;
   RequestArrFireBase(gv, vobj, 'PATCH');
 }
 
-function SendToBD_BVLess(gv) {  
-  let text = '{ "arrBVles2":[]}';
+function SendToBD_BVLess(gv,key1) {  
+  let text = '{ "'+key1+'":[]}';
   let vobj = JSON.parse(text);  
-  vobj["arrBVles2"] = gv.BVSens;
+  vobj[key1] = gv.BVSens;
   RequestArrFireBase(gv, vobj, 'PATCH');
 }
 
