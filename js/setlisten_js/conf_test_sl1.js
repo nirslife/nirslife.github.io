@@ -5,6 +5,8 @@ function create1BlockForVoice1(gv) {
   let bd2 = Tpb.op["blvi_2divbuttctrl_i"];     
     bd2.appendChild(Tpb.create1ElemByInx("blvi_Play_i","Play"));
     bd2.appendChild(Tpb.create1ElemByInx("blvi_Stop_i","Stop"));
+    bd2.appendChild(Tpb.create1ElemByInx("blvi_space_i","======="));
+    bd2.appendChild(Tpb.create1ElemByInx("blvi_nextlesson_i","NextLesson"));
   Tpb.create1ElemByInx("blvi_2linebut1menu_i","V");  
   Tpb.create1ElemByInx("blvi_1divctrl_i","");
   Tpb.op["blvi_2linebut1menu_i"].innerText = (i + 1)*1;
@@ -27,11 +29,24 @@ function AfterLoadVoiceLesson(gv) {
   //
 }
 
+function click_blvi_nextlesson_i(athis){
+  let gv = Get_GlobalVar();
+  let Tpb = gv.HtmlTst; 
+  gv.LessonNum++;
+  gv.LessVoiceNum++; 
+  if (gv.LessVoiceNum > gv.ListBV.length - 1){ gv.LessVoiceNum = 0; }
+  let ln = gv.LessVoiceNum + 1;
+  Tpb.op["blvi_nextlesson_i"].innerText = "NextLesson#"+ln;
+  Check_LoadLesson(gv);
+}
 
+function Check_LoadLesson(gv) {
+
+}
 
 
 function click_blvi_Play_i(athis) {
-  let gv = Get_GlobalVar();  
+  let gv = Get_GlobalVar();
   if ((gv.ArVP.Playing === 1)&&(gv.ArVP.Playing != 0)){
     gv.HtmlTst.op["blvi_Play_i"].innerText = "Play-R";
     speechSynthesis.cancel();
@@ -130,8 +145,8 @@ function FormVoiceArrCurSentence(gv) {
   let bv1 = gv.BVSens;
   let arv = [];
   for (let inx=0; inx < bv1.length; inx++){
-    //let inx = gv.CurPlayingSent;  
-    if (bv1[inx].FirstBy1Word === 1){ ///1 11111111111111
+    //let inx = gv.CurPlayingSent;
+    if (bv1[inx].FirstBy1Word === 1){ ///111111111111111
       let ar1w = SliceSentence(bv1[inx].Sentences1);
       for(let i = 0; i < ar1w.length; i++) {
         let e1 = {};
@@ -150,7 +165,7 @@ function FormVoiceArrCurSentence(gv) {
     arv.push(d1);
   }
   let Tpb = gv.HtmlTst; 
-  Tpb.op["blvi_1sentence_i"].innerText = bv1[0].Sentences1;
+ // Tpb.op["blvi_1sentence_i"].innerText = bv1[0].Sentences1;
   return arv;
 }
 
@@ -185,9 +200,7 @@ function FormVoiceArrCurSentence1(gv) {
 }
 
 
-
-
-function create1Blocktest1(gv) {  
+function create1Blocktest1(gv) {
   let Tpb = gv.HtmlTst; 
   let i = gv.HtmlTst.Idx;
   Tpb.create1ElemByInx("blvi_2divbuttctrl_i","");
@@ -258,6 +271,14 @@ function clickGenerate1(athis){
   SendToBD_BVLess(gv);
   gv.funCBBeforeLoadAfterPatch = TempBeforeLoadAfterPatch;
 }
+
+function clickGenerate2(athis){  
+  let gv = Get_GlobalVar(); 
+  //1) генерируем varBVlist
+  SendToBDVarBV(gv);  
+  gv.funCBBeforeLoadAfterPatch = TempBeforeLoadAfterPatch;
+}
+
 
 function TempBeforeLoadAfterPatch(gv, vdata) {
   gv.HtmlBodyObj.kp["blocksentenceitem"].innerText = 'added'+vdata.toString();
