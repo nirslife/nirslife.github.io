@@ -40,7 +40,7 @@ function Create_HTML_BODY_Start(gv) {
 function Create_HTML_BODY_Start(gv) {
   gv.HtmlBodyObj.createThis_AddChilds();
   gv.funCBAfterLoadArrLesson = TempAfterLoadArrLesson; // пустую функцию, пока ничего делать не нужно
- // create1Blocktest1(gv);
+  //create1Blocktest1(gv);
   create1BlockForVoice1(gv);
   LoginFireBase(gv);
 }
@@ -48,6 +48,6 @@ function Create_HTML_BODY_Start(gv) {
 
 function Main_App_Run() {
   vGV = Init_GlobalVar();
-  Main_Init_VarObj_Start(vGV);  
-  Create_HTML_BODY_Start(vGV);  
-}  
+  Main_Init_VarObj_Start(vGV);
+  Create_HTML_BODY_Start(vGV);
+}
