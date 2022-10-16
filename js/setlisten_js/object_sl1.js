@@ -517,7 +517,8 @@ function DataHtmlTst_i(gv) {
     {elname:"div",
       atr:[
         {name:"id", value:"blvi_space_i", Add_i:1},
-        {name:"class", value:"confbuttctrl"}
+        {name:"class", value:"confbuttctrl"},
+        {name:eval, value:"click_blvi_space_i(this)"}
       ],
       pobj:null
     },
