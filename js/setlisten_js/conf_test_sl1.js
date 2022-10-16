@@ -37,7 +37,8 @@ function click_blvi_nextlesson_i(athis){
   if (gv.LessVoiceNum > gv.ListBV.length - 1){ gv.LessVoiceNum = 0; }
   let ln = gv.LessVoiceNum + 1;
   Tpb.op["blvi_nextlesson_i"].innerText = "NextLesson#"+ln;
-  Check_LoadLesson(gv);
+  StartReLoadLesson(gv);
+  //Check_LoadLesson(gv);
 }
 
 function Check_LoadLesson(gv) {
@@ -98,7 +99,17 @@ function PlayNextVoice(gv) {
       //click_blvi_Play_i(gv.HtmlTst.op["blvi_Play_i"]);      
       PlayProc_i(gv);
     }
+    gv.HtmlTst.op["blvi_space_i"].innerText = "===>>>"+gv.ArVP.CurPos;
   }
+}
+
+function click_blvi_space_i(athis) {
+  let gv = Get_GlobalVar();
+  gv.ArVP.CurPos++;
+  if (gv.ArVP.CurPos >= gv.ArVP.ar.length) {
+    gv.ArVP.CurPos--;//если достигли конца то все
+  }
+  athis.innerText = "===>>>"+gv.ArVP.CurPos;
 }
 
 function speakBV(gv, e1) {
@@ -144,9 +155,10 @@ function handleSpeechEvent(e) {
 function FormVoiceArrCurSentence(gv) {
   let bv1 = gv.BVSens;
   let arv = [];
+  let p1 = "";
   for (let inx=0; inx < bv1.length; inx++){
     //let inx = gv.CurPlayingSent;
-    if (bv1[inx].FirstBy1Word === 1){ ///111111111111111
+    if (bv1[inx].FirstBy1Word === 0){ ///111111111111111
       let ar1w = SliceSentence(bv1[inx].Sentences1);
       for(let i = 0; i < ar1w.length; i++) {
         let e1 = {};
@@ -160,21 +172,30 @@ function FormVoiceArrCurSentence(gv) {
     let d1 = {};
     d1.textv = bv1[inx].Sentences1;
     d1.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // переводим в тики: 1тик = 100мс
-    d1.Rate = 1; //bv1[inx].SpeakRateSenten;
+    d1.Rate = 0.4; //bv1[inx].SpeakRateSenten;
     d1.InxSentence = inx;
     arv.push(d1);
+
+    let d2 = {};
+    d2.textv = bv1[inx].Sentences1;
+    d2.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // переводим в тики: 1тик = 100мс
+    d2.Rate = 0.8; //bv1[inx].SpeakRateSenten;
+    d2.InxSentence = inx;
+    arv.push(d2);
+    p1 = p1 + "<p>"+bv1[inx].Sentences1+"</p>";
   }
   let Tpb = gv.HtmlTst; 
- // Tpb.op["blvi_1sentence_i"].innerText = bv1[0].Sentences1;
+  gv.HtmlBodyObj.kp["blocksentenceitem"].innerHTML = p1;
+  Tpb.op["blvi_1sentence_i"].innerText = bv1[0].Sentences1;
   return arv;
 }
 
-
+/*
 function FormVoiceArrCurSentence1(gv) {
   let bv1 = gv.BVSens;
   let inx = gv.CurPlayingSent;
   let arv = [];
-  if (bv1[inx].FirstBy1Word === 1){ ///1 11111111111111
+  if (bv1[inx].FirstBy1Word === 0){ ///1 11111111111111
     let ar1w = SliceSentence(bv1[inx].Sentences1);
     for(let i = 0; i < ar1w.length; i++) {
       let e1 = {};
@@ -183,22 +204,28 @@ function FormVoiceArrCurSentence1(gv) {
       e1.Rate = 0.5;//bv1[inx].SpeakRateBy1Word;
       arv[i] = e1;
     }
-  }
+  }  
   let d1 = {};
   d1.textv = bv1[inx].Sentences1;
   d1.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // переводим в тики: 1тик = 100мс
-  d1.Rate = 1; //bv1[inx].SpeakRateSenten;
+  d1.Rate = 0.4; //bv1[inx].SpeakRateSenten;
   arv.push(d1);
-  return arv;
-  /*
-  e1.Sentences1 = ars[i].Eng;
-  e1.FirstBy1Word = 1;
-  e1.WaitBy1Word_mSec = 200;
-  e1.SpeakRateBy1Word = 1;
-  e1.SpeakRateSenten = 2;
-  */
-}
 
+  let d2 = {};
+  d2.textv = bv1[inx].Sentences1;
+  d2.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // переводим в тики: 1тик = 100мс
+  d2.Rate = 0.6; //bv1[inx].SpeakRateSenten;
+  arv.push(d1);
+
+  return arv;
+
+//  e1.Sentences1 = ars[i].Eng;
+//  e1.FirstBy1Word = 1;
+//  e1.WaitBy1Word_mSec = 200;
+//  e1.SpeakRateBy1Word = 1;
+//  e1.SpeakRateSenten = 2;
+}
+*/
 
 function create1Blocktest1(gv) {
   let Tpb = gv.HtmlTst; 
@@ -255,21 +282,25 @@ function clickGenerate1(athis){
   SendToBDVarBV(gv);
   gv.funCBBeforeLoadAfterPatch = TempBeforeLoadAfterPatch;
   */
-  let ars = gv.ArrSensTst;
-  let oar = [];
-  for(let i = 0; i < ars.length; i++) {
-  //for(let i = 0; i < 7; i++) {    
-    let e1 = {};
-    e1.Sentences1 = ars[i].Eng;
-    e1.FirstBy1Word = 1;
-    e1.WaitBy1Word_mSec = 200;
-    e1.SpeakRateBy1Word = 0.5;
-    e1.SpeakRateSenten = 0.8;
-    oar[i] = e1;
-  }  
-  gv.BVSens = oar;
-  SendToBD_BVLess(gv);
-  gv.funCBBeforeLoadAfterPatch = TempBeforeLoadAfterPatch;
+  let varlst = gv.ListLess;
+  for(let j=0; j < varlst.length; j++) {
+    let key1 = gv.ListLess[j].idvarname;
+    let key2 = gv.ListBV[j].idvarname;
+    ars = gv.vdata1[key1];
+    let oar = [];
+    for(let i = 0; i < ars.length; i++) {  
+      let e1 = {};
+      e1.Sentences1 = ars[i].Eng;
+      e1.FirstBy1Word = 1;
+      e1.WaitBy1Word_mSec = 200;
+      e1.SpeakRateBy1Word = 0.5;
+      e1.SpeakRateSenten = 0.8;
+      oar[i] = e1;
+    }
+    gv.BVSens = oar;
+    SendToBD_BVLess(gv,key2);
+    gv.funCBBeforeLoadAfterPatch = TempBeforeLoadAfterPatch;  
+  }
 }
 
 function clickGenerate2(athis){  
