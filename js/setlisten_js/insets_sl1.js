@@ -82,10 +82,12 @@ function Init_LessonVarObj(gv, vdata) {
   gv.ListLess = vdata["varlist"];
   gv.ListBV = vdata["varBVlist"];
   gv.LessonNum = vdata["SavedArrLessKey1"] * 1;  // * на 1 для уст. типа число
+  gv.LessVoiceNum = vdata["SavedVoiceLessKey1"] * 1;  // * на 1 для уст. типа число  
   gv.KeyLess = gv.ListLess[gv.LessonNum].idvarname;
+  gv.KeyVoiceLess = gv.ListBV[gv.LessVoiceNum].idvarname;
   gv.ArrSens = vdata[gv.KeyLess];
-  gv.ArrSensTst = vdata["arrles1"];
-  gv.BVSens = vdata["arrBVles1"];  
+  gv.ArrSensTst = vdata["arrles2"];
+  gv.BVSens = vdata[gv.KeyVoiceLess];
   gv.CurPlayingSent = 0;
   gv.ArVP.ar = FormVoiceArrCurSentence(gv);
   gv.CurSentences = 0;
@@ -102,7 +104,7 @@ function Init_BlViVarObj(gv ) {
     CurItemInx: 0,
     wr:[{w:[],Speed:1}],
     op:[],
-    GetCurItem: function (){
+    GetCurItem: function () {
       return this.op[this.CurItemInx];
     }
   }
@@ -131,7 +133,11 @@ function SendToBDLessonNum(gv) {
 }
 
 function SendToBDVarBV(gv) {
-  let aar = [{idvarname:"arrBVles1", longdesc:"Start VoiceLesson 1", recid:"1", shortdesc:"Start VoiceLesson 1"}];
+  let aar = [
+    {idvarname:"arrBVles1", longdesc:"Start VoiceLesson 1", recid:"1", shortdesc:"Start VoiceLesson 1"},
+    {idvarname:"arrBVles2", longdesc:"Start VoiceLesson 2", recid:"2", shortdesc:"Start VoiceLesson 2"},
+    {idvarname:"arrBVles3", longdesc:"Start VoiceLesson 3", recid:"3", shortdesc:"Start VoiceLesson 3"}
+  ];
   let text = '{ "varBVlist":[]}';
   let vobj = JSON.parse(text);  
   vobj["varBVlist"] = aar;
@@ -139,9 +145,9 @@ function SendToBDVarBV(gv) {
 }
 
 function SendToBD_BVLess(gv) {  
-  let text = '{ "arrBVles1":[]}';
+  let text = '{ "arrBVles2":[]}';
   let vobj = JSON.parse(text);  
-  vobj["arrBVles1"] = gv.BVSens;
+  vobj["arrBVles2"] = gv.BVSens;
   RequestArrFireBase(gv, vobj, 'PATCH');
 }
 
