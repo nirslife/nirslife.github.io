@@ -545,6 +545,14 @@ function DataHtmlTst_i(gv) {
         {name:eval, value:"clickGenerate2(this)"}        
       ],
       pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"blvi_LoadLesson", Add_i:1},
+        {name:"class", value:"confbuttctrl"},
+        {name:eval, value:"clickblvi_LoadLesson(this)"}
+      ],
+      pobj:null
     }
 ]
 }
