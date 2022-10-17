@@ -69,7 +69,12 @@ function click_blvi_Play_i(athis) {
 function PlayProc_i(gv) {
   if(gv.ArVP.ar[gv.ArVP.CurPos].InxSentence != gv.ArVP.CurSentence){
     let bv1 = gv.BVSens;
-    let Tpb = gv.HtmlTst;  
+    let Tpb = gv.HtmlTst;
+    const senid_1 = document.getElementById("sentenid"+gv.ArVP.CurSentence);
+    senid_1.style.color = '#ffffff';
+    sid2 = gv.ArVP.ar[gv.ArVP.CurPos].InxSentence;
+    const senid_2 = document.getElementById("sentenid"+sid2);
+    senid_2.style.color = '#8bfcd7';
     gv.ArVP.CurSentence = gv.ArVP.ar[gv.ArVP.CurPos].InxSentence;
     Tpb.op["blvi_1sentence_i"].innerText = bv1[gv.ArVP.CurSentence].Sentences1;
   }
@@ -182,7 +187,7 @@ function FormVoiceArrCurSentence(gv) {
     d2.Rate = 0.8; //bv1[inx].SpeakRateSenten;
     d2.InxSentence = inx;
     arv.push(d2);
-    p1 = p1 + "<p>"+bv1[inx].Sentences1+"</p>";
+    p1 = p1 + "<p id=sentenid"+inx+">"+bv1[inx].Sentences1+"</p>";
   }
   let Tpb = gv.HtmlTst; 
   gv.HtmlBodyObj.kp["blocksentenceitem"].innerHTML = p1;
