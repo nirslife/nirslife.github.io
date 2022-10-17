@@ -41,4 +41,6 @@
 {"Eng":"I have lost my address book. Have you seen it?", "Rus": "Я загубив свою адресну книгу. Ви бачили його?","StepMix": 4},
 {"Eng":"I have been reading the book you lent me, but I haven’t finished it yet. It’s very interesting.", "Rus": "Я читав книгу, яку ви мені позичили, але ще не закінчив її. Це дуже цікаво.","StepMix": 4},
 {"Eng":"I have read the book you lent me, so you can have it back now.", "Rus": "Я прочитав книгу, яку ви мені позичили, тому ви можете отримати її зараз.","StepMix": 4}
-]}
+],
+"varless":{"idvarname": "arrles10", "longdesc":"Present perfect continuous и simple(I have been doing и I have done)", "recid":10,"shortdesc": "10. I have been doing и I have done"}
+}
