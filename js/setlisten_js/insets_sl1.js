@@ -131,6 +131,14 @@ function SendToBDArrSens(gv) {
   RequestArrFireBase(gv, vobj, 'PATCH')
 }
 
+function SendToBDListLess(gv) {
+  let text = '{ "varlist":[]}';
+  let vobj = JSON.parse(text);  
+  vobj["varlist"] = gv.ListLess;
+  RequestArrFireBase(gv, vobj, 'PATCH')
+}
+
+
 function SendToBDCurSentences(gv) {
   let text = '{ "varlist":[]}';
   let vobj = JSON.parse(text);
