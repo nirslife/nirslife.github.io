@@ -3,7 +3,7 @@ function createitemctrlbutton(gv) {
   AnyObj.createElemByInx("blocktemctrlid1","");
   let vObj = AnyObj.kp["blocktemctrlid1"];
   vObj.style.display = "block";
-  vObj.appendChild(AnyObj.createElemByInx("ClearInputid1","Стереть2"));
+  vObj.appendChild(AnyObj.createElemByInx("ClearInputid1","Стереть3"));
   vObj.appendChild(AnyObj.createElemByInx("confLessonNumid1","Lesson#"));
   vObj.appendChild(AnyObj.createElemByInx("StepMixDec1","  -  "));
   vObj.appendChild(AnyObj.createElemByInx("StepMix1","4"));
