@@ -1,5 +1,5 @@
 // разрезаем предложение по пробелам
-function SliceSentence(aSenten){
+function SliceSentence(aSenten) {
     let str = aSenten;
     let s1;
     let i;  
