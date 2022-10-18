@@ -39,11 +39,9 @@ async function LoginFireBase(gv) {
   const vdata = await response.json();
   gv.FBSets.idToken = vdata.idToken;
   CallBackLoginFireBase(gv);
-//  console.log(names);   
 }
 
-function CallBackLoginFireBase(gv){  
-  //let arr1 = "SavedArrLessKey1";  // ошибка 400
+function CallBackLoginFireBase(gv){    
   let arr1;  
   RequestArrFireBase(gv, arr1, 'GET');
 }
@@ -60,21 +58,50 @@ async function RequestArrFireBase(gv, vobj, ametod) {
     }  
   });  
   let vdata = await response.json(); 
-  if(ametod == 'GET'){CallBackGetLesson(gv, vdata);}    
-//  console.log(names);   
+  if(ametod == 'GET'){gv.funCBAfterPutBeforeLoad(gv, vdata);}
 }
 
-function CallBackGetLesson(gv, vdata) {  
+function StartReLoadLesson(gv) { 
+  gv.funInit_LessonVarObj = Load_LessonOnRun;
+  let arr1;
+  RequestArrFireBase(gv, arr1, 'GET');
+}
+
+function AfterPutBeforeLoadLesson(gv, vdata) { 
+  gv.funInit_LessonVarObj(gv, vdata); //Init_LessonVarObj
+  gv.funCBAfterLoadArrLesson(gv); //AfterLoadArrLesson
+}
+
+function Init_LessonVarObj(gv, vdata) {
   gv.ListLess = vdata["varlist"];
   gv.LessonNum = vdata["SavedArrLessKey1"] * 1;  // * на 1 для уст. типа число
   gv.KeyLess = gv.ListLess[gv.LessonNum].idvarname;    
-  gv.ArrSens = vdata[gv.KeyLess];
-  gv.CountLessons = gv.ListLess.length;  
+  gv.ArrSens = vdata[gv.KeyLess];    
   gv.CurSentences = 0;
+  gv.CurSentVoice = 0; // текущее предложение для войса
   if (gv.ListLess[gv.LessonNum].CurSentences) {gv.CurSentences = gv.ListLess[gv.LessonNum].CurSentences;}
   gv.MaxStepMix = vdata["MaxStepMix"] * 1; // * на 1 для уст. типа число
   gv.DefStepMix = vdata["DefStepMix"] * 1; // * на 1 для уст. типа число
-  gv.funCBAfterLoadArrLesson(gv);
+}
+
+function Load_LessonOnRun(gv, vdata) {
+  gv.KeyLess = gv.ListLess[gv.LessonNum].idvarname;
+  gv.ArrSens = vdata[gv.KeyLess];
+}
+
+
+function Init_BlViVarObj(gv   ) {
+  //gv.BVObj;
+  let av = {
+    CurItem: 0,
+    CurItemInx: 0,    
+    wr:[{w:[],Speed:1}],
+    op:[],
+    GetCurItem: function (){
+      return this.op[this.CurItemInx];
+    }
+  } 
+  return av; 
 }
 
 function SendToBDArrSens(gv) {
@@ -92,7 +119,7 @@ function SendToBDCurSentences(gv) {
   RequestArrFireBase(gv, vobj, 'PATCH')
 }
 
-function SendToBDCurLesson(gv) {  
+function SendToBDLessonNum(gv) {  
   let vobj = {};  
   vobj["SavedArrLessKey1"] = gv.LessonNum;  
   RequestArrFireBase(gv, vobj, 'PATCH')
@@ -120,16 +147,3 @@ function Init_SpeechSynthesisUtterance() {
   return ms;
 }  
 
-/*
-async function LoadSentencesJson(aLessonNum, aCallBack) {
-  function InitUrlSentencesJson(aLessonNum) {
-    const UrlArrP1 = "https://nirslife.github.io/json/arr_sentences";
-    const UrlArrP2 = ".json";  
-    let UrlArray1 = UrlArrP1 + aLessonNum + UrlArrP2;
-    return UrlArray1; 
-  }  
-  const response = await fetch(InitUrlSentencesJson(aLessonNum));
-  const array1 = await response.json();
-  aCallBack(array1);
-}
-*/ 
