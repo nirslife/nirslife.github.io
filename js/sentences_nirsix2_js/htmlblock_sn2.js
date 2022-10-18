@@ -10,38 +10,38 @@ function createitemctrlbutton(gv) {
   vObj.appendChild(AnyObj.createElemByInx("StepMixInc1","  +  "));
 }
   
-function Create_HeaderBlock(gv) {  
+function Create_HeaderBlock(gv) {
   createitemctrlbutton(gv);
  
   const DivEl2 = document.createElement("div"); 
-  DivEl2.className = "downctrlblock";  
-  DivEl2.innerText = "X";  
+  DivEl2.className = "downctrlblock";
+  DivEl2.innerText = "X";
   const att3 = document.createAttribute(gv.eventvalue);
-  att3.value = "clickButtondownctrlblock(this)";  
-  DivEl2.setAttributeNode(att3); 
+  att3.value = "clickButtondownctrlblock(this)";
+  DivEl2.setAttributeNode(att3);
 
   let hdobj = gv.HtmlBodyObj.kp["header1"]; //GetpObj("header1");
-  hdobj.appendChild(DivEl2);   
-  hdobj.appendChild(gv.HtmlAnyObj.kp["blocktemctrlid1"]);   
+  hdobj.appendChild(DivEl2);
+  hdobj.appendChild(gv.HtmlAnyObj.kp["blocktemctrlid1"]);
 }
   
   
 function Create_FooterBlock(gv) {
   const Butt1 = document.createElement("div");
   Butt1.id = "testbutt";
-  Butt1.className = "footerbutt";  
+  Butt1.className = "footerbutt";
   Butt1.innerText = "Verify";
   const att1 = document.createAttribute("onclick");
-  att1.value = "TestSentOnClick()";  
-  Butt1.setAttributeNode(att1);             
+  att1.value = "TestSentOnClick()";
+  Butt1.setAttributeNode(att1);
     
   const Butt2 = document.createElement("div");
   Butt2.id = "nextsentbutt";
-  Butt2.className = "footerbutt";  
+  Butt2.className = "footerbutt";
   Butt2.innerText = "Next";
   const att2 = document.createAttribute("onclick");
-  att2.value = "NextSentenceOnClick()";  
-  Butt2.setAttributeNode(att2);                   
+  att2.value = "NextSentenceOnClick()";
+  Butt2.setAttributeNode(att2);
     
   let m_cobj = gv.HtmlBodyObj.kp["m_container1"]; //GetpObj("m_container1");  
   let AnyObj = gv.HtmlAnyObj; 
@@ -72,14 +72,15 @@ function clickClearInput(aThis){
   }
 }
 
-function clickLessonNum(aNode){  
+function clickLessonNum(aNode) {
   let gv = Get_GlobalVar();
   gv.LessonNum++;
   if (gv.LessonNum > gv.ListLess.length - 1){ gv.LessonNum = 0;}
   let ln = gv.LessonNum + 1;
   gv.HtmlAnyObj.kp["confLessonNumid1"].innerText = "Lesson#"+ln;    
   SendToBDLessonNum(gv);
-  Check_DisplayExercise(gv);
+  StartReLoadLesson(gv);
+  //Check_DisplayExercise(gv);
 }
 
 function NextSentenceOnClick() {
