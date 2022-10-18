@@ -1,4 +1,4 @@
-"varlist": 
+{"varlist": 
 [
  {"idvarname": "arrles1", "longdesc": "Start Lesson 1", "recid": "1", "shortdesc": "Start Lesson 1" },
  {"CurSentences": 25, "idvarname": "arrles2", "longdesc": "Lesson 2 Ing", "recid": "2", "shortdesc": "Lesson 2 Ing"},
@@ -14,3 +14,4 @@
  {"idvarname": "arrles14", "longdesc":"Present perfect и past simple 2 (I have done и I did)", "recid":14,"shortdesc": "I have done и I did 2"},
  {"idvarname": "arrles15", "longdesc":"Past perfect (I had done) ", "recid":15,"shortdesc": "Past perfect (I had done)"}
 ]
+}
