@@ -24,7 +24,7 @@ function Get_HtmlBodyElem() {
     ki:[],
     kp:[],
     InitElem: function(){
-      // заполняем массив ключей ki и kp:[atr[0].value] по atr[0] = atr:[{name:"id", value:"textfrom1"}]
+      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ ki пїЅ kp:[atr[0].value] пїЅпїЅ atr[0] = atr:[{name:"id", value:"textfrom1"}]
       let arr = this.ar;
       for(let i = 0; i < arr.length; i++) {
         let key1 = arr[i].atr[0].value;
@@ -32,7 +32,7 @@ function Get_HtmlBodyElem() {
       }
     },
     createElem: function(i){
-      // создает просто элемент (document.createElement) и заполняет его атрибутами
+      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (document.createElement) пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
       let ar_i = this.ar[i];
       ar_i.pobj = document.createElement(ar_i.elname);
       let key1 = ar_i.atr[0].value;
@@ -44,14 +44,14 @@ function Get_HtmlBodyElem() {
       }    
     },
     createThis_AddChilds: function(){
-      // создает Тело документа HtmlBody и наполняет его элементами
+      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ HtmlBody пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
       for (let i = 0; i < this.ar.length; i++) {
         this.createElem(i);
         document.body.appendChild(this.ar[i].pobj);	
       }
     },
     GetpObj: function(idn){
-      // например, по idn="inputtextfrom1" ищет в atr[0].value из атрибутов и возвращает pobj. atr[0] = atr:[ {name:"id", value:"inputtextfrom1"}]
+      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ idn="inputtextfrom1" пїЅпїЅпїЅпїЅ пїЅ atr[0].value пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ pobj. atr[0] = atr:[ {name:"id", value:"inputtextfrom1"}]
       let stop1 = 0;
       let po = null;
       for (let i = 0; stop1 == 0; i++) {
@@ -68,7 +68,7 @@ function Get_HtmlBodyElem() {
   return BodyObj;
 }
 
-//шаблон блока англслова для заполнения его атрибутами
+//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 function Get_TplItemVoice(gv) {
   gv.ItVUp = [{am:[],sp:null}];
   let eval = gv.eventvalue;
@@ -108,42 +108,80 @@ function Get_HtmlTst(gv) {
   ClassObj.ar = av.ar;
   ClassObj.InitAllElem();
   return ClassObj;
-}  
+}
+
+function Get_HtmlMMenu(gv) {
+  let ClassObj = Create_MetodsObj();
+  let av = DataHtmlMMenu_i(gv);
+  ClassObj.ar = av.ar;
+  ClassObj.InitAllElem();  
+  return ClassObj;
+}
+
+function Get_HtmlLstLes(gv) {
+  let ClassObj = Create_MetodsObj();
+  let av = DataHtmlLstLes_i(gv);
+  ClassObj.ar = av.ar;
+  ClassObj.InitAllElem();  
+  return ClassObj;
+}
+
+
 
 
 function Create_MetodsObj(gv) {
   //let eval = gv.eventvalue;
   let MetObj = {
     OnInxAtt:true,
-    Idx:0,
+    mmopen:"",
+    Idx:-1,
+    countx:0,
     arx:[],
     oix:[],
     opx:[],
     ar:[],
     oi:[],
     op:[],
+    oop:[],
+    tid:[],
     wrx:[{w:[],Speed:1}],
-    wr:{w:[],Speed:1},
+    wr:{w:[],Speed:1},    
     From_i_to_x: function() {
-      this.arx[this.Idx] = this.ar;
-      this.oix[this.Idx] = this.oi;
-      this.opx[this.Idx] = this.op; 
-      this.wrx[this.Idx] = this.wr;
+      let ix = (this.Idx == -1) ? 0 : this.Idx;
+      this.arx[ix] = this.ar;
+      this.oix[ix] = this.oi;
+      this.opx[ix] = this.op; 
+      this.wrx[ix] = this.wr;
     },
     From_x_to_i: function() {
-      this.ar = this.arx[this.Idx];
-      this.oi = this.oix[this.Idx];
-      this.op = this.opx[this.Idx]; 
-      this.wr = this.wrx[this.Idx];
+      let ix = (this.Idx == -1) ? 0 : this.Idx;
+      this.ar = this.arx[ix];
+      this.oi = this.oix[ix];
+      this.op = this.opx[ix]; 
+      this.wr = this.wrx[ix];
     },
     InitAllElem: function() {
-      // заполняем массив ключей ki и kp:[atr[0].value] по atr[0] = atr:[{name:"id", value:"StepMixInc1"}]      
+      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ ki пїЅ kp:[atr[0].value] пїЅпїЅ atr[0] = atr:[{name:"id", value:"StepMixInc1"}]      
       let ar_ = this.ar;
       for(let j = 0; j < ar_.length; j++) {
         let key1 = ar_[j].atr[0].value;
         this.oi[key1] = j;
+        if (ar_[j].atr[0].tid){this.tid[key1] = ar_[j].atr[0].tid;}
       }   
-      this.From_i_to_x();   
+      this.From_i_to_x();
+    },
+    AddNewArr: function() {
+      if(this.Idx > -1){
+        this.countx++;
+        this.Idx++;
+        let ar_ = this.ar;
+        this.arx.push(ar_);
+        this.ar = this.arx[this.Idx];
+        this.From_i_to_x();
+      } else {
+        this.countx++;
+        this.Idx++;
+      }
     },
     SetIdx: function(aIdx) {
       this.From_x_to_i();
@@ -156,20 +194,21 @@ function Create_MetodsObj(gv) {
     Get_DataHtml_i: function(){},    
 
     create1Elem: function(i, itxt){
-      // создает по индексу i массива просто элемент (document.createElement) и заполняет его атрибутами
-      let ar_i = this.ar[i];      
+      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ i пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (document.createElement) пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+      let ar_i = this.ar[i];
       ar_i.pobj = document.createElement(ar_i.elname);
       let key1 = ar_i.atr[0].value;
       this.op[key1] = ar_i.pobj;
-      ar_i.pobj.innerText = itxt;      
+      ar_i.pobj.innerText = itxt;
       for(let j = 0; j < ar_i.atr.length; j++) {
         let att1 = document.createAttribute(ar_i.atr[j].name);
         let avv = ar_i.atr[j].value;
-        if ((ar_i.atr[j].Add_i)&&(this.Idx)){if (ar_i.atr[j].Add_i == 1) {avv = avv + this.Idx;}} 
+        if ((ar_i.atr[j].Add_i)&&(this.Idx > 0)){if (ar_i.atr[j].Add_i == 1) {avv = avv + this.Idx;}}
         att1.value = avv;
-        ar_i.pobj.setAttributeNode(att1);  	   
+        ar_i.pobj.setAttributeNode(att1);        
       }
-      // добавить атрибут значения индекса 
+      this.oop[ar_i.pobj.id] = ar_i.pobj;
+      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
       if (this.OnInxAtt == 1) {
         let att2 = document.createAttribute("InxAtt");
         att2.value = this.Idx;
@@ -197,7 +236,7 @@ function CreateMetodsObj() {
     kp:[],
 
     InitAllElem: function() {
-      // заполняем массив ключей ki и kp:[atr[0].value] по atr[0] = atr:[{name:"id", value:"StepMixInc1"}]
+      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ ki пїЅ kp:[atr[0].value] пїЅпїЅ atr[0] = atr:[{name:"id", value:"StepMixInc1"}]
       let ar_ = this.ar;
       for(let i = 0; i < ar_.length; i++) {
         let key1 = ar_[i].atr[0].value;
@@ -206,7 +245,7 @@ function CreateMetodsObj() {
     },
 
     create1Elem: function(i, itxt, idx){
-      // создает по индексу i массива просто элемент (document.createElement) и заполняет его атрибутами
+      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ i пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (document.createElement) пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
       let ar_i = this.ar[i];
       ar_i.pobj = document.createElement(ar_i.elname);
       let key1 = ar_i.atr[0].value;
@@ -219,7 +258,7 @@ function CreateMetodsObj() {
         att1.value = avv;        
         ar_i.pobj.setAttributeNode(att1);  	   
       }
-      // добавить атрибут значения индекса 
+      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
       if (this.OnInxAtt == 1) {
         let att2 = document.createAttribute("InxAtt");       
         att2.value = idx;        
@@ -333,21 +372,6 @@ function DataHtmlAnyElem(gv) {
   return Obj;
 }  
 
-
-function DataTree_i(gv) {
-  let Bi = {
-    blvi_0main_i:{
-    //++++++++++++++++++++++  
-    //++++++++++++++++++++++
-    //++++++++++++++++++++++
-    //++++++++++++++++++++++
-    //++++++++++++++++++++++
-    //++++++++++++++++++++++   
-    }
-  }  
-}  
-
-//function DataHtmlTplBlVi_i(gv) {  
 function DataHtmlBV_i(gv) {  
   let eval = gv.eventvalue;
   let BlVi = {
@@ -553,12 +577,189 @@ function DataHtmlTst_i(gv) {
         {name:eval, value:"clickblvi_LoadLesson(this)"}
       ],
       pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"blvi_LoadVarList", Add_i:1},
+        {name:"class", value:"confbuttctrl"},
+        {name:eval, value:"clickblvi_LoadVarList(this)"}
+      ],
+      pobj:null
     }
 ]
 }
 return BlVi;
 }
 
+function DataHtmlMMenu_i(gv) {
+  let eval = gv.eventvalue;
+  let mm = {
+    ar:[
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_00main_i", Add_i:1},
+        {name:"class", value:"mm_00main_i"}          
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_0main_i", Add_i:1},
+        {name:"class", value:"mm_0main_i"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_0foot_i", Add_i:1},
+        {name:"class", value:"mm_0foot_i"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_1sentence_i", Add_i:1},
+        {name:"class", value:"mm_1sentence_i"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_1divctrl_i", Add_i:1},
+        {name:"class", value:"mm_1divctrl_i"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_but1_i", Add_i:1, tid:"mm_div1_i"},
+        {name:"class", value:"mm_but1_i"},
+        {name:eval, value:"clickCtrlMMenu(this)"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_but2_i", Add_i:1, tid:"mm_div2_i"},
+        {name:"class", value:"mm_but2_i"},
+        {name:eval, value:"clickCtrlMMenu(this)"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_div1_i", Add_i:1, tid:"mm_but1_i"},
+        {name:"class", value:"mm_div1_i"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_div2_i", Add_i:1, tid:"mm_but2_i"},
+        {name:"class", value:"mm_div2_i"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_boxlesslist_i", Add_i:1, tid:"mm_but2_i"},
+        {name:"class", value:"mm_boxlesslist_i"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"sent_select_ok", Add_i:1},
+        {name:"class", value:"sent_select_ok"},
+        {name:eval, value:"click_sent_select_ok(this)"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_Play_i", Add_i:1},
+        {name:"class", value:"confbuttctrl"},
+        {name:eval, value:"click_mm_Play_i(this)"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_Stop_i", Add_i:1},
+        {name:"class", value:"confbuttctrl"},
+        {name:eval, value:"click_mm_Stop_i(this)"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_space_i", Add_i:1},
+        {name:"class", value:"confbuttctrl"},
+        {name:eval, value:"click_mm_space_i(this)"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_nextlesson_i", Add_i:1},
+        {name:"class", value:"confbuttctrl"},
+        {name:eval, value:"click_mm_nextlesson_i(this)"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_Generate1", Add_i:1},
+        {name:"class", value:"confbuttctrl"},
+        {name:eval, value:"clickGenerate1(this)"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_Generate2", Add_i:1},
+        {name:"class", value:"confbuttctrl"},
+        {name:eval, value:"clickGenerate2(this)"}        
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_LoadLesson", Add_i:1},
+        {name:"class", value:"confbuttctrl"},
+        {name:eval, value:"clickmm_LoadLesson(this)"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+      atr:[
+        {name:"id", value:"mm_LoadVarList", Add_i:1},
+        {name:"class", value:"confbuttctrl"},
+        {name:eval, value:"clickmm_LoadVarList(this)"}
+      ],
+      pobj:null
+    }
+]
+}
+return mm;
+}
+
+function DataHtmlLstLes_i(gv){
+  let eval = gv.eventvalue;
+  let lls = {
+    ar:[
+      {elname:"div",
+        atr:[
+          {name:"id", value:"mmless_item", Add_i:1},
+          {name:"class", value:"mmless_item"},
+          {name:eval, value:"click_mmless_item(this)"}
+        ],
+        pobj:null
+      }
+    ]
+  }
+  return lls;
+}
 
 
 
