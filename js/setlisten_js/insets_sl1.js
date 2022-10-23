@@ -85,11 +85,11 @@ function AfterPutBeforeLoadLesson(gv, vdata) {
 }
 
 function Load_VoiceLessonOnRun(gv, vdata) {
-  gv.KeyVoiceLess = gv.ListBV[gv.LessVoiceNum].idvarname;
-  gv.BVSens = vdata[gv.KeyVoiceLess];
+  //gv.KeyVoiceLess = gv.ListBV[gv.LessVoiceNum].idvarname;
+ // gv.BVSens = vdata[gv.KeyVoiceLess];
   gv.KeyLess = gv.ListLess[gv.LessonNum].idvarname;
   gv.ArrSens = vdata[gv.KeyLess];
-  gv.ArVP.ar = FormVoiceArrCurSentence(gv);
+//  gv.ArVP.ar = FormVoiceArrCurSentence(gv);
 }
 
 function Init_LessonVarObj(gv, vdata) {
@@ -117,6 +117,7 @@ function Init_LessonVarObj(gv, vdata) {
   if (gv.ListLess[gv.LessonNum].CurSentences) {gv.CurSentences = gv.ListLess[gv.LessonNum].CurSentences;}
   gv.MaxStepMix = vdata["MaxStepMix"] * 1; // * на 1 для уст. типа число
   gv.DefStepMix = vdata["DefStepMix"] * 1; // * на 1 для уст. типа число
+  LoadlessTo_mmenu(gv);
 }
 
 function Init_BlViVarObj(gv ) {
