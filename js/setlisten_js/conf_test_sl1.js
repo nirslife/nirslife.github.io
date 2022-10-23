@@ -4,9 +4,10 @@ function create1Blocktest1(gv) {
   let i = gv.HtmlTst.Idx;
   Tpb.create1ElemByInx("blvi_2divbuttctrl_i","");
   let bd2 = Tpb.op["blvi_2divbuttctrl_i"];     
-    bd2.appendChild(Tpb.create1ElemByInx("blvi_Generate1","Generate1"));
-    bd2.appendChild(Tpb.create1ElemByInx("blvi_Generate2","Generate2"));
+//    bd2.appendChild(Tpb.create1ElemByInx("blvi_Generate1","Generate1"));
+//    bd2.appendChild(Tpb.create1ElemByInx("blvi_Generate2","Generate2"));
     bd2.appendChild(Tpb.create1ElemByInx("blvi_LoadLesson","LoadLesson"));
+    bd2.appendChild(Tpb.create1ElemByInx("blvi_LoadVarList","LoadVarList"));
   Tpb.create1ElemByInx("blvi_2linebut1menu_i","V");  
   Tpb.create1ElemByInx("blvi_1divctrl_i","");
   Tpb.op["blvi_2linebut1menu_i"].innerText = (i + 1)*1;
@@ -23,7 +24,7 @@ function create1Blocktest1(gv) {
 }
 
 
-function clickGenerate1(athis){  
+function clickGenerate1(athis){
   let gv = Get_GlobalVar();
   /*
   //1) генерируем varBVlist
@@ -56,10 +57,10 @@ function clickGenerate1(athis){
   }
 }
 
-function clickGenerate2(athis){  
-  let gv = Get_GlobalVar(); 
+function clickGenerate2(athis){
+  let gv = Get_GlobalVar();
   //1) генерируем varBVlist
-  SendToBDVarBV(gv);  
+  SendToBDVarBV(gv);
   gv.funCBBeforeLoadAfterPatch = TempBeforeLoadAfterPatch;
 }
 
@@ -74,10 +75,14 @@ function TempAfterLoadArrLesson(gv) {
 
 
 function clickblvi_LoadLesson(athis) {
-  LoadJsonArray(10);
+  /* загрузил и сразу отключил
+  for (let i=13;i<=15;i++){
+    LoadJsonArray(i);
+  }
+  */
 }
 
-
+//////// Load  arrles -----------------------------------------
 function InitUrlJsonArray1(aLessonNum) {
   const UrlArrP1 = "https://nirslife.github.io/json/lesson";
   const UrlArrP2 = ".json";  
@@ -92,14 +97,36 @@ async function LoadJsonArray(aLessonNum) {
 }
 
 function CallBackForTransport(array1,aLessonNum) {
-  let gv = Get_GlobalVar(); 
+  let gv = Get_GlobalVar();
   gv.KeyLess = "arrles"+aLessonNum;
   gv.ArrSens = array1.arrw;
-  gv.ListLess.push(array1.varless);
   SendToBDArrSens(gv);
+  //gv.ListLess.push(array1.varless);
+  //SendToBDListLess(gv);
+}
+/////////******************************************************
+
+
+//////// Load  varlist -----------------------------------------
+function clickblvi_LoadVarList(athis) { 
+  LoadJsonArray_VarList(); 
+}
+function InitUrlJsonArrayList(s1) {
+  const UrlArrP1 = "https://nirslife.github.io/json/!varlist";
+  const UrlArrP2 = ".json";  
+  let UrlArray1 = UrlArrP1 + s1 + UrlArrP2;
+  return UrlArray1; 
+}
+async function LoadJsonArray_VarList() {
+  const response = await fetch(InitUrlJsonArrayList(1));
+  const array1 = await response.json();
+  CallBackForTransportList(array1);
+}
+function CallBackForTransportList(array1) {
+  let gv = Get_GlobalVar();
+  gv.ListLess = array1.varlist;  
   SendToBDListLess(gv);
 }
-
 
 
 
