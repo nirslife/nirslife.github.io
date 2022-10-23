@@ -23,7 +23,6 @@ function Main_Init_VarObj_Start(gv) {
 }
 
 function AfterLoadArrLesson(gv) {  
-  LoadlessTo_mmenu(gv);
   gv.ArVP.ar = FormVoiceArrCurSentence(gv);
 }
 
