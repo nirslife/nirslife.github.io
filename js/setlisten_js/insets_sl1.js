@@ -87,6 +87,8 @@ function AfterPutBeforeLoadLesson(gv, vdata) {
 function Load_VoiceLessonOnRun(gv, vdata) {
   gv.KeyVoiceLess = gv.ListBV[gv.LessVoiceNum].idvarname;
   gv.BVSens = vdata[gv.KeyVoiceLess];
+  gv.KeyLess = gv.ListLess[gv.LessonNum].idvarname;
+  gv.ArrSens = vdata[gv.KeyLess];
   gv.ArVP.ar = FormVoiceArrCurSentence(gv);
 }
 
@@ -94,15 +96,22 @@ function Init_LessonVarObj(gv, vdata) {
   gv.vdata1 = vdata;
   gv.ListLess = vdata["varlist"];
   gv.ListBV = vdata["varBVlist"];
-  gv.LessonNum = vdata["SavedArrLessKey1"] * 1;  // * на 1 для уст. типа число
-  gv.LessVoiceNum = vdata["SavedVoiceLessKey1"] * 1;  // * на 1 для уст. типа число  
+  let lesd1 = 0;
+  if (gv.ProgName == "Voice"){
+    lesd1 = vdata["SavedVoiceLessKey1"] * 1;  // * на 1 для уст. типа число  
+  }
+  if (gv.ProgName == "Sentence"){    
+    lesd1 = vdata["SavedArrLessKey1"] * 1;  // * на 1 для уст. типа число
+  }  
+  gv.LessonNum = lesd1
+  gv.TmpLessonNum = lesd1;
+  //gv.LessVoiceNum = lesd1;
   gv.KeyLess = gv.ListLess[gv.LessonNum].idvarname;
-  gv.KeyVoiceLess = gv.ListBV[gv.LessVoiceNum].idvarname;
+  //gv.KeyVoiceLess = gv.ListBV[gv.LessVoiceNum].idvarname;
   gv.ArrSens = vdata[gv.KeyLess];
   gv.ArrSensTst = vdata["arrles2"];
-  gv.BVSens = vdata[gv.KeyVoiceLess];
-  gv.CurPlayingSent = 0;
-  gv.ArVP.ar = FormVoiceArrCurSentence(gv);
+  //gv.BVSens = vdata[gv.KeyVoiceLess];
+  gv.CurPlayingSent = 0;  
   gv.CurSentences = 0;
   gv.CurSentVoice = 0; // текущее предложение для войса
   if (gv.ListLess[gv.LessonNum].CurSentences) {gv.CurSentences = gv.ListLess[gv.LessonNum].CurSentences;}
@@ -133,7 +142,7 @@ function SendToBDArrSens(gv) {
 
 function SendToBDListLess(gv) {
   let text = '{ "varlist":[]}';
-  let vobj = JSON.parse(text);  
+  let vobj = JSON.parse(text);
   vobj["varlist"] = gv.ListLess;
   RequestArrFireBase(gv, vobj, 'PATCH')
 }
@@ -149,7 +158,12 @@ function SendToBDCurSentences(gv) {
 
 function SendToBDLessonNum(gv) {
   let vobj = {};
-  vobj["SavedArrLessKey1"] = gv.LessonNum;
+  if (gv.ProgName == "Voice"){
+    vobj["SavedVoiceLessKey1"] = gv.LessonNum;
+  }
+  if (gv.ProgName == "Sentence"){
+    vobj["SavedArrLessKey1"] = gv.LessonNum;
+  }
   RequestArrFireBase(gv, vobj, 'PATCH')
 }
 
