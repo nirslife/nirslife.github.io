@@ -1,17 +1,3 @@
-function Get_ArVP(gv){
-  let obj1 = {
-    ar:[
-      {textv:"", Rate:"",Wait:"", InxSentence:""}
-    ],
-    CurPos:0,
-    Repeat:1,
-    Stop:0,
-    Playing:0,
-    CurSentence:0
-  };
-  return obj1;
-}
-
 function Get_HtmlBodyElem() {
   let BodyObj = 
   { 
@@ -68,7 +54,7 @@ function Get_HtmlBodyElem() {
   return BodyObj;
 }
 
-//������ ����� ��������� ��� ���������� ��� ����������
+/* //������ ����� ��������� ��� ���������� ��� ����������
 function Get_TplItemVoice(gv) {
   gv.ItVUp = [{am:[],sp:null}];
   let eval = gv.eventvalue;
@@ -85,6 +71,7 @@ function Get_TplItemVoice(gv) {
   };     
   return TplItemVoice;
 }
+ */
 
 function Get_HtmlAnyElem(gv) {  
   let ClassObj = Create_MetodsObj(gv);
@@ -94,7 +81,7 @@ function Get_HtmlAnyElem(gv) {
   return ClassObj;
 }  
 
-function Get_HtmlBV(gv) {  
+/* function Get_HtmlBV(gv) {  
   let ClassObj = Create_MetodsObj(); 
   let av = DataHtmlBV_i(gv);
   ClassObj.ar = av.ar;    
@@ -125,11 +112,11 @@ function Get_HtmlLstLes(gv) {
   ClassObj.InitAllElem();  
   return ClassObj;
 }
+ */
 
 
 
-
-function Create_MetodsObj(gv) {
+/* function Create_MetodsObj(gv) {
   //let eval = gv.eventvalue;
   let MetObj = {
     OnInxAtt:true,
@@ -185,13 +172,13 @@ function Create_MetodsObj(gv) {
     },
     SetIdx: function(aIdx) {
       this.From_x_to_i();
-      this.Idx = aIdx; 
+      this.Idx = aIdx;
     },
     GetIdx: function() {
       return this.Idx;
     },
 
-    Get_DataHtml_i: function(){},    
+    Get_DataHtml_i: function(){},
 
     create1Elem: function(i, itxt){
       // ������� �� ������� i ������� ������ ������� (document.createElement) � ��������� ��� ����������
@@ -205,7 +192,7 @@ function Create_MetodsObj(gv) {
         let avv = ar_i.atr[j].value;
         if ((ar_i.atr[j].Add_i)&&(this.Idx > 0)){if (ar_i.atr[j].Add_i == 1) {avv = avv + this.Idx;}}
         att1.value = avv;
-        ar_i.pobj.setAttributeNode(att1);        
+        ar_i.pobj.setAttributeNode(att1);
       }
       this.oop[ar_i.pobj.id] = ar_i.pobj;
       // �������� ������� �������� ������� 
@@ -225,64 +212,13 @@ function Create_MetodsObj(gv) {
   }
   return MetObj;
 } 
- 
-/*
-function CreateMetodsObj() {
-  //let eval = gv.eventvalue;
-  let MetObj = {
-    OnInxAtt:true,
-    ar:[],
-    ki:[],
-    kp:[],
+ */ 
 
-    InitAllElem: function() {
-      // ��������� ������ ������ ki � kp:[atr[0].value] �� atr[0] = atr:[{name:"id", value:"StepMixInc1"}]
-      let ar_ = this.ar;
-      for(let i = 0; i < ar_.length; i++) {
-        let key1 = ar_[i].atr[0].value;
-        this.ki[key1] = i;
-      }      
-    },
-
-    create1Elem: function(i, itxt, idx){
-      // ������� �� ������� i ������� ������ ������� (document.createElement) � ��������� ��� ����������
-      let ar_i = this.ar[i];
-      ar_i.pobj = document.createElement(ar_i.elname);
-      let key1 = ar_i.atr[0].value;
-      this.kp[key1] = ar_i.pobj;      
-      ar_i.pobj.innerText = itxt;      
-      for(let j = 0; j < ar_i.atr.length; j++) {
-        let att1 = document.createAttribute(ar_i.atr[j].name);
-        let avv = ar_i.atr[j].value;
-        if ((ar_i.atr[j].Add_i)&&(idx)){if (ar_i.atr[j].Add_i == 1) {avv = avv + idx;}} 
-        att1.value = avv;        
-        ar_i.pobj.setAttributeNode(att1);  	   
-      }
-      // �������� ������� �������� ������� 
-      if (this.OnInxAtt == 1) {
-        let att2 = document.createAttribute("InxAtt");       
-        att2.value = idx;        
-        ar_i.pobj.setAttributeNode(att2);  	   
-      }
-      return ar_i.pobj;   
-    },
-
-    create1ElemByInx: function(idn, itxt, idx){
-      let inx = this.ki[idn];
-      //this.Get_tVarObj(idn, "inx");       
-      return this.create1Elem(inx, itxt, idx);
-    }
-
-  }
-  return MetObj;
-}  
-*/
-
-function DataHtmlAnyElem(gv) {  
+function DataHtmlAnyElem(gv) {
   let eval = gv.eventvalue;
   let Obj = { 
-    ar:[      
-      { elname:"div",         
+    ar:[
+      { elname:"div",
         atr:[
           {name:"id", value:"blockvoiceitemid"},
           {name:"class", value:"blockvoiceitem"},
@@ -290,14 +226,14 @@ function DataHtmlAnyElem(gv) {
         ],
         pobj:null
       },
-      { elname:"div",         
+      { elname:"div",
         atr:[
           {name:"id", value:"blockvoiceitemctrlid"},
           {name:"class", value:"blockvoiceitemctrl"}
         ],
         pobj:null
       },
-      { elname:"div",         
+      { elname:"div",
         atr:[
           {name:"id", value:"downctrlblockid"},
           {name:"class", value:"downctrlblock"},
@@ -305,65 +241,65 @@ function DataHtmlAnyElem(gv) {
         ],
         pobj:null
       },
-      { elname:"div",         
+      { elname:"div",
         atr:[
           {name:"id", value:"Delete1"},
-          {name:"class", value:"confbuttctrl"}          
+          {name:"class", value:"confbuttctrl"}
         ],
         pobj:null
       },
-      { elname:"div",         
+      { elname:"div",
         atr:[
           {name:"id", value:"DeleteOk1"},
-          {name:"class", value:"confbuttctrl"}          
+          {name:"class", value:"confbuttctrl"}
         ],
         pobj:null
       },
-      { elname:"div",         
+      { elname:"div",
         atr:[
           {name:"id", value:"SpeedVoiceDec"},
-          {name:"class", value:"confbuttctrl"}          
+          {name:"class", value:"confbuttctrl"}
         ],
         pobj:null
-      },      
-      { elname:"div",         
+      },
+      { elname:"div",
         atr:[
           {name:"id", value:"SpeedVoiceVal"},
-          {name:"class", value:"confbuttctrl"}          
+          {name:"class", value:"confbuttctrl"}
         ],
         pobj:null
       },
-      { elname:"div",         
+      { elname:"div",
         atr:[
           {name:"id", value:"SpeedVoiceInc"},
-          {name:"class", value:"confbuttctrl"}          
+          {name:"class", value:"confbuttctrl"}
         ],
         pobj:null
       },
-      { elname:"div",         
+      { elname:"div",
         atr:[
           {name:"id", value:"AddVoiceItemid"},
-          {name:"class", value:"confbuttctrl"}          
+          {name:"class", value:"confbuttctrl"}
         ],
         pobj:null
       },
-      { elname:"div",         
+      { elname:"div",
         atr:[
           {name:"id", value:"NextSentenceid"},
-          {name:"class", value:"confbuttctrl"}          
+          {name:"class", value:"confbuttctrl"}
         ],
         pobj:null
       },
-      { elname:"div",         
+      { elname:"div",
         atr:[
           {name:"id", value:"SaveToBaseid"},
-          {name:"class", value:"confbuttctrl"}          
+          {name:"class", value:"confbuttctrl"}
         ],
         pobj:null
       },
-      { elname:"div",         
+      { elname:"div",
         atr:[
-          {name:"id", value:"bsentenitemid"}          
+          {name:"id", value:"bsentenitemid"}
         ],
         pobj:null
       }
@@ -372,14 +308,15 @@ function DataHtmlAnyElem(gv) {
   return Obj;
 }  
 
-function DataHtmlBV_i(gv) {  
+
+/* function DataHtmlBV_i(gv) {
   let eval = gv.eventvalue;
   let BlVi = {
-    ar:[                
-    {elname:"div",         
+    ar:[
+    {elname:"div",
       atr:[
         {name:"id", value:"blvi_00main_i", Add_i:1},
-        {name:"class", value:"blvi_00main_i"}          
+        {name:"class", value:"blvi_00main_i"}
       ],
       pobj:null
     },      
@@ -458,9 +395,9 @@ function DataHtmlBV_i(gv) {
 }
 return BlVi;
 }  
-
+ */
   
-function DataHtmlTst_i(gv) {  
+/* function DataHtmlTst_i(gv) {  
   let eval = gv.eventvalue;
   let BlVi = {
     ar:[                
@@ -760,7 +697,7 @@ function DataHtmlLstLes_i(gv){
   }
   return lls;
 }
-
+ */
 
 
 
