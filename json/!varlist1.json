@@ -12,6 +12,14 @@
  {"idvarname": "arrles12", "longdesc":"For и since / When ... ? и How long ... ?", "recid":12,"shortdesc": "For и since / When ... ? и How long ... ?"},
  {"idvarname": "arrles13", "longdesc":"Present perfect и past simple 1 (I have done и I did)", "recid":13,"shortdesc": "I have done и I did 1"},
  {"idvarname": "arrles14", "longdesc":"Present perfect и past simple 2 (I have done и I did)", "recid":14,"shortdesc": "I have done и I did 2"},
- {"idvarname": "arrles15", "longdesc":"Past perfect (I had done) ", "recid":15,"shortdesc": "Past perfect (I had done)"}
+ {"idvarname": "arrles15", "longdesc":"Past perfect (I had done) ", "recid":15,"shortdesc": "Past perfect (I had done)"}, 
+ {"idvarname": "arrles16", "longdesc":"Past perfect continuous (I had been doing)", "recid":16"shortdesc": "Past perfect continuous (I had been doing)"},
+ {"idvarname": "arrles17", "longdesc":"Have and have got", "recid":17,"shortdesc": "Have and have got"},
+ {"idvarname": "arrles18", "longdesc":"Used to (do)", "recid":18,"shortdesc": "Used to (do)"}, 
+ {"idvarname": "arrles19", "longdesc":"Present tenses  (I am doing / I do) for the future", "recid":19,"shortdesc": "I am doing / I do"},
+ {"idvarname": "arrles20", "longdesc":"be going to (I’m going to do)", "recid":20,"shortdesc": "I’m going to do"}, 
+ {"idvarname": "arrles21", "longdesc":"Will / Shall 1 (Future simple)", "recid":21,"shortdesc": "Will / Shall 1"},
+ {"idvarname": "arrles22", "longdesc":"Future simple (indefinite) - Will / Shall 2", "recid":22,"shortdesc": "Will / Shall 2"},
+ {"idvarname": "arrles23", "longdesc":"I will and I'm going to", "recid":23,"shortdesc": "I will and I'm going to"} 
 ]
 }
