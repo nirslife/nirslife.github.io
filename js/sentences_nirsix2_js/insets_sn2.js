@@ -73,15 +73,25 @@ function AfterPutBeforeLoadLesson(gv, vdata) {
 }
 
 function Init_LessonVarObj(gv, vdata) {
+  gv.vdata1 = vdata;
   gv.ListLess = vdata["varlist"];
-  gv.LessonNum = vdata["SavedArrLessKey1"] * 1;  // * на 1 для уст. типа число
-  gv.KeyLess = gv.ListLess[gv.LessonNum].idvarname;    
+  let lesd1 = 0;
+  if (gv.ProgName == "Voice"){
+    lesd1 = vdata["SavedVoiceLessKey1"] * 1;  // * на 1 для уст. типа число  
+  }
+  if (gv.ProgName == "Sentence"){    
+    lesd1 = vdata["SavedArrLessKey1"] * 1;  // * на 1 для уст. типа число
+  }  
+  gv.LessonNum = lesd1
+  gv.TmpLessonNum = lesd1;
+  gv.KeyLess = gv.ListLess[gv.LessonNum].idvarname;
   gv.ArrSens = vdata[gv.KeyLess];    
   gv.CurSentences = 0;
   gv.CurSentVoice = 0; // текущее предложение для войса
   if (gv.ListLess[gv.LessonNum].CurSentences) {gv.CurSentences = gv.ListLess[gv.LessonNum].CurSentences;}
   gv.MaxStepMix = vdata["MaxStepMix"] * 1; // * на 1 для уст. типа число
   gv.DefStepMix = vdata["DefStepMix"] * 1; // * на 1 для уст. типа число
+  LoadlessTo_mmenu(gv);
 }
 
 function Load_LessonOnRun(gv, vdata) {
@@ -119,12 +129,16 @@ function SendToBDCurSentences(gv) {
   RequestArrFireBase(gv, vobj, 'PATCH')
 }
 
-function SendToBDLessonNum(gv) {  
-  let vobj = {};  
-  vobj["SavedArrLessKey1"] = gv.LessonNum;  
+function SendToBDLessonNum(gv) {
+  let vobj = {};
+  if (gv.ProgName == "Voice"){
+    vobj["SavedVoiceLessKey1"] = gv.LessonNum;
+  }
+  if (gv.ProgName == "Sentence"){
+    vobj["SavedArrLessKey1"] = gv.LessonNum;
+  }
   RequestArrFireBase(gv, vobj, 'PATCH')
 }
-
 
 
 
