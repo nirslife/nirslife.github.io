@@ -1,19 +1,11 @@
 function create1mmenu_obj(gv) {
     let mm1 = gv.MMenu;
     let lls = gv.ListLess; 
-    //let i = gv.MMenu.Idx;
     mm1.create1ElemByInx("mm_div1_i","");
-    let bd2 = mm1.op["mm_div1_i"];     
-//      bd2.appendChild(mm1.create1ElemByInx("mm_LoadLesson","ListLesson"));
-//      bd2.appendChild(mm1.create1ElemByInx("mm_LoadVarList","LoadVarList"));
-
+    let bd2 = mm1.op["mm_div1_i"];
     mm1.create1ElemByInx("mm_div2_i","");
     let bd3 = mm1.op["mm_div2_i"];
-  //bd3.appendChild(mm1.create1ElemByInx("sent_select_ok","Select-OK"));
 
-
-//      bd3.appendChild(mm1.create1ElemByInx("part1_item","part1_item"));
-  
     mm1.create1ElemByInx("mm_but1_i","");
     mm1.create1ElemByInx("mm_but2_i","");
     mm1.create1ElemByInx("mm_1divctrl_i","");
@@ -22,7 +14,7 @@ function create1mmenu_obj(gv) {
     mm1.op["mm_but1_i"].innerText = "Menu1";
     mm1.op["mm_but2_i"].innerText = "Menu2";
     mm1.mmopen = "mm_but2_i";
-    mm1.op["mm_but2_i"].style.backgroundColor = "rgb(30, 144, 255)";    
+    mm1.op["mm_but2_i"].style.backgroundColor = "rgb(30, 144, 255)";
     mm1.op[mm1.tid[mm1.mmopen]].style.display = "block";
 
     let bd1 = mm1.op["mm_1divctrl_i"];
@@ -30,13 +22,17 @@ function create1mmenu_obj(gv) {
     bd1.appendChild(mm1.op["mm_but2_i"]);
     bd1.appendChild(mm1.op["mm_div1_i"]);
     bd1.appendChild(mm1.op["mm_div2_i"]);
-    //clickButtondownctrlTest(mm1.op["mm_2linebut1menu_i"]);
     
     mm1.create1ElemByInx("mm_0main_i","");
-    mm1.op["mm_0main_i"].appendChild(bd1);  
+    mm1.op["mm_0main_i"].appendChild(bd1);
     mm1.create1ElemByInx("mm_00main_i","");
-    mm1.op["mm_00main_i"].appendChild(mm1.op["mm_0main_i"]);  
-    gv.HtmlBodyObj.kp["blockvoice"].appendChild(mm1.op["mm_00main_i"]);    
+    mm1.op["mm_00main_i"].appendChild(mm1.op["mm_0main_i"]);
+    if (gv.ProgName == "Voice"){
+      gv.HtmlBodyObj.kp["blockvoice"].appendChild(mm1.op["mm_00main_i"]);
+    }
+    if (gv.ProgName == "Sentence"){
+      gv.HtmlBodyObj.kp["header1"].appendChild(mm1.op["mm_00main_i"]);
+    }
 }
 
 function LoadlessTo_mmenu(gv) {
@@ -57,10 +53,20 @@ function LoadlessTo_mmenu(gv) {
 function click_sent_select_ok(athis) {
   let gv = Get_GlobalVar();
   let mm1 = gv.MMenu;
+  let lls = gv.LstLes;
   gv.LessonNum = gv.TmpLessonNum;
   SendToBDLessonNum(gv);
   StartReLoadLesson(gv);
+  output_NameLesson(gv);
   clickCtrlMMenu(mm1.op["mm_but1_i"]);
+}
+
+function output_NameLesson(gv) {
+  let mm1 = gv.MMenu;
+  let lls = gv.LstLes;
+  let s1 = "";
+  if(gv.TmpLessonNum > 0){s1 = gv.TmpLessonNum;}
+  mm1.op["mm_but2_i"].innerText = lls.oop["mmless_item"+s1].innerText;
 }
 
 function click_mmless_item(athis) {
