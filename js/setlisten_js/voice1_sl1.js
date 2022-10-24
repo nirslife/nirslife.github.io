@@ -1,3 +1,4 @@
+/*
 function create1BlockForVoice2(gv) {  
     let Tpb = gv.HtmlTst; 
     let i = gv.HtmlTst.Idx;
@@ -24,6 +25,7 @@ function create1BlockForVoice2(gv) {
     gv.HtmlBodyObj.kp["blockvoice"].appendChild(Tpb.op["blvi_00main_i"]);
     //gv.funCBAfterLoadArrLesson = AfterLoadVoiceLesson;
   }
+  */
 
   function create1BlockForVoice1(gv) {  
     let mm1 = gv.MMenu;
@@ -31,7 +33,6 @@ function create1BlockForVoice2(gv) {
     bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","Play"));
     bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","Stop"));
     bd2.appendChild(mm1.create1ElemByInx("mm_space_i","======="));
-    //bd2.appendChild(mm1.create1ElemByInx("mm_nextlesson_i","NextLesson"));
     mm1.op["mm_0main_i"].appendChild(mm1.create1ElemByInx("mm_1sentence_i",""));
   }
 
@@ -39,19 +40,6 @@ function create1BlockForVoice2(gv) {
   function AfterLoadVoiceLesson(gv) {
     //
   }
-  /*
-  function click_blvi_nextlesson_i(athis){
-    let gv = Get_GlobalVar();
-    let Tpb = gv.HtmlTst; 
-    gv.LessonNum++;
-    gv.LessVoiceNum++; 
-    if (gv.LessVoiceNum > gv.ListBV.length - 1){ gv.LessVoiceNum = 0; }
-    let ln = gv.LessVoiceNum + 1;
-    Tpb.op["blvi_nextlesson_i"].innerText = "NextLesson#"+ln;
-    StartReLoadLesson(gv);
-    //Check_LoadLesson(gv);
-  }
-  */
   
   function Check_LoadLesson(gv) {
   
@@ -70,12 +58,6 @@ function create1BlockForVoice2(gv) {
       gv.ArVP.Playing = 1;
       PlayProc_i(gv);
     }
-  
-   /* if (!(speechSynthesis.speaking)){
-    }else{
-      speechSynthesis.cancel();
-    }
-    */
   }
   
   function PlayProc_i(gv) {
@@ -208,7 +190,7 @@ function create1BlockForVoice2(gv) {
     return arv;
   }
 
-
+/*
   function FormVoiceArrCurSentence1(gv) {
     let bv1 = gv.BVSens;
     let arv = [];
@@ -266,7 +248,7 @@ function create1BlockForVoice2(gv) {
       }
     }    
   }
-
+*/
 
 
 
