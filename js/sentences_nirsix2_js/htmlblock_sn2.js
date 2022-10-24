@@ -1,28 +1,14 @@
-function createitemctrlbutton(gv) {      
-  let AnyObj = gv.HtmlAnyObj;   
-  AnyObj.createElemByInx("blocktemctrlid1","");
-  let vObj = AnyObj.kp["blocktemctrlid1"];
-  vObj.style.display = "block";
-  vObj.appendChild(AnyObj.createElemByInx("ClearInputid1","Стереть3"));
-  vObj.appendChild(AnyObj.createElemByInx("confLessonNumid1","Lesson#"));
-  vObj.appendChild(AnyObj.createElemByInx("StepMixDec1","  -  "));
-  vObj.appendChild(AnyObj.createElemByInx("StepMix1","4"));
-  vObj.appendChild(AnyObj.createElemByInx("StepMixInc1","  +  "));
+function createitemctrlbutton(gv) {
+  let mm1 = gv.MMenu;
+  let bd2 = mm1.op["mm_div1_i"];
+  bd2.appendChild(mm1.create1ElemByInx("ClearInputid1","Стереть3"));
+  bd2.appendChild(mm1.create1ElemByInx("StepMixDec1","  -  "));
+  bd2.appendChild(mm1.create1ElemByInx("StepMix1","4"));
+  bd2.appendChild(mm1.create1ElemByInx("StepMixInc1","  +  "));
 }
   
 function Create_HeaderBlock(gv) {
-  createitemctrlbutton(gv);
- 
-  const DivEl2 = document.createElement("div"); 
-  DivEl2.className = "downctrlblock";
-  DivEl2.innerText = "X";
-  const att3 = document.createAttribute(gv.eventvalue);
-  att3.value = "clickButtondownctrlblock(this)";
-  DivEl2.setAttributeNode(att3);
-
-  let hdobj = gv.HtmlBodyObj.kp["header1"]; //GetpObj("header1");
-  hdobj.appendChild(DivEl2);
-  hdobj.appendChild(gv.HtmlAnyObj.kp["blocktemctrlid1"]);
+  createitemctrlbutton(gv); 
 }
   
   
@@ -52,6 +38,7 @@ function Create_FooterBlock(gv) {
   m_cobj.appendChild(AnyObj.createElemByInx("StepMixS_7","7"));
 }
 
+/*
 function clickButtondownctrlblock(athis) {
   let gv = Get_GlobalVar();
   if (athis.innerText == "V"){
@@ -62,6 +49,7 @@ function clickButtondownctrlblock(athis) {
     gv.HtmlAnyObj.kp["blocktemctrlid1"].style.display = "none";    
   }  
 }
+*/
 
 function clickClearInput(aThis){
   InpNode = document.getElementById("div_inputtextfrom1");
@@ -72,6 +60,7 @@ function clickClearInput(aThis){
   }
 }
 
+/*
 function clickLessonNum(aNode) {
   let gv = Get_GlobalVar();
   gv.LessonNum++;
@@ -82,6 +71,7 @@ function clickLessonNum(aNode) {
   StartReLoadLesson(gv);
   //Check_DisplayExercise(gv);
 }
+*/
 
 function NextSentenceOnClick() {
   let gv = Get_GlobalVar();
@@ -178,7 +168,7 @@ function FormArr_puzzletextfrom(gv){
   obj = gv.ArrSens;
   Indx = gv.CurSentences;
   // IndxNei - индекс предложения для подмешивания слов
-  let IndxNei = Indx + 1;   
+  let IndxNei = Indx + 1;
   if (IndxNei >= obj.length){IndxNei = 0;}   
   let EngArrDbl = SliceSentence(obj[Indx].Eng); // разбивка англ. варианта пары
   let EngArrNei = SliceSentence(obj[IndxNei].Eng); // разбивка англ. из соседней пары для подмешивания 
@@ -189,13 +179,13 @@ function FormArr_puzzletextfrom(gv){
   if (lnei > gv.MaxMixWordsAdd ){ lnei = gv.MaxMixWordsAdd;} // добавляем не больше чем MaxMixWordsAdd-слов
   if (ldbl > 30){ lnei = 0; } // если слов больше 30 то не подмешиваем
   for (i = 0; i < lnei; i++) {
-    EngArrDbl.push(EngArrNei[i]);    
+    EngArrDbl.push(EngArrNei[i]);
   }    
   return EngArrDbl; 
 }
 
 function AfterLoadArrLesson(gv) {
-  gv.HtmlAnyObj.kp["confLessonNumid1"].innerText = "Lesson#"+(gv.LessonNum+1)*1;
+  //gv.HtmlAnyObj.kp["confLessonNumid1"].innerText = "Lesson#"+(gv.LessonNum+1)*1;
   Check_DisplayExercise(gv);
 }
 
@@ -209,8 +199,9 @@ function DisplayExercise(gv) {
 
   let obj = gv.ArrSens;
   let Indx = gv.CurSentences;  
-  let AnyObj = gv.HtmlAnyObj;   
+  let AnyObj = gv.HtmlAnyObj;
   let StepMix = gv.DefStepMix;
+  let mm1 = gv.MMenu;
   if (obj[Indx].StepMix) { 
     StepMix = obj[Indx].StepMix;    
   }else{
@@ -218,7 +209,7 @@ function DisplayExercise(gv) {
     SendToBDArrSens(gv);
   }
 
-  AnyObj.kp["StepMix1"].innerText = StepMix;
+  mm1.op["StepMix1"].innerText = StepMix;
 
   // очищаем старое, если есть
   const rNode1 = document.getElementById("div_puzzletextfrom1");
@@ -229,18 +220,18 @@ function DisplayExercise(gv) {
   let MixArr = InitRandomArr3(EngArrDbl.length, StepMix);
   const rootDiv = document.createElement("div");
   rootDiv.id = "div_puzzletextfrom1";
-  for (i = 0; i < EngArrDbl.length; i++) {    
+  for (i = 0; i < EngArrDbl.length; i++) {
     const InpBl = document.createElement("div");
     InpBl.innerText = EngArrDbl[MixArr[i]];
-    InpBl.className = "puzzleblock inpon";    
+    InpBl.className = "puzzleblock inpon";
     const att1 = document.createAttribute(gv.eventvalue); 
     att1.value = "clickPuzzletext(this)";  
-    InpBl.setAttributeNode(att1);        
+    InpBl.setAttributeNode(att1);
     const att2 = document.createAttribute("IndexArr");
     att2.value = i;  
     InpBl.id = "Puzzid"+i;
-    InpBl.setAttributeNode(att2);        		
-    rootDiv.appendChild(InpBl);    
+    InpBl.setAttributeNode(att2);
+    rootDiv.appendChild(InpBl);
   }
   document.getElementById("puzzletextfrom1").appendChild(rootDiv); 
     
