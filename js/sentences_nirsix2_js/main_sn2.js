@@ -77,7 +77,7 @@ function MainDBForFunction() {
 function Main_Init_VarObj_Start(gv) {
   gv.ProgName =  "Sentence"; //gv.ProgName = "Voice"; 
   gv.eventvalue = Init_Eventvalue_Devices();
-  gv.HtmlBodyObj = Get_HtmlBodyElem();  
+  gv.HtmlBodyObj = Get_HtmlBodyElem();
   gv.HtmlAnyObj = Get_HtmlAnyElem(gv);
   gv.msgspeak = Init_SpeechSynthesisUtterance();   
   gv.FBSets = Init_LoginFireBaseSets();
@@ -85,7 +85,7 @@ function Main_Init_VarObj_Start(gv) {
   gv.LstLes =  Get_HtmlLstLes(gv); // список уроков
   gv.funInit_LessonVarObj = Init_LessonVarObj;
   gv.funCBAfterPutBeforeLoad = AfterPutBeforeLoadLesson;
-  gv.funCBAfterLoadArrLesson = AfterLoadArrLesson;
+  gv.funCBAfterLoadArrLesson = AfterLoadArrLesson;  
 }
 
 function Create_HTML_BODY_Start(gv) {  
