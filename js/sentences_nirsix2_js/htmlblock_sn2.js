@@ -33,6 +33,7 @@ function Create_FooterBlock(gv) {
   let AnyObj = gv.HtmlAnyObj; 
   m_cobj.appendChild(Butt1);
   m_cobj.appendChild(Butt2);     
+  m_cobj.appendChild(AnyObj.createElemByInx("StepMixS_1","1"));
   m_cobj.appendChild(AnyObj.createElemByInx("StepMixS_2","2"));
   m_cobj.appendChild(AnyObj.createElemByInx("StepMixS_4","4"));
   m_cobj.appendChild(AnyObj.createElemByInx("StepMixS_7","7"));
@@ -86,8 +87,16 @@ function NextSentenceOnClick() {
   document.getElementById("verify_cont1").className = "verify_def";  
 }
 
-function TestSentOnClick() {
-  let gv = Get_GlobalVar();  
+
+function CheckInputText(gv) {
+  if (TestCheckInputText(gv)){
+    document.getElementById("inputtextfrom1").style.background = "rgb(76, 175, 80)";
+  }else{
+    document.getElementById("inputtextfrom1").style.background = "rgb(255, 255, 255)";
+  }
+}
+
+function TestCheckInputText(gv) {
   let inpstr = ""; 
   let srcstr = "";
   const myCollection = document.getElementsByClassName("inputtext");
@@ -99,6 +108,31 @@ function TestSentOnClick() {
   inpstr = inpstr.toUpperCase();
   srcstr = gv.ArrSens[gv.CurSentences].Eng.replaceAll(" ","");
   srcstr = srcstr.toUpperCase();
+  gv.sinpstr = inpstr;
+  gv.ssrcstr = srcstr;
+  if (inpstr == srcstr){ 
+    return true;
+  }else{
+    return false;
+  }
+}
+
+function TestSentOnClick() {
+  let gv = Get_GlobalVar();
+/*
+  let inpstr = ""; 
+  let srcstr = "";
+  const myCollection = document.getElementsByClassName("inputtext");
+  for (let i = 0; i < myCollection.length; i++) {
+    //myCollection[i].style.color = "red";
+    inpstr = inpstr + myCollection[i].innerHTML;
+  }  
+  inpstr = inpstr.replaceAll(" ","");
+  inpstr = inpstr.toUpperCase();
+  srcstr = gv.ArrSens[gv.CurSentences].Eng.replaceAll(" ","");
+  srcstr = srcstr.toUpperCase();
+
+  */
     
   const remNode = document.getElementById("div_verify_cont1");
   if (remNode){remNode.remove();}
@@ -112,7 +146,10 @@ function TestSentOnClick() {
   const EngSrcSen = document.createElement("div");  
   EngSrcSen.className = "verify_info";
   EngSrcSen.innerText = gv.ArrSens[gv.CurSentences].Eng;
-    
+
+  TestCheckInputText(gv);
+  inpstr = gv.sinpstr;
+  srcstr = gv.ssrcstr;
   const EngSrc = document.createElement("div");  
   EngSrc.className = "verify_info";
   EngSrc.innerText = srcstr;
@@ -136,11 +173,12 @@ function TestSentOnClick() {
 function clickInputtext(aThis) {
   let gv = Get_GlobalVar();  
   const InpBl = document.getElementById("Puzzid"+aThis.getAttribute("IndexArr"));  
-  InpBl.className = "puzzleblock inpon";        
+  InpBl.className = "puzzleblock inpon";
   const att1 = document.createAttribute(gv.eventvalue);    
   att1.value = "clickPuzzletext(this)";  
-  InpBl.setAttributeNode(att1);        
-  aThis.remove();   
+  InpBl.setAttributeNode(att1);
+  aThis.remove();
+  CheckInputText(gv);
 }
 
 function clickPuzzletext(aThis) {
@@ -157,9 +195,9 @@ function clickPuzzletext(aThis) {
   att2.value = aThis.getAttribute("IndexArr");  
   InTxt.setAttributeNode(att2);       
   speak(gv, aThis.innerText, 1.2);
-  document.getElementById("div_inputtextfrom1").appendChild(InTxt);  
+  document.getElementById("div_inputtextfrom1").appendChild(InTxt);
+  CheckInputText(gv);
 }
-
 
 function FormArr_puzzletextfrom(gv){
 // формирование массива пазлов-слов (состоит из всех слов ответа и подмешиваем слова из соседнего предложения) 
@@ -211,7 +249,8 @@ function DisplayExercise(gv) {
 
   mm1.op["StepMix1"].innerText = StepMix;
 
-  // очищаем старое, если есть
+  CheckInputText(gv); //вместо document.getElementById("--------").style.background = "rgb(255, 255, 255)";
+  // очищаем старое, если есть  
   const rNode1 = document.getElementById("div_puzzletextfrom1");
   const rNode2 = document.getElementById("div_inputtextfrom1");
   if (rNode1){rNode1.remove();}
@@ -278,12 +317,14 @@ function clickStepMixChange(athis) {
     SendToBDArrSens(gv);
     Check_DisplayExercise(gv);
   }
+  SetActiveStepMix(gv);
 }    
 
 function clickStepMixSet(athis) {
   let gv = Get_GlobalVar();
   obj = gv.ArrSens; Indx = gv.CurSentences; 
-  let aValue = 2;  
+  let aValue = 2;
+  if (athis.id == "StepMixS_1") {aValue = 1;}
   if (athis.id == "StepMixS_2") {aValue = 2;}
   if (athis.id == "StepMixS_4") {aValue = 4;}
   if (athis.id == "StepMixS_7") {aValue = 7;}  
@@ -292,4 +333,33 @@ function clickStepMixSet(athis) {
     SendToBDArrSens(gv); // сохраняем урок в базу (хотя нужно сохранить только StepMix)
     Check_DisplayExercise(gv);
   }
+  SetActiveStepMix(gv);
+}
+
+function SetActiveStepMix(gv) {  
+  document.getElementById("StepMixS_1").style.background = "rgb(30, 144, 255)";
+  document.getElementById("StepMixS_2").style.background = "rgb(30, 144, 255)";
+  document.getElementById("StepMixS_4").style.background = "rgb(30, 144, 255)";
+  document.getElementById("StepMixS_7").style.background = "rgb(30, 144, 255)";
+  obj = gv.ArrSens;
+  let aval = 0;
+  switch(obj[Indx].StepMix) {
+    case 1:
+      aval = 1;
+      break;
+    case 2:
+      aval = 2;
+      break;
+    case 4:
+      aval = 4;
+      break;
+    case 7:
+      aval = 7;
+      break;  
+    default:
+      aval = 0;
+  }
+  if (aval > 0 ){
+    document.getElementById("StepMixS_"+aval).style.background = "rgb(33, 243, 216)";
+  }  
 }
