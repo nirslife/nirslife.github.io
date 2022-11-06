@@ -96,9 +96,17 @@ function Get_HtmlAnyElem(gv) {
         ],
         pobj:null
       },
-      { elname:"div",         
+      { elname:"div",
         atr:[
           {name:"id", value:"StepMixS_7"},
+          {name:"class", value:"footerbutt2"},
+          {name:eval, value:"clickStepMixSet(this)"}
+        ],
+        pobj:null
+      },
+      { elname:"div",
+        atr:[
+          {name:"id", value:"StepMixS_1"},
           {name:"class", value:"footerbutt2"},
           {name:eval, value:"clickStepMixSet(this)"}
         ],
