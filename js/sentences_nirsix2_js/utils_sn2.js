@@ -2,30 +2,30 @@
 function SliceSentence(aSenten) {
     let str = aSenten;
     let s1;
-    let i;  
+    let i;
     let j = 0;
     let arrsen = [];
-    //str = str.replaceAll("}","");  
+    //str = str.replaceAll("}","");
     while (str.length > 0) {
       i = str.indexOf(" ");
       if (i < 1){ i = str.length; }
       s1 = str.substr(0, i);
-      str = str.slice(i+1, str.length);  
-      s1 = s1.replaceAll(" ","");   // убираем пробелы	
-      if (s1.length == 1) {s1 = s1 + " ";} 
+      str = str.slice(i+1, str.length);
+      s1 = s1.replaceAll(" ","");   // убираем пробелы
+      if (s1.length == 1) {s1 = s1 + " ";}
       arrsen[j] = s1;
       j++;
-    }   
+    }
     return arrsen;
 }
   
   //перемешивание массива случайным образом
-function MixArray(aObj) {  
-  const rArr = []; 
+function MixArray(aObj) {
+  const rArr = [];
   const vObj = {"arrw":[]};
   InitRandomArr(aObj.arrw.length, 0, rArr);
   for (i = 0; i < aObj.arrw.length; i++) {
-    vObj.arrw[i] = aObj.arrw[rArr[i]];    
+    vObj.arrw[i] = aObj.arrw[rArr[i]];
   } 
   return vObj;
 }
@@ -48,7 +48,7 @@ function InitRandomArr(max, incval, Arr1) {  // копия кода старая: function Init
       Arr1[i] = Arr1[j];
       Arr1[j] = a;
     }  
-    for (i = 0; i < max; i++) {    
+    for (i = 0; i < max; i++) {
       Arr1[i+incval] = Arr1[i]+incval; 
     }
 }
