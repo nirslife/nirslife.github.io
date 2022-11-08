@@ -53,12 +53,14 @@ function clickButtondownctrlblock(athis) {
 */
 
 function clickClearInput(aThis) {
+  let gv = Get_GlobalVar();
   InpNode = document.getElementById("div_inputtextfrom1");
   if (InpNode) {
     while (InpNode.firstChild) {
        clickInputtext(InpNode.firstChild);
     }
   }
+  CheckInputText(gv);
 }
 
 /*
@@ -119,12 +121,13 @@ function TestCheckInputText(gv) {
 }
 
 function TestWordCheckInputText(gv) {
+  const myCollection = document.getElementsByClassName("inputtext");
+  let len = myCollection.length;  
+if (len > 0) {
   let arp = [];
   let lastix = -1;
   let its_ok = 1;
   let SrcEng = SliceSentence(gv.ArrSens[gv.CurSentences].Eng);
-  const myCollection = document.getElementsByClassName("inputtext");
-  let len = myCollection.length;
   if (len > SrcEng.length) {len = SrcEng.length;}
   for (let i = 0; i < len; i++) {
     myCollection[i].style.color = "rgb(0, 0, 0)";
@@ -150,9 +153,9 @@ function TestWordCheckInputText(gv) {
     arp.push(it);
   }
   for (let i = 0; i <= lastix; i++) {
-    myCollection[i].style.color = "rgb(90, 165, 102)";
+    myCollection[i].style.color = "rgb(4, 121, 23)";//"rgb(90, 165, 102)";
   }
-
+}
 }
 
 
