@@ -8,6 +8,11 @@ function SliceSentence(aSenten) {
     //str = str.replaceAll("}","");
     while (str.length > 0) {
       i = str.indexOf(" ");
+      // если больше одного пробела
+      while ((i > -1)&&(i < 1)) {
+         str = str.slice(i+1, str.length);
+         i = str.indexOf(" ");
+      } 
       if (i < 1){ i = str.length; }
       s1 = str.substr(0, i);
       str = str.slice(i+1, str.length);
