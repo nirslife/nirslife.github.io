@@ -33,7 +33,7 @@ function create1BlockForVoice2(gv) {
     bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","Play"));
     bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","Stop"));
     bd2.appendChild(mm1.create1ElemByInx("mm_space_i","======="));
-    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","1311_1"));
+    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","1_1"));
     mm1.op["mm_0main_i"].appendChild(mm1.create1ElemByInx("mm_1sentence_i",""));
   }
 
