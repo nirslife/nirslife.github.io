@@ -76,6 +76,7 @@ function MainDBForFunction() {
  
 function Main_Init_VarObj_Start(gv) {
   gv.ProgName =  "Sentence"; //gv.ProgName = "Voice"; 
+  gv.OffLineMode = 0;
   gv.eventvalue = Init_Eventvalue_Devices();
   gv.HtmlBodyObj = Get_HtmlBodyElem();
   gv.HtmlAnyObj = Get_HtmlAnyElem(gv);
@@ -93,13 +94,13 @@ function Create_HTML_BODY_Start(gv) {
   create1mmenu_obj(gv);
   Create_HeaderBlock(gv);
   Create_FooterBlock(gv);
-  LoginFireBase(gv);
+  EnterToBD(gv); // LoginFireBase(gv);
 }
 
 function Main_App_Run() {
   vGV = Init_GlobalVar();
-  Main_Init_VarObj_Start(vGV);  
-  Create_HTML_BODY_Start(vGV);  
+  Main_Init_VarObj_Start(vGV);
+  Create_HTML_BODY_Start(vGV);
 }  
 
 
