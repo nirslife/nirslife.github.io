@@ -17,8 +17,8 @@ function Get_HtmlBodyElem() {
       let arr = this.ar;
       for(let i = 0; i < arr.length; i++) {
         let key1 = arr[i].atr[0].value;
-        this.ki[key1] = i;        
-      }      
+        this.ki[key1] = i;
+      }
     },
     createElem: function(i){
       // создает просто элемент (document.createElement) и заполняет его атрибутами
