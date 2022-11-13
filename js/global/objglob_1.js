@@ -7,6 +7,7 @@ function Get_ArVP(gv){
       Repeat:1,
       Stop:0,
       Playing:0,
+      FrameIndex:0,
       CurSentence:0
     };
     return obj1;
@@ -650,6 +651,13 @@ function Get_ArVP(gv){
       },
       {elname:"div",
         atr:[
+          {name:"id", value:"mm_version_i", Add_i:1},
+          {name:"class", value:"confbuttctrl"}
+        ],
+        pobj:null
+      },
+      {elname:"div",
+        atr:[
           {name:"id", value:"mm_nextlesson_i", Add_i:1},
           {name:"class", value:"confbuttctrl"},
           {name:eval, value:"click_mm_nextlesson_i(this)"}
@@ -716,6 +724,22 @@ function Get_ArVP(gv){
           {name:"id", value:"StepMixInc1"},
           {name:"class", value:"confbuttctrl"},
           {name:eval, value:"clickStepMixChange(this)"}
+        ],
+        pobj:null
+      },
+      {elname:"div",
+        atr:[
+          {name:"id", value:"blvi_LoadLesson", Add_i:1},
+          {name:"class", value:"confbuttctrl"},
+          {name:eval, value:"clickblvi_LoadLesson(this)"}
+        ],
+        pobj:null
+      },
+      {elname:"div",
+        atr:[
+          {name:"id", value:"blvi_LoadVarList", Add_i:1},
+          {name:"class", value:"confbuttctrl"},
+          {name:eval, value:"clickblvi_LoadVarList(this)"}
         ],
         pobj:null
       }
