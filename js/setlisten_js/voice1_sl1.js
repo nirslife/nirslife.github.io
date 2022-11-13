@@ -35,6 +35,7 @@ function create1BlockForVoice2(gv) {
     bd2.appendChild(mm1.create1ElemByInx("mm_space_i","======="));
     bd2.appendChild(mm1.create1ElemByInx("mm_version_i","1_1"));
     mm1.op["mm_0main_i"].appendChild(mm1.create1ElemByInx("mm_1sentence_i",""));
+    create1BlockMenu3(gv);
   }
 
   
@@ -120,7 +121,7 @@ function create1BlockForVoice2(gv) {
     gv.ArVP.CurPos++;
     gv.ArVP.CurPos++;
     if (gv.ArVP.CurPos >= gv.ArVP.ar.length) {
-      gv.ArVP.CurPos--;//если достигли конца то все
+      gv.ArVP.CurPos--;//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ
     }
     athis.innerText = "===>>>"+gv.ArVP.CurPos;
     formframedo(gv);
@@ -180,7 +181,7 @@ function create1BlockForVoice2(gv) {
         for(let i = 0; i < ar1w.length; i++) {
           let e1 = {};
           e1.textv = ar1w[i];
-          e1.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // переводим в тики: 1тик = 100мс
+          e1.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ: 1пїЅпїЅпїЅ = 100пїЅпїЅ
           e1.Rate = 0.5;//bv1[inx].SpeakRateBy1Word;
           e1.InxSentence = inx;
           arv.push(e1);
@@ -189,14 +190,14 @@ function create1BlockForVoice2(gv) {
       */
       let d1 = {};
       d1.textv = bv1[inx].Eng;
-      d1.Wait = 1;//(bv1[inx].WaitBy1Word_mSec)/100; // переводим в тики: 1тик = 100мс
+      d1.Wait = 1;//(bv1[inx].WaitBy1Word_mSec)/100; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ: 1пїЅпїЅпїЅ = 100пїЅпїЅ
       d1.Rate = 0.4; //bv1[inx].SpeakRateSenten;
       d1.InxSentence = inx;
       arv.push(d1);
   
       let d2 = {};
       d2.textv = bv1[inx].Eng;
-      d2.Wait = 1;//(bv1[inx].WaitBy1Word_mSec)/100; // переводим в тики: 1тик = 100мс
+      d2.Wait = 1;//(bv1[inx].WaitBy1Word_mSec)/100; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ: 1пїЅпїЅпїЅ = 100пїЅпїЅ
       d2.Rate = 0.8; //bv1[inx].SpeakRateSenten;
       d2.InxSentence = inx;
       arv.push(d2);
@@ -264,7 +265,7 @@ function create1BlockForVoice2(gv) {
         for(let i = 0; i < ar1w.length; i++) {
           let e1 = {};
           e1.textv = ar1w[i];
-          e1.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // переводим в тики: 1тик = 100мс
+          e1.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ: 1пїЅпїЅпїЅ = 100пїЅпїЅ
           e1.Rate = 0.5;//bv1[inx].SpeakRateBy1Word;
           e1.InxSentence = inx;
           arv.push(e1);
@@ -272,14 +273,14 @@ function create1BlockForVoice2(gv) {
       }
       let d1 = {};
       d1.textv = bv1[inx].Sentences1;
-      d1.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // переводим в тики: 1тик = 100мс
+      d1.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ: 1пїЅпїЅпїЅ = 100пїЅпїЅ
       d1.Rate = 0.4; //bv1[inx].SpeakRateSenten;
       d1.InxSentence = inx;
       arv.push(d1);
   
       let d2 = {};
       d2.textv = bv1[inx].Sentences1;
-      d2.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // переводим в тики: 1тик = 100мс
+      d2.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ: 1пїЅпїЅпїЅ = 100пїЅпїЅ
       d2.Rate = 0.8; //bv1[inx].SpeakRateSenten;
       d2.InxSentence = inx;
       arv.push(d2);
@@ -327,20 +328,20 @@ function create1BlockForVoice2(gv) {
       for(let i = 0; i < ar1w.length; i++) {
         let e1 = {};
         e1.textv = ar1w[i];
-        e1.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // переводим в тики: 1тик = 100мс
+        e1.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ: 1пїЅпїЅпїЅ = 100пїЅпїЅ
         e1.Rate = 0.5;//bv1[inx].SpeakRateBy1Word;
         arv[i] = e1;
       }
     }  
     let d1 = {};
     d1.textv = bv1[inx].Sentences1;
-    d1.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // переводим в тики: 1тик = 100мс
+    d1.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ: 1пїЅпїЅпїЅ = 100пїЅпїЅ
     d1.Rate = 0.4; //bv1[inx].SpeakRateSenten;
     arv.push(d1);
   
     let d2 = {};
     d2.textv = bv1[inx].Sentences1;
-    d2.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // переводим в тики: 1тик = 100мс
+    d2.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ: 1пїЅпїЅпїЅ = 100пїЅпїЅ
     d2.Rate = 0.6; //bv1[inx].SpeakRateSenten;
     arv.push(d1);
   
