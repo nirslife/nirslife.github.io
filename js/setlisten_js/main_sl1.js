@@ -3,6 +3,7 @@ let vGV; // глобальная переменная - она будет одн
 
 function Main_Init_VarObj_Start(gv) {
   gv.ProgName = "Voice"; //gv.ProgName = "Sentence";
+  gv.OffLineMode = 0;
   gv.eventvalue = Init_Eventvalue_Devices();
   gv.HtmlBodyObj = Get_HtmlBodyElem();
   gv.HtmlAnyObj = Get_HtmlAnyElem(gv);
@@ -53,7 +54,7 @@ function Create_HTML_BODY_Start(gv) {
   //gv.funCBAfterLoadArrLesson = TempAfterLoadArrLesson; // пустую функцию, пока ничего делать не нужно
 //  create1Blocktest1(gv);
   create1BlockForVoice1(gv);
-  LoginFireBase(gv);
+  EnterToBD(gv); // LoginFireBase(gv);
 }
 
 
