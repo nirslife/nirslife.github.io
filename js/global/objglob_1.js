@@ -135,6 +135,7 @@ function Get_ArVP(gv){
     let MetObj = {
       OnInxAtt:true,
       mmopen:"",
+      loadedlessons:0,
       Idx:-1,
       countx:0,
       arx:[],
@@ -598,6 +599,14 @@ function Get_ArVP(gv){
       },
       {elname:"div",
         atr:[
+          {name:"id", value:"mm_but3_i", Add_i:1, tid:"mm_div3_i"},
+          {name:"class", value:"mm_but3_i"},
+          {name:eval, value:"clickCtrlMMenu(this)"}
+        ],
+        pobj:null
+      },
+      {elname:"div",
+        atr:[
           {name:"id", value:"mm_div1_i", Add_i:1, tid:"mm_but1_i"},
           {name:"class", value:"mm_div1_i"}
         ],
@@ -607,6 +616,13 @@ function Get_ArVP(gv){
         atr:[
           {name:"id", value:"mm_div2_i", Add_i:1, tid:"mm_but2_i"},
           {name:"class", value:"mm_div2_i"}
+        ],
+        pobj:null
+      },
+      {elname:"div",
+        atr:[
+          {name:"id", value:"mm_div3_i", Add_i:1, tid:"mm_but3_i"},
+          {name:"class", value:"mm_div3_i"}
         ],
         pobj:null
       },
@@ -653,6 +669,14 @@ function Get_ArVP(gv){
         atr:[
           {name:"id", value:"mm_version_i", Add_i:1},
           {name:"class", value:"confbuttctrl"}
+        ],
+        pobj:null
+      },
+      {elname:"div",
+        atr:[
+          {name:"id", value:"mm_offlinemode_i", Add_i:1},
+          {name:"class", value:"confbuttctrl"},
+          {name:eval, value:"click_mm_offlinemode_i(this)"}
         ],
         pobj:null
       },
