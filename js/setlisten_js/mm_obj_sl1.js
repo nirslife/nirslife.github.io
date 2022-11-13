@@ -5,14 +5,19 @@ function create1mmenu_obj(gv) {
     let bd2 = mm1.op["mm_div1_i"];
     mm1.create1ElemByInx("mm_div2_i","");
     let bd3 = mm1.op["mm_div2_i"];
+    mm1.create1ElemByInx("mm_div3_i","");
+    let bd4 = mm1.op["mm_div3_i"];
+
 
     mm1.create1ElemByInx("mm_but1_i","");
     mm1.create1ElemByInx("mm_but2_i","");
+    mm1.create1ElemByInx("mm_but3_i","");    
     mm1.create1ElemByInx("mm_1divctrl_i","");
     mm1.op["mm_but1_i"].style.backgroundColor = "rgb(192, 192, 192)";
-    //mm1.op["mm_but2_i"].style.backgroundColor = "rgb(192, 192, 192)";
+    mm1.op["mm_but3_i"].style.backgroundColor = "rgb(192, 192, 192)";
     mm1.op["mm_but1_i"].innerText = "Menu1";
     mm1.op["mm_but2_i"].innerText = "Menu2";
+    mm1.op["mm_but3_i"].innerText = "Menu3";
     mm1.mmopen = "mm_but2_i";
     mm1.op["mm_but2_i"].style.backgroundColor = "rgb(30, 144, 255)";
     mm1.op[mm1.tid[mm1.mmopen]].style.display = "block";
@@ -20,8 +25,10 @@ function create1mmenu_obj(gv) {
     let bd1 = mm1.op["mm_1divctrl_i"];
     bd1.appendChild(mm1.op["mm_but1_i"]);
     bd1.appendChild(mm1.op["mm_but2_i"]);
+    bd1.appendChild(mm1.op["mm_but3_i"]);
     bd1.appendChild(mm1.op["mm_div1_i"]);
     bd1.appendChild(mm1.op["mm_div2_i"]);
+    bd1.appendChild(mm1.op["mm_div3_i"]);
     
     mm1.create1ElemByInx("mm_0main_i","");
     mm1.op["mm_0main_i"].appendChild(bd1);
@@ -35,7 +42,7 @@ function create1mmenu_obj(gv) {
     }
 }
 
-function LoadlessTo_mmenu(gv) {
+function LoadlessTo_mmenu(gv) {  
   let mm1 = gv.MMenu;
   let lst = gv.ListLess;
   let lls = gv.LstLes;
@@ -48,6 +55,7 @@ function LoadlessTo_mmenu(gv) {
   let s1 = "";
   if(gv.TmpLessonNum > 0){s1 = gv.TmpLessonNum;}
   lls.oop["mmless_item"+s1].style.backgroundColor = "rgb(33, 150, 243)";
+  mm1.loadedlessons = 1;
 }
 
 function click_sent_select_ok(athis) {
