@@ -54,6 +54,25 @@
   border: 2px solid;      */ 
 }
 
+.mm_but3_i {
+  padding-left: 25px;
+  margin-right: 7px;
+  height: 50px;
+  width: 150px;
+  color: rgb(15, 14, 14);
+  font-weight: bold;     
+  font-size: 22px;    
+  float: right;    
+  cursor: pointer;    
+  line-height: 20px;  
+  background-color: rgb(108, 203, 123); 
+  transition: 0.3s;
+  user-select: none; 
+/*   border-color: black;
+  border: 2px solid;      */ 
+}
+
+
 
 .mm_div1_i{    
   width: 100%;
@@ -116,6 +135,20 @@
   /*  border-radius: 20px;    */
     display: none;  
   }
+
+.mm_div3_i{    
+    width: 100%;    
+    color: rgb(197, 197, 197);
+    float: left;  
+    font-size: 33px;   
+    cursor: pointer;
+    border-color: black;
+    border: 1px solid;    
+    background-color: rgb(255, 199, 30);   
+  /*  border-radius: 20px;    */
+    display: none;  
+}
+
   
 
 .mmless_item {  
