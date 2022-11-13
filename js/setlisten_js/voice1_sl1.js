@@ -209,6 +209,10 @@ function create1BlockForVoice2(gv) {
       const att1 = document.createAttribute(gv.eventvalue);
       att1.value = "click_divsentid(this)";
       div1.setAttributeNode(att1);
+      const att2 = document.createAttribute("class");
+      att2.value = "divsentence";
+      div1.setAttributeNode(att2);
+
       const L1 = document.createElement("p");
       L1.id = "l1sentenid"+inx;
       L1.innerText = bv1[inx].Eng;
@@ -218,6 +222,7 @@ function create1BlockForVoice2(gv) {
       L2.style.display = "none";
       //L2.style.background = "background-color: rgb(21, 101, 164)";
       L2.style.background = "rgb(21, 101, 164)";
+      //divsentence
       div1.appendChild(L1);
       div1.appendChild(L2);
       //p1 = p1 + "<div id=sentenid>"+inx+"><p>"+bv1[inx].Eng+"</p><p>"+bv1[inx].Eng+"</p></div>";
