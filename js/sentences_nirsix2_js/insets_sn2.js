@@ -25,7 +25,12 @@ function Init_LoginFireBaseSets() {
   return oj;
 }
 
-async function LoginFireBase(gv) {  
+function EnterToBD(gv){
+  LoginFireBase(gv);
+  if(gv.OffLineMode == 1) {RequestOffLineBase(gv);}
+}
+
+async function LoginFireBase(gv) {
   email = gv.FBSets.email;
   password = gv.FBSets.password;
   aUrlTrans1 = gv.FBSets.UrlTrans1;
@@ -43,7 +48,7 @@ async function LoginFireBase(gv) {
 
 function CallBackLoginFireBase(gv){    
   let arr1;  
-  RequestArrFireBase(gv, arr1, 'GET');
+  if(gv.OffLineMode == 0) RequestArrFireBase(gv, arr1, 'GET');
 }
 
 
@@ -56,15 +61,24 @@ async function RequestArrFireBase(gv, vobj, ametod) {
     headers: {
       'Content-Type': 'application/json'
     }  
-  });  
-  let vdata = await response.json(); 
+  });
+  let vdata = await response.json();
   if(ametod == 'GET'){gv.funCBAfterPutBeforeLoad(gv, vdata);}
+}
+
+function RequestOffLineBase(gv) {
+  let vdata = GetOffLineBD();
+  gv.funCBAfterPutBeforeLoad(gv, vdata);
 }
 
 function StartReLoadLesson(gv) { 
   gv.funInit_LessonVarObj = Load_LessonOnRun;
   let arr1;
-  RequestArrFireBase(gv, arr1, 'GET');
+  if(gv.OffLineMode == 0){ 
+    RequestArrFireBase(gv, arr1, 'GET');
+  }else{
+    RequestOffLineBase(gv);
+  }
 }
 
 function AfterPutBeforeLoadLesson(gv, vdata) { 
@@ -91,7 +105,7 @@ function Init_LessonVarObj(gv, vdata) {
   if (gv.ListLess[gv.LessonNum].CurSentences) {gv.CurSentences = gv.ListLess[gv.LessonNum].CurSentences;}
   gv.MaxStepMix = vdata["MaxStepMix"] * 1; // * на 1 для уст. типа число
   gv.DefStepMix = vdata["DefStepMix"] * 1; // * на 1 для уст. типа число
-  LoadlessTo_mmenu(gv);
+  if(gv.MMenu.loadedlessons == 0){ LoadlessTo_mmenu(gv);}
 }
 
 function Load_LessonOnRun(gv, vdata) {
