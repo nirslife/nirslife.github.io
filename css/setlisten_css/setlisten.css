@@ -247,3 +247,12 @@
   border: 2px solid;  
   display: inline;
 }
+
+.divsentence {
+  margin-top: 3px;
+  margin-bottom: 3px;  
+  border-radius: 3px;  
+  border-color: #2196F3;  
+  cursor: pointer;
+  border: 2px solid;  
+}
