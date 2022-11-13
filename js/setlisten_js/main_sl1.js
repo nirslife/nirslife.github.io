@@ -9,7 +9,7 @@ function Main_Init_VarObj_Start(gv) {
   gv.msgspeak = Init_SpeechSynthesisUtterance();
   gv.FBSets = Init_LoginFireBaseSets();
   gv.HtmlBV = Get_HtmlBV(gv);
-  gv.HtmlTst = Get_HtmlTst(gv); // для тестов   
+  gv.HtmlTst = Get_HtmlTst(gv); // для тестов
   gv.MMenu =  Get_HtmlMMenu(gv); // main menu
   gv.LstLes =  Get_HtmlLstLes(gv); // список уроков
   gv.funInit_LessonVarObj = Init_LessonVarObj;
@@ -22,7 +22,7 @@ function Main_Init_VarObj_Start(gv) {
   gv.funCBBeforeLoadAfterPatch = BeforeLoadAfterPatch;
 }
 
-function AfterLoadArrLesson(gv) {  
+function AfterLoadArrLesson(gv) {
   gv.ArVP.ar = FormVoiceArrCurSentence(gv);
 }
 
@@ -51,7 +51,7 @@ function Create_HTML_BODY_Start(gv) {
   gv.HtmlBodyObj.createThis_AddChilds();
   create1mmenu_obj(gv);
   //gv.funCBAfterLoadArrLesson = TempAfterLoadArrLesson; // пустую функцию, пока ничего делать не нужно
-  //create1Blocktest1(gv);
+//  create1Blocktest1(gv);
   create1BlockForVoice1(gv);
   LoginFireBase(gv);
 }
