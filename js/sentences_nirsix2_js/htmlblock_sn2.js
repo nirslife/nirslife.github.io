@@ -94,7 +94,7 @@ function NextSentenceOnClick() {
 function CheckInputText(gv) {
   TestWordCheckInputText(gv);
   if (TestCheckInputText(gv)){
-    document.getElementById("inputtextfrom1").style.background = "rgb(76, 175, 80)";
+    document.getElementById("inputtextfrom1").style.background = "rgb(217, 254, 194)"; //rgb(217 254 194) "rgb(76, 175, 80)"
   }else{
     document.getElementById("inputtextfrom1").style.background = "rgb(255, 255, 255)";
   }
@@ -123,14 +123,17 @@ function TestCheckInputText(gv) {
 
 function TestWordCheckInputText(gv) {
   const myCollection = document.getElementsByClassName("inputtext");
-  let len = myCollection.length;  
+  let len = myCollection.length;
+  const counttestword = 7;
 if (len > 0) {
   let arp = [];
+  let ctw_i = 0;
   let lastix = -1;
   let its_ok = 1;
   let SrcEng = SliceSentence(gv.ArrSens[gv.CurSentences].Eng);
   if (len > SrcEng.length) {len = SrcEng.length;}
   for (let i = 0; i < len; i++) {
+    ctw_i++;
     myCollection[i].style.color = "rgb(0, 0, 0)";
     let it = {po:null, wr:"", ok:0, end:0};
     it.po = myCollection[i];
@@ -145,17 +148,24 @@ if (len > 0) {
       it.ok = 0;
       its_ok = 0;
     }
-    if ((it.wr.endsWith("."))||(it.wr.endsWith("!"))||it.wr.endsWith("?")){
+    if ((it.wr.endsWith("."))||(it.wr.endsWith("!"))||it.wr.endsWith("?")||(ctw_i==counttestword)){
       it.end = 1;
       if (its_ok) {lastix = i;}
+      ctw_i = 0;
     }else{
       it.end = 0;
     }
     arp.push(it);
   }
   for (let i = 0; i <= lastix; i++) {
-    myCollection[i].style.color = "rgb(4, 121, 23)";//"rgb(90, 165, 102)";
+    myCollection[i].style.color = "rgb(0, 0, 0)";// rgb(4, 121, 23);
+    myCollection[i].style.background = "rgb(90, 238, 120)"; 
   }
+  for (let i = lastix+1; i < myCollection.length; i++) {
+    myCollection[i].style.color = "rgb(0, 0, 0)";// rgb(4, 121, 23);
+    myCollection[i].style.background = "rgb(224, 254, 230)"; //rgb(224 254 230) 
+  }
+
 }
 }
 
@@ -372,11 +382,11 @@ function clickStepMixSet(athis) {
   if (athis.id == "StepMixS_2") {aValue = 2;}
   if (athis.id == "StepMixS_4") {aValue = 4;}
   if (athis.id == "StepMixS_7") {aValue = 7;}
-  if (aValue != obj[Indx].StepMix) {
+ // if (aValue != obj[Indx].StepMix) {
     obj[Indx].StepMix = aValue;
     SendToBDArrSens(gv); // сохраняем урок в базу (хотя нужно сохранить только StepMix)
     Check_DisplayExercise(gv);
-  }
+ // }
   SetActiveStepMix(gv);
 }
 
