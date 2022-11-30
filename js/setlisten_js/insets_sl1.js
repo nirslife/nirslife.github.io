@@ -127,7 +127,8 @@ function Init_LessonVarObj(gv, vdata) {
   gv.ArrSens = vdata[gv.KeyLess];
   gv.ArrSensTst = vdata["arrles2"];
   //gv.BVSens = vdata[gv.KeyVoiceLess];
-  gv.CurPlayingSent = 0;  
+  gv.CurPlayingSent = 0;
+  gv.InxForPlayingSent = 0;
   gv.CurSentences = 0;
   gv.CurSentVoice = 0; // текущее предложение для войса
   if (gv.ListLess[gv.LessonNum].CurSentences) {gv.CurSentences = gv.ListLess[gv.LessonNum].CurSentences;}
