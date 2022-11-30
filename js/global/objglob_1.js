@@ -3,15 +3,21 @@ function Get_ArVP(gv){
       ar:[
         {textv:"", Rate:"",Wait:"", InxSentence:""}
       ],
+      as:[
+        0.4, 0.8
+      ],
       CurPos:0,
       Repeat:1,
+      InxSpeed:0,
       Stop:0,
       Playing:0,
       FrameIndex:0,
-      CurSentence:0
+      CurSentence:0,
+      SelectedP:null,
+      f_SelectedP:null,
     };
     return obj1;
-  }
+}
   
 /*   function Get_HtmlBodyElem() {
     let BodyObj = 
