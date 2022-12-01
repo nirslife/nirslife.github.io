@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo1"></div>
+<input type="button" value="Btn1OnClick" onclick="Btn1OnClick()">
+
+<script>
+
+
+function Btn1OnClick(){
+const synth = window.speechSynthesis;
+
+let voices = [];
+
+voices = synth.getVoices();
+let s1 = "";
+for (let i = 0; i < voices.length; i++) {
+  s1 = "<p>" + voices[i].name + "---" + voices[i].lang+ "</p>";
+  AddToMemo(s1);
+}
+
+AddToMemo(' ');
+AddToMemo(' ');
+AddToMemo(navigator.userAgent);
+
+
+ // speak("Калина у лузі");
+}   
+
+function AddToMemo(atxt){
+  const Elem1 = document.createElement("p");
+  Elem1.innerText = atxt;
+  document.getElementById("demo1").appendChild(Elem1);     
+}
+
+
+
+function speak(text) {
+  const message = new SpeechSynthesisUtterance();
+  message.lang = "uk-UA";
+  message.text = text;
+  message.rate = 1.0;
+  window.speechSynthesis.speak(message)
+}
+
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+// IN: alength = 14, astep = 4
+// [1,2,3,4, 5,6,7,8, 9,10,11,12, 13,14]
+// OUT: Result:
+// [2,4,1,3, 5,7,8,6, 10,11,9,12, 14,13] 
+function InitRandomArr3(alength, astep) {  
+  let Arr1 = [];
+  for (i = 0; i < alength; i++) {
+    Arr1[i] = i;     
+  }
+  let ap = 0;      
+  let j; let a;
+  //[1,2] astep=4
+  // ap=2
+  for (i = 0; i < alength; i++) {    
+    if(ap == 0){   
+      ap = astep;    
+      if(ap > alength){ap = alength;}      
+	  if((alength - i) < ap ){ap = alength - i;}
+	}  
+    j = getRandomInt(ap) + i;  
+	a = Arr1[i];
+    Arr1[i] = Arr1[j];
+	Arr1[j] = a;
+	ap--;
+  }  
+  return Arr1; 
+}
+ 
+
+</script>
+
+</body>
+</html>
