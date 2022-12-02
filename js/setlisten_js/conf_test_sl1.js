@@ -1,26 +1,9 @@
 
 function create1Blocktest1(gv) {
-  let Tpb = gv.HtmlTst; 
-  let i = gv.HtmlTst.Idx;
-  Tpb.create1ElemByInx("blvi_2divbuttctrl_i","");
-  let bd2 = Tpb.op["blvi_2divbuttctrl_i"];     
-//    bd2.appendChild(Tpb.create1ElemByInx("blvi_Generate1","Generate1"));
-//    bd2.appendChild(Tpb.create1ElemByInx("blvi_Generate2","Generate2"));
-    bd2.appendChild(Tpb.create1ElemByInx("blvi_LoadLesson","LoadLesson"));
-    bd2.appendChild(Tpb.create1ElemByInx("blvi_LoadVarList","LoadVarList"));
-  Tpb.create1ElemByInx("blvi_2linebut1menu_i","V");  
-  Tpb.create1ElemByInx("blvi_1divctrl_i","");
-  Tpb.op["blvi_2linebut1menu_i"].innerText = (i + 1)*1;
-  Tpb.op["blvi_2linebut1menu_i"].style.backgroundColor = "rgb(192, 192, 192)";
-  let bd1 = Tpb.op["blvi_1divctrl_i"];
-  bd1.appendChild(Tpb.op["blvi_2linebut1menu_i"]);
-  bd1.appendChild(Tpb.op["blvi_2divbuttctrl_i"]);
-  clickButtondownctrlTest(Tpb.op["blvi_2linebut1menu_i"]);
-  Tpb.create1ElemByInx("blvi_0main_i","");
-  Tpb.op["blvi_0main_i"].appendChild(bd1);  
-  Tpb.create1ElemByInx("blvi_00main_i","");
-  Tpb.op["blvi_00main_i"].appendChild(Tpb.op["blvi_0main_i"]);  
-  gv.HtmlBodyObj.kp["blockvoice"].appendChild(Tpb.op["blvi_00main_i"]);    
+  let mm1 = gv.MMenu;
+  let bd2 = mm1.op["mm_div1_i"];
+  bd2.appendChild(mm1.create1ElemByInx("blvi_LoadLesson","LoadLesson"));
+  bd2.appendChild(mm1.create1ElemByInx("blvi_LoadVarList","LoadVarList"));
 }
 
 
@@ -75,11 +58,10 @@ function TempAfterLoadArrLesson(gv) {
 
 
 function clickblvi_LoadLesson(athis) {
-  /* загрузил и сразу отключил
-  for (let i=13;i<=15;i++){
+   //загрузил и сразу отключил
+  for (let i=24;i<=43;i++){
     LoadJsonArray(i);
-  }
-  */
+  }  
 }
 
 //////// Load  arrles -----------------------------------------
