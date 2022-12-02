@@ -4,6 +4,12 @@ let vGV; // глобальная переменная - она будет одн
 function Main_Init_VarObj_Start(gv) {
   gv.ProgName = "Voice"; //gv.ProgName = "Sentence";
   gv.OffLineMode = 0;
+  gv.CurVoiceElm = null;
+  gv.CurVoiceInx = -1;
+  gv.TmpSelVoiceMM = -1;
+  gv.LoadedVoices = 0;
+  GetStartLoadVoice(gv);
+  GetNormalizeUserAgentStr(gv);
   gv.eventvalue = Init_Eventvalue_Devices();
   gv.HtmlBodyObj = Get_HtmlBodyElem();
   gv.HtmlAnyObj = Get_HtmlAnyElem(gv);
@@ -13,6 +19,7 @@ function Main_Init_VarObj_Start(gv) {
   gv.HtmlTst = Get_HtmlTst(gv); // для тестов
   gv.MMenu =  Get_HtmlMMenu(gv); // main menu
   gv.LstLes =  Get_HtmlLstLes(gv); // список уроков
+  gv.LstVoi =  Get_HtmlLstVoi(gv); // для голосов 
   gv.funInit_LessonVarObj = Init_LessonVarObj;
   gv.ArVP = Get_ArVP(gv);
 //  gv.funInit_BlViVarObj = Init_BlViVarObj;
