@@ -276,7 +276,11 @@ function click_mm_space_i(athis) {
   
   function speakBV(gv, e1) {
     msgspeak = gv.msgspeak;
-    msgspeak.lang = "en-EN";
+    if (gv.CurVoiceElm) {
+      msgspeak.voice = gv.CurVoiceElm;
+    }else{
+      msgspeak.lang = "en-EN";
+    }    
     msgspeak.text = e1.textv;
     msgspeak.rate = e1.Rate;
     msgspeak.volume = 1;
