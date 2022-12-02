@@ -133,7 +133,14 @@ function Get_ArVP(gv){
     return ClassObj;
   }
   
-  
+  function Get_HtmlLstVoi(gv) {
+    let ClassObj = Create_MetodsObj();
+    let av = DataHtmlVoiceItem_i(gv);
+    ClassObj.ar = av.ar;
+    ClassObj.InitAllElem();  
+    return ClassObj;
+  }
+
   
   
   function Create_MetodsObj(gv) {
@@ -142,6 +149,7 @@ function Get_ArVP(gv){
       OnInxAtt:true,
       mmopen:"",
       loadedlessons:0,
+      loadedvoices:0,
       Idx:-1,
       countx:0,
       arx:[],
@@ -213,7 +221,7 @@ function Get_ArVP(gv){
           let avv = ar_i.atr[j].value;
           if ((ar_i.atr[j].Add_i)&&(this.Idx > 0)){if (ar_i.atr[j].Add_i == 1) {avv = avv + this.Idx;}}
           att1.value = avv;
-          ar_i.pobj.setAttributeNode(att1);        
+          ar_i.pobj.setAttributeNode(att1);
         }
         this.oop[ar_i.pobj.id] = ar_i.pobj;
         // ˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜ 
@@ -613,6 +621,14 @@ function Get_ArVP(gv){
       },
       {elname:"div",
         atr:[
+          {name:"id", value:"mm_but4_i", Add_i:1, tid:"mm_div4_i"},
+          {name:"class", value:"mm_but3_i"},
+          {name:eval, value:"clickCtrlMMenu(this)"}
+        ],
+        pobj:null
+      },
+      {elname:"div",
+        atr:[
           {name:"id", value:"mm_div1_i", Add_i:1, tid:"mm_but1_i"},
           {name:"class", value:"mm_div1_i"}
         ],
@@ -634,6 +650,13 @@ function Get_ArVP(gv){
       },
       {elname:"div",
         atr:[
+          {name:"id", value:"mm_div4_i", Add_i:1, tid:"mm_but4_i"},
+          {name:"class", value:"mm_div3_i"}
+        ],
+        pobj:null
+      },
+      {elname:"div",
+        atr:[
           {name:"id", value:"mm_boxlesslist_i", Add_i:1, tid:"mm_but2_i"},
           {name:"class", value:"mm_boxlesslist_i"}
         ],
@@ -644,6 +667,14 @@ function Get_ArVP(gv){
           {name:"id", value:"sent_select_ok", Add_i:1},
           {name:"class", value:"sent_select_ok"},
           {name:eval, value:"click_sent_select_ok(this)"}
+        ],
+        pobj:null
+      },
+      {elname:"div",
+        atr:[
+          {name:"id", value:"sent_voice_sel_ok", Add_i:1},
+          {name:"class", value:"sent_select_ok"},
+          {name:eval, value:"click_voice_sel_ok(this)"}
         ],
         pobj:null
       },
@@ -793,4 +824,21 @@ function Get_ArVP(gv){
       ]
     }
     return lls;
+  }
+
+  function DataHtmlVoiceItem_i(gv){
+    let eval = gv.eventvalue;
+    let lvc = {
+      ar:[
+        {elname:"div",
+          atr:[
+            {name:"id", value:"mmvoice_item", Add_i:1},
+            {name:"class", value:"mmless_item"},
+            {name:eval, value:"click_mmvoice_item(this)"}
+          ],
+          pobj:null
+        }
+      ]
+    }
+    return lvc;
   }
