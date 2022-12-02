@@ -135,6 +135,16 @@ function Init_LessonVarObj(gv, vdata) {
   gv.MaxStepMix = vdata["MaxStepMix"] * 1; // * на 1 для уст. типа число
   gv.DefStepMix = vdata["DefStepMix"] * 1; // * на 1 для уст. типа число
   if(gv.MMenu.loadedlessons == 0){ LoadlessTo_mmenu(gv);}
+  if(gv.MMenu.loadedvoices == 0){ LoadVoicesTo_mmenu(gv); }
+  if(gv.LoadedVoices == 1){
+    if (vdata[gv.NormStrUserAgent]){
+      let el1 = vdata[gv.NormStrUserAgent];
+      gv.CurVoiceInx = el1.CurVoiceInx;
+      if (gv.Glob_Voices[gv.CurVoiceInx]){
+        gv.CurVoiceElm = gv.Glob_Voices[gv.CurVoiceInx];
+      }
+    }
+  }
 }
 
 function Init_BlViVarObj(gv ) {
