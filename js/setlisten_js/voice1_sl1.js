@@ -1,43 +1,30 @@
-/*
-function create1BlockForVoice2(gv) {  
-    let Tpb = gv.HtmlTst; 
-    let i = gv.HtmlTst.Idx;
-    Tpb.create1ElemByInx("blvi_2divbuttctrl_i","");
-    let bd2 = Tpb.op["blvi_2divbuttctrl_i"];     
-      bd2.appendChild(Tpb.create1ElemByInx("blvi_Play_i","Play"));
-      bd2.appendChild(Tpb.create1ElemByInx("blvi_Stop_i","Stop"));
-      bd2.appendChild(Tpb.create1ElemByInx("blvi_space_i","======="));
-      bd2.appendChild(Tpb.create1ElemByInx("blvi_nextlesson_i","NextLesson"));
-    Tpb.create1ElemByInx("blvi_2linebut1menu_i","V");  
-    Tpb.create1ElemByInx("blvi_1divctrl_i","");
-    Tpb.op["blvi_2linebut1menu_i"].innerText = (i + 1)*1;
-    Tpb.op["blvi_2linebut1menu_i"].style.backgroundColor = "rgb(192, 192, 192)";
-    let bd1 = Tpb.op["blvi_1divctrl_i"];
-    bd1.appendChild(Tpb.op["blvi_2linebut1menu_i"]);
-    bd1.appendChild(Tpb.op["blvi_2divbuttctrl_i"]);
-    clickButtondownctrlTest(Tpb.op["blvi_2linebut1menu_i"]);
-    Tpb.create1ElemByInx("blvi_1sentence_i","");  
-    Tpb.create1ElemByInx("blvi_0main_i","");
-    Tpb.op["blvi_0main_i"].appendChild(bd1);
-    Tpb.op["blvi_0main_i"].appendChild(Tpb.op["blvi_1sentence_i"]);
-    Tpb.create1ElemByInx("blvi_00main_i","");
-    Tpb.op["blvi_00main_i"].appendChild(Tpb.op["blvi_0main_i"]);  
-    gv.HtmlBodyObj.kp["blockvoice"].appendChild(Tpb.op["blvi_00main_i"]);
-    //gv.funCBAfterLoadArrLesson = AfterLoadVoiceLesson;
-  }
-  */
-
   function create1BlockForVoice1(gv) {
     let mm1 = gv.MMenu;
-    let bd2 = mm1.op["mm_div1_i"];-
+    let bd2 = mm1.op["mm_div1_i"];
     bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","Play"));
     bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","Stop"));
     bd2.appendChild(mm1.create1ElemByInx("mm_space_i","======="));
-    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","2_1"));
+    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","== 3_1 ========"));
+    bd2.appendChild(mm1.create1ElemByInx("mm_allsent_i","ALL"));
+    mm1.op["mm_allsent_i"].style.background = "rgb(52, 188, 69)";
+    gv.MarkMode = "";
+    gv.MarkCurPObj = mm1.op["mm_allsent_i"];
+    bd2.appendChild(mm1.create1ElemByInx("mm_L1mrksent_i","L1"));
+    bd2.appendChild(mm1.create1ElemByInx("mm_L2mrksent_i","L2"));
+    bd2.appendChild(mm1.create1ElemByInx("mm_L3mrksent_i","L3"));
     mm1.op["mm_0main_i"].appendChild(mm1.create1ElemByInx("mm_1sentence_i",""));
     create1BlockMenu3(gv);
   }
 
+  function click_mm_markbut_i(athis){
+    let gv = Get_GlobalVar();
+    gv.MarkCurPObj.style.background = "rgb(85, 85, 85)";
+    gv.MarkMode = athis.getAttribute("MarkName");
+    gv.MarkCurPObj = athis;
+    athis.style.background = "rgb(52, 188, 69)";
+    click_mm_Stop_i(null);
+    gv.ArVP.ar = FormVoiceArrCurSentence(gv);    
+  }
   
   function AfterLoadVoiceLesson(gv) {
     //
@@ -47,21 +34,6 @@ function create1BlockForVoice2(gv) {
   
   }
   
-  /*
-  function click_mm_Play_i(athis) {
-    let gv = Get_GlobalVar();
-    if ((gv.ArVP.Playing === 1)&&(gv.ArVP.Playing != 0)){
-      gv.MMenu.op["mm_Play_i"].innerText = "Play-R";
-      speechSynthesis.cancel();
-      gv.ArVP.Playing = 0;
-    }else{
-      gv.MMenu.op["mm_Play_i"].innerText = "Pause";
-      gv.ArVP.Stop = 0;
-      gv.ArVP.Playing = 1;
-      PlayProc_i(gv);
-    }
-  }
-*/
 
   function click_mm_Play_i(athis) {
     let gv = Get_GlobalVar();
@@ -75,19 +47,6 @@ function create1BlockForVoice2(gv) {
       gv.ArVP.Playing = 1;
       PlayProc_i(gv);
     }
-  }
-
-
-  
-  function formframedo1(gv) {
-    if(gv.ArVP.ar[gv.ArVP.CurPos].InxSentence != gv.ArVP.CurSentence){
-      gv.ArVP.FrameIndex++;
-      if (gv.ArVP.FrameIndex > 5) {
-        let f1 = gv.HtmlBodyObj.kp["blocksentenceitem"].firstChild;
-        gv.HtmlBodyObj.kp["blocksentenceitem"].removeChild(f1);
-        gv.HtmlBodyObj.kp["blocksentenceitem"].appendChild(f1);
-      }
-    } 
   }
 
   function formframedo(gv) {
@@ -113,6 +72,8 @@ function create1BlockForVoice2(gv) {
 
     for (let inx=InxStartF; inx != InxStopF+1; inx++){
       if(inx == bv1.length){inx = 0;}
+      let mr = {"l1":0,"l2":0,"l3":0};
+      if (gv.ArrMark[inx]){ mr = gv.ArrMark[inx];}       
       let divs = "f_divsentenid"+inx;
       const div1 = document.createElement("div");
       div1.id = divs;
@@ -135,41 +96,26 @@ function create1BlockForVoice2(gv) {
       const L2 = document.createElement("div");
       L2.id = "l2f_divsentenid"+inx;
       L2.innerText = bv1[inx].Rus;
-      L2.style.display = "none";
-      //L2.style.background = "background-color: rgb(21, 101, 164)";
+      L2.style.display = "none";      
       L2.style.background = "rgb(21, 101, 164)";
       const att4 = document.createAttribute("class");
       att4.value = "lsentence";
-      L2.setAttributeNode(att4);
-      //divsentence
+      L2.setAttributeNode(att4);      
       div1.appendChild(L1);
       div1.appendChild(L2);
-      //p1 = p1 + "<div id=sentenid>"+inx+"><p>"+bv1[inx].Eng+"</p><p>"+bv1[inx].Eng+"</p></div>";
-      gv.HtmlBodyObj.kp["blocksentenceitem"].appendChild(div1);
       
+      gv.HtmlBodyObj.kp["blocksentenceitem"].appendChild(div1);
+      if (gv.MarkMode != ""){
+        if (mr[gv.MarkMode] == 0){
+          div1.style.display = "none";
+        }
+      }
     }
   }
 
-/*
+
   function PlayProc_i(gv) {
-    formframedo(gv);
-    if(gv.ArVP.ar[gv.ArVP.CurPos].InxSentence != gv.ArVP.CurSentence){
-      let bv1 = gv.ArrSens;
-      let Tpb = gv.MMenu;
-      const senid_1 = document.getElementById("divsentenid"+gv.ArVP.CurSentence);
-      senid_1.style.color = '#ffffff';
-      sid2 = gv.ArVP.ar[gv.ArVP.CurPos].InxSentence;
-      const senid_2 = document.getElementById("divsentenid"+sid2);
-      senid_2.style.color = '#8bfcd7';
-      gv.ArVP.CurSentence = gv.ArVP.ar[gv.ArVP.CurPos].InxSentence;
-      Tpb.op["mm_1sentence_i"].innerText = bv1[gv.ArVP.CurSentence].Eng;
-    }
-    speakBV(gv, gv.ArVP.ar[gv.ArVP.CurPos]);
-  }
-*/
-
-
-  function PlayProc_i(gv) {    
+    if (gv.ArVP.ar.length < 1) return;
     if(gv.ArVP.ar[gv.ArVP.CurPos].InxSentence != gv.ArVP.CurSentence){
       let bv1 = gv.ArrSens;
       let Tpb = gv.MMenu;
@@ -188,17 +134,6 @@ function create1BlockForVoice2(gv) {
   }
 
 
-/*
-  function click_mm_Stop_i(athis) {
-    let gv = Get_GlobalVar();
-    speechSynthesis.cancel();
-    gv.MMenu.op["mm_Play_i"].innerText = "Play";
-    gv.ArVP.CurPos = 0;
-    gv.ArVP.Stop = 1;
-    gv.ArVP.Playing = 0;
-  }
-*/
-
   function click_mm_Stop_i(athis) {
     let gv = Get_GlobalVar();
     speechSynthesis.cancel();
@@ -208,24 +143,6 @@ function create1BlockForVoice2(gv) {
     gv.ArVP.Playing = 0;
   }
 
-/*
-  function PlayNextVoice(gv) {
-    if ((gv.ArVP.Stop != 1)&&(gv.ArVP.Playing == 1)) {
-      gv.ArVP.CurPos++;
-      if (gv.ArVP.CurPos >= gv.ArVP.ar.length) {
-        gv.ArVP.CurPos = 0;
-        if(gv.ArVP.Repeat == 1) {
-          PlayProc_i(gv);
-          //click_blvi_Play_i(gv.HtmlTst.op["blvi_Play_i"]);
-        }
-      } else {
-        //click_blvi_Play_i(gv.HtmlTst.op["blvi_Play_i"]);      
-        PlayProc_i(gv);
-      }
-      gv.MMenu.op["mm_space_i"].innerText = "===>>>"+gv.ArVP.CurPos;
-    }
-  }
-*/
 
 function PlayNextVoice(gv) {
   if ((gv.ArVP.Stop != 1)&&(gv.ArVP.Playing == 1)) {
@@ -249,19 +166,6 @@ function PlayNextVoice(gv) {
   }
 }
   
-/*
-  function click_mm_space_i(athis) {
-    let gv = Get_GlobalVar();
-    gv.ArVP.CurPos++;
-    gv.ArVP.CurPos++;
-    if (gv.ArVP.CurPos >= gv.ArVP.ar.length) {
-      gv.ArVP.CurPos--;//���� �������� ����� �� ���
-    }
-    athis.innerText = "===>>>"+gv.ArVP.CurPos;
-    formframedo(gv);
-  }
-*/
-
 function click_mm_space_i(athis) {
   let gv = Get_GlobalVar();
   gv.ArVP.CurPos++;
@@ -322,45 +226,21 @@ function click_mm_space_i(athis) {
     //let bv1 = gv.BVSens;
     let bv1 = gv.ArrSens;
     let arv = [];
+    if (typeof(gv.ArrMark) == "undefined"){
+      gv.ArrMark = [];
+    }
     let p1 = "";
-
+    let f1 = gv.HtmlBodyObj.kp["footerctrlblock"].firstChild;
+    while(f1){
+      gv.HtmlBodyObj.kp["footerctrlblock"].removeChild(f1);
+      f1 = gv.HtmlBodyObj.kp["footerctrlblock"].firstChild;
+    }    
     for (let inx=0; inx < bv1.length; inx++){
-      //let inx = gv.CurPlayingSent;
-      /*
-      if (bv1[inx].FirstBy1Word === 0){ ///111111111111111
-        let ar1w = SliceSentence(bv1[inx].Sentences1);
-        for(let i = 0; i < ar1w.length; i++) {
-          let e1 = {};
-          e1.textv = ar1w[i];
-          e1.Wait = (bv1[inx].WaitBy1Word_mSec)/100; // ��������� � ����: 1��� = 100��
-          e1.Rate = 0.5;//bv1[inx].SpeakRateBy1Word;
-          e1.InxSentence = inx;
-          arv.push(e1);
-        }
-      }
-      */
-
-     /*
-      let d1 = {};
-      d1.textv = bv1[inx].Eng;
-      d1.Wait = 1;//(bv1[inx].WaitBy1Word_mSec)/100; // ��������� � ����: 1��� = 100��
-      d1.Rate = 0.4; //bv1[inx].SpeakRateSenten;
-      d1.InxSentence = inx;
-      arv.push(d1);
-      */
-  
-      let d2 = {};
-      d2.textv = bv1[inx].Eng;
-      d2.as = [0.4, 0.8];
-      d2.inxas = 0;
-      d2.Wait = 1;//(bv1[inx].WaitBy1Word_mSec)/100; // ��������� � ����: 1��� = 100��
-      d2.Rate = 0.8; //bv1[inx].SpeakRateSenten;
-      d2.InxSentence = inx;
-      arv.push(d2);
-
+      let mr = {"l1":0,"l2":0,"l3":0};
+      if (gv.ArrMark[inx]){ mr = gv.ArrMark[inx];}
       let divs = "divsentenid"+inx;
-      const temp1 = document.getElementById(divs);
-      if (temp1){temp1.remove();}    
+    //  const temp1 = document.getElementById(divs);
+    //  if (temp1){temp1.remove();}    
       const div1 = document.createElement("div");
       div1.id = divs;
       const att1 = document.createAttribute(gv.eventvalue);
@@ -369,6 +249,10 @@ function click_mm_space_i(athis) {
       const att2 = document.createAttribute("class");
       att2.value = "divsentence";
       div1.setAttributeNode(att2);
+      const att11 = document.createAttribute("InxAtt");
+      att11.value = inx;
+      div1.setAttributeNode(att11);
+
 
       const L1 = document.createElement("div");
       L1.id = "l1sentenid"+inx;
@@ -382,32 +266,106 @@ function click_mm_space_i(athis) {
       L2.innerText = bv1[inx].Rus;
       L2.style.display = "none";
       //L2.style.background = "background-color: rgb(21, 101, 164)";
-      L2.style.background = "rgb(21, 101, 164)";
+      L2.style.background = "rgb(248, 249, 234)";
+      L2.style.color = "rgb(162, 159, 159)";
       const att4 = document.createAttribute("class");
       att4.value = "lsentence";
       L2.setAttributeNode(att4);
-      //divsentence
+      
+      AddHtmlctrl_divsent(gv, div1, inx);
       div1.appendChild(L1);
       div1.appendChild(L2);
-      //p1 = p1 + "<div id=sentenid>"+inx+"><p>"+bv1[inx].Eng+"</p><p>"+bv1[inx].Eng+"</p></div>";
-     // gv.HtmlBodyObj.kp["blocksentenceitem"].appendChild(div1);
       gv.HtmlBodyObj.kp["footerctrlblock"].appendChild(div1);
+
+      if ((gv.MarkMode != "")&&(mr[gv.MarkMode] == 0)){
+        div1.style.display = "none";
+      }else{
+        let d2 = {};
+        d2.textv = bv1[inx].Eng;
+        d2.as = [0.4, 0.8];
+        d2.inxas = 0;
+        d2.Wait = 1;
+        d2.Rate = 0.8; //bv1[inx].SpeakRateSenten;
+        d2.InxSentence = inx;
+        arv.push(d2);
+      }
       
     }
-    let Tpb = gv.MMenu; 
-    //gv.HtmlBodyObj.kp["blocksentenceitem"].innerHTML = p1;
-    //if(Tpb.op["mm_1sentence_i"]){Tpb.op["mm_1sentence_i"].innerText = bv1[0].Eng;}
     return arv;
+  }
+
+  function AddHtmlctrl_divsent(gv, ownp, inx) {
+    function AddButtons(gv, own1, inx) {
+      let mr = {"l1":0,"l2":0,"l3":0};
+      if (gv.ArrMark[inx]){ mr = gv.ArrMark[inx];}
+      let vbr = [1,2,3];
+      for (let i=0; i < vbr.length; i++){
+        const bt1 = document.createElement("div");
+        bt1.id = "l"+i+"_but_ctrl_sent_"+inx;
+        const at1 = document.createAttribute("class");
+        at1.value = "but_ctrl_sent_i";
+        bt1.setAttributeNode(at1);
+        bt1.innerText = "L_"+vbr[i];
+        const at2 = document.createAttribute("ValueBut");
+        at2.value = mr["l"+vbr[i]];
+        bt1.setAttributeNode(at2);
+        const at3 = document.createAttribute("InxAtt");
+        at3.value = inx;
+        bt1.setAttributeNode(at3);
+        const at4 = document.createAttribute("pname");
+        at4.value = "l"+vbr[i];
+        bt1.setAttributeNode(at4);
+        const att1 = document.createAttribute(gv.eventvalue);
+        att1.value = "click_but_ctrl_sent_lev(this)";
+        bt1.setAttributeNode(att1);
+        if (mr["l"+vbr[i]] == 1){ bt1.style.background = "rgb(15, 221, 124)";}
+        own1.appendChild(bt1);
+      }
+    }
+    const div1 = document.createElement("div");
+    div1.id = "divctrl_sent_"+inx;
+    const att2 = document.createAttribute("class");
+    att2.value = "divctrl_sent_i";
+    div1.setAttributeNode(att2);
+    div1.style.display = "none";
+    AddButtons(gv, div1, inx);
+    ownp.appendChild(div1);
+  }
+
+  function click_but_ctrl_sent_lev(athis){
+    let gv = Get_GlobalVar();
+    let inxa = athis.getAttribute("InxAtt");
+    let vb = athis.getAttribute("ValueBut");
+    let pn = athis.getAttribute("pname");
+    if (!(gv.ArrMark[inxa])){ gv.ArrMark[inxa] = {"l1":0,"l2":0,"l3":0};}
+    let am = gv.ArrMark[inxa];
+    if (vb == 0){ 
+      athis.setAttribute("ValueBut", 1);
+      athis.style.background = "rgb(15, 221, 124)";
+      am[pn] = 1;
+    }else{
+      athis.setAttribute("ValueBut", 0);
+      athis.style.background = "rgb(192, 203, 208)";
+      am[pn] = 0;
+    }
+    SendToBDSettingsLabel(gv);
   }
 
   function click_divsentid(athis) {
     let gv = Get_GlobalVar();
-    //const l2 = document.getElementById("l2"+athis.id);
     if (gv.ArVP.SelectedP) {
-      gv.ArVP.SelectedP.style.display = "none";
+      let inxa = gv.ArVP.SelectedP.getAttribute("InxAtt");
+      let l2 = document.getElementById("l2divsentenid"+inxa);
+      l2.style.display = "none";
+      let ctrd1 = document.getElementById("divctrl_sent_"+inxa);
+      ctrd1.style.display = "none";
     }
-    gv.ArVP.SelectedP = document.getElementById("l2"+athis.id);
-    gv.ArVP.SelectedP.style.display = "block";
+    gv.ArVP.SelectedP = athis; 
+    let inxa = athis.getAttribute("InxAtt");
+    let l2 = document.getElementById("l2divsentenid"+inxa);
+    l2.style.display = "block";
+    let ctrd1 = document.getElementById("divctrl_sent_"+inxa);
+    ctrd1.style.display = "block";
   }
 
   function click_f_divsentid(athis) {
@@ -418,12 +376,5 @@ function click_mm_space_i(athis) {
     gv.ArVP.f_SelectedP = document.getElementById("l2"+athis.id);
     gv.ArVP.f_SelectedP.style.display = "block";
 
-/*    const f_l2 = document.getElementById("f_l2"+athis.id);
-    if (f_l2.style.display == "none"){
-      f_l2.style.display = "block";
-    }else{
-      f_l2.style.display = "none";
-    }
-*/    
   }
 
