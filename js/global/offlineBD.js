@@ -9948,7 +9948,7 @@ function GetOffLineBD() {
         "StepMix": 4
       },
       {
-        "Eng": "if I’d be very angry if somebody broke into my house.",
+        "Eng": "I’d be very angry if somebody broke into my house.",
         "Rus": "если бы я был очень зол, если бы кто-то вломился в мой дом.",
         "StepMix": 4
       },
