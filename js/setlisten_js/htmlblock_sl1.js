@@ -1,31 +1,3 @@
-/*
-let LessonNum = 1;
-let ListLesson;
-let eventvalue;
-let pvoiceitemctrl;
-let arrobjs = [{am:[],sp:null}];
-*/
-/*
-function createitemctrl(gv) {  
-  let AnyObj = gv.HtmlAnyObj;
-  AnyObj.create1ElemByInx("blockvoiceitemid","");
-  AnyObj.create1ElemByInx("blockvoiceitemctrlid","");
-  AnyObj.create1ElemByInx("downctrlblockid","V");  
-  AnyObj.kp["blockvoiceitemid"].appendChild(AnyObj.kp["downctrlblockid"]);
-  AnyObj.kp["blockvoiceitemid"].appendChild(AnyObj.kp["blockvoiceitemctrlid"]);
-  gv.HtmlBodyObj.kp["blockvoice"].appendChild(AnyObj.kp["blockvoiceitemid"]);
-}
-
-function createitemctrlbutton(gv) {
-  let AnyObj = gv.HtmlAnyObj;  
-  let bicl = gv.HtmlAnyObj.kp["blockvoiceitemctrlid"];
-  bicl.appendChild(AnyObj.create1ElemByInx("Delete1","Delete"));
-  bicl.appendChild(AnyObj.create1ElemByInx("DeleteOk1","Delete OK"));
-  bicl.appendChild(AnyObj.create1ElemByInx("SpeedVoiceDec","-"));
-  bicl.appendChild(AnyObj.create1ElemByInx("SpeedVoiceVal","0.8"));
-  bicl.appendChild(AnyObj.create1ElemByInx("SpeedVoiceInc","+"));
-}
-*/
 
 function create1BlockVoiceItem(gv) {  
   let Tpb = gv.HtmlBV; 
