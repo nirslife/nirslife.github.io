@@ -196,6 +196,17 @@ function click_mm_space_i(athis) {
     msgspeak.addEventListener('resume', handleSpeechEvent);
     window.speechSynthesis.speak(msgspeak);
   }
+
+  function speakJustText(gv, textv) {
+    msgspeak = gv.msgspeak;
+    msgspeak.lang = "en-EN";
+    msgspeak.text = textv;
+    msgspeak.rate = 0.8;
+    msgspeak.volume = 1;
+    window.speechSynthesis.speak(msgspeak);
+  }
+
+
   
   
   function handleSpeechEvent(e) {
@@ -322,6 +333,19 @@ function click_mm_space_i(athis) {
         own1.appendChild(bt1);
       }
     }
+    const bt2 = document.createElement("div");
+    bt2.id = "play_but_itemsent_"+inx;
+    const at2 = document.createAttribute("class");
+    at2.value = "but_ctrl_sent_i";
+    bt2.setAttributeNode(at2);
+    const at3 = document.createAttribute("InxAtt");
+    at3.value = inx;
+    bt2.setAttributeNode(at3);
+    bt2.innerText = "Play_1";
+    const att1 = document.createAttribute(gv.eventvalue);
+    att1.value = "click_play_but_itemsent(this)";
+    bt2.setAttributeNode(att1);
+
     const div1 = document.createElement("div");
     div1.id = "divctrl_sent_"+inx;
     const att2 = document.createAttribute("class");
@@ -329,7 +353,17 @@ function click_mm_space_i(athis) {
     div1.setAttributeNode(att2);
     div1.style.display = "none";
     AddButtons(gv, div1, inx);
+    div1.appendChild(bt2);
     ownp.appendChild(div1);
+  }
+
+  function click_play_but_itemsent(athis){
+    let gv = Get_GlobalVar();
+    click_mm_Stop_i(null);
+    let inxa = athis.getAttribute("InxAtt");
+    let l1 = document.getElementById("l1sentenid"+inxa);
+    textv = l1.innerText; 
+    speakJustText(gv, textv);
   }
 
   function click_but_ctrl_sent_lev(athis){
