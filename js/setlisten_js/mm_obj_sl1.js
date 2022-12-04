@@ -101,7 +101,7 @@ function click_sent_select_ok(athis) {
   let gv = Get_GlobalVar();
   let mm1 = gv.MMenu;
   let lls = gv.LstLes;
-  gv.LessonNum = gv.TmpLessonNum;
+  gv.LessonNum = gv.TmpLessonNum * 1;
   SendToBDLessonNum(gv);
   StartReLoadLesson(gv);
   output_NameLesson(gv);
