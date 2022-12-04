@@ -24,7 +24,7 @@ function OnLoadVoice() {
   gv.Glob_Voices = synth.getVoices();
   voices = gv.Glob_Voices;
   if (voices.length) {gv.LoadedVoices = 1;}
-  if (gv.LoadedVoices) {LoadVoicesTo_mmenu(gv);}
+  //if (gv.LoadedVoices) {LoadVoicesTo_mmenu(gv);}
 }
 
 
