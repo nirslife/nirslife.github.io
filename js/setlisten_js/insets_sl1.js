@@ -1,6 +1,6 @@
 
 function Init_GlobalVar() {
-  // Функционал для инициализации Глобальной переменной;
+  // Р¤СѓРЅРєС†РёРѕРЅР°Р» РґР»СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё Р“Р»РѕР±Р°Р»СЊРЅРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№;
   let gv = {
     funCBAfterLoadArrLesson:function(){}
   };
@@ -79,9 +79,9 @@ function RequestOffLineBase(gv) {
 //gv.funCBBeforeLoadAfterPatch = BeforeLoadAfterPatch;
 
 
-// функция для значения по умолчанию gv.funCBBeforeLoadAfterPatch
+// С„СѓРЅРєС†РёСЏ РґР»СЏ Р·РЅР°С‡РµРЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ gv.funCBBeforeLoadAfterPatch
 function BeforeLoadAfterPatch(gv, vdata) {
-  // ничего не делает пока
+  // РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµС‚ РїРѕРєР°
 }
 
 function StartReLoadLesson(gv) {
@@ -104,7 +104,8 @@ function Load_VoiceLessonOnRun(gv, vdata) {
   //gv.KeyVoiceLess = gv.ListBV[gv.LessVoiceNum].idvarname;
  // gv.BVSens = vdata[gv.KeyVoiceLess];
   gv.KeyLess = gv.ListLess[gv.LessonNum].idvarname;
-  gv.ArrSens = vdata[gv.KeyLess];
+  gv.ArrSens = vdata[gv.KeyLess];  
+  gv.ArrMark = vdata[GetKeyMark(gv)];
 //  gv.ArVP.ar = FormVoiceArrCurSentence(gv);
 }
 
@@ -114,26 +115,28 @@ function Init_LessonVarObj(gv, vdata) {
   gv.ListBV = vdata["varBVlist"];
   let lesd1 = 0;
   if (gv.ProgName == "Voice"){
-    lesd1 = vdata["SavedVoiceLessKey1"] * 1;  // * на 1 для уст. типа число  
+    lesd1 = vdata["SavedVoiceLessKey1"] * 1;  // * РЅР° 1 РґР»СЏ СѓСЃС‚. С‚РёРїР° С‡РёСЃР»Рѕ  
   }
   if (gv.ProgName == "Sentence"){    
-    lesd1 = vdata["SavedArrLessKey1"] * 1;  // * на 1 для уст. типа число
+    lesd1 = vdata["SavedArrLessKey1"] * 1;  // * РЅР° 1 РґР»СЏ СѓСЃС‚. С‚РёРїР° С‡РёСЃР»Рѕ
   }  
   gv.LessonNum = lesd1
   gv.TmpLessonNum = lesd1;
-  //gv.LessVoiceNum = lesd1;
-  gv.KeyLess = gv.ListLess[gv.LessonNum].idvarname;
-  //gv.KeyVoiceLess = gv.ListBV[gv.LessVoiceNum].idvarname;
-  gv.ArrSens = vdata[gv.KeyLess];
+  
+  //gv.KeyLess = gv.ListLess[gv.LessonNum].idvarname;  
+  //gv.ArrSens = vdata[gv.KeyLess];
+  Load_VoiceLessonOnRun(gv, vdata);
+
+
   gv.ArrSensTst = vdata["arrles2"];
   //gv.BVSens = vdata[gv.KeyVoiceLess];
   gv.CurPlayingSent = 0;
   gv.InxForPlayingSent = 0;
   gv.CurSentences = 0;
-  gv.CurSentVoice = 0; // текущее предложение для войса
+  gv.CurSentVoice = 0; // С‚РµРєСѓС‰РµРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ РґР»СЏ РІРѕР№СЃР°
   if (gv.ListLess[gv.LessonNum].CurSentences) {gv.CurSentences = gv.ListLess[gv.LessonNum].CurSentences;}
-  gv.MaxStepMix = vdata["MaxStepMix"] * 1; // * на 1 для уст. типа число
-  gv.DefStepMix = vdata["DefStepMix"] * 1; // * на 1 для уст. типа число
+  gv.MaxStepMix = vdata["MaxStepMix"] * 1; // * РЅР° 1 РґР»СЏ СѓСЃС‚. С‚РёРїР° С‡РёСЃР»Рѕ
+  gv.DefStepMix = vdata["DefStepMix"] * 1; // * РЅР° 1 РґР»СЏ СѓСЃС‚. С‚РёРїР° С‡РёСЃР»Рѕ
   if(gv.MMenu.loadedlessons == 0){ LoadlessTo_mmenu(gv);}
   if(gv.MMenu.loadedvoices == 0){ LoadVoicesTo_mmenu(gv); }
   if(gv.LoadedVoices == 1){
@@ -231,7 +234,7 @@ function Init_Eventvalue_Devices() {
   let aeventv = "onclick";
   if (devices.test(navigator.userAgent)) {
     aeventv = "ontouchend"; // ontouchstart ontouchend    
-    //               alert("Вы используете мобильное устройство (телефон или планшет).")
+    //               alert("Р’С‹ РёСЃРїРѕР»СЊР·СѓРµС‚Рµ РјРѕР±РёР»СЊРЅРѕРµ СѓСЃС‚СЂРѕР№СЃС‚РІРѕ (С‚РµР»РµС„РѕРЅ РёР»Рё РїР»Р°РЅС€РµС‚).")
   }   
   return aeventv;
 }
