@@ -138,7 +138,7 @@ function Init_LessonVarObj(gv, vdata) {
   gv.MaxStepMix = vdata["MaxStepMix"] * 1; // * РЅР° 1 РґР»СЏ СѓСЃС‚. С‚РёРїР° С‡РёСЃР»Рѕ
   gv.DefStepMix = vdata["DefStepMix"] * 1; // * РЅР° 1 РґР»СЏ СѓСЃС‚. С‚РёРїР° С‡РёСЃР»Рѕ
   if(gv.MMenu.loadedlessons == 0){ LoadlessTo_mmenu(gv);}
-  if(gv.MMenu.loadedvoices == 0){ LoadVoicesTo_mmenu(gv); }
+ // if(gv.MMenu.loadedvoices == 0){ LoadVoicesTo_mmenu(gv); }
   if(gv.LoadedVoices == 1){
     if (vdata[gv.NormStrUserAgent]){
       let el1 = vdata[gv.NormStrUserAgent];
