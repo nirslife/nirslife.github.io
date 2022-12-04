@@ -45,4 +45,17 @@ function SendToBDCurVoiceInx(gv) {
   RequestArrFireBase(gv, vobj, 'PATCH');
 }
 
+function GetKeyMark(gv) {
+  let recid = gv.ListLess[gv.LessonNum].recid;
+  let keymark = "mark_arrles_"+recid;
+  return keymark;
+}
+
+function SendToBDSettingsLabel(gv) {
+  let vobj = {};
+  vobj[GetKeyMark(gv)] = gv.ArrMark;
+  RequestArrFireBase(gv, vobj, 'PATCH');
+}
+  
+
 
