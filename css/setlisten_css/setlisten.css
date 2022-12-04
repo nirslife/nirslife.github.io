@@ -168,6 +168,7 @@
 #footerctrlblock{    
   width: 100%;
  /* height: 200px;*/
+  height: auto;
   color: #ffffff;
   float: left;  
   font-size: 33px;   
@@ -202,6 +203,30 @@
     border: 2px solid;  
     display: inline;
 }
+
+.confbuttctrl2 {  
+  height: 40px;
+  color: #ffffff;
+  float: left;
+  text-align: center;  
+  font-size: 33px;
+  margin-top: 20px;
+  margin-bottom: 20px;  
+  margin-right: 65px;
+  margin-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;    
+  padding-right: 30px;
+  padding-left: 30px;
+  border-radius: 10px;  
+  border-color: #f7f7f7;
+  background-color:#555555;
+  user-select: none; 
+  cursor: pointer;
+  border: 2px solid;  
+  display: inline;
+}
+
   
 .sentenceitemup {  
   height: 40px;
@@ -274,4 +299,41 @@
   padding-right: 0px;
   padding-left: 0px;
   cursor: pointer;
+}
+
+.divctrl_sent_i {
+  height: 100px;  
+  margin-top: 0px;
+  margin-bottom: 0px;  
+  margin-right: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+  background-color: rgb(30, 255, 255);
+  user-select: none; 
+  cursor: pointer;
+}
+
+.but_ctrl_sent_i {  
+  color: #555;
+  float: left;
+  text-align: center;  
+  font-size: 33px;
+  margin-top: 20px;
+  margin-bottom: 20px;  
+  margin-right: 65px;
+  margin-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;    
+  padding-right: 30px;
+  padding-left: 30px;
+  border-radius: 10px;  
+  border-color: #2196F3;
+  background-color: rgb(192, 203, 208);
+  user-select: none; 
+  cursor: pointer;
+  border: 2px solid;
+  display: inline;
 }
