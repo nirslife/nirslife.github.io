@@ -8,7 +8,7 @@ function Main_Init_VarObj_Start(gv) {
   gv.CurVoiceInx = -1;
   gv.TmpSelVoiceMM = -1;
   gv.LoadedVoices = 0;
-  GetStartLoadVoice(gv);
+ // GetStartLoadVoice(gv);
   GetNormalizeUserAgentStr(gv);
   gv.eventvalue = Init_Eventvalue_Devices();
   gv.HtmlBodyObj = Get_HtmlBodyElem();
