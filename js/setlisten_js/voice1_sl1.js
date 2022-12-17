@@ -4,7 +4,7 @@
     bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","Play"));
     bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","Stop"));
     bd2.appendChild(mm1.create1ElemByInx("mm_space_i","======="));
-    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","== 4_12 ==="));
+    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","== 4_13 ==="));
     bd2.appendChild(mm1.create1ElemByInx("mm_allsent_i","ALL"));
     mm1.op["mm_allsent_i"].style.background = "rgb(52, 188, 69)";
     gv.MarkMode = "";
@@ -132,6 +132,7 @@
     formframedo(gv);
     let e1 = gv.ArVP.ar[gv.ArVP.CurPos];
     e1.Rate = e1.as[e1.inxas];
+    gv.ArVP.PlayingCancel = 0;
     speakBV(gv, e1);
   }
 
