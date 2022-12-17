@@ -11,6 +11,7 @@ function Get_ArVP(gv){
       InxSpeed:0,
       Stop:0,
       Playing:0,
+      PlayingCancel:0,
       FrameIndex:0,
       CurSentence:0,
       SelectedP:null,
