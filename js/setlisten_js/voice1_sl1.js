@@ -4,7 +4,7 @@
     bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","Play"));
     bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","Stop"));
     bd2.appendChild(mm1.create1ElemByInx("mm_space_i","======="));
-    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","== 4_10 ==="));
+    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","== 4_11 ==="));
     bd2.appendChild(mm1.create1ElemByInx("mm_allsent_i","ALL"));
     mm1.op["mm_allsent_i"].style.background = "rgb(52, 188, 69)";
     gv.MarkMode = "";
@@ -116,6 +116,7 @@
 
   function PlayProc_i(gv) {
     if (gv.ArVP.ar.length < 1) return;
+    gv.MMenu.op["mm_version_i"].innerText = "pl>>"+gv.ArVP.CurPos;
     if(gv.ArVP.ar[gv.ArVP.CurPos].InxSentence != gv.ArVP.CurSentence){
       let bv1 = gv.ArrSens;
       let Tpb = gv.MMenu;
@@ -125,6 +126,7 @@
       const senid_2 = document.getElementById("divsentenid"+sid2);
       senid_2.style.color = '#8bfcd7';
       gv.ArVP.CurSentence = gv.ArVP.ar[gv.ArVP.CurPos].InxSentence;
+      gv.MMenu.op["mm_version_i"].innerText = gv.MMenu.op["mm_version_i"].innerText+ "--pl>>"+gv.ArVP.CurPos;
      // Tpb.op["mm_1sentence_i"].innerText = bv1[gv.ArVP.CurSentence].Eng;
     }
     formframedo(gv);
@@ -155,7 +157,7 @@
     gv.ArVP.Stop = 1;
     gv.ArVP.Playing = 0;
     speechSynthesis.cancel();
-   // click_mm_Play_i(null);
+    click_mm_Play_i(null);
     gv.MMenu.op["mm_allsent_i"].innerText = gv.MMenu.op["mm_allsent_i"].innerText + '::'+ e1.inxas+">>>"+gv.ArVP.CurPos;
   }
 
@@ -234,7 +236,6 @@ function click_mm_space_i(athis) {
         console.log('start');
         break;
       case 'end':
-        gv.MMenu.op["mm_version_i"].innerText = "end>>"+gv.ArVP.CurPos;
         PlayNextVoice(gv);
         console.log('end');
         break;
