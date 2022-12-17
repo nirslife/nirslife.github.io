@@ -2,8 +2,8 @@ function Get_HtmlBodyElem() {
   let BodyObj = 
   { 
     ar:[
-      {elname:"div", atr:[{name:"id", value:"header1"}], pobj:null},
       {elname:"div", atr:[{name:"id", value:"blockvoice"}], pobj:null},
+      {elname:"div", atr:[{name:"id", value:"header1"}], pobj:null},
       {elname:"div", atr:[{name:"id", value:"blocksentenceitem"}], pobj:null},
       {elname:"div", atr:[{name:"id", value:"footerctrlblock"}], pobj:null}
     ],
