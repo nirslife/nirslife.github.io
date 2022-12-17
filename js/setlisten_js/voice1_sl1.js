@@ -160,14 +160,10 @@
   }
 
 
-function PlayNextVoice(gv) {
-  let e11 = gv.ArVP.ar[gv.ArVP.CurPos];
-  gv.MMenu.op["mm_version_i"].innerText = e11.inxas+">>"+gv.ArVP.CurPos;
-  
+function PlayNextVoice(gv) {  
   if ((gv.ArVP.Stop != 1)&&(gv.ArVP.Playing == 1)) {
     let e1 = gv.ArVP.ar[gv.ArVP.CurPos];
     e1.inxas++;
-    gv.MMenu.op["mm_version_i"].innerText = gv.MMenu.op["mm_version_i"].innerText + '::' +  e1.inxas+">>"+gv.ArVP.CurPos;
     if (e1.inxas >= e1.as.length){
       e1.inxas = 0;
       gv.ArVP.CurPos++;
@@ -237,7 +233,8 @@ function click_mm_space_i(athis) {
       case 'start':      
         console.log('start');
         break;
-      case 'end':      
+      case 'end':
+        gv.MMenu.op["mm_version_i"].innerText = "end>>"+gv.ArVP.CurPos;
         PlayNextVoice(gv);
         console.log('end');
         break;
