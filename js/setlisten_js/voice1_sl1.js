@@ -155,7 +155,7 @@
     gv.MMenu.op["mm_allsent_i"].innerText =  e1.inxas+">>>"+gv.ArVP.CurPos;
     gv.ArVP.Stop = 1;
     gv.ArVP.Playing = 0;
-    click_mm_Play_i(null);
+   // click_mm_Play_i(null);
     gv.MMenu.op["mm_allsent_i"].innerText = gv.MMenu.op["mm_allsent_i"].innerText + '::'+ e1.inxas+">>>"+gv.ArVP.CurPos;
   }
 
