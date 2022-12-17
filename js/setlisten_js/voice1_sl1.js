@@ -132,7 +132,6 @@
     formframedo(gv);
     let e1 = gv.ArVP.ar[gv.ArVP.CurPos];
     e1.Rate = e1.as[e1.inxas];
-  //  gv.ArVP.PlayingCancel = 0;
     speakBV(gv, e1);
   }
 
