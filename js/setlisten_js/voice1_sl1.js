@@ -35,19 +35,24 @@
   }
   
 
-  function click_mm_Play_i(athis) {
-    let gv = Get_GlobalVar();
-    if ((gv.ArVP.Playing === 1)&&(gv.ArVP.Playing != 0)){
-      gv.MMenu.op["mm_Play_i"].innerText = "Play-R";
-      speechSynthesis.cancel();
-      gv.ArVP.Playing = 0;
-    }else{
-      gv.MMenu.op["mm_Play_i"].innerText = "Pause";
-      gv.ArVP.Stop = 0;
-      gv.ArVP.Playing = 1;
-      PlayProc_i(gv);
-    }
+function click_mm_Play_i(athis) {
+  let gv = Get_GlobalVar();
+  Play_ButtonProc(gv);
+}
+
+function Play_ButtonProc(gv){
+  if ((gv.ArVP.Playing === 1)&&(gv.ArVP.Playing != 0)){
+    gv.MMenu.op["mm_Play_i"].innerText = "Play-R";
+    speechSynthesis.cancel();
+    gv.ArVP.Playing = 0;
+  }else{
+    gv.MMenu.op["mm_Play_i"].innerText = "Pause";
+    gv.ArVP.Stop = 0;
+    gv.ArVP.Playing = 1;
+    PlayProc_i(gv);
   }
+}
+
 
   function formframedo(gv) {
     let Tpb = gv.MMenu;
@@ -151,8 +156,10 @@
       gv.ArVP.CurPos = inxfrom;
       click_mm_Play_i(null);
     }else{
-      speechSynthesis.cancel();
+     // speechSynthesis.cancel();
       gv.ArVP.PlayingFromInx = inxfrom;
+      Play_ButtonProc(gv);
+      Play_ButtonProc(gv);
     }
     gv.MMenu.op["mm_space_i"].innerText = "===>>>"+inxfrom;
   //  gv.MMenu.op["mm_allsent_i"].innerText = gv.MMenu.op["mm_allsent_i"].innerText + '::'+ e1.inxas+">>>"+gv.ArVP.CurPos;
