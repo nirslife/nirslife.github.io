@@ -4,7 +4,7 @@
     bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","Play"));
     bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","Stop"));
     bd2.appendChild(mm1.create1ElemByInx("mm_space_i","======="));
-    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","== 4_4 ==="));
+    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","== 4_5 ==="));
     bd2.appendChild(mm1.create1ElemByInx("mm_allsent_i","ALL"));
     mm1.op["mm_allsent_i"].style.background = "rgb(52, 188, 69)";
     gv.MarkMode = "";
@@ -152,11 +152,11 @@
     e1.inxas = 0;
     speechSynthesis.cancel();
     gv.ArVP.CurPos = inxfrom;
-    gv.MMenu.op["mm_space_i"].innerText =  e1.inxas+">>>"+gv.ArVP.CurPos;
+    gv.MMenu.op["mm_allsent_i"].innerText =  e1.inxas+">>>"+gv.ArVP.CurPos;
     gv.ArVP.Stop = 1;
     gv.ArVP.Playing = 0;
     click_mm_Play_i(null);
-    gv.MMenu.op["mm_space_i"].innerText = gv.MMenu.op["mm_space_i"].innerText + '::'+ e1.inxas+">>>"+gv.ArVP.CurPos;
+    gv.MMenu.op["mm_allsent_i"].innerText = gv.MMenu.op["mm_allsent_i"].innerText + '::'+ e1.inxas+">>>"+gv.ArVP.CurPos;
   }
 
 
