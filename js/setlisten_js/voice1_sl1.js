@@ -4,7 +4,7 @@
     bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","Play"));
     bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","Stop"));
     bd2.appendChild(mm1.create1ElemByInx("mm_space_i","======="));
-    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","== 4_1 ========"));
+    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","== 4_2 ==="));
     bd2.appendChild(mm1.create1ElemByInx("mm_allsent_i","ALL"));
     mm1.op["mm_allsent_i"].style.background = "rgb(52, 188, 69)";
     gv.MarkMode = "";
@@ -154,6 +154,7 @@ function PlayNextVoice(gv) {
       e1.inxas = 0;
       gv.ArVP.CurPos++;
     }
+    gv.MMenu.op["mm_space_i"].innerText = e1.inxas+">>>"+gv.ArVP.CurPos;
     if (gv.ArVP.CurPos >= gv.ArVP.ar.length) {
       gv.ArVP.CurPos = 0;
       if(gv.ArVP.Repeat == 1) {
@@ -161,10 +162,10 @@ function PlayNextVoice(gv) {
         //click_blvi_Play_i(gv.HtmlTst.op["blvi_Play_i"]);
       }
     } else {
-      //click_blvi_Play_i(gv.HtmlTst.op["blvi_Play_i"]);      
+      //click_blvi_Play_i(gv.HtmlTst.op["blvi_Play_i"]);
       PlayProc_i(gv);
     }
-    gv.MMenu.op["mm_space_i"].innerText = "===>>>"+gv.ArVP.CurPos;
+    gv.MMenu.op["mm_space_i"].innerText = gv.MMenu.op["mm_space_i"].innerText + "::" + e1.inxas+">>>"+gv.ArVP.CurPos;
   }
 }
   
