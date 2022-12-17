@@ -162,7 +162,7 @@
 
 function PlayNextVoice(gv) {
   let e11 = gv.ArVP.ar[gv.ArVP.CurPos];
-  gv.MMenu.op["mm_version_i"].innerText = e11.inxas+">1>"+gv.ArVP.CurPos;
+  gv.MMenu.op["mm_version_i"].innerText = e11.inxas+">>"+gv.ArVP.CurPos;
   
   if ((gv.ArVP.Stop != 1)&&(gv.ArVP.Playing == 1)) {
     let e1 = gv.ArVP.ar[gv.ArVP.CurPos];
