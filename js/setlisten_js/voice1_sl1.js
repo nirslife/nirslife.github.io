@@ -145,6 +145,19 @@
     gv.ArVP.Playing = 0;
   }
 
+  function ProcForPlayFrom_Stop(inxfrom) {
+    let gv = Get_GlobalVar();
+    gv.MMenu.op["mm_Play_i"].innerText = "Play";
+    let e1 = gv.ArVP.ar[gv.ArVP.CurPos];
+    e1.inxas = 0;
+    speechSynthesis.cancel();
+    gv.ArVP.CurPos = inxfrom;
+    gv.ArVP.Stop = 1;
+    gv.ArVP.Playing = 0;
+    click_mm_Play_i(null);
+    gv.MMenu.op["mm_space_i"].innerText =  e1.inxas+">>>"+gv.ArVP.CurPos;
+  }
+
 
 function PlayNextVoice(gv) {
   if ((gv.ArVP.Stop != 1)&&(gv.ArVP.Playing == 1)) {
@@ -392,10 +405,8 @@ function click_mm_space_i(athis) {
 
   function click_pfrom_but_itemsent(athis){
     let gv = Get_GlobalVar();
-    click_mm_Stop_i(null);    
     let inxa = athis.getAttribute("InxAtt");
-    gv.ArVP.CurPos = (inxa * 1);
-    click_mm_Play_i(null);
+    ProcForPlayFrom_Stop(inxa * 1);
   }
 
   function click_but_ctrl_sent_lev(athis){
