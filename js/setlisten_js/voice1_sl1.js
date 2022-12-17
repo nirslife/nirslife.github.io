@@ -153,7 +153,10 @@
     let e1 = gv.ArVP.ar[gv.ArVP.CurPos];
     e1.inxas = 0;
     gv.ArVP.CurPos = inxfrom;
-    gv.MMenu.op["mm_allsent_i"].innerText =  e1.inxas+">>>"+gv.ArVP.CurPos;
+    let e11 = gv.ArVP.ar[gv.ArVP.CurPos];
+    e11.inxas = 0;
+    gv.MMenu.op["mm_allsent_i"].innerText =  e11.inxas+">>>"+gv.ArVP.CurPos;
+
     gv.ArVP.Stop = 1;
     gv.ArVP.Playing = 0;
     speechSynthesis.cancel();
