@@ -4,7 +4,7 @@
     bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","Play"));
     bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","Stop"));
     bd2.appendChild(mm1.create1ElemByInx("mm_space_i","======="));
-    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","== 4_5 ==="));
+    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","== 4_6 ==="));
     bd2.appendChild(mm1.create1ElemByInx("mm_allsent_i","ALL"));
     mm1.op["mm_allsent_i"].style.background = "rgb(52, 188, 69)";
     gv.MarkMode = "";
@@ -161,9 +161,13 @@
 
 
 function PlayNextVoice(gv) {
+  let e11 = gv.ArVP.ar[gv.ArVP.CurPos];
+  gv.MMenu.op["mm_version_i"].innerText = e11.inxas+">1>"+gv.ArVP.CurPos;
+  
   if ((gv.ArVP.Stop != 1)&&(gv.ArVP.Playing == 1)) {
     let e1 = gv.ArVP.ar[gv.ArVP.CurPos];
     e1.inxas++;
+    gv.MMenu.op["mm_version_i"].innerText = gv.MMenu.op["mm_version_i"].innerText + '::' +  e1.inxas+">>"+gv.ArVP.CurPos;
     if (e1.inxas >= e1.as.length){
       e1.inxas = 0;
       gv.ArVP.CurPos++;
