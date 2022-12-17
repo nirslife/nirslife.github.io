@@ -159,6 +159,7 @@
 
     gv.ArVP.Stop = 1;
     gv.ArVP.Playing = 0;
+    gv.ArVP.PlayingCancel = 1;
     speechSynthesis.cancel();
     click_mm_Play_i(null);
     gv.MMenu.op["mm_allsent_i"].innerText = gv.MMenu.op["mm_allsent_i"].innerText + '::'+ e1.inxas+">>>"+gv.ArVP.CurPos;
@@ -173,7 +174,7 @@ function PlayNextVoice(gv) {
       e1.inxas = 0;
       gv.ArVP.CurPos++;
     }
-    gv.MMenu.op["mm_space_i"].innerText = e1.inxas+">>>"+gv.ArVP.CurPos;
+    gv.MMenu.op["mm_space_i"].innerText = e1.inxas+">>"+gv.ArVP.CurPos;
     if (gv.ArVP.CurPos >= gv.ArVP.ar.length) {
       gv.ArVP.CurPos = 0;
       if(gv.ArVP.Repeat == 1) {
@@ -239,7 +240,11 @@ function click_mm_space_i(athis) {
         console.log('start');
         break;
       case 'end':
-        PlayNextVoice(gv);
+        if (gv.ArVP.PlayingCancel != 1){
+          PlayNextVoice(gv);
+        }else{
+          gv.ArVP.PlayingCancel = 0;
+        }
         console.log('end');
         break;
       case 'endEvent':
