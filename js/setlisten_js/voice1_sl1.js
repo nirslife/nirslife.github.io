@@ -4,7 +4,7 @@
     bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","Play"));
     bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","Stop"));
     bd2.appendChild(mm1.create1ElemByInx("mm_space_i","======="));
-    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","== 4_14 ==="));
+    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","== 4_15 ==="));
     bd2.appendChild(mm1.create1ElemByInx("mm_allsent_i","ALL"));
     mm1.op["mm_allsent_i"].style.background = "rgb(52, 188, 69)";
     gv.MarkMode = "";
@@ -167,7 +167,8 @@
   }
 
 
-function PlayNextVoice(gv) {  
+function PlayNextVoice(gv) {
+  if (gv.ArVP.PlayingCancel == 1) return;
   if ((gv.ArVP.Stop != 1)&&(gv.ArVP.Playing == 1)) {
     let e1 = gv.ArVP.ar[gv.ArVP.CurPos];
     e1.inxas++;
@@ -241,11 +242,7 @@ function click_mm_space_i(athis) {
         console.log('start');
         break;
       case 'end':
-        if (gv.ArVP.PlayingCancel != 1){
-          PlayNextVoice(gv);
-        }else{
-          gv.ArVP.PlayingCancel = 0;
-        }
+        PlayNextVoice(gv);
         console.log('end');
         break;
       case 'endEvent':
