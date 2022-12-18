@@ -156,6 +156,7 @@ function click_mmvoice_item(athis) {
 function clickCtrlMMenu(athis) {
   let gv = Get_GlobalVar();
   let mm1 = gv.MMenu;
+  let bdiv = gv.HtmlBodyObj.kp["mmless_buf_id"];
   if (athis.id == "mm_but4_i"){ 
     GetStartLoadVoice(gv);
   }
@@ -169,10 +170,15 @@ function clickCtrlMMenu(athis) {
     mm1.op[mm1.tid[athis.id]].style.display = "none";
   }else if (mm1.mmopen != athis.id){    
     mm1.op[mm1.mmopen].style.backgroundColor = "rgb(192, 192, 192)";
-    mm1.op[mm1.tid[mm1.mmopen]].style.display = "none";    
+    mm1.op[mm1.tid[mm1.mmopen]].style.display = "none";
     mm1.mmopen = athis.id;
     athis.style.backgroundColor = "rgb(30, 144, 255)";
     mm1.op[mm1.tid[athis.id]].style.display = "block";
+  }
+  if(mm1.op["mm_div2_i"].style.display == "none"){
+    bdiv.style.display = "none";
+  }else{
+    bdiv.style.display = "block";
   }
 }
 
