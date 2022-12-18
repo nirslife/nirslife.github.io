@@ -55,11 +55,12 @@ function LoadlessTo_mmenu(gv) {
   let mm1 = gv.MMenu;
   let lst = gv.ListLess;
   let lls = gv.LstLes;
+  let bdiv = gv.HtmlBodyObj.kp["mmless_buf_id"];
   let bd1 = mm1.op["mm_div2_i"];
   bd1.appendChild(mm1.create1ElemByInx("sent_select_ok","Select-OK"));
   for (let i=0; i<lst.length; i++) {
     lls.AddNewArr();
-    bd1.appendChild(lls.create1ElemByInx("mmless_item",lst[i].recid+" - "+lst[i].shortdesc));
+    bdiv.appendChild(lls.create1ElemByInx("mmless_item",lst[i].recid+" - "+lst[i].shortdesc));
   }
   let s1 = "";
   if(gv.TmpLessonNum > 0){s1 = gv.TmpLessonNum;}
