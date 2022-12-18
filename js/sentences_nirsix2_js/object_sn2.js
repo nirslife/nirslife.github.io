@@ -4,6 +4,7 @@ function Get_HtmlBodyElem() {
   { 
     ar:[
       {elname:"div", atr:[{name:"id", value:"header1"}], pobj:null},
+      {elname:"div", atr:[{name:"id", value:"mmless_buf_id"}], pobj:null},
       {elname:"div", atr:[{name:"id", value:"textfrom1"}], pobj:null},
       {elname:"div", atr:[{name:"id", value:"inputtextfrom1"}], pobj:null},
       {elname:"div", atr:[{name:"id", value:"puzzletextfrom1"}], pobj:null},
