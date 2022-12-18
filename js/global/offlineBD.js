@@ -1618,7 +1618,7 @@ function GetOffLineBD() {
       },
       {
         "FirstBy1Word": 1,
-        "Sentences1": "Did you see to the Grand Canyon? Of course. lt was wonderful.",
+        "Sentences1": "Did you see to the Grand Canyon? Of course. It was wonderful.",
         "SpeakRateBy1Word": 0.5,
         "SpeakRateSenten": 0.8,
         "WaitBy1Word_mSec": 200
@@ -11706,7 +11706,7 @@ function GetOffLineBD() {
         "Rus": "Была хорошая погода? Да, но было очень жарко, иногда слишком жарко."
       },
       {
-        "Eng": "Did you see to the Grand Canyon? Of course. lt was wonderful.",
+        "Eng": "Did you see to the Grand Canyon? Of course. It was wonderful.",
         "Rus": "Вы видели Гранд-Каньон? Конечно. Это было замечательно."
       },
       {
@@ -13450,10 +13450,10 @@ function GetOffLineBD() {
       {
         "CurSentences": 17,
         "idvarname": "arrles35",
-        "longdesc": "Had better lt's time ...",
+        "longdesc": "Had better It's time ...",
         "part_gramm": "Modals",
         "recid": 35,
-        "shortdesc": "Had better lt's time ..."
+        "shortdesc": "Had better It's time ..."
       },
       {
         "CurSentences": 32,
@@ -13530,10 +13530,10 @@ function GetOffLineBD() {
       {
         "CurSentences": 0,
         "idvarname": "arrles45",
-        "longdesc": "lt is said that ... He is said to ... He is supposed to ... ",
+        "longdesc": "It is said that ... He is said to ... He is supposed to ... ",
         "part_gramm": "Passive ",
         "recid": 45,
-        "shortdesc": "lt is said that ... He is said to ... He is supposed to ... "
+        "shortdesc": "It is said that ... He is said to ... He is supposed to ... "
       },
       {
         "CurSentences": 0,
