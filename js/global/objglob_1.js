@@ -47,6 +47,8 @@ function Get_ArVP(gv){
     return ClassObj;
   }
   
+
+/*
   function Get_HtmlTst(gv) {
     let ClassObj = Create_MetodsObj();
     let av = DataHtmlTst_i(gv);
@@ -54,6 +56,8 @@ function Get_ArVP(gv){
     ClassObj.InitAllElem();
     return ClassObj;
   }
+*/
+
   
   function Get_HtmlMMenu(gv) {
     let ClassObj = Create_MetodsObj();
@@ -267,7 +271,7 @@ function Get_ArVP(gv){
   return BlVi;
   }  
   
-    
+ /*   
   function DataHtmlTst_i(gv) {  
     let eval = gv.eventvalue;
     let BlVi = {
@@ -333,7 +337,7 @@ function Get_ArVP(gv){
       {elname:"div",
         atr:[
           {name:"id", value:"blvi_Play_i", Add_i:1},
-          {name:"class", value:"confbuttctrl"},
+          {name:"class", value:"buttctrlvoice"},
           {name:eval, value:"click_blvi_Play_i(this)"}
         ],
         pobj:null
@@ -341,7 +345,7 @@ function Get_ArVP(gv){
       {elname:"div",
         atr:[
           {name:"id", value:"blvi_Stop_i", Add_i:1},
-          {name:"class", value:"confbuttctrl"},
+          {name:"class", value:"buttctrlvoice"},
           {name:eval, value:"click_blvi_Stop_i(this)"}
         ],
         pobj:null
@@ -349,7 +353,7 @@ function Get_ArVP(gv){
       {elname:"div",
         atr:[
           {name:"id", value:"blvi_space_i", Add_i:1},
-          {name:"class", value:"confbuttctrl"},
+          {name:"class", value:"buttctrlvoice"},
           {name:eval, value:"click_blvi_space_i(this)"}
         ],
         pobj:null
@@ -357,7 +361,7 @@ function Get_ArVP(gv){
       {elname:"div",
         atr:[
           {name:"id", value:"blvi_nextlesson_i", Add_i:1},
-          {name:"class", value:"confbuttctrl"},
+          {name:"class", value:"buttctrlvoice"},
           {name:eval, value:"click_blvi_nextlesson_i(this)"}
         ],
         pobj:null
@@ -398,6 +402,9 @@ function Get_ArVP(gv){
   }
   return BlVi;
   }
+  
+ */
+
   
   function DataHtmlMMenu_i(gv) {
     let eval = gv.eventvalue;
@@ -524,7 +531,7 @@ function Get_ArVP(gv){
       {elname:"div",
         atr:[
           {name:"id", value:"mm_Play_i", Add_i:1},
-          {name:"class", value:"confbuttctrl"},
+          {name:"class", value:"buttctrlvoice"},
           {name:eval, value:"click_mm_Play_i(this)"}
         ],
         pobj:null
@@ -532,7 +539,7 @@ function Get_ArVP(gv){
       {elname:"div",
         atr:[
           {name:"id", value:"mm_Stop_i", Add_i:1},
-          {name:"class", value:"confbuttctrl"},
+          {name:"class", value:"buttctrlvoice"},
           {name:eval, value:"click_mm_Stop_i(this)"}
         ],
         pobj:null
@@ -540,7 +547,7 @@ function Get_ArVP(gv){
       {elname:"div",
         atr:[
           {name:"id", value:"mm_space_i", Add_i:1},
-          {name:"class", value:"confbuttctrl"},
+          {name:"class", value:"buttctrlvoice"},
           {name:eval, value:"click_mm_space_i(this)"}
         ],
         pobj:null
@@ -548,7 +555,7 @@ function Get_ArVP(gv){
       {elname:"div",
         atr:[
           {name:"id", value:"mm_allsent_i", Add_i:1},
-          {name:"class", value:"confbuttctrl2"},
+          {name:"class", value:"buttctrlvoice"},
           {name:"MarkName", value:""},
           {name:eval, value:"click_mm_markbut_i(this)"}
         ],
@@ -557,7 +564,7 @@ function Get_ArVP(gv){
       {elname:"div",
         atr:[
           {name:"id", value:"mm_L1mrksent_i", Add_i:1},
-          {name:"class", value:"confbuttctrl2"},
+          {name:"class", value:"buttctrlvoice"},
           {name:"MarkName", value:"l1"},
           {name:eval, value:"click_mm_markbut_i(this)"}
         ],
@@ -566,7 +573,7 @@ function Get_ArVP(gv){
       {elname:"div",
         atr:[
           {name:"id", value:"mm_L2mrksent_i", Add_i:1},
-          {name:"class", value:"confbuttctrl2"},
+          {name:"class", value:"buttctrlvoice"},
           {name:"MarkName", value:"l2"},
           {name:eval, value:"click_mm_markbut_i(this)"}
         ],
@@ -575,7 +582,7 @@ function Get_ArVP(gv){
       {elname:"div",
         atr:[
           {name:"id", value:"mm_L3mrksent_i", Add_i:1},
-          {name:"class", value:"confbuttctrl2"},
+          {name:"class", value:"buttctrlvoice"},
           {name:"MarkName", value:"l3"},
           {name:eval, value:"click_mm_markbut_i(this)"}
         ],
@@ -584,7 +591,7 @@ function Get_ArVP(gv){
       {elname:"div",
         atr:[
           {name:"id", value:"mm_version_i", Add_i:1},
-          {name:"class", value:"confbuttctrl"}
+          {name:"class", value:"buttctrlvoice"}
         ],
         pobj:null
       },
