@@ -1,10 +1,10 @@
   function create1BlockForVoice1(gv) {
     let mm1 = gv.MMenu;
     let bd2 = mm1.op["mm_div1_i"];
-    bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","Play"));
-    bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","Stop"));
-    bd2.appendChild(mm1.create1ElemByInx("mm_space_i","======="));
-    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","== 5_0 ==="));
+    bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","_____Play_____"));
+    bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","_____Stop_____"));
+    bd2.appendChild(mm1.create1ElemByInx("mm_space_i","="));
+    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","5_0"));
     bd2.appendChild(mm1.create1ElemByInx("mm_allsent_i","ALL"));
     mm1.op["mm_allsent_i"].style.background = "rgb(52, 188, 69)";
     gv.MarkMode = "";
@@ -42,11 +42,11 @@ function click_mm_Play_i(athis) {
 
 function Play_ButtonProc(gv){
   if ((gv.ArVP.Playing === 1)&&(gv.ArVP.Playing != 0)){
-    gv.MMenu.op["mm_Play_i"].innerText = "Play-R";
+    gv.MMenu.op["mm_Play_i"].innerText = "_____Play-R_____";
     speechSynthesis.cancel();
     gv.ArVP.Playing = 0;
   }else{
-    gv.MMenu.op["mm_Play_i"].innerText = "Pause";
+    gv.MMenu.op["mm_Play_i"].innerText = "_____Pause_____";
     gv.ArVP.Stop = 0;
     gv.ArVP.Playing = 1;
     PlayProc_i(gv);
@@ -141,7 +141,7 @@ function Play_ButtonProc(gv){
 
   function click_mm_Stop_i(athis) {
     let gv = Get_GlobalVar();
-    gv.MMenu.op["mm_Play_i"].innerText = "Play";
+    gv.MMenu.op["mm_Play_i"].innerText = "_____Play_____";
     let e1 = gv.ArVP.ar[gv.ArVP.CurPos];
     e1.inxas = 0;
     gv.ArVP.CurPos = 0;
@@ -159,7 +159,7 @@ function Play_ButtonProc(gv){
      // speechSynthesis.cancel();
       gv.ArVP.PlayingFromInx = inxfrom;
     }
-    gv.MMenu.op["mm_space_i"].innerText = "===>>>"+inxfrom;
+    gv.MMenu.op["mm_space_i"].innerText = ">>"+inxfrom;
   //  gv.MMenu.op["mm_allsent_i"].innerText = gv.MMenu.op["mm_allsent_i"].innerText + '::'+ e1.inxas+">>>"+gv.ArVP.CurPos;
   }
 
@@ -196,7 +196,7 @@ function click_mm_space_i(athis) {
   if (gv.ArVP.CurPos >= gv.ArVP.ar.length) {
     gv.ArVP.CurPos--;
   }
-  athis.innerText = "===>>>"+gv.ArVP.CurPos;
+  athis.innerText = ">>"+gv.ArVP.CurPos;
   formframedo(gv);
 }
 
