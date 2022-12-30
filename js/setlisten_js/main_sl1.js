@@ -16,7 +16,7 @@ function Main_Init_VarObj_Start(gv) {
   gv.msgspeak = Init_SpeechSynthesisUtterance();
   gv.FBSets = Init_LoginFireBaseSets();
   gv.HtmlBV = Get_HtmlBV(gv);
-  gv.HtmlTst = Get_HtmlTst(gv); // для тестов
+ // gv.HtmlTst = Get_HtmlTst(gv); // для тестов
   gv.MMenu =  Get_HtmlMMenu(gv); // main menu
   gv.LstLes =  Get_HtmlLstLes(gv); // список уроков
   gv.LstVoi =  Get_HtmlLstVoi(gv); // для голосов 
