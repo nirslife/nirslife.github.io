@@ -3,7 +3,7 @@
     gv.VersionVoiceApp = "53";
    // gv.ModeRepeatVoice = 2; // del after this line
     let bd2 = mm1.op["mm_div1_i"];
-    bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","_____Play_____"));
+    bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","___Play___"));
     bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","_____Stop_____"));
     bd2.appendChild(mm1.create1ElemByInx("mm_space_i","="));
     bd2.appendChild(mm1.create1ElemByInx("mm_version_i",gv.ModeRepeatVoice+"_"+gv.VersionVoiceApp));
