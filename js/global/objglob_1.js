@@ -591,7 +591,8 @@ function Get_ArVP(gv){
       {elname:"div",
         atr:[
           {name:"id", value:"mm_version_i", Add_i:1},
-          {name:"class", value:"buttctrlvoice"}
+          {name:"class", value:"buttctrlvoice"},
+          {name:eval, value:"click_mm_version_i(this)"}
         ],
         pobj:null
       },
