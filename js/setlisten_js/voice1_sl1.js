@@ -1,12 +1,12 @@
   function create1BlockForVoice1(gv) {
     let mm1 = gv.MMenu;
-    gv.VersionVoiceApp = "5_0";
-    gv.ModeRepeat = 2;
+    gv.VersionVoiceApp = "53";
+   // gv.ModeRepeatVoice = 2; // del after this line
     let bd2 = mm1.op["mm_div1_i"];
     bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","_____Play_____"));
     bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","_____Stop_____"));
-    bd2.appendChild(mm1.create1ElemByInx("mm_space_i","-=-"));
-    bd2.appendChild(mm1.create1ElemByInx("mm_version_i",gv.ModeRepeat+"_"+gv.VersionVoiceApp));
+    bd2.appendChild(mm1.create1ElemByInx("mm_space_i","="));
+    bd2.appendChild(mm1.create1ElemByInx("mm_version_i",gv.ModeRepeatVoice+"_"+gv.VersionVoiceApp));
     bd2.appendChild(mm1.create1ElemByInx("mm_allsent_i","ALL"));
     mm1.op["mm_allsent_i"].style.background = "rgb(52, 188, 69)";
     gv.MarkMode = "";
@@ -30,15 +30,16 @@
 
   function click_mm_version_i(athis){
     let gv = Get_GlobalVar();
-    if(gv.ModeRepeat == 2){
-      gv.ModeRepeat = 1;
+    if(gv.ModeRepeatVoice == 2){
+      gv.ModeRepeatVoice = 1;
     }
     else{
-      gv.ModeRepeat = 2;
+      gv.ModeRepeatVoice = 2;
     }
-    gv.MMenu.op["mm_version_i"].innerText = gv.ModeRepeat+"_"+gv.VersionVoiceApp;
+    gv.MMenu.op["mm_version_i"].innerText = gv.ModeRepeatVoice+"_"+gv.VersionVoiceApp;
     click_mm_Stop_i(null);
     gv.ArVP.ar = FormVoiceArrCurSentence(gv);
+    SendToBDModeRepeat(gv);
   }
   
   function AfterLoadVoiceLesson(gv) {
@@ -331,7 +332,7 @@ function click_mm_space_i(athis) {
       }else{
         let d2 = {};
         d2.textv = bv1[inx].Eng;
-        if (gv.ModeRepeat == 2){
+        if (gv.ModeRepeatVoice == 2){
           d2.as = [0.4, 0.8];
         }
         else{
