@@ -1,10 +1,12 @@
   function create1BlockForVoice1(gv) {
     let mm1 = gv.MMenu;
+    gv.VersionVoiceApp = "5_0";
+    gv.ModeRepeat = 2;
     let bd2 = mm1.op["mm_div1_i"];
     bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","_____Play_____"));
     bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","_____Stop_____"));
-    bd2.appendChild(mm1.create1ElemByInx("mm_space_i","="));
-    bd2.appendChild(mm1.create1ElemByInx("mm_version_i","5_0"));
+    bd2.appendChild(mm1.create1ElemByInx("mm_space_i","-=-"));
+    bd2.appendChild(mm1.create1ElemByInx("mm_version_i",gv.ModeRepeat+"_"+gv.VersionVoiceApp));
     bd2.appendChild(mm1.create1ElemByInx("mm_allsent_i","ALL"));
     mm1.op["mm_allsent_i"].style.background = "rgb(52, 188, 69)";
     gv.MarkMode = "";
@@ -23,7 +25,20 @@
     gv.MarkCurPObj = athis;
     athis.style.background = "rgb(52, 188, 69)";
     click_mm_Stop_i(null);
-    gv.ArVP.ar = FormVoiceArrCurSentence(gv);    
+    gv.ArVP.ar = FormVoiceArrCurSentence(gv);
+  }
+
+  function click_mm_version_i(athis){
+    let gv = Get_GlobalVar();
+    if(gv.ModeRepeat == 2){
+      gv.ModeRepeat = 1;
+    }
+    else{
+      gv.ModeRepeat = 2;
+    }
+    gv.MMenu.op["mm_version_i"].innerText = gv.ModeRepeat+"_"+gv.VersionVoiceApp;
+    click_mm_Stop_i(null);
+    gv.ArVP.ar = FormVoiceArrCurSentence(gv);
   }
   
   function AfterLoadVoiceLesson(gv) {
@@ -129,7 +144,7 @@ function Play_ButtonProc(gv){
       sid2 = gv.ArVP.ar[gv.ArVP.CurPos].InxSentence;
       const senid_2 = document.getElementById("divsentenid"+sid2);
       senid_2.style.color = '#8bfcd7';
-      gv.ArVP.CurSentence = gv.ArVP.ar[gv.ArVP.CurPos].InxSentence;      
+      gv.ArVP.CurSentence = gv.ArVP.ar[gv.ArVP.CurPos].InxSentence;
      // Tpb.op["mm_1sentence_i"].innerText = bv1[gv.ArVP.CurSentence].Eng;
     }
     formframedo(gv);
@@ -316,7 +331,12 @@ function click_mm_space_i(athis) {
       }else{
         let d2 = {};
         d2.textv = bv1[inx].Eng;
-        d2.as = [0.4, 0.8];
+        if (gv.ModeRepeat == 2){
+          d2.as = [0.4, 0.8];
+        }
+        else{
+          d2.as = [0.8];
+        }
         d2.inxas = 0;
         d2.Wait = 1;
         d2.Rate = 0.8; //bv1[inx].SpeakRateSenten;
