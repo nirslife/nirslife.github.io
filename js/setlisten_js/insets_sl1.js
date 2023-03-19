@@ -1,6 +1,6 @@
 
 function Init_GlobalVar() {
-  // Р¤СѓРЅРєС†РёРѕРЅР°Р» РґР»СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё Р“Р»РѕР±Р°Р»СЊРЅРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№;
+  // Функционал для инициализации Глобальной переменной;
   let gv = {
     funCBAfterLoadArrLesson:function(){}
   };
@@ -18,8 +18,8 @@ function Init_LoginFireBaseSets() {
   let apiKey1 = "AIzaSyDU0LWwjtz2BFXJOP2fM_UnhmracvGCzeo";
   //oj.email = "tese@nirsix.app.net"; 
   //oj.password = "po78L95wer1";
-  oj.email = "saps@nukr.net"; 
-  oj.password = "po78L950001";  
+  oj.email = "saps@nukr.net";
+  oj.password = "po78L950001";
   oj.UrlTrans1 = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey1}`;
   oj.UrlPost1 = "https://nirsix-engapp-default-rtdb.europe-west1.firebasedatabase.app/mn.json?auth=";
   return oj;
@@ -79,14 +79,14 @@ function RequestOffLineBase(gv) {
 //gv.funCBBeforeLoadAfterPatch = BeforeLoadAfterPatch;
 
 
-// С„СѓРЅРєС†РёСЏ РґР»СЏ Р·РЅР°С‡РµРЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ gv.funCBBeforeLoadAfterPatch
+// функция для значения по умолчанию gv.funCBBeforeLoadAfterPatch
 function BeforeLoadAfterPatch(gv, vdata) {
-  // РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµС‚ РїРѕРєР°
+  // ничего не делает пока
 }
 
 function StartReLoadLesson(gv) {
   gv.funInit_LessonVarObj = Load_VoiceLessonOnRun;
-  let arr1;  
+  let arr1;
   if(gv.OffLineMode == 0){ 
     RequestArrFireBase(gv, arr1, 'GET');
   }else{
@@ -113,12 +113,15 @@ function Init_LessonVarObj(gv, vdata) {
   gv.vdata1 = vdata;
   gv.ListLess = vdata["varlist"];
   gv.ListBV = vdata["varBVlist"];
-  let lesd1 = 0;
+  let lesd1 = 0;  
   if (gv.ProgName == "Voice"){
-    lesd1 = vdata["SavedVoiceLessKey1"] * 1;  // * РЅР° 1 РґР»СЏ СѓСЃС‚. С‚РёРїР° С‡РёСЃР»Рѕ  
+    lesd1 = vdata["SavedVoiceLessKey1"] * 1;  // * на 1 для уст. типа число
+    gv.ModeRepeatVoice = 2; // default    
+    if(vdata["ModeRepeatVoice"]){ gv.ModeRepeatVoice = vdata["ModeRepeatVoice"] * 1;}
+    gv.MMenu.op["mm_version_i"].innerText = gv.ModeRepeatVoice+"_"+gv.VersionVoiceApp;
   }
   if (gv.ProgName == "Sentence"){    
-    lesd1 = vdata["SavedArrLessKey1"] * 1;  // * РЅР° 1 РґР»СЏ СѓСЃС‚. С‚РёРїР° С‡РёСЃР»Рѕ
+    lesd1 = vdata["SavedArrLessKey1"] * 1;  // * на 1 для уст. типа число
   }  
   gv.LessonNum = lesd1
   gv.TmpLessonNum = lesd1;
@@ -133,10 +136,10 @@ function Init_LessonVarObj(gv, vdata) {
   gv.CurPlayingSent = 0;
   gv.InxForPlayingSent = 0;
   gv.CurSentences = 0;
-  gv.CurSentVoice = 0; // С‚РµРєСѓС‰РµРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ РґР»СЏ РІРѕР№СЃР°
+  gv.CurSentVoice = 0; // текущее предложение для войса
   if (gv.ListLess[gv.LessonNum].CurSentences) {gv.CurSentences = gv.ListLess[gv.LessonNum].CurSentences;}
-  gv.MaxStepMix = vdata["MaxStepMix"] * 1; // * РЅР° 1 РґР»СЏ СѓСЃС‚. С‚РёРїР° С‡РёСЃР»Рѕ
-  gv.DefStepMix = vdata["DefStepMix"] * 1; // * РЅР° 1 РґР»СЏ СѓСЃС‚. С‚РёРїР° С‡РёСЃР»Рѕ
+  gv.MaxStepMix = vdata["MaxStepMix"] * 1; // * на 1 для уст. типа число
+  gv.DefStepMix = vdata["DefStepMix"] * 1; // * на 1 для уст. типа число
   if(gv.MMenu.loadedlessons == 0){ LoadlessTo_mmenu(gv);}
  // if(gv.MMenu.loadedvoices == 0){ LoadVoicesTo_mmenu(gv); }
   if(gv.LoadedVoices == 1){
@@ -198,6 +201,17 @@ function SendToBDLessonNum(gv) {
   RequestArrFireBase(gv, vobj, 'PATCH')
 }
 
+function SendToBDModeRepeat(gv) {
+  let vobj = {};
+  if (gv.ProgName == "Voice"){
+    vobj["ModeRepeatVoice"] = gv.ModeRepeatVoice;
+  }
+  if (gv.ProgName == "Sentence"){
+    //nothing. not working
+  }
+  RequestArrFireBase(gv, vobj, 'PATCH')
+}
+
 function SendToBDVarBV(gv) {
 
   /*let aar = [
@@ -234,7 +248,7 @@ function Init_Eventvalue_Devices() {
   let aeventv = "onclick";
   if (devices.test(navigator.userAgent)) {
     aeventv = "ontouchend"; // ontouchstart ontouchend    
-    //               alert("Р’С‹ РёСЃРїРѕР»СЊР·СѓРµС‚Рµ РјРѕР±РёР»СЊРЅРѕРµ СѓСЃС‚СЂРѕР№СЃС‚РІРѕ (С‚РµР»РµС„РѕРЅ РёР»Рё РїР»Р°РЅС€РµС‚).")
+    //               alert("Вы используете мобильное устройство (телефон или планшет).")
   }   
   return aeventv;
 }
