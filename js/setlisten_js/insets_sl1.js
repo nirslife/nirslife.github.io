@@ -1,10 +1,10 @@
 
 function Init_GlobalVar(arg1) {
-  // Функционал для инициализации Глобальной переменной;
-  gv.AppNumber = arg1;
+  // Функционал для инициализации Глобальной переменной;  
   let gv = {
-    funCBAfterLoadArrLesson:function(){}
+    funCBAfterLoadArrLesson:function(){}    
   };
+  gv.AppNumber = arg1;
   return gv;
 }
 
