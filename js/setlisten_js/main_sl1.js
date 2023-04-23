@@ -14,7 +14,7 @@ function Main_Init_VarObj_Start(gv) {
   gv.HtmlBodyObj = Get_HtmlBodyElem();
   gv.HtmlAnyObj = Get_HtmlAnyElem(gv);
   gv.msgspeak = Init_SpeechSynthesisUtterance();
-  gv.FBSets = Init_LoginFireBaseSets(gv.AppNumber);
+  gv.FBSets = Init_LoginFireBaseSets(gv);
   gv.HtmlBV = Get_HtmlBV(gv);
  // gv.HtmlTst = Get_HtmlTst(gv); // для тестов
   gv.MMenu =  Get_HtmlMMenu(gv); // main menu
