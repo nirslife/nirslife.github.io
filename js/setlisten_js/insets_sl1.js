@@ -1,6 +1,7 @@
 
-function Init_GlobalVar() {
+function Init_GlobalVar(arg1) {
   // Функционал для инициализации Глобальной переменной;
+  gv.AppNumber = arg1;
   let gv = {
     funCBAfterLoadArrLesson:function(){}
   };
@@ -13,15 +14,26 @@ function Get_GlobalVar() {
 
 
 //************** BD *****************/
-function Init_LoginFireBaseSets() {
-  let oj = {};
-  let apiKey1 = "AIzaSyDU0LWwjtz2BFXJOP2fM_UnhmracvGCzeo";
-  //oj.email = "tese@nirsix.app.net"; 
-  //oj.password = "po78L95wer1";
-  oj.email = "saps@nukr.net";
-  oj.password = "po78L950001";
-  oj.UrlTrans1 = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey1}`;
-  oj.UrlPost1 = "https://nirsix-engapp-default-rtdb.europe-west1.firebasedatabase.app/mn.json?auth=";
+function Init_LoginFireBaseSets(arg1) {
+  if (arg1 == 1){
+    let oj = {};
+    let apiKey1 = "AIzaSyDU0LWwjtz2BFXJOP2fM_UnhmracvGCzeo";
+    //oj.email = "tese@nirsix.app.net"; 
+    //oj.password = "po78L95wer1";
+    oj.email = "saps@nukr.net";
+    oj.password = "po78L950001";
+    oj.UrlTrans1 = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey1}`;
+    oj.UrlPost1 = "https://nirsix-engapp-default-rtdb.europe-west1.firebasedatabase.app/mn.json?auth=";
+  }
+  if (arg1 == 2){
+    let oj = {};
+    let apiKey1 = "AIzaSyD_-Ne2ntzw8qOvPXH5Ic580LDkWa6L064";
+    oj.email = "saps@nukr.net";
+    oj.password = "po78L950001";
+    oj.UrlTrans1 = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey1}`;
+    oj.UrlPost1 = "https://nirsix-eng-other-default-rtdb.europe-west1.firebasedatabase.app/mn.json?auth=";
+    
+  }
   return oj;
 }
 
