@@ -15,8 +15,8 @@ function Get_GlobalVar() {
 
 //************** BD *****************/
 function Init_LoginFireBaseSets(gv) {
-  if (gv.AppNumber == 1){
-    let oj = {};
+  let oj = {};
+  if (gv.AppNumber == 1){    
     let apiKey1 = "AIzaSyDU0LWwjtz2BFXJOP2fM_UnhmracvGCzeo";
     //oj.email = "tese@nirsix.app.net"; 
     //oj.password = "po78L95wer1";
@@ -25,8 +25,7 @@ function Init_LoginFireBaseSets(gv) {
     oj.UrlTrans1 = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey1}`;
     oj.UrlPost1 = "https://nirsix-engapp-default-rtdb.europe-west1.firebasedatabase.app/mn.json?auth=";
   }
-  if (gv.AppNumber == 2){
-    let oj = {};
+  if (gv.AppNumber == 2){    
     let apiKey1 = "AIzaSyD_-Ne2ntzw8qOvPXH5Ic580LDkWa6L064";
     oj.email = "saps@nukr.net";
     oj.password = "po78L950001";
