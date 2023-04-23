@@ -2,7 +2,7 @@
 function Init_GlobalVar(arg1) {
   // Функционал для инициализации Глобальной переменной;  
   let gv = {
-    funCBAfterLoadArrLesson:function(){}    
+    funCBAfterLoadArrLesson:function(){}
   };
   gv.AppNumber = arg1;
   return gv;
@@ -14,8 +14,8 @@ function Get_GlobalVar() {
 
 
 //************** BD *****************/
-function Init_LoginFireBaseSets(arg1) {
-  if (arg1 == 1){
+function Init_LoginFireBaseSets(gv) {
+  if (gv.AppNumber == 1){
     let oj = {};
     let apiKey1 = "AIzaSyDU0LWwjtz2BFXJOP2fM_UnhmracvGCzeo";
     //oj.email = "tese@nirsix.app.net"; 
@@ -25,7 +25,7 @@ function Init_LoginFireBaseSets(arg1) {
     oj.UrlTrans1 = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey1}`;
     oj.UrlPost1 = "https://nirsix-engapp-default-rtdb.europe-west1.firebasedatabase.app/mn.json?auth=";
   }
-  if (arg1 == 2){
+  if (gv.AppNumber == 2){
     let oj = {};
     let apiKey1 = "AIzaSyD_-Ne2ntzw8qOvPXH5Ic580LDkWa6L064";
     oj.email = "saps@nukr.net";
