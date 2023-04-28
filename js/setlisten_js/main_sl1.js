@@ -4,6 +4,9 @@ let vGV; // глобальная переменная - она будет одн
 function Main_Init_VarObj_Start(gv) {
   gv.ProgName = "Voice"; //gv.ProgName = "Sentence";
   gv.OffLineMode = 0;
+  gv.RusTalkMode = 0;
+  gv.SpeaklangEn = "en-EN";
+  gv.SpeaklangRu = "ru-RU";
   gv.CurVoiceElm = null;
   gv.CurVoiceInx = -1;
   gv.TmpSelVoiceMM = -1;
