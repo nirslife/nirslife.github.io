@@ -220,8 +220,10 @@ function PlayNextVoice(gv) {
   
   function speakBV(gv, e1) {
     msgspeak = gv.msgspeak;
-    if (gv.CurVoiceElm) {
-      msgspeak.voice = gv.CurVoiceElm;
+    msgspeak.lang = e1.LangV; //"en-EN";
+    if (0){
+    //if (gv.CurVoiceElm) {
+    //  msgspeak.voice = gv.CurVoiceElm;
     }else{
       msgspeak.lang = e1.LangV; //"en-EN";
     }    
