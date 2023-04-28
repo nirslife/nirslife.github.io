@@ -241,8 +241,10 @@ function PlayNextVoice(gv) {
 
   function speakJustText(gv, textv) {
     msgspeak = gv.msgspeak;
-    msgspeak.lang = "en-EN";
-    msgspeak.text = textv;
+    //msgspeak.lang = "en-EN";    
+    //msgspeak.text = textv;
+    msgspeak.text = "Я купил автомобиль";
+    msgspeak.lang = "ru-RU";
     msgspeak.rate = 0.8;
     msgspeak.volume = 1;
     window.speechSynthesis.speak(msgspeak);
