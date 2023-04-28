@@ -1,12 +1,13 @@
   function create1BlockForVoice1(gv) {
     let mm1 = gv.MMenu;
     gv.VersionVoiceApp = "53";
+    gv.RIF = "";
    // gv.ModeRepeatVoice = 2; // del after this line
     let bd2 = mm1.op["mm_div1_i"];
     bd2.appendChild(mm1.create1ElemByInx("mm_Play_i","___Play___"));
-    bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","_____Stop_____"));
+    bd2.appendChild(mm1.create1ElemByInx("mm_Stop_i","___Stop___"));
     bd2.appendChild(mm1.create1ElemByInx("mm_space_i","="));
-    bd2.appendChild(mm1.create1ElemByInx("mm_version_i",gv.ModeRepeatVoice+"_"+gv.VersionVoiceApp));
+    bd2.appendChild(mm1.create1ElemByInx("mm_version_i",gv.ModeRepeatVoice+"_"+gv.VersionVoiceApp+gv.RIF));
     bd2.appendChild(mm1.create1ElemByInx("mm_allsent_i","ALL"));
     mm1.op["mm_allsent_i"].style.background = "rgb(52, 188, 69)";
     gv.MarkMode = "";
@@ -36,7 +37,7 @@
     else{
       gv.ModeRepeatVoice = 2;
     }
-    gv.MMenu.op["mm_version_i"].innerText = gv.ModeRepeatVoice+"_"+gv.VersionVoiceApp;
+    gv.MMenu.op["mm_version_i"].innerText = gv.ModeRepeatVoice+"_"+gv.VersionVoiceApp+gv.RIF;
     click_mm_Stop_i(null);
     gv.ArVP.ar = FormVoiceArrCurSentence(gv);
     SendToBDModeRepeat(gv);
@@ -58,11 +59,11 @@ function click_mm_Play_i(athis) {
 
 function Play_ButtonProc(gv){
   if ((gv.ArVP.Playing === 1)&&(gv.ArVP.Playing != 0)){
-    gv.MMenu.op["mm_Play_i"].innerText = "_____Play-R_____";
+    gv.MMenu.op["mm_Play_i"].innerText = "___Play-R___";
     speechSynthesis.cancel();
     gv.ArVP.Playing = 0;
   }else{
-    gv.MMenu.op["mm_Play_i"].innerText = "_____Pause_____";
+    gv.MMenu.op["mm_Play_i"].innerText = "___Pause___";
     gv.ArVP.Stop = 0;
     gv.ArVP.Playing = 1;
     PlayProc_i(gv);
@@ -135,29 +136,9 @@ function Play_ButtonProc(gv){
   }
 
 
-  function PlayProc_i(gv) {
-    if (gv.ArVP.ar.length < 1) return;
-    if(gv.ArVP.ar[gv.ArVP.CurPos].InxSentence != gv.ArVP.CurSentence){
-      let bv1 = gv.ArrSens;
-      let Tpb = gv.MMenu;
-      const senid_1 = document.getElementById("divsentenid"+gv.ArVP.CurSentence);
-      senid_1.style.color = '#ffffff';
-      sid2 = gv.ArVP.ar[gv.ArVP.CurPos].InxSentence;
-      const senid_2 = document.getElementById("divsentenid"+sid2);
-      senid_2.style.color = '#8bfcd7';
-      gv.ArVP.CurSentence = gv.ArVP.ar[gv.ArVP.CurPos].InxSentence;
-     // Tpb.op["mm_1sentence_i"].innerText = bv1[gv.ArVP.CurSentence].Eng;
-    }
-    formframedo(gv);
-    let e1 = gv.ArVP.ar[gv.ArVP.CurPos];
-    e1.Rate = e1.as[e1.inxas];
-    speakBV(gv, e1);
-  }
-
-
   function click_mm_Stop_i(athis) {
     let gv = Get_GlobalVar();
-    gv.MMenu.op["mm_Play_i"].innerText = "_____Play_____";
+    gv.MMenu.op["mm_Play_i"].innerText = "____Play___";
     let e1 = gv.ArVP.ar[gv.ArVP.CurPos];
     e1.inxas = 0;
     gv.ArVP.CurPos = 0;
@@ -178,7 +159,37 @@ function Play_ButtonProc(gv){
     gv.MMenu.op["mm_space_i"].innerText = ">>"+inxfrom;
   //  gv.MMenu.op["mm_allsent_i"].innerText = gv.MMenu.op["mm_allsent_i"].innerText + '::'+ e1.inxas+">>>"+gv.ArVP.CurPos;
   }
+  
+function click_mm_space_i(athis) {
+  let gv = Get_GlobalVar();
+  gv.ArVP.CurPos++;
+//  gv.ArVP.CurPos++;
+  if (gv.ArVP.CurPos >= gv.ArVP.ar.length) {
+    gv.ArVP.CurPos--;
+  }
+  athis.innerText = ">>"+gv.ArVP.CurPos;
+  formframedo(gv);
+}
 
+
+function PlayProc_i(gv) {
+  if (gv.ArVP.ar.length < 1) return;
+  if(gv.ArVP.ar[gv.ArVP.CurPos].InxSentence != gv.ArVP.CurSentence){
+    let bv1 = gv.ArrSens;
+    let Tpb = gv.MMenu;
+    const senid_1 = document.getElementById("divsentenid"+gv.ArVP.CurSentence);
+    senid_1.style.color = '#ffffff';
+    sid2 = gv.ArVP.ar[gv.ArVP.CurPos].InxSentence;
+    const senid_2 = document.getElementById("divsentenid"+sid2);
+    senid_2.style.color = '#8bfcd7';
+    gv.ArVP.CurSentence = gv.ArVP.ar[gv.ArVP.CurPos].InxSentence;
+   // Tpb.op["mm_1sentence_i"].innerText = bv1[gv.ArVP.CurSentence].Eng;
+  }
+  formframedo(gv);
+  let e1 = gv.ArVP.ar[gv.ArVP.CurPos];
+  e1.Rate = e1.as[e1.inxas];
+  speakBV(gv, e1);
+}
 
 function PlayNextVoice(gv) {
   if ((gv.ArVP.Stop != 1)&&(gv.ArVP.Playing == 1)) {
@@ -203,18 +214,8 @@ function PlayNextVoice(gv) {
       PlayProc_i(gv);
     }
   }
-}
-  
-function click_mm_space_i(athis) {
-  let gv = Get_GlobalVar();
-  gv.ArVP.CurPos++;
-//  gv.ArVP.CurPos++;
-  if (gv.ArVP.CurPos >= gv.ArVP.ar.length) {
-    gv.ArVP.CurPos--;
-  }
-  athis.innerText = ">>"+gv.ArVP.CurPos;
-  formframedo(gv);
-}
+} 
+
 
   
   function speakBV(gv, e1) {
@@ -222,7 +223,7 @@ function click_mm_space_i(athis) {
     if (gv.CurVoiceElm) {
       msgspeak.voice = gv.CurVoiceElm;
     }else{
-      msgspeak.lang = "en-EN";
+      msgspeak.lang = e1.LangV; //"en-EN";
     }    
     msgspeak.text = e1.textv;
     msgspeak.rate = e1.Rate;
@@ -332,6 +333,7 @@ function click_mm_space_i(athis) {
       }else{
         let d2 = {};
         d2.textv = bv1[inx].Eng;
+        ////////////////////////d2.txrus = bv1[inx].Rus;
         if (gv.ModeRepeatVoice == 2){
           d2.as = [0.4, 0.8];
         }
@@ -340,9 +342,21 @@ function click_mm_space_i(athis) {
         }
         d2.inxas = 0;
         d2.Wait = 1;
-        d2.Rate = 0.8; //bv1[inx].SpeakRateSenten;
+        d2.LangV = gv.SpeaklangEn;
+        d2.Rate = 0.8; 
         d2.InxSentence = inx;
         arv.push(d2);
+        if (gv.RusTalkMode == 1) {          
+          let dr = {};
+          dr.textv = bv1[inx].Rus;
+          dr.as = [0.8];
+          dr.inxas = 0;
+          dr.Wait = 1;
+          dr.Rate = 0.8; 
+          dr.LangV = gv.SpeaklangRu;
+          dr.InxSentence = inx;
+          arv.push(dr);
+        }  
       }
       
     }
