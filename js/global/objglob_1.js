@@ -3,6 +3,9 @@ function Get_ArVP(gv){
       ar:[
         {textv:"", Rate:"",Wait:"", InxSentence:""}
       ],
+      au:[
+        {textv:"", Rate:"",Wait:"", InxSentence:""}
+      ],
       as:[
         0.4, 0.8
       ],
@@ -119,7 +122,7 @@ function Get_ArVP(gv){
         this.wr = this.wrx[ix];
       },
       InitAllElem: function() {
-        // ˜˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜ ki ˜ kp:[atr[0].value] ˜˜ atr[0] = atr:[{name:"id", value:"StepMixInc1"}]      
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ki ï¿½ kp:[atr[0].value] ï¿½ï¿½ atr[0] = atr:[{name:"id", value:"StepMixInc1"}]      
         let ar_ = this.ar;
         for(let j = 0; j < ar_.length; j++) {
           let key1 = ar_[j].atr[0].value;
@@ -152,7 +155,7 @@ function Get_ArVP(gv){
       Get_DataHtml_i: function(){},    
   
       create1Elem: function(i, itxt){
-        // ˜˜˜˜˜˜˜ ˜˜ ˜˜˜˜˜˜˜ i ˜˜˜˜˜˜˜ ˜˜˜˜˜˜ ˜˜˜˜˜˜˜ (document.createElement) ˜ ˜˜˜˜˜˜˜˜˜ ˜˜˜ ˜˜˜˜˜˜˜˜˜˜
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ i ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (document.createElement) ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         let ar_i = this.ar[i];
         ar_i.pobj = document.createElement(ar_i.elname);
         let key1 = ar_i.atr[0].value;
@@ -166,7 +169,7 @@ function Get_ArVP(gv){
           ar_i.pobj.setAttributeNode(att1);
         }
         this.oop[ar_i.pobj.id] = ar_i.pobj;
-        // ˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜˜ ˜˜˜˜˜˜˜ 
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
         if (this.OnInxAtt == 1) {
           let att2 = document.createAttribute("InxAtt");
           att2.value = this.Idx;
@@ -601,6 +604,14 @@ function Get_ArVP(gv){
           {name:"id", value:"mm_offlinemode_i", Add_i:1},
           {name:"class", value:"confbuttctrl"},
           {name:eval, value:"click_mm_offlinemode_i(this)"}
+        ],
+        pobj:null
+      },
+      {elname:"div",
+        atr:[
+          {name:"id", value:"mm_RusTalkMode_i", Add_i:1},
+          {name:"class", value:"confbuttctrl"},
+          {name:eval, value:"click_mm_RusTalkMode_i(this)"}
         ],
         pobj:null
       },
