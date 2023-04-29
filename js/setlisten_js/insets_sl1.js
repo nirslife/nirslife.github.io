@@ -267,5 +267,15 @@ function Init_Eventvalue_Devices() {
 function Init_SpeechSynthesisUtterance() {
   ms = new SpeechSynthesisUtterance();
   return ms;
-}  
+}
+
+function Init_SpeechSynthesisUtteranceRu() {
+  ms = new SpeechSynthesisUtterance();
+  return ms;
+}
+
+function Init_SpeechSynthesisUtteranceEn() {
+  ms = new SpeechSynthesisUtterance();
+  return ms;
+}
 
