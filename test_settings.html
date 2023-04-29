@@ -4,7 +4,7 @@
 
   <br>
   <br>
-Version 4_____29_04_2023
+Version 5_____29_04_2023
   <br>
   <br>
   <br>  
@@ -16,6 +16,9 @@ Version 4_____29_04_2023
 
 </div>
 <br>
+<div id="SpeakText">
+
+</div>
 <br>
 <br>
 <input type="button" value="Reload" onclick="ReloadBtn1OnClick(this)">
@@ -79,8 +82,9 @@ function ReloadBtn1OnClick(athis){
 }
 
 function RU_Btn1OnClick(athis){
-  ms = new SpeechSynthesisUtterance();
+  ms = new SpeechSynthesisUtterance();  
   ms.text = "Я купил автомобиль на рынке";
+  document.getElementById("SpeakText").innerText = ms.text;
   ms.voice = voices[VoiceRUIndex];
   //msgspeak.lang = "ru-RU";
   window.speechSynthesis.speak(ms);
@@ -89,6 +93,7 @@ function RU_Btn1OnClick(athis){
 function EN_Btn1OnClick(athis){
   ms = new SpeechSynthesisUtterance();
   ms.text = "Where have you been?";
+  document.getElementById("SpeakText").innerText = ms.text;
   ms.voice = voices[VoiceENIndex];
   window.speechSynthesis.speak(ms);
 }
