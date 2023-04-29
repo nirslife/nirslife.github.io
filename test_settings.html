@@ -27,7 +27,7 @@ Version 2_____29_04_2023
 
   <div>
     <label for="voiceRU">Voice RU</label>
-    <select id="selectvoiceRu" onclick="VoiceRUSelectOnClick(this)">
+    <select id="selectvoiceRU" onclick="VoiceRUSelectOnClick(this)">
     </select>
   </div>
 
@@ -42,9 +42,9 @@ Version 2_____29_04_2023
     var voices = [];
     let VoiceRUIndex = 0;
     let VoiceENIndex = 0;
-    function populateVoiceList() {
+    function populateVoiceRUList() {
       voices = window.speechSynthesis.getVoices();
-      var selectElm = document.querySelector('#selectvoice');
+      var selectElm = document.querySelector('#selectvoiceRU');
       selectElm.innerHTML = '';
       for (var i=0;i < voices.length;i++) {
         var option = document.createElement('option');
@@ -56,6 +56,22 @@ Version 2_____29_04_2023
         selectElm.appendChild(option);
       }
     }
+
+    function populateVoiceENList() {
+      voices = window.speechSynthesis.getVoices();
+      var selectElm = document.querySelector('#selectvoiceEN');
+      selectElm.innerHTML = '';
+      for (var i=0;i < voices.length;i++) {
+        var option = document.createElement('option');
+        option.innerHTML = voices[i].name + ' (' + voices[i].lang + ')';
+        option.setAttribute('value', voices[i].voiceURI);
+        option.voice = voices[i];
+        if (voices[i].default)
+          option.selected = true;
+        selectElm.appendChild(option);
+      }
+    }
+
 
 function ReloadBtn1OnClick(athis){
   populateVoiceList();
