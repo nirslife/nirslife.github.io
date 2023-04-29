@@ -19,6 +19,7 @@ function Main_Init_VarObj_Start(gv) {
   gv.msgspeak = Init_SpeechSynthesisUtterance();
   gv.msgspeakRu = Init_SpeechSynthesisUtteranceRu();
   gv.msgspeakEn = Init_SpeechSynthesisUtteranceEn();
+  gv.UttVoices = window.speechSynthesis.getVoices();
   gv.FBSets = Init_LoginFireBaseSets(gv);
   gv.HtmlBV = Get_HtmlBV(gv);
  // gv.HtmlTst = Get_HtmlTst(gv); // для тестов
