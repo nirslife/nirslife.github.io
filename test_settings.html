@@ -10,6 +10,10 @@
 <br>
 <input type="button" value="Reload" onclick="ReloadBtn1OnClick(this)">
 <br><br><br>
+<input type="button" value="Ru speak" onclick="RU_Btn1OnClick(this)">
+<br><br><br>
+<input type="button" value="EN speak" onclick="EN_Btn1OnClick(this)">
+<br><br><br>
 
   <div class="speecharg">
     <label for="voice">Voice</label>
@@ -38,11 +42,28 @@
 function ReloadBtn1OnClick(athis){
   populateVoiceList();
 }
-      
+
+function RU_Btn1OnClick(athis){
+  ms = new SpeechSynthesisUtterance();
+  msgspeak.text = "Я купил автомобиль";
+  //msgspeak.lang = "ru-RU";
+
+  window.speechSynthesis.speak(ms);
+}
+
+function EN_Btn1OnClick(athis){
+  populateVoiceList();
+}
+
+
 function VoiceSelectOnClick(athis) {  
   //document.getElementById("SelVoiceValue").innerText = athis.selectedIndex;
- document.getElementById("SelVoiceValue").innerHTML = "<b>"+ voices[athis.selectedIndex].name + "</b>";  
+ document.getElementById("SelVoiceValue").innerHTML = 
+   "<b>"+ voices[athis.selectedIndex].name + "</b><br>"
+   +
+   "<b>"+ athis.selectedIndex + "</b><br>";  
 }  
+
 
 
   </script>
