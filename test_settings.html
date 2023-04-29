@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <div id="SelVoiceValue">
+
+  </div>
+<br>
+<br>
+<br>
+<input type="button" value="Reload" onclick="ReloadBtn1OnClick(this)">
+<br><br><br>
+
+  <div class="speecharg">
+    <label for="voice">Voice</label>
+    <select id="selectvoice" onclick="VoiceSelectOnClick(this)" >
+
+    </select>
+  </div>
+
+  <script type="text/javascript">
+    var voices = [];
+    function populateVoiceList() {
+      voices = window.speechSynthesis.getVoices();
+      var selectElm = document.querySelector('#selectvoice');
+      selectElm.innerHTML = '';
+      for (var i=0;i < voices.length;i++) {
+        var option = document.createElement('option');
+        option.innerHTML = voices[i].name + ' (' + voices[i].lang + ')';
+        option.setAttribute('value', voices[i].voiceURI);
+        option.voice = voices[i];
+        if (voices[i].default)
+          option.selected = true;
+        selectElm.appendChild(option);
+      }
+    }
+
+function ReloadBtn1OnClick(athis){
+  populateVoiceList();
+}
+      
+function VoiceSelectOnClick(athis) {  
+  //document.getElementById("SelVoiceValue").innerText = athis.selectedIndex;
+ document.getElementById("SelVoiceValue").innerHTML = "<b>"+ voices[athis.selectedIndex].name + "</b>";  
+}  
+
+
+  </script>
+
+
+</body>
+</html>
