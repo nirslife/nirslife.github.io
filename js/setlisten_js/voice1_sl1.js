@@ -1,6 +1,6 @@
   function create1BlockForVoice1(gv) {
     let mm1 = gv.MMenu;
-    gv.VersionVoiceApp = "55";
+    gv.VersionVoiceApp = "56";
     gv.RIF = "";
    // gv.ModeRepeatVoice = 2; // del after this line
     let bd2 = mm1.op["mm_div1_i"];
@@ -266,8 +266,9 @@ function PlayNextVoice(gv) {
     msgspeak = gv.msgspeakRu;
     //msgspeak.lang = "en-EN";
     //msgspeak.text = textv;
-    msgspeak.text = "Я купил автомобиль";
-    msgspeak.lang = "ru-RU";
+    msgspeak.text = "РЇ РєСѓРїРёР» Р°РІС‚РѕРјРѕР±РёР»СЊ РЅР° СЂС‹РЅРєРµ.";
+    msgspeak.voice = gv.UttVoices[31];
+    //msgspeak.lang = "ru-RU";
     msgspeak.rate = 0.8;
     msgspeak.volume = 1;
     window.speechSynthesis.speak(msgspeak);
