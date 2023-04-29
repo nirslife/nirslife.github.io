@@ -4,33 +4,44 @@
 
   <br>
   <br>
-Version 1_29_04_2023
+Version 2_____29_04_2023
   <br>
   <br>
-  <br>
-  
-  <div id="SelVoiceValue">
+  <br>  
+  <div id="SelVoiceRUValue">
 
   </div>
+<br>
+<div id="SelVoiceENValue">
+
+</div>
 <br>
 <br>
 <br>
 <input type="button" value="Reload" onclick="ReloadBtn1OnClick(this)">
 <br><br><br>
-<input type="button" value="Ru speak" onclick="RU_Btn1OnClick(this)">
+<input type="button" value="Ru speak 31" onclick="RU_Btn1OnClick(this)">
 <br><br><br>
 <input type="button" value="EN speak" onclick="EN_Btn1OnClick(this)">
 <br><br><br>
 
-  <div class="speecharg">
-    <label for="voice">Voice</label>
-    <select id="selectvoice" onclick="VoiceSelectOnClick(this)" >
-
+  <div>
+    <label for="voiceRU">Voice RU</label>
+    <select id="selectvoiceRu" onclick="VoiceRUSelectOnClick(this)">
     </select>
   </div>
 
+  <div>
+    <label for="voiceEN">Voice EN</label>
+    <select id="selectvoiceEN" onclick="VoiceENSelectOnClick(this)">
+    </select>
+  </div>
+
+
   <script type="text/javascript">
     var voices = [];
+    let VoiceRUIndex = 0;
+    let VoiceENIndex = 0;
     function populateVoiceList() {
       voices = window.speechSynthesis.getVoices();
       var selectElm = document.querySelector('#selectvoice');
@@ -52,25 +63,36 @@ function ReloadBtn1OnClick(athis){
 
 function RU_Btn1OnClick(athis){
   ms = new SpeechSynthesisUtterance();
-  msgspeak.text = "Я купил автомобиль";
+  ms.text = "Я купил автомобиль";
+  ms.voice = voices[VoiceRUIndex];
   //msgspeak.lang = "ru-RU";
-
   window.speechSynthesis.speak(ms);
 }
 
 function EN_Btn1OnClick(athis){
-  populateVoiceList();
+  ms = new SpeechSynthesisUtterance();
+  ms.text = "Where have you been?";
+  ms.voice = voices[VoiceENIndex];
+  window.speechSynthesis.speak(ms);
 }
 
-
-function VoiceSelectOnClick(athis) {  
+function VoiceRUSelectOnClick(athis) {  
   //document.getElementById("SelVoiceValue").innerText = athis.selectedIndex;
- document.getElementById("SelVoiceValue").innerHTML = 
+  document.getElementById("SelVoiceRUValue").innerHTML = 
+   "<b>"+ voices[athis.selectedIndex].name + "</b><br>"
+   +
+   "<b>"+ athis.selectedIndex + "</b><br>";
+  VoiceRUIndex = athis.selectedIndex;
+}
+
+function VoiceENSelectOnClick(athis) {  
+  //document.getElementById("SelVoiceValue").innerText = athis.selectedIndex;
+  document.getElementById("SelVoiceENValue").innerHTML = 
    "<b>"+ voices[athis.selectedIndex].name + "</b><br>"
    +
    "<b>"+ athis.selectedIndex + "</b><br>";  
+   VoiceENIndex = athis.selectedIndex;
 }  
-
 
 
   </script>
