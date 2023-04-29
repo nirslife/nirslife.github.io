@@ -1,6 +1,6 @@
   function create1BlockForVoice1(gv) {
     let mm1 = gv.MMenu;
-    gv.VersionVoiceApp = "54";
+    gv.VersionVoiceApp = "55";
     gv.RIF = "";
    // gv.ModeRepeatVoice = 2; // del after this line
     let bd2 = mm1.op["mm_div1_i"];
@@ -239,9 +239,32 @@ function PlayNextVoice(gv) {
     window.speechSynthesis.speak(msgspeak);
   }
 
-  function speakJustText(gv, textv) {
+  /*
+  function AnyspeakBV(gv, e1) {
     msgspeak = gv.msgspeak;
-    //msgspeak.lang = "en-EN";    
+    msgspeak.lang = e1.LangV; //"en-EN";
+    if (0){
+    //if (gv.CurVoiceElm) {
+    //  msgspeak.voice = gv.CurVoiceElm;
+    }else{
+      msgspeak.lang = e1.LangV; //"en-EN";
+    }    
+    msgspeak.text = e1.textv;
+    msgspeak.rate = e1.Rate;
+    msgspeak.volume = 1;
+    msgspeak.addEventListener('start', handleSpeechEvent);
+    msgspeak.addEventListener('end', handleSpeechEvent);
+    msgspeak.addEventListener('error', handleSpeechEvent);
+    msgspeak.addEventListener('boundary', handleSpeechEvent);
+    msgspeak.addEventListener('pause', handleSpeechEvent);
+    msgspeak.addEventListener('resume', handleSpeechEvent);
+    window.speechSynthesis.speak(msgspeak);
+  }
+*/
+
+  function speakJustText(gv, textv) {
+    msgspeak = gv.msgspeakRu;
+    //msgspeak.lang = "en-EN";
     //msgspeak.text = textv;
     msgspeak.text = "Я купил автомобиль";
     msgspeak.lang = "ru-RU";
