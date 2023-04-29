@@ -1,6 +1,6 @@
   function create1BlockForVoice1(gv) {
     let mm1 = gv.MMenu;
-    gv.VersionVoiceApp = "56";
+    gv.VersionVoiceApp = "57";
     gv.RIF = "";
    // gv.ModeRepeatVoice = 2; // del after this line
     let bd2 = mm1.op["mm_div1_i"];
@@ -220,13 +220,8 @@ function PlayNextVoice(gv) {
   
   function speakBV(gv, e1) {
     msgspeak = gv.msgspeak;
-    msgspeak.lang = e1.LangV; //"en-EN";
-    if (0){
-    //if (gv.CurVoiceElm) {
-    //  msgspeak.voice = gv.CurVoiceElm;
-    }else{
-      msgspeak.lang = e1.LangV; //"en-EN";
-    }    
+    //msgspeak.lang = "en-EN"; //"en-EN";
+    msgspeak.voice = gv.UttVoices[e1.VoiceIndex];
     msgspeak.text = e1.textv;
     msgspeak.rate = e1.Rate;
     msgspeak.volume = 1;
@@ -263,11 +258,11 @@ function PlayNextVoice(gv) {
 */
 
   function speakJustText(gv, textv) {
-    msgspeak = gv.msgspeakRu;
+    msgspeak = gv.msgspeak;
     //msgspeak.lang = "en-EN";
-    //msgspeak.text = textv;
-    msgspeak.text = "Я купил автомобиль на рынке.";
-    msgspeak.voice = gv.UttVoices[31];
+    msgspeak.text = textv;
+    //msgspeak.text = "Я купил автомобиль на рынке.";
+    msgspeak.voice = gv.UttVoices[gv.SpeaklangEn];
     //msgspeak.lang = "ru-RU";
     msgspeak.rate = 0.8;
     msgspeak.volume = 1;
@@ -370,18 +365,18 @@ function PlayNextVoice(gv) {
         }
         d2.inxas = 0;
         d2.Wait = 1;
-        d2.LangV = gv.SpeaklangEn;
+        d2.VoiceIndex = gv.SpeaklangEn; 
         d2.Rate = 0.8; 
         d2.InxSentence = inx;
         arv.push(d2);
-        if (gv.RusTalkMode == 1) {          
+        if (gv.RusTalkMode == 1) {
           let dr = {};
           dr.textv = bv1[inx].Rus;
           dr.as = [0.8];
           dr.inxas = 0;
           dr.Wait = 1;
           dr.Rate = 0.8; 
-          dr.LangV = gv.SpeaklangRu;
+          dr.VoiceIndex = gv.SpeaklangRu;
           dr.InxSentence = inx;
           arv.push(dr);
         }  
