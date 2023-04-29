@@ -5,8 +5,8 @@ function Main_Init_VarObj_Start(gv) {
   gv.ProgName = "Voice"; //gv.ProgName = "Sentence";
   gv.OffLineMode = 0;
   gv.RusTalkMode = 0;
-  gv.SpeaklangEn = "en-EN";
-  gv.SpeaklangRu = "ru-RU";
+  gv.SpeaklangEn = 10; //Samantha 10 //"en-EN";
+  gv.SpeaklangRu = 31; //Milena 31 //"ru-RU";
   gv.CurVoiceElm = null;
   gv.CurVoiceInx = -1;
   gv.TmpSelVoiceMM = -1;
