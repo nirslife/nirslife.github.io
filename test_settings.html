@@ -65,7 +65,7 @@ Version 5_____22_06_2023
         if (voices[i].default)
           option.selected = true;
         selectElm.appendChild(option);
-        if (voices[i].name.indexOf('Samantha') > -1 ){
+        if (voices[i].name.indexOf('Milena') > -1 ){
           document.getElementById("SelIndexRu").innerText = i;
         }
       }
@@ -75,7 +75,7 @@ Version 5_____22_06_2023
       voices = window.speechSynthesis.getVoices();
       var selectElm = document.querySelector('#selectvoiceEN');
       selectElm.innerHTML = '';
-      for (var i=0;i < voices.length;i++) {
+      for (var i=0; i < voices.length;i++) {
         var option = document.createElement('option');
         option.innerHTML = voices[i].name + ' (' + voices[i].lang + ')';
         option.setAttribute('value', voices[i].voiceURI);
