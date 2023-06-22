@@ -4,10 +4,15 @@
 
   <br>
   <br>
-Version 5_____29_04_2023
+Version 5_____22_06_2023
   <br>
   <br>
-  <br>  
+  <br>
+  <div id="SelIndex">
+
+  </div>
+  <br>
+  <br>
   <div id="SelVoiceRUValue">
 
   </div>
@@ -72,6 +77,9 @@ Version 5_____29_04_2023
         if (voices[i].default)
           option.selected = true;
         selectElm.appendChild(option);
+        if (voices[i].name.indexOf('Samantha') > -1 ){
+          document.getElementById("SelIndex").innerText = i;
+        }
       }
     }
 
