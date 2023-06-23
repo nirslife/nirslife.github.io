@@ -279,3 +279,27 @@ function Init_SpeechSynthesisUtteranceEn() {
   return ms;
 }
 
+async function Init_SetVoices(gv) {
+  gv.msgspeak = Init_SpeechSynthesisUtterance();
+  gv.msgspeakRu = Init_SpeechSynthesisUtteranceRu();
+  gv.msgspeakEn = Init_SpeechSynthesisUtteranceEn();
+  gv.UttVoices = await window.speechSynthesis.getVoices();
+
+  for (var i = 0; i < gv.UttVoices.length; i++) {
+    if (gv.UttVoices[i].name.indexOf('Samantha') > -1 ){
+      gv.SpeaklangEn = i;
+    }
+    if (gv.UttVoices[i].name.indexOf('Milena') > -1 ){
+      gv.SpeaklangRu = i;
+    }
+  }
+}
+
+window.speechSynthesis.onvoiceschanged = function() {
+  let gv = Get_GlobalVar();
+  Init_SetVoices(gv);
+  console.log('voices loaded');
+}
+
+
+
