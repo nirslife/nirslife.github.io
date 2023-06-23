@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body onload="InitLoaded()">
 
   <br>
   <br>
@@ -53,8 +53,8 @@ Version 5_____22_06_2023
     var voices = [];
     let VoiceRUIndex = 0;
     let VoiceENIndex = 0;
-    function populateVoiceRUList() {
-      voices = window.speechSynthesis.getVoices();
+    async function populateVoiceRUList() {
+      voices = await window.speechSynthesis.getVoices();
       var selectElm = document.querySelector('#selectvoiceRU');
       selectElm.innerHTML = '';
       for (var i=0;i < voices.length;i++) {
@@ -71,8 +71,8 @@ Version 5_____22_06_2023
       }
     }
 
-    function populateVoiceENList() {
-      voices = window.speechSynthesis.getVoices();
+    async function populateVoiceENList() {
+      voices = await window.speechSynthesis.getVoices();
       var selectElm = document.querySelector('#selectvoiceEN');
       selectElm.innerHTML = '';
       for (var i=0; i < voices.length;i++) {
@@ -129,6 +129,10 @@ function VoiceENSelectOnClick(athis) {
    "<b>"+ athis.selectedIndex + "</b><br>";  
    VoiceENIndex = athis.selectedIndex;
 }  
+
+function InitLoaded() {  
+  ReloadBtn1OnClick(nil);
+}
 
 
   </script>
