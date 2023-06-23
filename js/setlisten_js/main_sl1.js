@@ -5,21 +5,16 @@ function Main_Init_VarObj_Start(gv) {
   gv.ProgName = "Voice"; //gv.ProgName = "Sentence";
   gv.OffLineMode = 0;
   gv.RusTalkMode = 0;
-  gv.SpeaklangEn = 148; //Samantha 148 10 //"en-EN";
-  gv.SpeaklangRu = 179; //Milena 179 31 //"ru-RU";
   gv.CurVoiceElm = null;
   gv.CurVoiceInx = -1;
   gv.TmpSelVoiceMM = -1;
-  gv.LoadedVoices = 0;
+  gv.LoadedVoices = 0; 
  // GetStartLoadVoice(gv);
   GetNormalizeUserAgentStr(gv);
   gv.eventvalue = Init_Eventvalue_Devices();
   gv.HtmlBodyObj = Get_HtmlBodyElem();
   gv.HtmlAnyObj = Get_HtmlAnyElem(gv);
-  gv.msgspeak = Init_SpeechSynthesisUtterance();
-  gv.msgspeakRu = Init_SpeechSynthesisUtteranceRu();
-  gv.msgspeakEn = Init_SpeechSynthesisUtteranceEn();
-  gv.UttVoices = window.speechSynthesis.getVoices();
+  Init_SetVoices(gv);
   gv.FBSets = Init_LoginFireBaseSets(gv);
   gv.HtmlBV = Get_HtmlBV(gv);
  // gv.HtmlTst = Get_HtmlTst(gv); // для тестов
