@@ -4,7 +4,7 @@
 
   <br>
   <br>
-Version 6_____23_06_2023
+Version 7_____23_06_2023
   <br>
   <br>
   <br>
@@ -132,9 +132,13 @@ function VoiceENSelectOnClick(athis) {
 
 function InitLoaded() {  
   ReloadBtn1OnClick(null);
-  console('loaded');
+  console.log('page loaded');
 }
 
+window.speechSynthesis.onvoiceschanged = function() {
+  ReloadBtn1OnClick(null);
+  console.log('voices loaded');
+}
 
   </script>
 
