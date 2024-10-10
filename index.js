@@ -8,6 +8,6 @@ function Main_App_Run(arg1) {
     sayBye('John'); // Bye, John!
 }
 
-export {Main_App_Run}
+export default Main_App_Run;
   
 
