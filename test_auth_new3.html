@@ -1,0 +1,98 @@
+<html> 
+<head> 
+<script type="text/javascript"> 
+
+let gv = {};
+//************** BD *****************/
+function Init_LoginFireBaseSets() {
+  let oj = {};
+  let apiKey1 = "AIzaSyDU0LWwjtz2BFXJOP2fM_UnhmracvGCzeo";
+  //oj.email = "tese@nirsix.app.net"; 
+  //oj.password = "po78L95wer1";
+  oj.email = "saps@nukr.net"; 
+  oj.password = "po78L950001";  
+  oj.UrlTrans1 = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey1}`;
+  oj.UrlPost1 = "https://nirsix-engapp-default-rtdb.europe-west1.firebasedatabase.app/mn.json?auth=";
+  return oj;
+}
+
+async function LoginFireBase(gv) {
+  email = gv.FBSets.email;
+  password = gv.FBSets.password;
+  aUrlTrans1 = gv.FBSets.UrlTrans1;
+  const response = await fetch(aUrlTrans1, {
+    method: 'POST',
+    body: JSON.stringify({email, password, returnSecureToken: true}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  const vdata = await response.json();
+  gv.FBSets.idToken = vdata.idToken;
+  CallBackLoginFireBase(gv);
+}
+
+function CallBackLoginFireBase(gv){
+  let vobj = {};
+  let set1 = {};
+  let arr1 = [];
+  let el1 = {};
+  el1.l1 = 1;
+  el1.l2 = 0;
+  el1.l3 = 1;
+  arr1[6] = el1;
+  arr1[1] = el1;
+  arr1[2] = el1;
+  vobj["mark_arrles_1"] = arr1;
+  RequestArrFireBase(gv, vobj, 'PATCH');
+}
+
+
+async function RequestArrFireBase(gv, vobj, ametod) {
+  let jsn1 = JSON.stringify(vobj);
+  let aurl = gv.FBSets.UrlPost1 + gv.FBSets.idToken;
+  const response = await fetch(aurl, {
+    method: ametod,
+    body: jsn1,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  let vdata = await response.json();
+  //if(ametod == 'GET'){CB_AfterPutBeforeLoad(gv, vdata);}
+  if(ametod == 'PATCH'){CB_AfterPatch(gv, vdata);}
+}
+
+
+
+
+function Btn1OnClick(){
+  gv.FBSets = Init_LoginFireBaseSets();
+  LoginFireBase(gv);
+}
+
+function CB_AfterPatch(gv, vdata){
+  const div1 = document.createElement("div");
+  div1.innerText = 'End req';
+  let mn = document.getElementById("OutputTest");
+  mn.appendChild(div1);
+}
+
+</script> 
+
+</head> 
+
+<body>
+<br>
+<br>
+<div id="BlockTest">
+   <input type="button" value="Btn1OnClick" onclick="Btn1OnClick()">
+
+</div>
+
+<div id="OutputTest">
+
+</div>
+ 
+</body> 
+</html> 

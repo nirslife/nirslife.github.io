@@ -186,6 +186,22 @@ function Get_ArVP(gv){
     }
     return MetObj;
   } 
+
+  function Get_BaseForSwift(gv) {
+    let BaseForSwift = { 
+      sh:{ename_i:"div", 
+           atr_i:[
+                   {aname_i:"id", avalue_i:"snitemid", Add_i:0 },
+                   {aname_i:"IndxA", avalue_i:"", Add_i:1},
+                   {aname_i:"class", avalue_i:"sentenceitemup", Add_i:0},
+                   {aname_i:eval, avalue_i:"clicksentenceitem(this)", Add_i:0}
+                 ]        
+         },    
+      ar:[]
+    };     
+    return BaseForSwift;
+  }
+
   
   function DataHtmlBV_i(gv) {  
     let eval = gv.eventvalue;
@@ -616,6 +632,22 @@ function Get_ArVP(gv){
         pobj:null
       },
       {elname:"div",
+      atr:[
+        {name:"id", value:"mm_Space_test_i", Add_i:1},
+        {name:"class", value:"confspacectrl"},
+        {name:eval, value:"click_mm_Space_test_i(this)"}
+      ],
+      pobj:null
+    },
+    {elname:"div",
+    atr:[
+      {name:"id", value:"mm_Lunch_forswift_i", Add_i:1},
+      {name:"class", value:"confbuttctrl"},
+      {name:eval, value:"click_mm_Lunch_forswift_i(this)"}
+    ],
+    pobj:null
+  },
+  {elname:"div",
         atr:[
           {name:"id", value:"mm_nextlesson_i", Add_i:1},
           {name:"class", value:"confbuttctrl"},

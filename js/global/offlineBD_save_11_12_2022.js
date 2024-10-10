@@ -4,20 +4,8 @@ function GetOffLineBD() {
   {
     "DefStepMix": 4,
     "MaxStepMix": "10",
-    "Mozilla50X11;Linuxx86_64AppleWebKit53736KHTML,likeGeckoChrome107000Safari53736": {
-      "CurVoiceInx": "1"
-    },
-    "Mozilla50iPhone;CPUiPhoneOS13_2_3likeMacOSXAppleWebKit605115KHTML,likeGeckoVersion1303Mobile15E148Safari6041": {
-      "CurVoiceInx": "2"
-    },
-    "Mozilla50iPhone;CPUiPhoneOS15_4_1likeMacOSXAppleWebKit605115KHTML,likeGeckoVersion154Mobile15E148Safari6041": {
-      "CurVoiceInx": "5"
-    },
-    "Mozilla50iPhone;CPUiPhoneOS15_4likeMacOSXAppleWebKit605115KHTML,likeGeckoCriOS10705304101Mobile15E148Safari6041": {
-      "CurVoiceInx": "9"
-    },
-    "SavedArrLessKey1": 41,
-    "SavedVoiceLessKey1": 38,
+    "SavedArrLessKey1": 23,
+    "SavedVoiceLessKey1": 23,
     "arrBVles1": [
       {
         "FirstBy1Word": 1,
@@ -1618,7 +1606,7 @@ function GetOffLineBD() {
       },
       {
         "FirstBy1Word": 1,
-        "Sentences1": "Did you see to the Grand Canyon? Of course. It was wonderful.",
+        "Sentences1": "Did you see to the Grand Canyon? Of course. lt was wonderful.",
         "SpeakRateBy1Word": 0.5,
         "SpeakRateSenten": 0.8,
         "WaitBy1Word_mSec": 200
@@ -5226,17 +5214,17 @@ function GetOffLineBD() {
       {
         "Eng": "The man can’t see the wall in front of him.",
         "Rus": "Человек не может видеть стену перед собой.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "He is going to walk into the wall.",
         "Rus": "Он собирается врезаться в стену.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "Are you going to watch the late film on TV tonight? No, I’m going to have an early night.",
         "Rus": "Ти збираєшся дивитися пізній фільм сьогодні ввечері по телевізору? Ні, я буду рано ввечері.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "I hear Sarah has won some money. What is she going to do with it? She’s going to buy a new car.",
@@ -5286,7 +5274,7 @@ function GetOffLineBD() {
       {
         "Eng": "The economic situation is bad now and things are going to get worse.",
         "Rus": "Економічна ситуація зараз погана, і все погіршуватиметься.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "We were going to travel by train, but then we decided to go by car instead.",
@@ -6753,7 +6741,7 @@ function GetOffLineBD() {
       {
         "Eng": "Did everybody escape from the fire? Yes, although the fire spread quickly, everybody ... was able to escape.",
         "Rus": "Чи всі врятувалися від вогню? Так, незважаючи на те, що вогонь швидко поширювався, всі ... змогли втекти.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "Did you finish your work this afternoon? Yes, there was nobody to disturb me, so I ... was able to finish it.",
@@ -6825,57 +6813,57 @@ function GetOffLineBD() {
       {
         "Eng": "Listen. I can hear something.",
         "Rus": "Слухай. Я щось чую.  (now)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I listened. I could hear something.",
         "Rus": "Я слухав. Я міг щось почути.  (past)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "What shall we do this evening? We could go to the cinema.",
         "Rus": "Що ми будемо робити сьогодні ввечері? Ми могли б піти в кіно.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "When you go to Paris next month, you could stay with Julia. Yes, I suppose I could.",
         "Rus": "Коли ти поїдеш до Парижа наступного місяця, ти можеш залишитися з Джулією. Так, я думаю, я міг би.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I’m so tired, I could sleep for a week.",
         "Rus": "Я так втомився, що міг би спати тиждень.  (not I can sleep for a week)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I can stay with Julia when I go to Paris.",
         "Rus": "Я можу залишитися з Джулією, коли поїду в Париж. (реалістично)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Maybe I could stay with Julia when I go to Paris.",
         "Rus": "Можливо, я міг би залишитися з Джулією, коли поїду в Париж. (возможно, но меньше уверенности)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "This is a wonderful place. I could stay here for ever. ",
         "Rus": "Це чудове місце. Я міг би залишитися тут назавжди. (нереалістично)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "The story could be true, but I don’t think it is.",
         "Rus": "Історія може бути правдивою, але я не думаю, що це так. (не може бути правдою)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I don’t know what time Liz is coming. She could get here at any time.",
         "Rus": "Я не знаю, о котрій годині прийде Ліз. Вона могла потрапити сюди будь-коли.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I’m so tired, I could sleep for a week. ",
         "Rus": "Я так втомився, що міг би спати тиждень. (зараз)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I was so tired, I could have slept for a week.",
@@ -6885,7 +6873,7 @@ function GetOffLineBD() {
       {
         "Eng": "The situation is bad, but it could be worse.",
         "Rus": "Ситуація погана, але може бути гірше. (зараз)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "The situation was bad, but it could have been worse.",
@@ -6900,27 +6888,27 @@ function GetOffLineBD() {
       {
         "Eng": "I didn’t know that you wanted to go to the concert. I could have got you a ticket. ",
         "Rus": "Я не знала, що ти хочеш піти на концерт. Я міг би купити тобі квиток. (я не взяв тобі квиток)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Dave was lucky. He could have hurt himself when he fell, but he’s OK.",
         "Rus": "Дейву пощастило. Він міг поранитися, коли впав, але з ним все гаразд.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I couldn’t live in a big city. I’d hate it.",
         "Rus": "Я не міг жити у великому місті. Я б ненавидів це. (= це не було можливо для мене)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Everything is fine right now. Things couldn’t be better.",
         "Rus": "Зараз все добре. Справи не можуть бути кращими.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "We had a really good holiday. It couldn’t have been better.",
         "Rus": "У нас був справді гарний відпочинок. Це не могло бути краще.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "The trip was cancelled last week. Paul couldn’t have gone anyway because he was ill. ",
@@ -6930,82 +6918,82 @@ function GetOffLineBD() {
       {
         "Eng": "Where shall we go for our holidays? We could go to Scotland.",
         "Rus": "Куди ми поїдемо на канікули? Ми могли б поїхати до Шотландії.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "What shall we have for dinner tonight? We could have fish.",
         "Rus": "Що ми будемо сьогодні на вечерю? Ми могли б мати рибу.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "When shall I phone Angela? You could phone (her) now.",
         "Rus": "Коли мені подзвонити Анжелі? Ви можете зателефонувати (їй) зараз.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "What shall I give Ann for her birthday? You could give her a book.",
         "Rus": "Що я подарую Анні на день народження? Ви можете подарувати їй книгу.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Where shall we hang this picture? We could hang it in the kitchen.",
         "Rus": "Де ми повісимо цю картину? Ми могли б повісити його на кухні.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "The story could be true, but I don’t think it is.",
         "Rus": "Історія може бути правдивою, але я не думаю, що це так.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "It’s a nice day. We can go for a walk.",
         "Rus": "Це гарний день. Ми можемо піти погуляти.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I’m so angry with him.I could kill him!",
         "Rus": "Я так злий на нього. Я міг би його вбити!",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "If you’re hungry, we can have dinner now.",
         "Rus": "Якщо ви голодні, ми можемо повечеряти зараз.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "It’s so nice here. I could stay here all day, but unfortunately I have to go.",
         "Rus": "Тут так гарно. Я міг би залишитися тут цілий день, але, на жаль, я мушу йти.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Where’s my bag. Have you seen it? No, but it could be in the car.",
         "Rus": "Де моя сумка. Ви бачили його? Ні, але це могло бути в машині.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Peter is a keen musician. He plays the flute and he can also play the piano.",
         "Rus": "Петро — захоплений музикант. Він грає на флейті, а також вміє грати на піаніно.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I need to borrow a camera. You can borrow mine.",
         "Rus": "Мені потрібно позичити фотоапарат. Ви можете позичити мій.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "The weather is nice now, but it could change later.",
         "Rus": "Зараз гарна погода, але пізніше вона може змінитися.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "What shall we do this evening? I don’t mind. We could go to the cinema.",
         "Rus": "Що ми будемо робити сьогодні ввечері? Я не проти. Ми могли б піти в кіно.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I had a very boring evening at home yesterday. Why did you stay at home? You could have come out with us.",
         "Rus": "Вчора я провів дуже нудний вечір вдома. Чому ти залишився вдома? Ти міг би вийти з нами.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "There’s an interesting job advertised in the paper. You could apply for it. What sort of job? Show me the advertisement.",
@@ -7015,32 +7003,32 @@ function GetOffLineBD() {
       {
         "Eng": "How was your exam? Was it difficult? It wasn’t so bad. It could have been worse.",
         "Rus": "Як пройшов іспит? Було важко? Це було не так вже й погано. Могло бути й гірше.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I got very wet walking home in the rain last night. Why did you walk? You could have got a taxi.",
         "Rus": "Минулої ночі я дуже промок, ідучи додому під дощем. Чому ти пішов? Ви могли взяти таксі.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Where shall we meet tomorrow? Well, I could come to your house if you like.",
         "Rus": "Де зустрінемося завтра? Ну, я міг би прийти до вас додому, якщо хочете.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I couldn’t live in a big city. I’d hate it.",
         "Rus": "Я не міг жити у великому місті. Я б ненавидів це.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "We had a really good holiday. It couldn’t have been better.",
         "Rus": "У нас був справді гарний відпочинок. Це не могло бути краще.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I couldn’t wear that hat. I’d look silly and people would laugh at me.",
         "Rus": "Я не міг носити цей капелюх. Я виглядав би безглуздо, і люди сміялися б з мене.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "We managed to find the restaurant you recommended, but we couldn’t have found it without the map that you drew for us.",
@@ -7067,22 +7055,22 @@ function GetOffLineBD() {
       {
         "Eng": "My house is very near the motorway. It must be very noisy.",
         "Rus": "Мій будинок знаходиться дуже близько автостради. Має бути дуже шумно.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "You’ve been travelling all day. You must be tired.",
         "Rus": "Ви подорожували цілий день. Ти напевне стомився. (Езда ізматує, і раз ти їздив весь день, то, ймовірно, встав.)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Jim is a hard worker. Jim? You must be joking. He doesn’t do anything.",
         "Rus": "Джим працьовитий. Джим? Ви, напевно, жартуєте. Він нічого не робить.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Carol must get very bored in her job. She does the same thing every day.",
         "Rus": "Певно, Керол дуже нудьгує на своїй роботі. Вона робить те саме щодня.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I’m sure Sally gave me her phone number. I must have it somewhere.",
@@ -7117,17 +7105,17 @@ function GetOffLineBD() {
       {
         "Eng": "Sue hasn’t contacted me. She can’t have got my message.",
         "Rus": "Сью не зв’язувалася зі мною. Вона не могла отримати моє повідомлення.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Tom walked into a wall. He can’t have been looking where he was going.",
         "Rus": "Том врізався в стіну. Він не міг дивитися, куди йде.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Sue couldn’t have got my message.",
         "Rus": "Сью не могла отримати моє повідомлення.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Tom couldn’t have been looking where he was going.",
@@ -7142,32 +7130,32 @@ function GetOffLineBD() {
       {
         "Eng": "That restaurant must be very good. It’s always full of people.",
         "Rus": "Цей ресторан має бути дуже хорошим. Тут завжди повно людей.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "That restaurant can’t be very good. It’s always empty.",
         "Rus": "Цей ресторан не може бути дуже хорошим. Він завжди порожній.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I’m sure I gave you the key. You must have it. Have you looked in your bag?",
         "Rus": "Я впевнений, що дав вам ключ. Ви повинні це мати. Ви заглянули в свою сумку?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "You’re going on holiday next week. You must be looking forward to it.",
         "Rus": "Ви йдете у відпустку наступного тижня. Ви, напевно, з нетерпінням чекаєте цього.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It rained every day during their holiday, so they can’t have had a very nice time.",
         "Rus": "Під час їхньої відпустки щодня йшов дощ, тому вони не могли добре провести час.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Congratulations on passing your exam. You must be very pleased.",
         "Rus": "Вітаємо зі здачею іспиту. Ви повинні бути дуже задоволені.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "You got here very quickly. You must have walked very fast.",
@@ -7182,119 +7170,119 @@ function GetOffLineBD() {
       {
         "Eng": "I’ve lost one of my gloves. I must have dropped it somewhere.",
         "Rus": "Я загубив одну зі своїх рукавичок. Певно, я його десь кинув.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "They haven’t lived here for very long. They can’t know many people.",
         "Rus": "Вони живуть тут не дуже давно. Вони не можуть знати багато людей.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Ted isn’t at work today. He must be ill.",
         "Rus": "Тед сьогодні не на роботі. Мабуть, він хворий.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Ted wasn’t at work last week. He must have been ill.",
         "Rus": "Минулого тижня Теда не було на роботі. Мабуть, він хворів.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "(the doorbell rings) I wonder who that is. It can’t be Mary. She’s still at work at this time.",
         "Rus": "(дзвінок у двері) Цікаво, хто це. Це не може бути Мері. У цей час вона все ще на роботі.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Sarah knows a lot about films. She must go or have been to the cinema a lot.",
         "Rus": "Сара знає багато про фільми. Вона напевно часто ходила або була в кінотеатрі.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Look. James is putting on his hat and coat. He must be going out.",
         "Rus": "Подивіться. Джеймс одягає капелюх і пальто. Мабуть, він виходить.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I left my bike outside the house last night and now it has gone. Somebody must have taken it.",
         "Rus": "Минулої ночі я залишив свій велосипед біля дому, і тепер він зник. Мабуть хтось забрав.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Amy was in a very difficult situation when she lost her job. It can’t have been easy for her.",
         "Rus": "Емі опинилася в дуже важкій ситуації, коли втратила роботу. Це не могло бути легко для неї.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "There is a man walking behind us. He has been walking behind us for the last twenty minutes. He must be following us.",
         "Rus": "За нами йде чоловік. Останні двадцять хвилин він йшов позаду нас. Мабуть, він слідкує за нами.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "The phone rang, but I didn’t hear it. I must have been asleep.",
         "Rus": "Телефон задзвонив, але я не почув. Мабуть, я спав.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Sue hasn’t contacted me. She can’t have got my message.",
         "Rus": "Сью не зв’язувалася зі мною. Вона не могла отримати моє повідомлення.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "The jacket you bought is very good quality. It must have been very expensive.",
         "Rus": "Куплена вами куртка дуже хорошої якості. Напевно, це було дуже дорого.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I haven’t seen the people next door for ages. They must have gone away.",
         "Rus": "Я не бачив людей поруч цілий вік. Вони, мабуть, пішли.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I can’t find my umbrella. I must have left it in the restaurant last night.",
         "Rus": "Я не можу знайти свою парасольку. Мабуть, я залишив його в ресторані вчора ввечері.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Dave, who is usually very friendly, walked past me without speaking. He can’t have seen me. or He couldn’t have seen me.",
         "Rus": "Дейв, який зазвичай дуже доброзичливий, пройшов повз мене, не розмовляючи. Він не міг бачити мене. або Він міг мене не бачити.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "There was a man standing outside the café. He must have been waiting for somebody.",
         "Rus": "Біля кафе стояв чоловік. Мабуть, він на когось чекав.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Liz did the opposite of what I asked her to do. She can’t have understood what I said.",
         "Rus": "Ліз зробила протилежне тому, про що я її просив. Вона не могла зрозуміти, що я сказав.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "When I got back to my car, the door was unlocked. I must have forgotten to lock it.",
         "Rus": "Коли я повернувся до своєї машини, двері були незамкнені. Мабуть, я забув його замкнути.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I was woken up in the night by the noise next door. The neighbors must have been having a party.",
         "Rus": "Вночі мене розбудив шум у сусідньому будинку. Мабуть сусіди влаштували вечірку.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "The light was red, but the car didn’t stop. The driver can’t have seen the red light.",
         "Rus": "Горіло червоне, але машина не зупинилася. Водій не міг побачити червоне світло.",
-        "StepMix": 7
+        "StepMix": 4
       }
     ],
     "arrles29": [
       {
         "Eng": "Where’s Bob? He may be in his office. He might be having lunch. Ask Ann. She might know.",
         "Rus": "Де Боб? Він може бути у своєму кабінеті. Він може обідати. Запитайте Енн. Вона може знати.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It may be true. (Variant2)It might be true.",
         "Rus": "Це може бути правдою. (Варіант 2) Можливо, це правда. (= можливо, це правда.)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "She might know. (Variant2)She may know.",
@@ -7304,32 +7292,32 @@ function GetOffLineBD() {
       {
         "Eng": "It may not be true. ",
         "Rus": "Це може бути неправдою. (= можливо, це не правда)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "She might not work here any more. ",
         "Rus": "Вона може більше не працювати тут. (= можливо, вона тут не працює)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I wonder why Kate didn’t answer the phone. She may have been asleep. ",
         "Rus": "Мені цікаво, чому Кейт не відповідає на телефонні дзвінки. Можливо, вона спала. (= можливо, вона спала)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I can’t find my bag anywhere. You might have left it in the shop.",
         "Rus": "Я ніде не можу знайти свою сумку. Можливо, ви залишили його в магазині. (= можливо, ти залишила її в магазині)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I was surprised that Kate wasn’t at the meeting yesterday. She might not have known about it. ",
         "Rus": "Я був здивований, що Кейт не була на зустрічі вчора. Вона могла про це не знати. (= можливо, вона не знала)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I wonder why David was in such a bad mood yesterday. He may not have been feeling well.",
         "Rus": "Цікаво, чому Девід був у такому поганому настрої вчора. Можливо, він почувався погано. (= можливо, він погано себе почував)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It’s a strange story, but it could be true. ",
@@ -7344,12 +7332,12 @@ function GetOffLineBD() {
       {
         "Eng": "Sarah couldn’t have got my message. Otherwise she would have replied.",
         "Rus": "Сара не могла отримати моє повідомлення. Інакше вона б відповіла.(= не может быть, что она получила моё сообщение)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I wonder why Sarah hasn’t replied to my message. I suppose she might not have got it.",
         "Rus": "Мені цікаво, чому Сара не відповіла на моє повідомлення. Я припускаю, що вона могла цього не отримати.(= может быть, она получила, а может и нет)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Perhaps Helen is in her office. She might be in her office.",
@@ -7359,12 +7347,12 @@ function GetOffLineBD() {
       {
         "Eng": "Perhaps Helen is busy. She might be busy.",
         "Rus": "Можливо, Хелен зайнята. Вона може бути зайнята.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Perhaps she is working. She might be working.",
         "Rus": "Можливо, вона працює. Вона може працювати.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Perhaps she wants to be alone. She might want to be alone.",
@@ -7374,12 +7362,12 @@ function GetOffLineBD() {
       {
         "Eng": "Perhaps she was ill yesterday. She might have been ill yesterday.",
         "Rus": "Можливо, вона вчора хворіла. Можливо, вона вчора захворіла.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Perhaps she went home early. She might have gone home early.",
         "Rus": "Можливо, вона пішла додому раніше. Можливо, вона пішла додому раніше.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Perhaps she had to go home early. She might have had to go home early.",
@@ -7394,12 +7382,12 @@ function GetOffLineBD() {
       {
         "Eng": "Perhaps she doesn’t want to see me. She might not want to see me.",
         "Rus": "Можливо, вона не хоче мене бачити. Вона може не хотіти мене бачити.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Perhaps she isn’t working today. She might not be working today.",
         "Rus": "Можливо, вона сьогодні не працює. Можливо, вона сьогодні не працює.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Perhaps she wasn’t feeling well yesterday. She might not have been feeling well yesterday.",
@@ -7414,7 +7402,7 @@ function GetOffLineBD() {
       {
         "Eng": "Who is that man with Emily? I’m not sure. It might be her brother.",
         "Rus": "Хто цей чоловік з Емілі? Я не впевнений. Це може бути її брат.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "Who was the man we saw with Anna yesterday? I’m not sure. It may have been her brother.",
@@ -7881,7 +7869,7 @@ function GetOffLineBD() {
       {
         "Eng": "I haven’t decided yet where to go for my holidays. I may go to Ireland.",
         "Rus": "Я ще не вирішила, куди поїду на відпочинок. Я можу поїхати до Ірландії. (= можливо, я туда поеду)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Take an umbrella with you. It might rain later. ",
@@ -7891,37 +7879,37 @@ function GetOffLineBD() {
       {
         "Eng": "The bus isn’t always on time. We might have to wait a few minutes. ",
         "Rus": "Автобус не завжди встигає. Можливо, нам доведеться почекати кілька хвилин. (= можливо, нам доведеться подождать)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Liz may not go out tonight. She isn’t feeling well. ",
         "Rus": "Ліз може не вийти сьогодні ввечері. Вона почувається погано. (= можливо, вона нікуда не пойде)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "There might not be enough time to discuss everything at the meeting. ",
         "Rus": "На зустрічі може не вистачити часу, щоб все обговорити. (= можливо, не буде достатньо часу)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’ll be late this evening. ",
         "Rus": "Я запізнюся сьогодні ввечері. (точно)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I may/might be late this evening. ",
         "Rus": "Я можу/можу запізнитися сьогодні ввечері. (можно)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I may go to Ireland. (Variant2)I might go to Ireland.",
         "Rus": "Я можу поїхати до Ірландії. (Варіант 2) Я можу поїхати до Ірландії.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "Jane might be able to help you.(Variant2)Jane may be able to help you.",
         "Rus": "Джейн може вам допомогти. (Варіант 2) Джейн може вам допомогти.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "If I were in Tom’s position, I might look for another job.",
@@ -7941,7 +7929,7 @@ function GetOffLineBD() {
       {
         "Eng": "I’m going to Ireland in July. ",
         "Rus": "Я їду до Ірландії в липні. (точно)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I may be going to Ireland in July. (Variant2)I might be going to Ireland in July. ",
@@ -7951,22 +7939,22 @@ function GetOffLineBD() {
       {
         "Eng": "What shall we do? Shall we walk? We might as well. It’s a nice day and I don’t want to wait here for an hour.",
         "Rus": "Що ми будемо робити? Погуляємо? (Пойдем пешком?) We could as well. (Почему бы и нет.) Хороший день, і я не хочу чекати тут годину.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "What time are you going out? Well, I’m ready, so I might as well go now.",
         "Rus": "О котрій годині ти йдеш? Ну, я готовий, тому я міг би піти зараз.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Buses are so expensive these days, you may as well get a taxi. ",
         "Rus": "Зараз автобуси такі дорогі, що ви можете взяти таксі. (= таксі коштує приблизно стільки же)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Where are you going for your holidays? I haven’t decided yet. I might go to Ireland.",
         "Rus": "Куди ти збираєшся на канікули? Я ще не вирішив. Я можу поїхати до Ірландії.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "What sort of car are you going to buy? I’m not sure yet. I might buy a Mercedes.",
@@ -7981,7 +7969,7 @@ function GetOffLineBD() {
       {
         "Eng": "When is Tom coming to see us? He hasn’t said yet. He might come on Saturday.",
         "Rus": "Коли Том прийде до нас? Він ще не сказав. Він може прийти в суботу.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Where are you going to hang that picture? I haven’t made up my mind yet. I might hang it in the dining room.",
@@ -8006,7 +7994,7 @@ function GetOffLineBD() {
       {
         "Eng": "Be careful of that dog. It might bite you.",
         "Rus": "Будьте обережні з цим собакою. Це може вас вкусити.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "I don’t think we should throw that letter away. We might need it later.",
@@ -8041,17 +8029,17 @@ function GetOffLineBD() {
       {
         "Eng": "I can come to the meeting, but I might have to go before the end.",
         "Rus": "Я можу прийти на зустріч, але, можливо, мені доведеться піти до кінця.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "I’m not sure that Liz will come to the party. Liz might not come to the party.",
         "Rus": "Я не впевнений, що Ліз прийде на вечірку. Ліз може не прийти на вечірку.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "I’m not sure that I’ll go out this evening. I might not go out this evening.",
         "Rus": "Я не впевнений, що вийду сьогодні ввечері. Я міг би не вийти сьогодні ввечері.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’m not sure that we’ll get tickets for the concert. We might not get tickets for the concert.",
@@ -8061,7 +8049,7 @@ function GetOffLineBD() {
       {
         "Eng": "I’m not sure that Sue will be able to come out with us this evening. Sue might not be able to come out with us this evening.",
         "Rus": "Я не впевнений, що Сью зможе піти з нами сьогодні ввечері. Сью, можливо, не зможе піти з нами сьогодні ввечері.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "You and a friend have just missed the bus. The buses run every hour. You say: We’ll have to wait an hour for the next bus. We might as well walk.",
@@ -8071,7 +8059,7 @@ function GetOffLineBD() {
       {
         "Eng": "You have a free ticket for a concert. You’re not very keen on the concert, but you decide to go. You say: I might as well go to the concert. It’s a pity to waste a free ticket.",
         "Rus": "Ви маєте безкоштовний квиток на концерт. Вам не дуже цікавий концерт, але ви вирішили піти. Ви кажете: я міг би піти на концерт. Безкоштовний квиток шкода.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "You’ve just painted your kitchen. You still have a lot of paint, so why not paint the bathroom too? You say: We might as well paint the bathroom. There’s plenty of paint left.",
@@ -8093,22 +8081,22 @@ function GetOffLineBD() {
       {
         "Eng": "I have to wear glasses for reading.",
         "Rus": "Я должен носить очки для чтения.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "George can’t come out with us this evening. He has to work late.",
         "Rus": "Джордж не может пойти с нами сегодня вечером. Он должен работать допоздна.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "Last week Tina broke her arm and had to go to hospital.",
         "Rus": "На прошлой неделе Тина сломала руку и попала в больницу.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "I haven’t had to go to the doctor for ages.",
         "Rus": "Мне сто лет не приходилось ходить к врачу.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "What do I have to do to get a new driving licence?",
@@ -8138,12 +8126,12 @@ function GetOffLineBD() {
       {
         "Eng": "It’s later than I thought. I must go.",
         "Rus": "Это позже, чем я думал. Мне надо идти.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "I haven’t spoken to Sue for ages. I must phone her.",
         "Rus": "Я не разговаривал со Сью целую вечность. Я должен позвонить ей.  (= я думаю, что это необходимо)",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "Mark is a really nice person. You must meet him. ",
@@ -8153,7 +8141,7 @@ function GetOffLineBD() {
       {
         "Eng": "I have to work from 8:30 to 5:30 every day. ",
         "Rus": "Я должен работать с 8:30 до 5:30 каждый день. (факт, не мнение)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Jane has to travel a lot for her work.",
@@ -8168,12 +8156,12 @@ function GetOffLineBD() {
       {
         "Eng": "You must write your answers in ink. ",
         "Rus": "Вы должны написать свои ответы чернилами. (инструкция к экзамену)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "We had to leave early. ",
         "Rus": "Мы должны были уйти рано. (not we must)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "You must keep it a secret. You mustn’t tell anyone.",
@@ -8183,117 +8171,117 @@ function GetOffLineBD() {
       {
         "Eng": "I promised I would be on time. I mustn’t be late.",
         "Rus": "Я пообещал, что буду вовремя. Я не должен опаздывать. (= я должен быть вовремя)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "You don’t have to tell him, but you can if you want to.",
         "Rus": "Вы можете не говорить ему, но можете, если хотите.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I don’t have to be at the meeting, but I think I’ll go anyway.",
         "Rus": "Мне не обязательно быть на собрании, но, думаю, я все равно пойду.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’ve got to work tomorrow. (Variant2)I have to work tomorrow.",
         "Rus": "Мне завтра на работу. (Вариант 2) Мне завтра на работу.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "When has Liz got to go? (Variant2)When does Liz have to go?",
         "Rus": "Когда Лиз должна идти? (Вариант 2) Когда Лиз должна уйти?",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Bill starts work at 5 a.m. He has to get up at four.",
         "Rus": "Билл начинает работать в 5 утра, ему нужно вставать в четыре.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I broke my arm last week. Did you have to go to hospital?",
         "Rus": "Я сломал руку на прошлой неделе. Вам пришлось лечь в больницу?",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "There was a lot of noise from the street. We had to close the window.",
         "Rus": "С улицы было много шума. Нам пришлось закрыть окно.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Karen can’t stay for the whole meeting. She has to leave early.",
         "Rus": "Карен не может остаться на все собрание. Она должна уйти пораньше.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "How old do you have to be to drive in your country?",
         "Rus": "Сколько вам должно быть лет, чтобы водить машину в вашей стране?",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I don’t have much time. I have to hurry.",
         "Rus": "У меня мало времени. Я должен спешить.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "How is Paul enjoying his new job? Does he have to travel a lot?",
         "Rus": "Как Полу нравится его новая работа? Ему приходится много путешествовать?",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’m afraid I can’t stay long. What time do you have to go?",
         "Rus": "Боюсь, я не смогу долго оставаться. В какое время ты должен идти?",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "The bus was late again. How long did you have to wait?",
         "Rus": "Автобус снова опоздал. Как долго вам пришлось ждать?",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "There was nobody to help me. I had to do everything by myself.",
         "Rus": "Некому было мне помочь. Пришлось все делать самой.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’m not working tomorrow, so I don’t have to get up early.",
         "Rus": "Завтра я не работаю, поэтому мне не нужно рано вставать.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Steve didn’t know how to use the computer, so I had to show him.",
         "Rus": "Стив не умел пользоваться компьютером, поэтому мне пришлось показать ему.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Excuse me a moment - I have to make a phone call. I won’t be long.",
         "Rus": "Извините, мне нужно позвонить. Я ненадолго.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’m not so busy. I have a few things to do, but I don’t have to do them now.",
         "Rus": "Я не так занят. У меня есть несколько дел, но мне не нужно их делать сейчас.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I couldn’t find the street I wanted. I had to ask somebody for directions.",
         "Rus": "Я не мог найти нужную улицу. Пришлось спросить у кого-нибудь дорогу.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "The car park is free. You don’t have to pay to park your car there.",
         "Rus": "Автостоянка бесплатная. Вам не нужно платить за парковку там.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "A man was injured in the accident, but he didn’t have to go to hospital because it wasn’t serious.",
         "Rus": "В аварии пострадал мужчина, но госпитализировать его не пришлось, так как все было несерьезно.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Sue has a senior position in the company. She has to make important decisions.",
         "Rus": "Сью занимает руководящую должность в компании. Ей предстоит принять важное решение.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "When Patrick starts his new job next month, he will have to drive 50 miles to work every day.",
@@ -8390,7 +8378,7 @@ function GetOffLineBD() {
       {
         "Eng": "Paul had to go out. He thought it was going to rain, so he took the umbrella.",
         "Rus": "Полу нужно было выйти из дому. Он думал, что пойдет дождь, поэтому он взял зонтик.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "But it didn’t rain, so the umbrella was not necessary. So he needn’t have taken it.",
@@ -8592,17 +8580,17 @@ function GetOffLineBD() {
       {
         "Eng": "You look tired. You should go to bed.",
         "Rus": "Ты выглядишь уставшим. Тебе бы пойти поспать.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "The government should do more to reduce crime.",
         "Rus": "Правительству следует принимать больше мер по снижению уровня преступности.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Should we invite Susan to the party? Yes, I think we should.",
         "Rus": "‘Не пригласить ли нам Сьюзан на вечеринку?’ — ‘Да, думаю, нужно пригласить.’",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "I don’t think you should work so hard.",
@@ -8707,87 +8695,87 @@ function GetOffLineBD() {
       {
         "Eng": "She’s been studying hard for the exam, so she ought to pass.",
         "Rus": "Она усердно готовилась к экзамену, поэтому должна сдать.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Liz needs a change. She should go away for a few days.",
         "Rus": "Лиз нуждается в переменах. Она должна уехать на несколько дней.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Your salary is very low. You should look for another job.",
         "Rus": "У тебя очень маленькая зарплата. Вам следует искать другую работу.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Jack always has difficulty getting up. He shouldn’t go to bed so late.",
         "Rus": "Джек всегда с трудом встает. Он не должен ложиться спать так поздно.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "What a beautiful view! You should take a photograph.",
         "Rus": "Какой прекрасный вид! Вам следует сфотографироваться.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "Sue drives everywhere. She never walks. She shouldn’t use her car so much.",
         "Rus": "Сью везде ездит. Она никогда не ходит. Ей не следует так часто пользоваться своей машиной.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "Bill’s room isn’t very interesting. He should put some pictures on the walls.",
         "Rus": "Комната Билла не очень интересная. Он должен повесить несколько картин на стены.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Peter and Cathy are planning to get married. You think it’s a bad idea. I don’t think they should get married.",
         "Rus": "Питер и Кэти планируют пожениться. Вы думаете, что это плохая идея. Я не думаю, что они должны жениться.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Jane has a bad cold but plans to go out this evening. You don’t think this is a good idea. You say to her: I don’t think you should go out.",
         "Rus": "У Джейн сильная простуда, но она планирует пойти куда-нибудь сегодня вечером. Вы не думаете, что это хорошая идея. Вы говорите ей: я не думаю, что вам следует выходить.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Peter needs a job. He’s just seen an advertisement for a job which you think would be ideal for him, but he’s not sure whether to apply or not. You say to him: I think you should apply for it.",
         "Rus": "Питеру нужна работа. Он только что увидел объявление о вакансии, которая, по вашему мнению, была бы для него идеальной, но не уверен, откликаться на нее или нет. Вы говорите ему: я думаю, вы должны подать заявку на это.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "The government wants to increase taxes, but you don’t think this is a good idea. I don’t think the government should increase taxes.",
         "Rus": "Правительство хочет увеличить налоги, но вы не думаете, что это хорошая идея. Я не думаю, что правительство должно увеличивать налоги.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Diane should pass the exam. She’s been studying very hard.",
         "Rus": "Диана должна сдать экзамен. Она очень усердно училась.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "You missed a great party last night. You should have come.",
         "Rus": "Ты пропустил отличную вечеринку прошлой ночью. Ты должен был прийти.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "We don’t see you enough. You should come and see us more often.",
         "Rus": "Мы недостаточно видим тебя. Вы должны приходить к нам чаще.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’m in a difficult position. What do you think I should do?",
         "Rus": "я в сложном положении. Что ты думаешь я должен сделать?",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’m sorry that I didn’t take your advice. I should have done what you said.",
         "Rus": "Прости, что не воспользовался твоим советом. Я должен был сделать то, что ты сказал.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’m playing tennis with Jane tomorrow. She should win - she’s much better than me.",
         "Rus": "Завтра я играю в теннис с Джейн. Она должна победить — она намного лучше меня.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "We lost the march, but we should have won. We were the better team.",
@@ -8797,12 +8785,12 @@ function GetOffLineBD() {
       {
         "Eng": "Is Mike here yet? Not yet, but he should be here soon.",
         "Rus": "Майк уже здесь? Пока нет, но он должен скоро быть здесь.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I posted the letter three days ago, so it should have arrived by now.",
         "Rus": "Я отправил письмо три дня назад, так что оно уже должно было прийти.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Laura gave me her address, but I didn’t write it down. Now I can’t remember it.I should have written down her address.",
@@ -8812,74 +8800,74 @@ function GetOffLineBD() {
       {
         "Eng": "I was driving behind another car. Suddenly, the driver in front stopped without warning and I drove into the back of his car. It wasn’t my fault. The driver in front shouldn’t have stopped without warning.",
         "Rus": "Я ехал за другой машиной. Внезапно водитель впереди остановился без предупреждения, и я въехал в заднюю часть его машины. Это была не моя вина. Водитель впереди не должен был останавливаться без предупреждения.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I walked into a wall. I was looking behind me. I wasn’t looking where I was going. I should have been looking where I was going.",
         "Rus": "Я вошел в стену. Я смотрел назад. Я не смотрел, куда иду. Я должен был смотреть, куда я иду.",
-        "StepMix": 1
+        "StepMix": 4
       }
     ],
     "arrles34": [
       {
         "Eng": "They insisted that we should have dinner with them.",
         "Rus": "Они настаивали на том, чтобы мы с ними пообедали (досл.: нам следует пообедать с ними).",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I demanded that he should apologise.",
         "Rus": "Я требовал, чтобы он извинился.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "What do you suggest I should do?",
         "Rus": "Что бы ты посоветовал мне сделать? (досл.: Что ты предлагаешь мне следует сделать?)",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "I insist that something should be done about the problem.",
         "Rus": "Я настаиваю на том, чтобы хоть что-то начали делать для решения проблемы.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It’s essential that everyone should be here on time.",
         "Rus": "Крайне важно, чтобы все здесь были вовремя.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It’s strange that he should be late. He’s usually on time.",
         "Rus": "Странно, что он задержится. Обычно он приходит вовремя.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I was surprised that he should say such a thing.",
         "Rus": "Я был удивлен, что ему пришлось так говорить.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "We have no jobs at present. But if the situation should change, we’ll let you know.",
         "Rus": "У нас сейчас нет работы. Но если ситуация изменится, мы дадим вам знать.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Shall I leave now? No, I should wait a bit longer.",
         "Rus": "Мне уже идти? — Нет, я бы еще немного подождал.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’m going out now. Is it cold? Yes, I should wear a coat.",
         "Rus": "Я пойду на улицу. Там холодно? — Да, я бы одел пальто.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I shouldn’t stay up too late. You’ll be tired tomorrow.",
         "Rus": "Я бы не засиживался допозна. Завтра ты будешь очень уставшим.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It’s essential that everyone be here on time. ",
         "Rus": "Важно, чтобы все были здесь вовремя. (= that everyone should be here)",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "I demanded that he apologise.",
@@ -8934,67 +8922,67 @@ function GetOffLineBD() {
       {
         "Eng": "You really must stay a little longer, she said to me. She insisted that I should stay.",
         "Rus": "— Ты действительно должен остаться еще немного, — сказала она мне. Она настаивала, чтобы я остался.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Why don’t you visit the museum after lunch? I said to them. I suggested that they should visit.",
         "Rus": "Почему бы тебе не пойти в музей после обеда? — сказал я им. Я предложил им посетить.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "You must pay the rent by Friday, the landlord said to us. The landlord demanded that we should pay.",
         "Rus": "Вы должны заплатить арендную плату до пятницы, сказал нам домовладелец. Хозяин потребовал, чтобы мы заплатили.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Why don’t you go away for a few days? Jack said to me. Jack suggested that I should go.",
         "Rus": "Почему бы тебе не уехать на несколько дней? Джек сказал мне. Джек предложил мне пойти.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Tom suggested that I should look for another job.",
         "Rus": "Том предложил мне поискать другую работу.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Tom suggested that I look for another job.",
         "Rus": "Том предложил мне поискать другую работу.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Tom suggested that I looked for another job.",
         "Rus": "Том предложил мне поискать другую работу.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "Where do you suggest I go for my holiday?",
         "Rus": "Куда вы предлагаете мне отправиться в отпуск?",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Where do you suggest I should go for my holiday?",
         "Rus": "Куда вы предлагаете мне отправиться в отпуск?",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It’s strange that he should be late. He’s usually on time.",
         "Rus": "Странно, что он опаздывает. Обычно он вовремя.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It’s funny that you should say that. I was going to say the same thing.",
         "Rus": "Забавно, что ты говоришь это. Я собирался сказать то же самое.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It’s only natural that parents should worry about their children.",
         "Rus": "Вполне естественно, что родители должны беспокоиться о своих детях.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Isn’t it typical of Joe that he should leave without saying goodbye to anybody?",
         "Rus": "Разве не типично для Джо, что он должен уйти, ни с кем не попрощавшись?",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "I was surprised that they should ask me for advice. What advice could I give them?",
@@ -9061,92 +9049,92 @@ function GetOffLineBD() {
       {
         "Eng": "We’d better stop for petrol soon. The tank is almost empty.",
         "Rus": "Нам бы лучше поскорее остановиться для заправки. Бак почти пустой.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It’s time to go home. (Variant2)It’s time for us to go home.",
         "Rus": "Время/пора идти домой",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It’s late. It’s time we went home.",
         "Rus": "Уже поздно. Пора бы нам уже идти домой.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It’s 10 o’clock and he’s still in bed. It’s time he got up.",
         "Rus": "Уже 10 часов, а он все еще в постели. Пора ему вставать. (not It’s time he gets up)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Jack is a great talker. But it’s about time he did something instead of just talking.",
         "Rus": "Джек отличный собеседник. Но ему уже давно пора начать что-то делать вместо того, чтобы просто трепаться.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I have to meet Ann in ten minutes. I’d better go now or I’ll be late.",
         "Rus": "Я должен встретиться с Энн через десять минут. Мне лучше идти сейчас, иначе я опоздаю.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Shall I take an umbrella? Yes, you’d better. It might rain.",
         "Rus": "Мне взять зонт? Да, тебе лучше. Может пойти дождь.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Are you going out tonight? I’d better not. I’ve got a lot to do.",
         "Rus": "Вы собираетесь сегодня вечером? Я бы лучше не стал. У меня много дел.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "You don’t look very well. You’d better not go to work today.",
         "Rus": "Ты не очень хорошо выглядишь. Тебе лучше не идти сегодня на работу.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’d better phone Carol, hadn’t I?",
         "Rus": "Я лучше позвоню Кэрол, не так ли?",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’d better go to the bank tomorrow.",
         "Rus": "Я лучше завтра пойду в банк.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It might rain. We’d better take an umbrella. ",
         "Rus": "Может пойти дождь. Нам лучше взять зонт. (not We’d better to take)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It’s late. You’d better go.",
         "Rus": "Уже поздно. Тебе лучше уйти.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "You’re always at home. You should go out more often.",
         "Rus": "Ты всегда дома. Вам следует чаще выходить на улицу.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It’s a great film. You should go and see it.",
         "Rus": "Это отличный фильм. Вы должны пойти и увидеть это.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "The film starts at 8:30. You’d better go now or you’ll be late.",
         "Rus": "Фильм начинается в 8:30. Тебе лучше уйти сейчас, иначе ты опоздаешь.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It’s time the children were in bed. It’s long after their bedtime. ",
         "Rus": "Детям пора спать. Прошло много времени после их сна. (Пора бы детям идти спать.)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "You’re very selfish. It’s time you realised that you’re not the most important person in the world.",
         "Rus": "Вы очень эгоистичны. Пора тебе осознать, что ты не самый важный человек в мире. (Тебе пора понять, ...)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "You’re going out for a walk with Tom. It looks as if it might rain. You say to Tom: We’d better take an umbrella.",
@@ -9293,22 +9281,22 @@ function GetOffLineBD() {
       {
         "Eng": "It would be nice to buy a new car, but we can’t afford it.",
         "Rus": "Было бы здорово купить новую машину, но мы не можем этого позволить.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I tried to warn him, but he wouldn’t listen to me.",
         "Rus": "Я пытался его предупредить, но он не послушал меня. (= он отказывался слушать)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "The car wouldn’t start.",
         "Rus": "Машина никак не заводилась. (= она ‘отказывалась’ заводиться)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "When we were children, we lived by the sea. In summer, if the weather was fine, we would all get up early and go for a swim.",
         "Rus": "Когда мы были детьми, мы жили у моря. Летом, если была хорошая погода, мы все рано вставали и шли купаться.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Whenever Richard was angry, he would walk out of the room.",
@@ -9318,142 +9306,142 @@ function GetOffLineBD() {
       {
         "Eng": "Whenever Richard was angry, he used to walk out of the room.",
         "Rus": "Всякий раз, когда Ричард злился, он выходил из комнаты.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "They helped us a lot. I don’t know what we’d have done without their help.",
         "Rus": "Они нам очень помогли. Я не знаю, что бы мы сделали  (= we would have done)  без их помощи.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I didn’t tell Sam what happened. He wouldn’t have been pleased.",
         "Rus": "Я не сказал Сэму, что случилось. Он бы не был доволен.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’d love to live by the sea.",
         "Rus": "Я бы хотел жить у моря.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Shall I tell Chris what happened? No, I wouldn’t say anything. ",
         "Rus": "Рассказать Крису, что случилось? Нет, я бы ничего не сказал. (= Я бы ничего не говорил на твоём месте)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I would phone Sue, but I haven’t got her number. ",
         "Rus": "Я бы позвонил Сью, но у меня нет ее номера. (настоящее)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I would have phoned Sue, but I didn’t have her number. ",
         "Rus": "Я бы позвонил Сью, но у меня не было ее номера. (прошедшее)",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’m not going to invite them to the party. They wouldn’t come anyway.",
         "Rus": "Я не собираюсь приглашать их на вечеринку. Они бы все равно не пришли.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I didn’t invite them to the party. They wouldn’t have come anyway.",
         "Rus": "Я не приглашал их на вечеринку. Они бы все равно не пришли.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I would phone Sue if I had her number.",
         "Rus": "Я бы позвонил Сью, если бы у меня был ее номер.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I would have phoned Sue if I’d had her number.",
         "Rus": "Я бы позвонил Сью, если бы у меня был ее номер.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’ll stay a bit longer. I’ve got plenty of time.",
         "Rus": "Я останусь еще немного. У меня полно времени.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’d stay a bit longer, but I really have to go now.",
         "Rus": "Я бы остался еще немного, но мне действительно нужно идти.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’ll phone Sue. I’ve got her number.",
         "Rus": "Я позвоню Сью. У меня есть ее номер.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’d phone Sue, but I haven’t got her number.",
         "Rus": "Я бы позвонил Сью, но у меня нет ее номера.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "TOM: I’ll phone you on Sunday. Tom said he’d phone me on Sunday.",
         "Rus": "ТОМ: Я позвоню тебе в воскресенье. Том сказал, что позвонит мне в воскресенье.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "ANN: I promise I won’t be late. Ann promised that she wouldn’t be late.",
         "Rus": "Энн: Я обещаю, что не опоздаю. Энн пообещала, что не опоздает.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "LIZ: Damn! The car won’t start. Liz was annoyed because her car wouldn’t start.",
         "Rus": "ЛИЗ: Черт! Машина не заводится. Лиз была раздражена, потому что ее машина не заводилась.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’d love to live by the sea.",
         "Rus": "Я бы хотел жить у моря.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I wouldn’t like to be a teacher.",
         "Rus": "Я не хотел бы быть учителем.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’d love to learn to fly a plane.",
         "Rus": "Я бы хотел научиться летать на самолете.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It would be nice to have a big garden.",
         "Rus": "Хорошо бы иметь большой сад.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I’d like to go to Mexico.",
         "Rus": "Я хотел бы поехать в Мексику.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "They helped us a lot. I don’t know what we would have done without their help.",
         "Rus": "Они нам очень помогли. Не знаю, что бы мы делали без их помощи.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "You should go and see the film. You would enjoy it.",
         "Rus": "Вы должны пойти и посмотреть фильм. Вам бы это понравилось.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "It’s a pity you couldn’t come to the concert yesterday. You would have enjoyed it.",
         "Rus": "Жаль, что ты не смог вчера прийти на концерт. Вам бы понравилось.",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "Shall I apply for the job or not? What would you do  in my position?",
         "Rus": "Должен ли я подать заявку на работу или нет? Что бы вы сделали на моем месте?",
-        "StepMix": 7
+        "StepMix": 4
       },
       {
         "Eng": "I was in a hurry when I saw you. Otherwise I’d have stopped to talk.",
         "Rus": "Я торопился, когда увидел тебя. Иначе я бы остановился, чтобы поговорить.",
-        "StepMix": 1
+        "StepMix": 4
       },
       {
         "Eng": "We took a taxi home last night but got stuck in the traffic. It would have been quicker to walk.",
@@ -9580,32 +9568,32 @@ function GetOffLineBD() {
       {
         "Eng": "Liz, can you do me a favour?",
         "Rus": "Лиза, ты не окажешь мне услугу?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Excuse me, could you tell me how to get to the airport?",
         "Rus": "Простите, не подскажите как добраться до аэропорта?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Do you think you could lend me some money until next week?",
         "Rus": "Как ты думаешь, ты бы смог мне одолжить денег до следующей недели?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Would you please be quiet? I’m trying to concentrate.",
         "Rus": "Вы бы не могли быть потише, пожалуйста? Я пытаюсь сконцентрироваться.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Can I have these postcards, please?",
         "Rus": "(in a shop) Не могли бы вы дать мне эти открытки? (досл.: могу я взять... ?)",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Do you mind if I use your phone? Sure. Go ahead.",
         "Rus": "Ты не против, если я воспользуюсь твоим телефоном?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Is it all right if I come in? Yes, of course.",
@@ -9615,27 +9603,27 @@ function GetOffLineBD() {
       {
         "Eng": "Can I get you a cup of coffee? That would be nice.",
         "Rus": "‘Принести тебе чашечку кофе? Это было бы здорово.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Can I help you? No, it’s all right. I can manage.",
         "Rus": "‘Помочь тебе?’ ‘Нет, спасибо (досл.: всё хорошо). Я сам справлюсь.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Would you like a cup of coffee? Yes, please.",
         "Rus": "‘Хочешь чашечку кофе?’ ‘Да, пожалуйста.’",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Would you like to come to dinner tomorrow evening? I’d love to.",
         "Rus": "‘Не хочешь ли прийти (приглашаю тебя) на ужин завтра вечером?’ ‘С радостью.’",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I’d like some information about hotels, please.",
         "Rus": "(at a tourist information office) Я бы хотел получить (кое-какую) информацию об отелях, пожалуйста.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "I’d like to try on this jacket, please.",
@@ -9645,32 +9633,32 @@ function GetOffLineBD() {
       {
         "Eng": "Could I have the salt, please?",
         "Rus": "(during a meal)  Можно мне соль, пожалуйста?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Liz, will you do me a favour?",
         "Rus": "Лиз, сделаешь мне одолжение?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "May I have these postcards, please?",
         "Rus": "Можно мне эти открытки, пожалуйста?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Hello, can I speak to Steve, please?",
         "Rus": "(on the phone)  Здравствуйте, могу я поговорить со Стивом, пожалуйста?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Could I use your phone? Yes, of course.",
         "Rus": "Могу я воспользоваться вашим телефоном? Да, конечно.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Do you think I could borrow your bike?",
         "Rus": "Как думаешь, я могу одолжить твой велосипед?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "May I come in? Yes, please do.",
@@ -9685,12 +9673,12 @@ function GetOffLineBD() {
       {
         "Eng": "You phone Sue, but somebody else answers. Sue isn’t there. You want to leave a message for her. You say: Could you give her a message?",
         "Rus": "Ты звонишь Сью, но отвечает кто-то другой. Сью нет. Вы хотите оставить сообщение для нее. Вы говорите: Не могли бы вы передать ей сообщение?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "You’re a tourist. You want to go to the station, but you don’t know how to get there. You ask at your hotel: Could you tell me how to get to the station?",
         "Rus": "Вы турист. Вы хотите пойти на станцию, но не знаете, как туда добраться. Вы спрашиваете в своем отеле: не могли бы вы сказать мне, как добраться до вокзала?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "You are in a clothes shop. You see some trousers you like and you want to try them on. You say to the shop assistant: Could I try on these trousers?",
@@ -9700,72 +9688,72 @@ function GetOffLineBD() {
       {
         "Eng": "You have a car. You have to go the same way as Steve, who is on foot. You offer him a lift. You say to him: Can I offer you a lift?",
         "Rus": "У тебя есть машина. Вы должны идти тем же путем, что и Стив, который идет пешком. Вы предлагаете ему подвезти. Вы говорите ему: Могу я предложить вам подвезти?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "You want to borrow your friend’s camera. What do you say to him? Do you think I could borrow your camera?",
         "Rus": "Вы хотите одолжить камеру своего друга. Что вы ему скажете? Как думаешь, я могу одолжить твою камеру?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "You are at a friend’s house and you want to use her phone. What do you say? Is it all right if I use your phone?",
         "Rus": "Вы в гостях у подруги и хотите воспользоваться ее телефоном. Что ты говоришь? Ничего, если я воспользуюсь твоим телефоном?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "You’ve written a letter in English. Before you send it, you want a friend to check it for you. What do you ask? Do you think you could check this letter?",
         "Rus": "Вы написали письмо на английском языке. Прежде чем отправить его, вы хотите, чтобы друг проверил его для вас. Что вы спрашиваете? Как вы думаете, вы могли бы проверить это письмо  (for me)?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "You want to leave work early. What do you ask your boss? Do you mind if I leave work early?",
         "Rus": "Вы хотите уйти с работы пораньше. Что вы спросите у своего босса? Не возражаете, если я уйду с работы пораньше?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "The woman in the next room is playing music. It’s very loud. You want her to turn it down. What do you say to her? Do you think you could turn the music down?",
         "Rus": "Женщина в соседней комнате играет музыку. Это очень громко. Ты хочешь, чтобы она отказалась. Что ты ей скажешь? Как вы думаете, вы могли бы сделать музыку потише?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "You’re on a train. The window is open and you’re feeling cold. You’d like to close it, but first you ask the woman next to you. Is it OK if I close the window?",
         "Rus": "Вы в поезде. Окно открыто, и тебе холодно. Вы хотели бы закрыть его, но сначала вы спросите женщину рядом с вами. Ничего, если я закрою окно?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "You’re still on the train. The woman next to you has finished reading her newspaper, and you’d like to have a look at it. You ask her. Do you think I could have a look at your newspaper?",
         "Rus": "Ты все еще в поезде. Женщина рядом с вами закончила читать свою газету, и вы хотели бы взглянуть на нее. Вы спросите ее. Как вы думаете, я мог бы взглянуть на вашу газету?",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "Paul has come to see you in your flat. You offer him something to eat. YOU: Would you like something to eat? PAUL: No, thank you. I’ve just eaten.",
         "Rus": "Пол пришел навестить вас в вашей квартире. Вы предлагаете ему что-нибудь поесть. ВЫ: Хочешь что-нибудь поесть? ПОЛ: Нет, спасибо. Я только что поел.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "You need help to change the memory card in your camera. You ask Kate. YOU: I don’t know how to change the memory card. Do you think you could show me? KATE: Sure. It’s easy. All you have to do is this.",
         "Rus": "Вам нужна помощь, чтобы заменить карту памяти в вашей камере. Вы спросите Катю. ВЫ: Я не знаю, как поменять карту памяти. Как вы думаете, вы могли бы показать мне? КЕЙТ: Конечно. Это просто. Все, что вам нужно сделать, это это.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "You’re on a bus. You have a seat, but an elderly man is standing. You offer him your seat. YOU: Would you like to sit down? MAN: Oh, that’s very kind of you. Thank you very much.",
         "Rus": "Вы в автобусе. У вас есть место, но стоит пожилой мужчина. Вы предлагаете ему свое место. ВЫ: Не хотите ли присесть? МУЖЧИНА: О, это очень мило с вашей стороны. Большое спасибо.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "You’re the passenger in a car. Your friend is driving very fast. You ask her to slow down. YOU: You’re making me very nervous. Would you slow down? DRIVER: Oh, I’m sorry. I didn’t realise I was going so fast.",
         "Rus": "Вы пассажир в машине. Ваш друг едет очень быстро. Вы просите ее помедленнее. ВЫ: Вы меня очень нервируете. Вы бы помедленнее? ВОДИТЕЛЬ: Ой, простите. Я не понимал, что иду так быстро.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "You’ve finished your meal in a restaurant and now you want the bill. You ask the waiter: YOU: Could I have the bill, please? WAITER: Right. I’ll get it for you now.",
         "Rus": "Вы поели в ресторане и теперь хотите счет. Вы спрашиваете официанта: ВЫ: Можно мне счет, пожалуйста? ОФИЦИАНТ: Верно. Я достану это для тебя сейчас.",
-        "StepMix": 2
+        "StepMix": 4
       },
       {
         "Eng": "A friend of yours is interested in one of your books. You invite him to borrow it. FRIEND: This looks very interesting. YOU: Yes, it’s a good book. Would you like to borrow it?",
         "Rus": "Ваш друг заинтересовался одной из ваших книг. Вы предлагаете ему одолжить его. ДРУГ: Это выглядит очень интересно. ВЫ: Да, это хорошая книга. Хотели бы вы одолжить его?",
-        "StepMix": 1
+        "StepMix": 4
       }
     ],
     "arrles38": [
@@ -11706,7 +11694,7 @@ function GetOffLineBD() {
         "Rus": "Была хорошая погода? Да, но было очень жарко, иногда слишком жарко."
       },
       {
-        "Eng": "Did you see to the Grand Canyon? Of course. It was wonderful.",
+        "Eng": "Did you see to the Grand Canyon? Of course. lt was wonderful.",
         "Rus": "Вы видели Гранд-Каньон? Конечно. Это было замечательно."
       },
       {
@@ -12431,737 +12419,6 @@ function GetOffLineBD() {
         "StepMix": 7
       }
     ],
-    "arrles44":[
-      {"Eng":"Somebody gave the police the information.", "Rus": "Кто-то передал информацию полиции.","StepMix": 2},
-      {"Eng":"The police were given the information.", "Rus": "Информацию передали полиции.","StepMix": 2},
-      {"Eng":"The information was given to the police.", "Rus": "Информация была передана в полицию.","StepMix": 2},
-      {"Eng":"I was offered the job, but I refused it.", "Rus": "Мне предложили работу, но я отказался.","StepMix": 2},
-      {"Eng":"You will be given plenty of time to decide.", "Rus": "Вам будет предоставлено достаточно времени, чтобы принять решение.","StepMix": 2},
-      {"Eng":"Have you been shown the new machine?", "Rus": "Вам показали новую машину?","StepMix": 2},
-      {"Eng":"The men were paid £400 to do the work.", "Rus": "За работу мужчинам заплатили 400 фунтов стерлингов.","StepMix": 2},
-      {"Eng":"I don’t like people telling me what to do. (active)", "Rus": "Я не люблю, когда люди говорят мне, что делать. (активный)","StepMix": 2},
-      {"Eng":"I don’t like being told what to do. (passive)", "Rus": "Я не люблю, когда мне говорят, что делать. (пассивный)","StepMix": 2},
-      {"Eng":"I remember being taken to the zoo when I was a child.", "Rus": "Я помню, как меня водили в зоопарк, когда я был ребенком.","StepMix": 2},
-      {"Eng":"Steve hates being kept waiting.", "Rus": "Стив ненавидит, когда его заставляют ждать.","StepMix": 2},
-      {"Eng":"We managed to climb over the wall without being seen.", "Rus": "Нам удалось незаметно перелезть через стену.","StepMix": 2},
-      {"Eng":"Where were you born? I was born in Chicago.", "Rus": "Где ты родился? Я родился в Чикаго.","StepMix": 2},
-      {"Eng":"How many babies are born every day?", "Rus": "Сколько детей рождается каждый день?","StepMix": 2},
-      {"Eng":"There was a fight at the party, but nobody got hurt.", "Rus": "На вечеринке произошла драка, но никто не пострадал.","StepMix": 2},
-      {"Eng":"I don’t often get invited to parties.", "Rus": "Меня не часто приглашают на вечеринки.","StepMix": 2},
-      {"Eng":"I’m surprised Liz didn’t get offered the job.", "Rus": "Я удивлен, что Лиз не предложили работу.","StepMix": 2},
-      {"Eng":"Jill is liked by everybody.", "Rus": "Джилл нравится всем.","StepMix": 2},
-      {"Eng":"He was a mystery man. Very little was known about him.", "Rus": "Он был человеком-загадкой. О нем было известно очень мало.","StepMix": 2},
-      {"Eng":"They didn’t give me the information I needed. I wasn’t given the information I needed.", "Rus": "Они не дали мне нужной мне информации. Мне не дали нужной мне информации.","StepMix": 2},
-      {"Eng":"They asked me some difficult questions at the interview. I was asked some difficult questions at the interview.", "Rus": "На собеседовании мне задали несколько сложных вопросов. На собеседовании мне задали несколько сложных вопросов.","StepMix": 2},
-      {"Eng":"Linda’s colleagues gave her a present when she retired. Linda was given a present by her colleagues when she retired.", "Rus": "Коллеги Линды сделали ей подарок, когда она вышла на пенсию. Когда Линда вышла на пенсию, коллеги подарили ей подарок.","StepMix": 2},
-      {"Eng":"Nobody told me about the meeting. I wasn’t told about the meeting.", "Rus": "Никто не сказал мне о встрече. Мне не сказали о встрече.","StepMix": 2},
-      {"Eng":"How much will they pay you for your work? How much will you be paid for your work?", "Rus": "Сколько они будут платить вам за вашу работу? Сколько вам будут платить за вашу работу?","StepMix": 2},
-      {"Eng":"I think they should have offered Tom the job. I think Tom should have been offered the job.", "Rus": "Я думаю, они должны были предложить Тому работу. Я думаю, Тому стоило предложить эту работу.","StepMix": 2},
-      {"Eng":"Has anybody shown you what to do? Have you been shown what to do?", "Rus": "Кто-нибудь показал вам, что делать? Вам показали, что делать?","StepMix": 2},
-      {"Eng":"Steve hates being kept waiting.", "Rus": "Стив ненавидит, когда его заставляют ждать.","StepMix": 2},
-      {"Eng":"We went to the party without being invited.", "Rus": "Мы пошли на вечеринку без приглашения.","StepMix": 2},
-      {"Eng":"I like giving presents and I also like being given them.", "Rus": "Я люблю дарить подарки, и мне также нравится, когда их дарят.","StepMix": 2},
-      {"Eng":"It’s a busy road and I don’t like crossing it. I’m afraid of being knocked down.", "Rus": "Это оживленная дорога, и я не люблю ее переходить. Я боюсь быть сбитым с ног.","StepMix": 2},
-      {"Eng":"I’m an adult. I don’t like being treated like a child.", "Rus": "Я взрослый. Мне не нравится, когда ко мне относятся как к ребенку.","StepMix": 2},
-      {"Eng":"You can’t do anything about being stuck in a traffic jam.", "Rus": "Вы ничего не можете сделать, если застряли в пробке.","StepMix": 2},
-      {"Eng":"Walt Disney was born in 1901.", "Rus": "Уолт Дисней родился в 1901 году.","StepMix": 2},
-      {"Eng":"Beethoven was born in 1770.", "Rus": "Бетховен родился в 1770 году.","StepMix": 2},
-      {"Eng":"Agatha Christie was born in 1890.", "Rus": "Агата Кристи родилась в 1890 году.","StepMix": 2},
-      {"Eng":"Galileo was born in 1564.", "Rus": "Галилей родился в 1564 г.","StepMix": 2},
-      {"Eng":"Mahatma Gandhi was born in 1869.", "Rus": "Махатма Ганди родился в 1869 г.","StepMix": 2},
-      {"Eng":"Martin Luther King was born in 1929.", "Rus": "Мартин Лютер Кинг родился в 1929 г.","StepMix": 2},
-      {"Eng":"Elvis Presley was born in 1935.", "Rus": "Элвис Пресли родился в 1935 году.","StepMix": 2},
-      {"Eng":"Leonardo da Vinci was born in 1452.", "Rus": "Леонардо да Винчи родился в 1452 году.","StepMix": 2},
-      {"Eng":"William Shakespeare was born in 1564.", "Rus": "Уильям Шекспир родился в 1564 году.","StepMix": 2},
-      {"Eng":"There was a fight at the party, but nobody got hurt.", "Rus": "На вечеринке произошла драка, но никто не пострадал.","StepMix": 2},
-      {"Eng":"Alex got stung by a bee while he was sitting in the garden.", "Rus": "Алекса ужалила пчела, когда он сидел в саду.","StepMix": 2},
-      {"Eng":"These tennis courts don’t get used very often. Not many people want to play.", "Rus": "Эти теннисные корты не используются очень часто. Не многие хотят играть.","StepMix": 2},
-      {"Eng":"I used to have a bicycle, but it got stolen a few months ago.", "Rus": "Раньше у меня был велосипед, но несколько месяцев назад его украли.","StepMix": 2},
-      {"Eng":"Rachel works hard but doesn’t get paid very much.", "Rus": "Рэйчел много работает, но мало получает.","StepMix": 2},
-      {"Eng":"Last night I got stopped by the police as I was driving home. One of the lights on my car wasn’t working.", "Rus": "Прошлой ночью меня остановила полиция, когда я ехал домой. Одна лампочка в моей машине не работала.","StepMix": 2},
-      {"Eng":"Please pack these things very carefully. I don’t want them to get damaged.", "Rus": "Пожалуйста, упакуйте эти вещи очень тщательно. Я не хочу, чтобы они были повреждены.","StepMix": 2},
-      {"Eng":"People often want to know what my job is. I often get asked that question.", "Rus": "Люди часто хотят знать, в чем заключается моя работа. Мне часто задают этот вопрос.","StepMix": 2}
-      ],
-      
-      "arrles45":[
-      {"Eng":"It is said that he is 108 years old.", "Rus": "Говорят, что ему 108 лет.","StepMix": 2},
-      {"Eng":"He is said to be 108 years old.", "Rus": "Говорят, что ему 108 лет.","StepMix": 2},
-      {"Eng":"Cathy works very hard. It is said that she works 16 hours a day.", "Rus": "Кэти очень много работает. Говорят, что она работает по 16 часов в день.","StepMix": 2},
-      {"Eng":"She is said to work 16 hours a day.", "Rus": "Говорят, что она работает по 16 часов в день.","StepMix": 2},
-      {"Eng":"The police are looking for a missing boy. It is believed that the boy is wearing a white pullover and blue jeans.", "Rus": "Полиция ищет пропавшего мальчика. Считается, что мальчик одет в белый свитер и синие джинсы.","StepMix": 2},
-      {"Eng":"The boy is believed to be wearing a white pullover and blue jeans.", "Rus": "Предполагается, что мальчик был одет в белый свитер и синие джинсы.","StepMix": 2},
-      {"Eng":"The strike started three weeks ago. It is expected that it will end soon.", "Rus": "Забастовка началась три недели назад. Ожидается, что он скоро закончится.","StepMix": 2},
-      {"Eng":"The strike is expected to end soon.", "Rus": "Ожидается, что забастовка скоро закончится.","StepMix": 2},
-      {"Eng":"A friend of mine has been arrested. It is alleged that he hit a policeman.", "Rus": "Мой друг арестован. Утверждается, что он ударил полицейского.","StepMix": 2},
-      {"Eng":"He is alleged to have hit a policeman.", "Rus": "Предположительно, он ударил полицейского.","StepMix": 2},
-      {"Eng":"The two houses belong to the same family. It is said that there is a secret tunnel between them.", "Rus": "Оба дома принадлежат одной семье. Говорят, что между ними есть секретный туннель.","StepMix": 2},
-      {"Eng":"There is said to be a secret tunnel between them.", "Rus": "Говорят, что между ними есть секретный туннель.","StepMix": 2},
-      {"Eng":"It is reported that two people were injured in the explosion.", "Rus": "Сообщается, что в результате взрыва пострадали два человека.","StepMix": 2},
-      {"Eng":"Two people are reported to have been injured in the explosion.", "Rus": "Сообщается, что в результате взрыва пострадали два человека.","StepMix": 2},
-      {"Eng":"I want to see that film. It’s supposed to be good.", "Rus": "Я хочу посмотреть этот фильм. Это должно быть хорошо.","StepMix": 2},
-      {"Eng":"Mark is supposed to have hit a policeman, but I don’t believe it.", "Rus": "Предполагается, что Марк ударил полицейского, но я в это не верю.","StepMix": 2},
-      {"Eng":"The plan is supposed to be a secret, but everybody seems to know about it.", "Rus": "План должен быть секретным, но, похоже, все о нем знают.","StepMix": 2},
-      {"Eng":"What are you doing at work? You’re supposed to be on holiday.", "Rus": "Что ты делаешь на работе? Ты должен быть в отпуске.","StepMix": 2},
-      {"Eng":"Our guests were supposed to come at 7.30, but they were late.", "Rus": "Наши гости должны были прийти в 7.30, но опоздали.","StepMix": 2},
-      {"Eng":"Jane was supposed to phone me last night, but she didn’t.", "Rus": "Джейн должна была позвонить мне прошлой ночью, но не позвонила.","StepMix": 2},
-      {"Eng":"I’d better hurry. I’m supposed to be meeting Chris in ten minutes.", "Rus": "Я лучше потороплюсь. Я должен встретиться с Крисом через десять минут.","StepMix": 2},
-      {"Eng":"You’re not supposed to park your car here. It’s private parking only.", "Rus": "Здесь нельзя парковать машину. Только частная парковка.","StepMix": 2},
-      {"Eng":"Jeff is much better after his illness, but he’s still not supposed to do any heavy work.", "Rus": "Джеффу намного лучше после болезни, но ему по-прежнему нельзя выполнять тяжелую работу.","StepMix": 2},
-      {"Eng":"It is expected that the strike will end soon. The strike is expected to end soon.", "Rus": "Ожидается, что забастовка скоро закончится. Ожидается, что забастовка скоро закончится.","StepMix": 2},
-      {"Eng":"It is expected that the weather will be good tomorrow. The weather is expected to be good tomorrow.", "Rus": "Ожидается, что завтра будет хорошая погода. Завтра ожидается хорошая погода.","StepMix": 2},
-      {"Eng":"It is believed that the thieves got in through a window in the roof. The thieves are believed to have got in through a window in the roof.", "Rus": "Предположительно, воры проникли внутрь через окно в крыше. Предположительно, воры проникли внутрь через окно на крыше.","StepMix": 2},
-      {"Eng":"It is reported that many people are homeless after the floods. Many people are reported to be homeless after the floods.", "Rus": "Сообщается, что многие люди остались без крова после наводнения. Сообщается, что многие люди остались без крова после наводнения.","StepMix": 2},
-      {"Eng":"It is thought that the prisoner escaped by climbing over a wall. The prisoner is thought to have escaped by climbing over a wall.", "Rus": "Предполагается, что заключенный сбежал, перебравшись через стену. Предполагается, что заключенный сбежал, перебравшись через стену.","StepMix": 2},
-      {"Eng":"It is alleged that the man was driving at 110 miles an hour. The man is alleged to have been driving at 110 miles an hour.", "Rus": "Утверждается, что мужчина ехал со скоростью 110 миль в час. Предположительно, мужчина ехал со скоростью 110 миль в час.","StepMix": 2},
-      {"Eng":"It is reported that the building has been badly damaged by the fire.", "Rus": "Сообщается, что здание сильно пострадало от пожара.","StepMix": 2},
-      {"Eng":"The building is reported to have been badly damaged by the fire.", "Rus": "Сообщается, что здание сильно пострадало от пожара.","StepMix": 2},
-      {"Eng":"It is said that the company is losing a lot of money.", "Rus": "Говорят, что компания теряет много денег.","StepMix": 2},
-      {"Eng":"The company is said to be losing a lot of money.", "Rus": "Говорят, что компания теряет много денег.","StepMix": 2},
-      {"Eng":"It is believed that the company lost a lot of money last year.", "Rus": "Считается, что в прошлом году компания потеряла много денег.","StepMix": 2},
-      {"Eng":"The company is believed to have lost a lot of money last year.", "Rus": "Считается, что в прошлом году компания потеряла много денег.","StepMix": 2},
-      {"Eng":"It is expected that the company will make a loss this year.", "Rus": "Ожидается, что в этом году компания понесет убытки.","StepMix": 2},
-      {"Eng":"The company is expected to make a loss this year.", "Rus": "Ожидается, что в этом году компания понесет убытки.","StepMix": 2},
-      {"Eng":"Alan is supposed to speak ten languages.", "Rus": "Алан должен говорить на десяти языках.","StepMix": 2},
-      {"Eng":"He is supposed to know a lot of famous people.", "Rus": "Предполагается, что он знаком со многими известными людьми.","StepMix": 2},
-      {"Eng":"He is supposed to be very rich.", "Rus": "Предполагается, что он очень богат.","StepMix": 2},
-      {"Eng":"He is supposed to have twelve children.", "Rus": "У него должно быть двенадцать детей.","StepMix": 2},
-      {"Eng":"He is supposed to have been an actor when he was younger.", "Rus": "Предполагается, что он был актером, когда был моложе.","StepMix": 2},
-      {"Eng":"Everybody seems to know about the plan, but it is supposed to be a secret.", "Rus": "Все, кажется, знают о плане, но предполагается, что это секрет.","StepMix": 2},
-      {"Eng":"You shouldn’t criticise me all the time. You are supposed to be my friend.", "Rus": "Вы не должны критиковать меня все время. Ты должен быть моим другом.","StepMix": 2},
-      {"Eng":"I shouldn’t be eating this cake really. I am supposed to be on a diet.", "Rus": "Я действительно не должен есть этот торт. Я должен быть на диете.","StepMix": 2},
-      {"Eng":"I’m sorry for what I said. I was trying to be funny. It was supposed to be a joke.", "Rus": "Я сожалею о том, что я сказал. Я пытался быть забавным. Это должно было быть шуткой.","StepMix": 2},
-      {"Eng":"What’s this drawing? Is it a tree? Or maybe it is supposed to be a flower.", "Rus": "Что это за рисунок? Это дерево? Или, может быть, это должен быть цветок.","StepMix": 2},
-      {"Eng":"You shouldn’t be reading the paper now. You are supposed to be working.", "Rus": "Вам не следует сейчас читать газету. Вы должны работать.","StepMix": 2},
-      {"Eng":"You’re not supposed to park here. It’s private parking only.", "Rus": "Вы не должны парковаться здесь. Только частная парковка.","StepMix": 2},
-      {"Eng":"We are supposed to start work at 8:15, but we rarely do anything before 8:30.", "Rus": "Мы должны начинать работу в 8:15, но редко делаем что-то раньше 8:30.","StepMix": 2},
-      {"Eng":"Oh, I was supposed to phone Helen, but I completely forgot.", "Rus": "О, я должен был позвонить Хелен, но совершенно забыл.","StepMix": 2},
-      {"Eng":"This door is a fire exit. You are not supposed to block it.", "Rus": "Эта дверь является пожарным выходом. Вы не должны его блокировать.","StepMix": 2},
-      {"Eng":"My train was supposed to arrive at 11:30, but it was an hour late.", "Rus": "Мой поезд должен был прибыть в 11:30, но опоздал на час.","StepMix": 2} 
-      ],
-      
-      "arrles46":[
-      {"Eng":"Lisa had the roof repaired yesterday.", "Rus": "Вчера Лизе отремонтировали крышу.","StepMix": 2},
-      {"Eng":"Lisa repaired the roof. Lisa had the roof repaired.", "Rus": "Лиза починила крышу. Лиза починила крышу.","StepMix": 2},
-      {"Eng":"Did you make those curtains yourself? Yes, I enjoy making things.", "Rus": "Вы сами сшили эти шторы? Да, мне нравится делать вещи.","StepMix": 2},
-      {"Eng":"Did you have those curtains made? No, I made them myself.", "Rus": "Вы сшили эти шторы? Нет, я сделал их сам.","StepMix": 2},
-      {"Eng":"Where did you have your hair cut?", "Rus": "Где ты подстриглась?","StepMix": 2},
-      {"Eng":"Your hair looks nice. Have you had it cut?", "Rus": "Ваши волосы выглядят красиво. У тебя его подрезали?","StepMix": 2},
-      {"Eng":"Our neighbour has just had a garage built.", "Rus": "Наш сосед только что построил гараж.","StepMix": 2},
-      {"Eng":"We are having the house painted at the moment.", "Rus": "В данный момент мы красим дом.","StepMix": 2},
-      {"Eng":"How often do you have your car serviced?", "Rus": "Как часто вы обслуживаете свой автомобиль?","StepMix": 2},
-      {"Eng":"I think you should have that coat cleaned.", "Rus": "Думаю, тебе следует почистить это пальто.","StepMix": 2},
-      {"Eng":"I don’t like having my photograph taken.", "Rus": "Мне не нравится, когда меня фотографируют.","StepMix": 2},
-      {"Eng":"When are you going to get the roof repaired?", "Rus": "Когда будешь ремонтировать крышу?","StepMix": 2},
-      {"Eng":"I think you should get your hair cut really short.", "Rus": "Я думаю, тебе следует подстричься очень коротко.","StepMix": 2},
-      {"Eng":"Paul and Karen had all their money stolen while they were on holiday.", "Rus": "У Пола и Карен украли все деньги, пока они были в отпуске.","StepMix": 2},
-      {"Eng":"Gary had his nose broken in a fight.", "Rus": "Гэри сломал нос в драке.","StepMix": 2},
-      {"Eng":"Have you ever had your passport stolen?", "Rus": "У вас когда-нибудь украли паспорт?","StepMix": 2},
-      {"Eng":"Sarah is having her hair cut.", "Rus": "Сара стрижет волосы.","StepMix": 2},
-      {"Eng":"Bill is cutting his hair.", "Rus": "Билл стрижет волосы.","StepMix": 2},
-      {"Eng":"John is cleaning his shoes.", "Rus": "Джон чистит свою обувь.","StepMix": 2},
-      {"Eng":"Sue is having her photograph taken.", "Rus": "Сью фотографируют.","StepMix": 2},
-      {"Eng":"Why did you go to the garage? To have my car serviced.", "Rus": "Зачем ты пошел в гараж? Чтобы мою машину обслуживали.","StepMix": 2},
-      {"Eng":"Why did you go to the cleaner’s? To have my jacket cleaned.", "Rus": "Зачем ты пошла в уборщицу? Чтобы мою куртку почистили.","StepMix": 2},
-      {"Eng":"Why did you go to the jeweller’s? To have my watch repaired.", "Rus": "Зачем ты пошел к ювелиру? Чтобы мне починили часы.","StepMix": 2},
-      {"Eng":"Why did you go to the optician’s? To have my eyes tested.", "Rus": "Зачем вы пошли в оптику? Чтобы проверить зрение.","StepMix": 2},
-      {"Eng":"Lisa didn’t repair the roof herself. She had it repaired.", "Rus": "Лиза не ремонтировала крышу сама. Ей сделали ремонт.","StepMix": 2},
-      {"Eng":"I didn’t cut my hair myself. I had it cut.", "Rus": "Я не стригла волосы сама. У меня было вырезано.","StepMix": 2},
-      {"Eng":"They didn’t paint the house themselves. They had it painted.", "Rus": "Сами дом не красили. Они его покрасили.","StepMix": 2},
-      {"Eng":"John didn’t build that wall himself. He had it built.", "Rus": "Джон не строил эту стену сам. Он построил его.","StepMix": 2},
-      {"Eng":"I didn’t deliver the flowers myself. I had them delivered.", "Rus": "Я не доставляла цветы сама. Мне их доставили.","StepMix": 2},
-      {"Eng":"We are having the house painted at the moment.", "Rus": "В данный момент мы красим дом.","StepMix": 2},
-      {"Eng":"I lost my key. I’ll have to have another key made.", "Rus": "Я потерял свой ключ. Придется делать другой ключ.","StepMix": 2},
-      {"Eng":"When was the last time you had your hair cut?", "Rus": "Когда вы в последний раз стриглись?","StepMix": 2},
-      {"Eng":"Do you have a newspaper delivered to your house every day, or do you go out and buy one?", "Rus": "Вам доставляют газету на дом каждый день или вы идете и покупаете ее?","StepMix": 2},
-      {"Eng":"What are those workmen doing in your garden? Oh, we are having a garage built.", "Rus": "Что эти рабочие делают в вашем саду? О, мы строим гараж.","StepMix": 2},
-      {"Eng":"Can I see the photographs you took when you were on holiday? I’m afraid I haven’t had the film developed yet.", "Rus": "Могу я увидеть фотографии, которые вы сделали, когда были в отпуске? Боюсь, я еще не проявил пленку.","StepMix": 2},
-      {"Eng":"This coat is dirty. I must have it cleaned.", "Rus": "Это пальто грязное. Я должен очистить его.","StepMix": 2},
-      {"Eng":"If you want to wear earrings, why don’t you have your ears pierced?", "Rus": "Если ты хочешь носить серьги, почему бы тебе не проколоть уши?","StepMix": 2},
-      {"Eng":"I heard your computer wasn’t working. That’s right, but it’s OK now. I have had it repaired or had it.", "Rus": "Я слышал, что твой компьютер не работает. Это правильно, но сейчас все в порядке. Я ремонтировал или имел его.","StepMix": 2},
-      {"Eng":"Gary was in a fight last night. He had his nose broken.", "Rus": "Гэри был в драке прошлой ночью. Ему сломали нос.","StepMix": 2},
-      {"Eng":"Did I tell you about Jane? She had her handbag stolen last week.", "Rus": "Я рассказывал тебе о Джейн? На прошлой неделе у нее украли сумку.","StepMix": 2},
-      {"Eng":"Did you hear about Pete? He had his car vandalised a few nights ago.", "Rus": "Вы слышали о Пите? Несколько дней назад его машину разгромили.","StepMix": 2} 
-      ],
-      
-      "arrles47":[
-      {"Eng":"Paul said, I’m feeling ill. Paul said that he was feeling ill.", "Rus": "Павел сказал, что я плохо себя чувствую. Павел сказал, что плохо себя чувствует.","StepMix": 2},
-      {"Eng":"I told Lisa that I didn’t have any money.", "Rus": "Я сказал Лизе, что у меня нет денег.","StepMix": 2},
-      {"Eng":"My parents are very well. Jenny said that her parents were very well.", "Rus": "Мои родители очень хорошо. Дженни сказала, что ее родители были в полном порядке.","StepMix": 2},
-      {"Eng":"I’m going to learn to drive. She said that she was going to learn to drive.", "Rus": "Я собираюсь научиться водить. Она сказала, что собирается научиться водить машину.","StepMix": 2},
-      {"Eng":"I want to buy a car. She said that she wanted to buy a car.", "Rus": "Я хочу купить машину. Она сказала, что хочет купить машину.","StepMix": 2},
-      {"Eng":"John has a new job. She said that John had a new job.", "Rus": "У Джона новая работа. Она сказала, что у Джона новая работа.","StepMix": 2},
-      {"Eng":"I can’t come to the party on Friday. She said that she couldn’t come to the party on Friday.", "Rus": "Я не могу прийти на вечеринку в пятницу. Она сказала, что не сможет прийти на вечеринку в пятницу.","StepMix": 2},
-      {"Eng":"I don’t have much free time. She said she didn’t have much free time.", "Rus": "У меня не так много свободного времени. Она сказала, что у нее мало свободного времени.","StepMix": 2},
-      {"Eng":"I’m going away for a few days. I’ll phone you when I get back. She said that she was going away for a few days and would phone me when she got back.", "Rus": "Я уезжаю на несколько дней. Я позвоню тебе, когда вернусь. Она сказала, что уезжает на несколько дней и позвонит мне, когда вернется.","StepMix": 2},
-      {"Eng":"Paul said: I woke up feeling ill, so I didn’t go to work.", "Rus": "Пол сказал: Я проснулся с плохим самочувствием, поэтому не пошел на работу.","StepMix": 2},
-      {"Eng":"Paul said that he woke up feeling ill, so he didn’t go to work.", "Rus": "Пол сказал, что проснулся с плохим самочувствием, поэтому не пошел на работу.","StepMix": 2},
-      {"Eng":"Paul said that he had woken up feeling ill, so he hadn’t gone to work.", "Rus": "Пол сказал, что проснулся с плохим самочувствием, поэтому не пошел на работу.","StepMix": 2},
-      {"Eng":"I’m living in London. Steve said that he was living in London.", "Rus": "Я живу в Лондоне. Стив сказал, что живет в Лондоне.","StepMix": 2},
-      {"Eng":"My father isn’t very well. He said his father wasn’t very well.", "Rus": "Мой отец не очень здоров. Он сказал, что его отец не очень здоров.","StepMix": 2},
-      {"Eng":"Rachel and Mark are getting married next month. He said Rachel and Mark were getting married next month.", "Rus": "Рэйчел и Марк поженятся в следующем месяце. Он сказал, что Рэйчел и Марк поженятся в следующем месяце.","StepMix": 2},
-      {"Eng":"My sister has had a baby. He said his sister had had a baby.", "Rus": "У моей сестры родился ребенок. Он сказал, что его сестра родила ребенка.","StepMix": 2},
-      {"Eng":"I don’t know what Frank is doing. He said that he didn’t know what Frank was doing.", "Rus": "Я не знаю, что делает Фрэнк. Он сказал, что не знает, что делает Фрэнк.","StepMix": 2},
-      {"Eng":"I saw Helen at a party in June and she seemed fine. He said that he had seen Helen at a party in June and she had seemed fine.", "Rus": "Я видел Хелен на вечеринке в июне, и она казалась прекрасной. Он сказал, что видел Хелен на вечеринке в июне, и с ней все было в порядке.","StepMix": 2},
-      {"Eng":"I haven’t seen Diane recently. He said he hadn’t seen Diane recently.", "Rus": "Я не видел Дайан в последнее время. Он сказал, что давно не видел Диану.","StepMix": 2},
-      {"Eng":"I’m not enjoying my job very much. He said he wasn’t enjoying his job very much.", "Rus": "Мне не очень нравится моя работа. Он сказал, что не очень любит свою работу.","StepMix": 2},
-      {"Eng":"You can come and stay at my place if you’re ever in London. He said I could come and stay at his place if I was ever in London.", "Rus": "Вы можете приехать и остаться у меня дома, если когда-нибудь будете в Лондоне. Он сказал, что я могу приехать и остановиться у него, если когда-нибудь буду в Лондоне.","StepMix": 2},
-      {"Eng":"My car was stolen a few days ago. He said that his car had been stolen a few days ago.", "Rus": "У меня угнали машину несколько дней назад. Он сказал, что его машину угнали несколько дней назад.","StepMix": 2},
-      {"Eng":"I want to go on holiday, but I can’t afford it. He said that he wanted to go on holiday, but he couldn’t afford it.", "Rus": "Хочу в отпуск, но не могу себе этого позволить. Он сказал, что хочет поехать в отпуск, но не может себе этого позволить.","StepMix": 2},
-      {"Eng":"I’ll tell Chris I saw you. He said that he would tell Chris he had seen me.", "Rus": "Я скажу Крису, что видел тебя. Он сказал, что расскажет Крису, что видел меня.","StepMix": 2},
-      {"Eng":"That restaurant is expensive. Is it? I thought you said it was cheap.", "Rus": "Тот ресторан дорогой. Это? Я думал, ты сказал, что это дешево.","StepMix": 2},
-      {"Eng":"Sue is coming to the party tonight. Is she? I thought you said she wasn’t coming.", "Rus": "Сью придет на вечеринку сегодня вечером. Она? Я думал, ты сказал, что она не придет.","StepMix": 2},
-      {"Eng":"Sarah likes Paul. Does she? Last week you said she didn’t like him.", "Rus": "Саре нравится Пол. Она? На прошлой неделе ты сказал, что он ей не нравится.","StepMix": 2},
-      {"Eng":"I know lots of people. Do you? I thought you said you didn’t know anybody.", "Rus": "Я знаю много людей. Ты? Я думал, ты сказал, что никого не знаешь.","StepMix": 2},
-      {"Eng":"Jane will be here next week. Will she? But didn’t you say she wouldn’t be here?", "Rus": "Джейн будет здесь на следующей неделе. Будет она? Но разве ты не говорил, что ее здесь не будет?","StepMix": 2},
-      {"Eng":"I’m going out this evening. Are you? But you said you were staying at home.", "Rus": "Я выхожу сегодня вечером. Ты? Но ты сказал, что остаешься дома.","StepMix": 2},
-      {"Eng":"I can speak a little French. Can you? But earlier you said you couldn’t speak any French.", "Rus": "Я немного говорю по-французски. Не могли бы вы? Но ранее вы сказали, что не говорите по-французски.","StepMix": 2},
-      {"Eng":"I haven’t been to the cinema for ages. Haven’t you? I thought you said you went to the cinema last week.", "Rus": "Я давно не был в кино. Разве нет? Я думал, ты сказал, что ходил в кино на прошлой неделе.","StepMix": 2} 
-      ],
-      
-      "arrles48":[
-      {"Eng":"Paul said, My new job is very interesting.", "Rus": "Пол сказал: «Моя новая работа очень интересна.","StepMix": 2},
-      {"Eng":"Paul said that his new job is very interesting.", "Rus": "Пол сказал, что его новая работа очень интересна.","StepMix": 2},
-      {"Eng":"Helen said, I want to go to New York next year.", "Rus": "Хелен сказала, я хочу поехать в Нью-Йорк в следующем году.","StepMix": 2},
-      {"Eng":"Helen told me that she wants to go to New York next year.", "Rus": "Хелен сказала мне, что хочет поехать в Нью-Йорк в следующем году.","StepMix": 2},
-      {"Eng":"Paul said that his new job was very interesting.", "Rus": "Пол сказал, что его новая работа была очень интересной.","StepMix": 2},
-      {"Eng":"Helen told me that she wanted to go to New York next year.", "Rus": "Хелен сказала мне, что хочет поехать в Нью-Йорк в следующем году.","StepMix": 2},
-      {"Eng":"Paul left the room suddenly. He said he had to go.", "Rus": "Павел внезапно вышел из комнаты. Он сказал, что ему нужно идти.","StepMix": 2},
-      {"Eng":"She said: Joe is in hospital.", "Rus": "Она сказала: Джо в больнице.","StepMix": 2},
-      {"Eng":"I didn’t expect to see you, Joe. Sonia said you were in hospital.", "Rus": "Не ожидал тебя увидеть, Джо. Соня сказала, что ты в больнице.","StepMix": 2},
-      {"Eng":"Sonia told me that you were in hospital. (not Sonia said me)", "Rus": "Соня сказала мне, что ты в больнице. (не Соня сказала мне)","StepMix": 2},
-      {"Eng":"What did you tell the police? (not say the police)", "Rus": "Что вы сказали полиции? (не говорю полиции)","StepMix": 2},
-      {"Eng":"Sonia said that you were in hospital. (not Sonia told that...)", "Rus": "Соня сказала, что ты в больнице. (это не Соня сказала...)","StepMix": 2},
-      {"Eng":"What did you say?", "Rus": "Что вы сказали?","StepMix": 2},
-      {"Eng":"Ann said goodbye to me and left. (not Ann said me goodbye)", "Rus": "Энн попрощалась со мной и ушла. (не Энн попрощалась со мной)","StepMix": 2},
-      {"Eng":"What did you say to the police?", "Rus": "Что вы сказали полиции?","StepMix": 2},
-      {"Eng":"Stay in bed for a few days, the doctor said to me.", "Rus": "Полежите в постели несколько дней, сказал мне доктор.","StepMix": 2},
-      {"Eng":"The doctor told me to stay in bed for a few days.", "Rus": "Врач сказал мне оставаться в постели в течение нескольких дней.","StepMix": 2},
-      {"Eng":"Don’t shout, I said to Jim.", "Rus": "Не кричи, сказал я Джиму.","StepMix": 2},
-      {"Eng":"I told Jim not to shout.", "Rus": "Я сказал Джиму не кричать.","StepMix": 2},
-      {"Eng":"Please don’t tell anybody what happened, Jackie said to me.", "Rus": "«Пожалуйста, никому не говори о том, что случилось», — сказала мне Джеки.","StepMix": 2},
-      {"Eng":"Jackie asked me not to tell anybody what (had) happened.", "Rus": "Джеки попросила меня никому не рассказывать о том, что (произошло).","StepMix": 2},
-      {"Eng":"Jackie said not to tell anyone.", "Rus": "Джеки сказала никому не говорить.","StepMix": 2},
-      {"Eng":"— Dave works very hard. — But you said he was lazy.", "Rus": "— Дэйв очень много работает. — Но ты сказал, что он ленивый.","StepMix": 2},
-      {"Eng":"— Let’s have fish for dinner. — But you said you didn’t like fish.", "Rus": "— Давай рыбу на ужин. — Но ты сказал, что не любишь рыбу.","StepMix": 2},
-      {"Eng":"— I’m going to buy a car. — But you said you couldn’t drive.", "Rus": "— Я собираюсь купить машину. — Но ты сказал, что не умеешь водить.","StepMix": 2},
-      {"Eng":"— Jane is always short of money. — But you said she had a very well-paid job.", "Rus": "— Джейн всегда не хватает денег. — Но вы сказали, что у нее очень хорошо оплачиваемая работа.","StepMix": 2},
-      {"Eng":"— My sister lives in Paris. — But you said you didn’t have any brothers or sisters.", "Rus": "— Моя сестра живет в Париже. — Но вы сказали, что у вас нет ни братьев, ни сестер.","StepMix": 2},
-      {"Eng":"— I think New York is a great place. — But you said you had never been to the United States.", "Rus": "— Я думаю, что Нью-Йорк — прекрасное место. — Но вы сказали, что никогда не были в Соединенных Штатах.","StepMix": 2},
-      {"Eng":"— Let’s go out tomorrow evening. — But you said you were working tomorrow evening.", "Rus": "— Выйдем завтра вечером. — Но ты сказал, что работаешь завтра вечером.","StepMix": 2},
-      {"Eng":"— I’ve never spoken to Jane. — But you said she was a friend of yours.", "Rus": "— Я никогда не разговаривал с Джейн. — Но ты сказал, что она твоя подруга.","StepMix": 2},
-      {"Eng":"Ann said goodbye to me and left.", "Rus": "Энн попрощалась со мной и ушла.","StepMix": 2},
-      {"Eng":"Tell us about your holiday. Did you have a nice time?", "Rus": "Расскажите о своем празднике. Вы хорошо провели время?","StepMix": 2},
-      {"Eng":"Don’t just stand there! Say something!", "Rus": "Только не стой! Скажите что-то!","StepMix": 2},
-      {"Eng":"I wonder where Sue is. She said she would be here at 8 o’clock.", "Rus": "Интересно, где Сью. Она сказала, что будет здесь в 8 часов.","StepMix": 2},
-      {"Eng":"Dan told me that he was bored with his job.", "Rus": "Дэн сказал мне, что ему наскучила его работа.","StepMix": 2},
-      {"Eng":"The doctor said that I should rest for at least a week.", "Rus": "Врач сказал, что я должен отдохнуть хотя бы неделю.","StepMix": 2},
-      {"Eng":"Don’t tell anybody what I said. It’s a secret just between us.", "Rus": "Не говори никому, что я сказал. Это тайна только между нами.","StepMix": 2},
-      {"Eng":"Did she tell you what happened? No, she didn’t say anything to me.", "Rus": "Она рассказала тебе, что случилось? Нет, она ничего мне не сказала.","StepMix": 2},
-      {"Eng":"Gary couldn’t help me. He told me to ask Caroline.", "Rus": "Гэри не мог мне помочь. Он сказал мне спросить Кэролайн.","StepMix": 2},
-      {"Eng":"Gary couldn’t help me. He said to ask Caroline.", "Rus": "Гэри не мог мне помочь. Он сказал, чтобы спросить Кэролайн.","StepMix": 2},
-      {"Eng":"Bill was taking a long time to get ready, so I told him to hurry up.", "Rus": "Билл долго собирался, поэтому я сказал ему поторопиться.","StepMix": 2},
-      {"Eng":"Sarah was driving too fast, so I asked her to slow down.", "Rus": "Сара ехала слишком быстро, поэтому я попросил ее притормозить.","StepMix": 2},
-      {"Eng":"Sue was nervous about the situation. I told her not to worry.", "Rus": "Сью нервничала из-за ситуации. Я сказал ей не волноваться.","StepMix": 2},
-      {"Eng":"I couldn’t move the piano alone, so I asked Tom to give me a hand.", "Rus": "Я не мог передвигать пианино один, поэтому попросил Тома помочь мне.","StepMix": 2},
-      {"Eng":"The customs officer looked at me suspiciously and asked me to open my bag.", "Rus": "Таможенник подозрительно посмотрел на меня и попросил открыть сумку.","StepMix": 2},
-      {"Eng":"Tom was going to the shop, so I asked him to get a newspaper.", "Rus": "Том собирался в магазин, поэтому я попросил его принести газету.","StepMix": 2},
-      {"Eng":"The man started asking me personal questions, so I told him to mind his own business.", "Rus": "Этот человек начал задавать мне личные вопросы, поэтому я посоветовал ему не лезть не в свое дело.","StepMix": 2},
-      {"Eng":"John was very much in love with Mary, so he asked her to marry him.", "Rus": "Джон был очень влюблен в Мэри, поэтому он предложил ей выйти за него замуж.","StepMix": 2},
-      {"Eng":"I didn’t want to delay Helen, so I told her not to wait for me if I was late.", "Rus": "Я не хотел задерживать Хелен, поэтому сказал ей не ждать меня, если я опоздаю.","StepMix": 2}
-       
-      ],
-      
-      "arrles49":[
-      {"Eng":"Paul said, My new job is very interesting.", "Rus": "Пол сказал: «Моя новая работа очень интересна.","StepMix": 2},
-      {"Eng":"Paul said that his new job is very interesting.", "Rus": "Пол сказал, что его новая работа очень интересна.","StepMix": 2},
-      {"Eng":"Helen said, I want to go to New York next year.", "Rus": "Хелен сказала, я хочу поехать в Нью-Йорк в следующем году.","StepMix": 2},
-      {"Eng":"Helen told me that she wants to go to New York next year.", "Rus": "Хелен сказала мне, что хочет поехать в Нью-Йорк в следующем году.","StepMix": 2},
-      {"Eng":"Paul said that his new job was very interesting.", "Rus": "Пол сказал, что его новая работа была очень интересной.","StepMix": 2},
-      {"Eng":"Helen told me that she wanted to go to New York next year.", "Rus": "Хелен сказала мне, что хочет поехать в Нью-Йорк в следующем году.","StepMix": 2},
-      {"Eng":"Paul left the room suddenly. He said he had to go.", "Rus": "Павел внезапно вышел из комнаты. Он сказал, что ему нужно идти.","StepMix": 2},
-      {"Eng":"She said: Joe is in hospital.", "Rus": "Она сказала: Джо в больнице.","StepMix": 2},
-      {"Eng":"I didn’t expect to see you, Joe. Sonia said you were in hospital.", "Rus": "Не ожидал тебя увидеть, Джо. Соня сказала, что ты в больнице.","StepMix": 2},
-      {"Eng":"Sonia told me that you were in hospital. (not Sonia said me)", "Rus": "Соня сказала мне, что ты в больнице. (не Соня сказала мне)","StepMix": 2},
-      {"Eng":"What did you tell the police? (not say the police)", "Rus": "Что вы сказали полиции? (не говорю полиции)","StepMix": 2},
-      {"Eng":"Sonia said that you were in hospital. (not Sonia told that...)", "Rus": "Соня сказала, что ты в больнице. (это не Соня сказала...)","StepMix": 2},
-      {"Eng":"What did you say?", "Rus": "Что вы сказали?","StepMix": 2},
-      {"Eng":"Ann said goodbye to me and left. (not Ann said me goodbye)", "Rus": "Энн попрощалась со мной и ушла. (не Энн попрощалась со мной)","StepMix": 2},
-      {"Eng":"What did you say to the police?", "Rus": "Что вы сказали полиции?","StepMix": 2},
-      {"Eng":"Stay in bed for a few days, the doctor said to me.", "Rus": "Полежите в постели несколько дней, сказал мне доктор.","StepMix": 2},
-      {"Eng":"The doctor told me to stay in bed for a few days.", "Rus": "Врач сказал мне оставаться в постели в течение нескольких дней.","StepMix": 2},
-      {"Eng":"Don’t shout, I said to Jim.", "Rus": "Не кричи, сказал я Джиму.","StepMix": 2},
-      {"Eng":"I told Jim not to shout.", "Rus": "Я сказал Джиму не кричать.","StepMix": 2},
-      {"Eng":"Please don’t tell anybody what happened, Jackie said to me.", "Rus": "«Пожалуйста, никому не говори о том, что случилось», — сказала мне Джеки.","StepMix": 2},
-      {"Eng":"Jackie asked me not to tell anybody what (had) happened.", "Rus": "Джеки попросила меня никому не рассказывать о том, что (произошло).","StepMix": 2},
-      {"Eng":"Jackie said not to tell anyone.", "Rus": "Джеки сказала никому не говорить.","StepMix": 2},
-      {"Eng":"— Dave works very hard. — But you said he was lazy.", "Rus": "— Дэйв очень много работает. — Но ты сказал, что он ленивый.","StepMix": 2},
-      {"Eng":"— Let’s have fish for dinner. — But you said you didn’t like fish.", "Rus": "— Давай рыбу на ужин. — Но ты сказал, что не любишь рыбу.","StepMix": 2},
-      {"Eng":"— I’m going to buy a car. — But you said you couldn’t drive.", "Rus": "— Я собираюсь купить машину. — Но ты сказал, что не умеешь водить.","StepMix": 2},
-      {"Eng":"— Jane is always short of money. — But you said she had a very well-paid job.", "Rus": "— Джейн всегда не хватает денег. — Но вы сказали, что у нее очень хорошо оплачиваемая работа.","StepMix": 2},
-      {"Eng":"— My sister lives in Paris. — But you said you didn’t have any brothers or sisters.", "Rus": "— Моя сестра живет в Париже. — Но вы сказали, что у вас нет ни братьев, ни сестер.","StepMix": 2},
-      {"Eng":"— I think New York is a great place. — But you said you had never been to the United States.", "Rus": "— Я думаю, что Нью-Йорк — прекрасное место. — Но вы сказали, что никогда не были в Соединенных Штатах.","StepMix": 2},
-      {"Eng":"— Let’s go out tomorrow evening. — But you said you were working tomorrow evening.", "Rus": "— Выйдем завтра вечером. — Но ты сказал, что работаешь завтра вечером.","StepMix": 2},
-      {"Eng":"— I’ve never spoken to Jane. — But you said she was a friend of yours.", "Rus": "— Я никогда не разговаривал с Джейн. — Но ты сказал, что она твоя подруга.","StepMix": 2},
-      {"Eng":"Ann said goodbye to me and left.", "Rus": "Энн попрощалась со мной и ушла.","StepMix": 2},
-      {"Eng":"Tell us about your holiday. Did you have a nice time?", "Rus": "Расскажите о своем празднике. Вы хорошо провели время?","StepMix": 2},
-      {"Eng":"Don’t just stand there! Say something!", "Rus": "Только не стой! Скажите что-то!","StepMix": 2},
-      {"Eng":"I wonder where Sue is. She said she would be here at 8 o’clock.", "Rus": "Интересно, где Сью. Она сказала, что будет здесь в 8 часов.","StepMix": 2},
-      {"Eng":"Dan told me that he was bored with his job.", "Rus": "Дэн сказал мне, что ему наскучила его работа.","StepMix": 2},
-      {"Eng":"The doctor said that I should rest for at least a week.", "Rus": "Врач сказал, что я должен отдохнуть хотя бы неделю.","StepMix": 2},
-      {"Eng":"Don’t tell anybody what I said. It’s a secret just between us.", "Rus": "Не говори никому, что я сказал. Это тайна только между нами.","StepMix": 2},
-      {"Eng":"Did she tell you what happened? No, she didn’t say anything to me.", "Rus": "Она рассказала тебе, что случилось? Нет, она ничего мне не сказала.","StepMix": 2},
-      {"Eng":"Gary couldn’t help me. He told me to ask Caroline.", "Rus": "Гэри не мог мне помочь. Он сказал мне спросить Кэролайн.","StepMix": 2},
-      {"Eng":"Gary couldn’t help me. He said to ask Caroline.", "Rus": "Гэри не мог мне помочь. Он сказал, чтобы спросить Кэролайн.","StepMix": 2},
-      {"Eng":"Bill was taking a long time to get ready, so I told him to hurry up.", "Rus": "Билл долго собирался, поэтому я сказал ему поторопиться.","StepMix": 2},
-      {"Eng":"Sarah was driving too fast, so I asked her to slow down.", "Rus": "Сара ехала слишком быстро, поэтому я попросил ее притормозить.","StepMix": 2},
-      {"Eng":"Sue was nervous about the situation. I told her not to worry.", "Rus": "Сью нервничала из-за ситуации. Я сказал ей не волноваться.","StepMix": 2},
-      {"Eng":"I couldn’t move the piano alone, so I asked Tom to give me a hand.", "Rus": "Я не мог передвигать пианино один, поэтому попросил Тома помочь мне.","StepMix": 2},
-      {"Eng":"The customs officer looked at me suspiciously and asked me to open my bag.", "Rus": "Таможенник подозрительно посмотрел на меня и попросил открыть сумку.","StepMix": 2},
-      {"Eng":"Tom was going to the shop, so I asked him to get a newspaper.", "Rus": "Том собирался в магазин, поэтому я попросил его принести газету.","StepMix": 2},
-      {"Eng":"The man started asking me personal questions, so I told him to mind his own business.", "Rus": "Этот человек начал задавать мне личные вопросы, поэтому я посоветовал ему не лезть не в свое дело.","StepMix": 2},
-      {"Eng":"John was very much in love with Mary, so he asked her to marry him.", "Rus": "Джон был очень влюблен в Мэри, поэтому он предложил ей выйти за него замуж.","StepMix": 2},
-      {"Eng":"I didn’t want to delay Helen, so I told her not to wait for me if I was late.", "Rus": "Я не хотел задерживать Хелен, поэтому сказал ей не ждать меня, если я опоздаю.","StepMix": 2}
-       
-      ],
-      
-      "arrles50":[
-      {"Eng":"Where has Tom gone?", "Rus": "Куда делся Том?","StepMix": 2},
-      {"Eng":"Do you know where Tom has gone?", "Rus": "Ты знаешь, куда делся Том?","StepMix": 2},
-      {"Eng":"What time is it? - Do you know what time it is?", "Rus": "Который сейчас час? - Ты знаешь сколько время?","StepMix": 2},
-      {"Eng":"Who are those people? - I don’t know who those people are.", "Rus": "Кто эти люди? - Я не знаю, кто эти люди.","StepMix": 2},
-      {"Eng":"Where can I find Linda? - Can you tell me where I can find Linda?", "Rus": "Где мне найти Линду? - Не подскажете, где я могу найти Линду?","StepMix": 2},
-      {"Eng":"How much will it cost? - Do you have any idea how much it will cost?", "Rus": "Сколько это будет стоить? - Ты хоть представляешь, сколько это будет стоить?","StepMix": 2},
-      {"Eng":"What time does the film begin? - Do you know what time the film begins? (not does the film begin)", "Rus": "Во сколько начинается фильм? - Вы знаете, во сколько начинается фильм? (не начинается фильм)","StepMix": 2},
-      {"Eng":"What do you mean? - Please explain what you mean.", "Rus": "Что ты имеешь в виду? - Пожалуйста, объясните, что вы имеете в виду.","StepMix": 2},
-      {"Eng":"Why did she leave early? - I wonder why she left early.", "Rus": "Почему она ушла раньше? - Интересно, почему она ушла рано.","StepMix": 2},
-      {"Eng":"Did anybody see you? - Do you know if anybody saw you?", "Rus": "Вас кто-нибудь видел? - Ты не знаешь, видел ли тебя кто-нибудь?","StepMix": 2},
-      {"Eng":"The police officer said to us, Where are you going?", "Rus": "Полицейский сказал нам: «Куда вы идете?","StepMix": 2},
-      {"Eng":"The police officer asked us where we were going.", "Rus": "Полицейский спросил нас, куда мы идем.","StepMix": 2},
-      {"Eng":"Clare said, What time do the banks close?", "Rus": "Клэр спросила: Во сколько закрываются банки?","StepMix": 2},
-      {"Eng":"Clare wanted to know what time the banks closed.", "Rus": "Клэр хотела знать, во сколько закрываются банки.","StepMix": 2},
-      {"Eng":"— Are you willing to travel? - She asked whether I was willing to travel.", "Rus": "- Готовы ли вы путешествовать? - Она спросила, готов ли я путешествовать.","StepMix": 2},
-      {"Eng":"— Why did you apply for the job? - She wanted to know what I did in my spare time.", "Rus": "— Почему вы откликнулись на эту вакансию? - Она хотела знать, чем я занимаюсь в свободное время.","StepMix": 2},
-      {"Eng":"— What do you do in your spare time? - She asked how long I had been working in my present job.", "Rus": "- Чем ты занимаешься в свободное время? - Она спросила, как долго я работаю на своей нынешней работе.","StepMix": 2},
-      {"Eng":"— Can you speak any foreign languages? - She asked why I had applied for the job.", "Rus": "- Ты говоришь на каких-либо иностранных языках? - Она спросила, почему я подал заявку на эту работу.","StepMix": 2},
-      {"Eng":"— How long have you been working in your present job? - She wanted to know if I could speak any foreign languages.", "Rus": "— Как давно вы работаете на своей нынешней работе? - Она хотела знать, говорю ли я на каких-нибудь иностранных языках.","StepMix": 2},
-      {"Eng":"— Do you have a driving licence? - She asked if I had a driving licence.", "Rus": "— У вас есть водительские права? - Она спросила, есть ли у меня водительские права.","StepMix": 2},
-      {"Eng":"Where Tom has gone?", "Rus": "Куда делся Том?","StepMix": 2},
-      {"Eng":"Could you tell me where the post office is?", "Rus": "Не могли бы вы сказать мне, где находится почта?","StepMix": 2},
-      {"Eng":"I wonder what the time is.", "Rus": "Интересно, который сейчас час.","StepMix": 2},
-      {"Eng":"I want to know what this word means.", "Rus": "Я хочу знать, что означает это слово.","StepMix": 2},
-      {"Eng":"Do you know what time they left?", "Rus": "Ты знаешь, во сколько они ушли?","StepMix": 2},
-      {"Eng":"I don’t know whether Sue is going out tonight.", "Rus": "Я не знаю, уходит ли Сью сегодня вечером.","StepMix": 2},
-      {"Eng":"Do you have any idea where Caroline lives?", "Rus": "Вы не знаете, где живет Кэролайн?","StepMix": 2},
-      {"Eng":"I can’t remember where I parked the car.", "Rus": "Я не могу вспомнить, где я припарковал машину.","StepMix": 2},
-      {"Eng":"Can you tell me whether there is a bank near here?", "Rus": "Не подскажете, есть ли поблизости банк?","StepMix": 2},
-      {"Eng":"Tell me what you want.", "Rus": "Скажи мне чего ты хочешь.","StepMix": 2},
-      {"Eng":"I don’t know why Kate didn’t come to the party.", "Rus": "Я не знаю, почему Кейт не пришла на вечеринку.","StepMix": 2},
-      {"Eng":"Do you know how much it costs to park here?", "Rus": "Ты знаешь, сколько стоит здесь припарковаться?","StepMix": 2},
-      {"Eng":"I have no idea who that woman is.", "Rus": "Я понятия не имею, кто эта женщина.","StepMix": 2},
-      {"Eng":"Do you know if Liz got my letter?", "Rus": "Вы не знаете, получила ли Лиз мое письмо?","StepMix": 2},
-      {"Eng":"Can you tell me how far it is to the airport?", "Rus": "Не подскажете, как далеко до аэропорта?","StepMix": 2},
-      {"Eng":"Do you know where she has gone? Sorry, I’ve got no idea.", "Rus": "Ты знаешь, куда она ушла? Извините, понятия не имею.","StepMix": 2},
-      {"Eng":"I don’t suppose you know when she will be back. No, I’m afraid not.", "Rus": "Не думаю, что ты знаешь, когда она вернется. Боюсь, что нет.","StepMix": 2},
-      {"Eng":"Do you happen to know if she went out alone? I’m afraid I didn’t see her go out.", "Rus": "Вы случайно не знаете, выходила ли она одна? Боюсь, я не видел, как она вышла.","StepMix": 2},
-      {"Eng":"OK. Well, thank you anyway. Goodbye.", "Rus": "ХОРОШО. Ну все равно спасибо. До свидания.","StepMix": 2},
-      {"Eng":"How are you? - He asked me how I was.", "Rus": "Как дела? - Он спросил меня, как я был.","StepMix": 2},
-      {"Eng":"Where have you been? - He asked me where I’d been.", "Rus": "Где ты был? - Он спросил меня, где я был.","StepMix": 2},
-      {"Eng":"How long have you been back? - He asked me how long I’d been back.", "Rus": "Как давно ты вернулся? - Он спросил меня, как давно я вернулся.","StepMix": 2},
-      {"Eng":"What are you doing now? - He asked me what I was doing now.", "Rus": "Что ты сейчас делаешь? - Он спросил меня, что я сейчас делаю.","StepMix": 2},
-      {"Eng":"Why did you come back? - He asked me why I’d come back.", "Rus": "Почему ты вернулся? - Он спросил меня, почему я вернулся.","StepMix": 2},
-      {"Eng":"Where are you living? - He asked me where I was living.", "Rus": "Где вы живете? - Он спросил меня, где я живу.","StepMix": 2},
-      {"Eng":"Are you glad to be back? - He asked me if I was glad to be back.", "Rus": "Ты рад вернуться? - Он спросил меня, рад ли я вернуться.","StepMix": 2},
-      {"Eng":"Do you have any plans to go away again? - He asked me if I had any plans to go away again.", "Rus": "Есть ли у тебя планы снова уехать? - Он спросил меня, не планирую ли я снова уехать.","StepMix": 2},
-      {"Eng":"Can you lend me some money? - He asked me whether I could lend him some money.", "Rus": "Можешь одолжить мне немного денег? - Он спросил меня, могу ли я одолжить ему немного денег.","StepMix": 2}
-       
-      ],
-      
-      "arrles51":[
-      {"Eng":"Have you locked the door? Yes, I have.", "Rus": "Ты запер дверь? Да.","StepMix": 2},
-      {"Eng":"George wasn’t working, but Janet was.", "Rus": "Джордж не работал, а Джанет работала.","StepMix": 2},
-      {"Eng":"She could lend me the money, but she won’t.", "Rus": "Она могла бы одолжить мне денег, но не даст.","StepMix": 2},
-      {"Eng":"Do you like onions? Yes, I do.", "Rus": "Ты любишь лук? Да.","StepMix": 2},
-      {"Eng":"Does Simon live in London? He did, but he doesn’t any more.", "Rus": "Саймон живет в Лондоне? Он сделал, но больше не делает.","StepMix": 2},
-      {"Eng":"You’re sitting in my place. No, I’m not.", "Rus": "Ты сидишь на моем месте. Нет я не.","StepMix": 2},
-      {"Eng":"You didn’t lock the door before you left. Yes, I did.", "Rus": "Ты не запер дверь перед уходом. Да.","StepMix": 2},
-      {"Eng":"I’ve just seen Simon. Oh, have you? How is he?", "Rus": "Я только что видел Саймона. О, а ты? Как он?","StepMix": 2},
-      {"Eng":"Liz isn’t very well today. Oh, isn’t she? What’s wrong with her?", "Rus": "Лиз сегодня не очень хорошо. О, не так ли? Что с ней не так?","StepMix": 2},
-      {"Eng":"It rained every day during our holiday. Did it? What a pity!", "Rus": "Во время нашего отпуска каждый день шел дождь. Сделал это? Какая жалость!","StepMix": 2},
-      {"Eng":"Jim and Nora are getting married. Are they? Really?", "Rus": "Джим и Нора женятся. Они? Действительно?","StepMix": 2},
-      {"Eng":"I’m feeling tired. So am I.", "Rus": "Я чувствую усталость. И я тоже.","StepMix": 2},
-      {"Eng":"I never read newspapers. Neither do I.", "Rus": "Я никогда не читаю газет. И я нет.","StepMix": 2},
-      {"Eng":"Sue hasn’t got a car and neither has Martin.", "Rus": "У Сью нет машины, как и у Мартина.","StepMix": 2},
-      {"Eng":"I passed the exam and so did Paul.", "Rus": "Я сдал экзамен, и Пол тоже.","StepMix": 2},
-      {"Eng":"I don’t know. Neither do I.", "Rus": "Я не знаю. И я нет.","StepMix": 2},
-      {"Eng":"Are those people English? I think so.", "Rus": "Эти люди англичане? Я думаю так.","StepMix": 2},
-      {"Eng":"Will you be at home this evening? I expect so.", "Rus": "Ты будешь дома этим вечером? Я так ожидаю.","StepMix": 2},
-      {"Eng":"Do you think Kate has been invited to the party? I suppose so.", "Rus": "Как вы думаете, Кейт была приглашена на вечеринку? Я так полагаю.","StepMix": 2},
-      {"Eng":"Is that woman American? I don’t think so.", "Rus": "Эта женщина американка? Я так не думаю.","StepMix": 2},
-      {"Eng":"Do you think it will rain? I hope so.", "Rus": "Как вы думаете, будет дождь? Я надеюсь, что это так.","StepMix": 2},
-      {"Eng":"I wasn’t tired, but my friends were.", "Rus": "Я не устал, но мои друзья устали.","StepMix": 2},
-      {"Eng":"I like hot weather, but Ann doesn’t.", "Rus": "Я люблю жаркую погоду, а Энн нет.","StepMix": 2},
-      {"Eng":"Is Colin here? He was five minutes ago, but I think he’s gone home now.", "Rus": "Колин здесь? Он был пять минут назад, но я думаю, что он уже ушел домой.","StepMix": 2},
-      {"Eng":"Liz said she might phone later this evening, but I don’t think she will.", "Rus": "Лиз сказала, что может позвонить сегодня вечером, но я не думаю, что она позвонит.","StepMix": 2},
-      {"Eng":"Are you and Chris coming to the party? I am, but Chris isn’t.", "Rus": "Вы с Крисом пойдете на вечеринку? Я да, а Крис нет.","StepMix": 2},
-      {"Eng":"I don’t know whether to apply for the job or not. Do you think I should?", "Rus": "Не знаю, откликаться на вакансию или нет. Ты думаешь я должен?","StepMix": 2},
-      {"Eng":"Please don’t tell anybody what I said. Don’t worry. I won’t.", "Rus": "Пожалуйста, никому не говорите, что я сказал. Не волнуйся. я не буду.","StepMix": 2},
-      {"Eng":"You never listen to me. Yes, I do!", "Rus": "Ты никогда не слушаешь меня. Да!","StepMix": 2},
-      {"Eng":"Can you play a musical instrument? No, but I wish I could.", "Rus": "Ты можешь играть на музыкальном инструменте? Нет, но я бы хотел.","StepMix": 2},
-      {"Eng":"Please help me. I’m sorry. I would if I could, but I can’t.", "Rus": "Помогите мне, пожалуйста. Мне жаль. Я бы хотел, если бы мог, но не могу.","StepMix": 2},
-      {"Eng":"I’m hungry. Are you? I’m not.", "Rus": "Я голоден. Ты? Я не.","StepMix": 2},
-      {"Eng":"I’m not tired. Aren’t you? I am.", "Rus": "Я не устал. не так ли? Я.","StepMix": 2},
-      {"Eng":"I like football. Do you? I don’t.", "Rus": "Я люблю футбол. Ты? Я не.","StepMix": 2},
-      {"Eng":"I didn’t enjoy the film. Didn’t you? I did.", "Rus": "Мне фильм не понравился. Не так ли? Я сделал.","StepMix": 2},
-      {"Eng":"I’ve never been to Australia. Haven’t you? I have.", "Rus": "Я никогда не был в Австралии. Разве нет? У меня есть.","StepMix": 2},
-      {"Eng":"I thought the exam was easy. Did you? I didn’t.", "Rus": "Я думал, что экзамен будет легким. Вы? Я этого не сделал.","StepMix": 2},
-      {"Eng":"I’m feeling tired. So am I.", "Rus": "Я чувствую усталость. И я тоже.","StepMix": 2},
-      {"Eng":"I work hard. Do you? What do you do?", "Rus": "Я тяжело работаю. Ты? Что вы делаете?","StepMix": 2},
-      {"Eng":"I watched television last night. What did you watch?", "Rus": "Я смотрел телевизор прошлой ночью. Что ты смотрел?","StepMix": 2},
-      {"Eng":"I won’t be at home tomorrow. Neither will I.", "Rus": "Меня завтра дома не будет. Я тоже не буду.","StepMix": 2},
-      {"Eng":"I like reading. I read a lot. What sort of books do you like?", "Rus": "Я люблю читать. Я много читаю. Какие книги вам нравятся?","StepMix": 2},
-      {"Eng":"I’d like to live somewhere else. So would I", "Rus": "Я хотел бы жить где-нибудь еще. Я бы тоже","StepMix": 2},
-      {"Eng":"I can’t go out tonight. Neither can I.", "Rus": "Я не могу выйти сегодня вечером. Я тоже не могу.","StepMix": 2},
-      {"Eng":"Do you think it will rain? I hope not.", "Rus": "Как вы думаете, будет дождь? Надеюсь нет.","StepMix": 2},
-      {"Eng":"Do you think you’ll get a pay rise soon?  I hope so.", "Rus": "Как вы думаете, скоро ли вам повысят зарплату? Я надеюсь, что это так.","StepMix": 2},
-      {"Eng":"Do you think Diane will get the job? I expect so.", "Rus": "Как вы думаете, Диана получит работу? Я так ожидаю.","StepMix": 2},
-      {"Eng":"Is Barbara married? I don’t think so.", "Rus": "Барбара замужем? Я так не думаю.","StepMix": 2},
-      {"Eng":"Have you got a room for tonight? I’m afraid not.", "Rus": "У тебя есть комната на сегодня? Боюсь, что нет.","StepMix": 2},
-      {"Eng":"Do you have to leave already? I’m afraid so.", "Rus": "Тебе уже надо уйти? Боюсь, что так.","StepMix": 2},
-      {"Eng":"Is Ann working tomorrow? I suppose so.", "Rus": "Энн работает завтра? Я так полагаю.","StepMix": 2},
-      {"Eng":"Do you think John will be at the party? I hope not.", "Rus": "Как вы думаете, Джон будет на вечеринке? Надеюсь нет.","StepMix": 2},
-      {"Eng":"Is the concert at 7.30? I think so.", "Rus": "Концерт в 7.30? Я думаю так.","StepMix": 2}
-       
-      ],
-      
-      "arrles52":[
-      {"Eng":"— You haven’t seen Kate today, have you? — No, I’m afraid not.", "Rus": "— Ты не видел Катю сегодня, не так ли? - Боюсь, что нет.","StepMix": 2},
-      {"Eng":"— It was a good film, wasn’t it? — Yes, it was great.", "Rus": "— Хороший был фильм, не так ли? - Да это было здорово.","StepMix": 2},
-      {"Eng":"Karen plays the piano, doesn’t she? Well, yes, but not very well.", "Rus": "Карен играет на пианино, не так ли? Ну да, но не очень хорошо.","StepMix": 2},
-      {"Eng":"You didn’t lock the door, did you? No, I forgot.", "Rus": "Ты не запер дверь, не так ли? Нет, я забыл.","StepMix": 2},
-      {"Eng":"Kate will be here soon, won’t she?", "Rus": "Кейт скоро будет здесь, не так ли?","StepMix": 2},
-      {"Eng":"There was a lot of traffic, wasn’t there?", "Rus": "Было много трафика, не так ли?","StepMix": 2},
-      {"Eng":"Michael should pass the exam, shouldn’t he?", "Rus": "Майкл должен сдать экзамен, не так ли?","StepMix": 2},
-      {"Eng":"Kate won’t be late, will she?", "Rus": "Кейт не опоздает, не так ли?","StepMix": 2},
-      {"Eng":"They don’t like us, do they?", "Rus": "Они нас не любят, да?","StepMix": 2},
-      {"Eng":"You haven’t got a car, have you?", "Rus": "У тебя нет машины, не так ли?","StepMix": 2},
-      {"Eng":"You’re not going out today, are you?", "Rus": "Ты сегодня не выходишь, не так ли?","StepMix": 2},
-      {"Eng":"It’s a nice day, isn’t it? Yes, beautiful.", "Rus": "Хороший день, не так ли? Да красивая.","StepMix": 2},
-      {"Eng":"Tim doesn’t look well today, does he? No, he looks very tired.", "Rus": "Тим сегодня плохо выглядит, не так ли? Нет, он выглядит очень усталым.","StepMix": 2},
-      {"Eng":"She’s very funny. She’s got a great sense of humour, hasn’t she?", "Rus": "Она очень забавная. У нее отличное чувство юмора, не так ли?","StepMix": 2},
-      {"Eng":"You haven’t seen Lisa today, have you? No, I’m afraid I haven’t.", "Rus": "Вы не видели Лизу сегодня, не так ли? Нет, боюсь, что нет.","StepMix": 2},
-      {"Eng":"You haven’t got a pen, have you? Yes, here you are.", "Rus": "У тебя нет ручки, не так ли? Да, вот вы здесь.","StepMix": 2},
-      {"Eng":"You couldn’t do me a favour, could you? It depends what it is.", "Rus": "Вы не могли бы сделать мне одолжение, не так ли? Это зависит от того, что это такое.","StepMix": 2},
-      {"Eng":"You don’t know where Karen is, do you? Sorry, I have no idea.", "Rus": "Ты не знаешь, где Карен, не так ли? Извините, понятия не имею.","StepMix": 2},
-      {"Eng":"Let’s go for a walk, shall we?", "Rus": "Пойдем прогуляемся, а?","StepMix": 2},
-      {"Eng":"Don’t be late, will you?", "Rus": "Не опаздывай, ладно?","StepMix": 2},
-      {"Eng":"I’m right, aren’t I? Yes, you are.", "Rus": "Я прав, не так ли? Да Вы.","StepMix": 2},
-      {"Eng":"— Kate won’t be late, will she? — No, she’s never late.", "Rus": "— Катя не опоздает? — Нет, она никогда не опаздывает.","StepMix": 2},
-      {"Eng":"— You’re tired, aren’t you? — Yes, a little.", "Rus": "— Ты устал, да? - Да, немного.","StepMix": 2},
-      {"Eng":"— You’ve got a camera, haven’t you? — Yes, I’ve got two actually.", "Rus": "— У тебя есть камера, не так ли? — Да, у меня их два.","StepMix": 2},
-      {"Eng":"— You weren’t listening, were you? — Yes, I was!", "Rus": "— Ты не слушал, да? - Да, я был!","StepMix": 2},
-      {"Eng":"— Sue doesn’t know Ann, does she? — No, they’ve never met.", "Rus": "— Сью не знает Энн, не так ли? — Нет, они никогда не встречались.","StepMix": 2},
-      {"Eng":"— Jack’s on holiday, isn’t he? — Yes, he’s in Portugal.", "Rus": "— Джек в отпуске, не так ли? — Да, он в Португалии.","StepMix": 2},
-      {"Eng":"— Kate’s applied for the job, hasn’t she? — Yes, but she won’t get it.", "Rus": "— Кейт подала заявление на работу, не так ли? — Да, но она не поймет.","StepMix": 2},
-      {"Eng":"— You can speak German, can’t you? — Yes, but not very fluently.", "Rus": "— Ты говоришь по-немецки, не так ли? — Да, но не очень бегло.","StepMix": 2},
-      {"Eng":"— He won’t mind if I use his phone, will he? — No, of course he won’t.", "Rus": "— Он не будет возражать, если я воспользуюсь его телефоном, не так ли? — Нет, конечно, не будет.","StepMix": 2},
-      {"Eng":"— There are a lot of people here, aren’t there? — Yes, more than I expected.", "Rus": "— Здесь много людей, не так ли? — Да, больше, чем я ожидал.","StepMix": 2},
-      {"Eng":"— Let’s go out tonight, shall we? — Yes, that would be great.", "Rus": "— Пойдём сегодня вечером, а? - Да, это было бы отлично.","StepMix": 2},
-      {"Eng":"— This isn’t very interesting, is it? — No, not very.", "Rus": "— Это не очень интересно, не так ли? — Нет, не очень.","StepMix": 2},
-      {"Eng":"— I’m too impatient. aren’t I? — Yes, you are sometimes.", "Rus": "— Я слишком нетерпелив. не я? — Да, ты иногда.","StepMix": 2},
-      {"Eng":"— You wouldn’t tell anyone. would you? — No, of course not.", "Rus": "— Ты бы никому не сказал. не могли бы вы? - Нет, конечно нет.","StepMix": 2},
-      {"Eng":"— Helen has lived here a long time, hasn’t she? — Yes, 20 years.", "Rus": "— Хелен живет здесь уже давно, не так ли? — Да, 20 лет.","StepMix": 2},
-      {"Eng":"— I shouldn’t have lost my temper, should I? — No, but never mind.", "Rus": "— Я не должен был выходить из себя, не так ли? — Нет, но неважно.","StepMix": 2},
-      {"Eng":"— He’d never met her before. had he? — No, that was the first time.", "Rus": "— Он никогда не встречался с ней раньше. был ли он? — Нет, это было впервые.","StepMix": 2},
-      {"Eng":"— Don’t drop that vase. will you? — No, don’t worry.", "Rus": "— Не урони эту вазу. вы будете? — Нет, не волнуйся.","StepMix": 2},
-      {"Eng":"You look out of the window. The sky is blue and the sun is shining. What do you say to your friend? It’s a nice day, isn’t it?", "Rus": "Вы смотрите в окно. Небо голубое и солнце светит. Что ты скажешь своему другу? Хороший день, не так ли?","StepMix": 2},
-      {"Eng":"You’re with a friend outside a restaurant. You’re looking at the prices, which are very high. What do you say? It’s (very) expensive, isn’t it?", "Rus": "Вы с другом возле ресторана. Вы смотрите на цены, они очень высокие. Что ты говоришь? Это (очень) дорого, не так ли?","StepMix": 2},
-      {"Eng":"You and a colleague have just finished a training course. You really enjoyed it. What do you say to your colleague? The course was great, wasn’t it?", "Rus": "Вы и ваш коллега только что закончили курс обучения. Вам очень понравилось. Что вы скажете своему коллеге? Курс был отличным, не так ли?","StepMix": 2},
-      {"Eng":"Your friend’s hair is much shorter than when you last met. What do you say to her? You’ve had your hair cut, haven’t you?", "Rus": "Волосы вашего друга намного короче, чем при вашей последней встрече. Что ты ей скажешь? Ты подстригла волосы, не так ли?","StepMix": 2},
-      {"Eng":"You and a friend are listening to a woman singing. You like her voice very much. What do you say to your friend? She has a good voice, hasn’t she?", "Rus": "Вы с другом слушаете, как поет женщина. Тебе очень нравится ее голос. Что ты скажешь своему другу? У нее хороший голос, не так ли?","StepMix": 2},
-      {"Eng":"You are trying on a jacket in a shop. You look in the mirror and you don’t like what you see. What do you say to your friend? It doesn’t look very good, does it?", "Rus": "Вы примеряете куртку в магазине. Вы смотрите в зеркало, и вам не нравится то, что вы видите. Что ты скажешь своему другу? Выглядит не очень хорошо, не так ли?","StepMix": 2},
-      {"Eng":"You and a friend are walking over a small wooden bridge. The bridge is very old and some parts are broken. What do you say? This bridge isn’t very safe, is it?", "Rus": "Вы с другом идете по небольшому деревянному мосту. Мост очень старый, некоторые части сломаны. Что ты говоришь? Этот мост не очень безопасен, не так ли?","StepMix": 2},
-      {"Eng":"You need a pen. Perhaps Jane has got one. Ask her. Jane, you haven’t got a pen, have you?", "Rus": "Вам нужна ручка. Возможно, у Джейн есть. Спроси ее. Джейн, у тебя нет ручки?","StepMix": 2},
-      {"Eng":"Joe is just going out. You want him to get some stamps. Ask him. Joe, you couldn’t get (me) some stamps, could you?", "Rus": "Джо только что вышел. Вы хотите, чтобы он получил несколько марок. Спроси его. Джо, ты не мог достать (мне) несколько марок, не так ли?","StepMix": 2},
-      {"Eng":"You’re looking for Diane. Perhaps Kate knows where she is. Ask her. Kate, you don’t know where Diane is, do you?", "Rus": "Вы ищете Диану. Возможно, Кейт знает, где она. Спроси ее. Кейт, ты не знаешь, где Диана, не так ли?","StepMix": 2},
-      {"Eng":"You need a bicycle pump. Perhaps Helen has got one. Ask her. Helen, you haven’t got a bicycle pump, have you?", "Rus": "Вам нужен велосипедный насос. Возможно, у Хелен есть такой. Спроси ее. Хелен, у тебя ведь нет велосипедного насоса?","StepMix": 2},
-      {"Eng":"Ann has a car and you need a lift to the station. Perhaps she’ll take you. Ask her. Ann, you couldn’t take me to the station, could you?", "Rus": "У Энн есть машина, и тебя нужно подвезти до станции. Возможно, она возьмет тебя. Спроси ее. Энн, ты не могла бы отвезти меня на станцию, не так ли?","StepMix": 2},
-      {"Eng":"You’re looking for your keys. Perhaps Robert has seen them. Ask him. Robert, you haven’t seen my keys, have you?", "Rus": "Ты ищешь свои ключи. Возможно, Роберт видел их. Спроси его. Роберт, ты не видел моих ключей, не так ли?","StepMix": 2}
-       
-      ],
-      
-    
-    "mark_arrles_1": {
-      "1": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 1
-      },
-      "2": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 1
-      },
-      "6": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 1
-      }
-    },
-    "mark_arrles_38": {
-      "0": {
-        "l1": 0,
-        "l2": 0,
-        "l3": 0
-      },
-      "1": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "2": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "3": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 1
-      },
-      "9": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 1
-      },
-      "14": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 1
-      },
-      "15": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "21": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 1
-      },
-      "24": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "26": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      }
-    },
-    "mark_arrles_39": {
-      "35": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      }
-    },
-    "mark_arrles_41": {
-      "0": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "11": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "12": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "15": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "16": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "17": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "26": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "27": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "30": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "31": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      }
-    },
-    "mark_arrles_42": {
-      "2": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "5": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "7": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "24": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "26": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "27": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "28": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "29": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "41": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "42": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "45": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "46": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "47": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "50": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "51": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "53": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "55": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "57": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      }
-    },
-    "mark_arrles_43": {
-      "1": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "7": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "40": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "41": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "42": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "46": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "47": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "48": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "58": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      },
-      "60": {
-        "l1": 1,
-        "l2": 0,
-        "l3": 0
-      }
-    },
     "varBVlist": [
       {
         "idvarname": "arrBVles1",
@@ -13332,7 +12589,7 @@ function GetOffLineBD() {
         "shortdesc": "I am doing / I do"
       },
       {
-        "CurSentences": 2,
+        "CurSentences": 0,
         "idvarname": "arrles20",
         "longdesc": "be going to (I’m going to do)",
         "recid": 20,
@@ -13416,7 +12673,7 @@ function GetOffLineBD() {
         "shortdesc": "May and might 2"
       },
       {
-        "CurSentences": 41,
+        "CurSentences": 0,
         "idvarname": "arrles31",
         "longdesc": "Have to and must",
         "part_gramm": "Modals",
@@ -13424,7 +12681,7 @@ function GetOffLineBD() {
         "shortdesc": "Have to and must"
       },
       {
-        "CurSentences": 46,
+        "CurSentences": 0,
         "idvarname": "arrles32",
         "longdesc": "Must mustn't needn't",
         "part_gramm": "Modals",
@@ -13432,7 +12689,7 @@ function GetOffLineBD() {
         "shortdesc": "Must mustn't needn't"
       },
       {
-        "CurSentences": 44,
+        "CurSentences": 0,
         "idvarname": "arrles33",
         "longdesc": "Should 1",
         "part_gramm": "Modals",
@@ -13440,7 +12697,7 @@ function GetOffLineBD() {
         "shortdesc": "Should 1"
       },
       {
-        "CurSentences": 34,
+        "CurSentences": 0,
         "idvarname": "arrles34",
         "longdesc": "Should 2",
         "part_gramm": "Modals",
@@ -13448,15 +12705,15 @@ function GetOffLineBD() {
         "shortdesc": "Should 2"
       },
       {
-        "CurSentences": 17,
+        "CurSentences": 0,
         "idvarname": "arrles35",
-        "longdesc": "Had better It's time ...",
+        "longdesc": "Had better lt's time ...",
         "part_gramm": "Modals",
         "recid": 35,
-        "shortdesc": "Had better It's time ..."
+        "shortdesc": "Had better lt's time ..."
       },
       {
-        "CurSentences": 32,
+        "CurSentences": 0,
         "idvarname": "arrles36",
         "longdesc": "Would",
         "part_gramm": "Modals",
@@ -13530,10 +12787,10 @@ function GetOffLineBD() {
       {
         "CurSentences": 0,
         "idvarname": "arrles45",
-        "longdesc": "It is said that ... He is said to ... He is supposed to ... ",
+        "longdesc": "lt is said that ... He is said to ... He is supposed to ... ",
         "part_gramm": "Passive ",
         "recid": 45,
-        "shortdesc": "It is said that ... He is said to ... He is supposed to ... "
+        "shortdesc": "lt is said that ... He is said to ... He is supposed to ... "
       },
       {
         "CurSentences": 0,
@@ -13550,14 +12807,10 @@ function GetOffLineBD() {
         "part_gramm": "Reported speech ",
         "recid": 47,
         "shortdesc": "Reported speech 1 (He said that ... )"
-      },
-      {"idvarname": "arrles48", "longdesc": "Reported speech 2", "recid": 48, "shortdesc":"Reported speech 2", "CurSentences": 0, "part_gramm":"Reported speech "},
-      {"idvarname": "arrles49", "longdesc": "Questions 1", "recid": 49, "shortdesc":"Questions 1", "CurSentences": 0, "part_gramm":"Questions and auxiliary verbs"},
-      {"idvarname": "arrles50", "longdesc": "Questions 2 (Do you know where ... ? I He asked me where ... ) ", "recid": 50, "shortdesc":"Questions 2 (Do you know where ... ? I He asked me where ... ) ", "CurSentences": 0, "part_gramm":"Questions and auxiliary verbs"},
-      {"idvarname": "arrles51", "longdesc": "Auxiliary verbs (have/do/can etc.) I think so I I hope so etc.", "recid": 51, "shortdesc":"Auxiliary verbs (have/do/can etc.) I think so I I hope so etc.", "CurSentences": 0, "part_gramm":"Questions and auxiliary verbs"},
-      {"idvarname": "arrles52", "longdesc": "Question tags (do you? isn't it? etc.)", "recid": 52, "shortdesc":"Question tags (do you? isn't it? etc.)", "CurSentences": 0, "part_gramm":"Questions and auxiliary verbs"}
+      }
     ]
   }
+
   
   return OffLineBD;
 
