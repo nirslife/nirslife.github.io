@@ -1,4 +1,6 @@
-import * as localBD from './js/global/localBD.js'
+//import * as localBD from './js/global/localBD.js'
+import * as localBD from './js/setlisten_js/localBD.js'
+
 //1 import * as localBD from './js/global/localBD.js'
 
 function Init_GlobalVar(arg1) {
