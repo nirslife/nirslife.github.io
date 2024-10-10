@@ -1,5 +1,5 @@
 import * as localBD from './js/global/localBD.js'
-
+//1 import * as localBD from './js/global/localBD.js'
 
 function Init_GlobalVar(arg1) {
   // Функционал для инициализации Глобальной переменной;  
