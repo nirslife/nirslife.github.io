@@ -15,6 +15,8 @@ function create1BlockMenu3(gv) {
   }
   bd2.appendChild(mm1.create1ElemByInx("mm_offlinemode_i",txtb));
   bd2.appendChild(mm1.create1ElemByInx("mm_RusTalkMode_i",txt2));
+  bd2.appendChild(mm1.create1ElemByInx("mm_Space_test_i", "o1oooooooooo"));
+  bd2.appendChild(mm1.create1ElemByInx("mm_Lunch_forswift_i", "BuildForSwift"));
 }
 
 function click_mm_offlinemode_i(athis){
@@ -45,3 +47,13 @@ function click_mm_RusTalkMode_i(athis){
     gv.ArVP.ar = FormVoiceArrCurSentence(gv);
   }
 }
+
+function click_mm_Lunch_forswift_i(athis){
+  let gv = Get_GlobalVar();
+  gv.BaseForSwift = Get_BaseForSwift(gv);
+  SendToBDBaseForSwift(gv);
+  gv.MMenu.op["mm_Space_test_i"].innerText = "OOOOOOOOOOO"; // test
+}
+
+
+

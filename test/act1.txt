@@ -1,0 +1,408 @@
+and I'm an engineer on the iOS system
+experience team
+it's my pleasure to talk to you about
+live activities
+in this talk I'll be giving you an
+overview of live activities
+then I'll go through the life cycle of
+live activities
+finally I'll show you how to build an
+immersive and simple UI for your
+activity
+to start I'll dig into what live
+activities can do
+live activities are an immersive
+glanceable way to keep track of an event
+or the progress of a task
+live activities have a discrete start
+and end and can provide real-time
+updates from background app runtime or
+remotely using push notifications
+here are great examples from United
+Airlines and MLB
+live activities are even more immersive
+on iPhone 14 pro and pro Max
+the dynamic Island displays live
+activities throughout the system when
+your app is in the background
+when one live activity is active it's
+rendered using its wearable width
+compact presentation
+the dynamic Island displays up to two
+live activities at a time
+one of these live activities appears
+attached to the true depth camera while
+the other renders in its own detached
+View
+both of these live activities use their
+minimal presentation
+at any time a person can long press a
+live activity to display its expanded
+presentation
+giving them even more glanceable
+information
+in the expanded presentation views can
+deep link to different areas within your
+app providing a rich user experience
+there are some new experiences for live
+activities in iOS 17.
+in addition to the lock screen and
+dynamic Islands live activities appear
+in standby
+and now iPad also supports live
+activities
+enable your implementation on iPad OS
+and bring your immersive live activities
+to iPad like this one from crumble
+cookies
+with iOS 17 you can add interactivity to
+your live activities using widget kit
+and Swift UI
+you can add buttons or toggles to
+enhance the user experience
+learn more about how to bring
+interactivity to your widgets in Lucas
+video bring widgets to life
+live activities rely on the activity kit
+framework empowering your app to request
+updates and manage their life cycles
+they are laid out declaratively using
+Swift UI and widget kit
+if you have implemented a home screen
+widget before this will feel very
+familiar
+a live activity can be requested when
+your app is in the foreground
+your app should only request a live
+activity after discrete user action
+possibly following an event or
+explicitly beginning a task
+this is crucial to ensure a positive
+user experience
+live activities are user moderated
+similar to notifications
+someone can easily dismiss or turn them
+off for your app altogether
+the API requires you to support all
+presentations from the lock screen to
+all three Dynamic Island presentations
+in standby the system scales your lock
+screen presentation to fill the screen
+in addition to relying on background
+runtime your app can update live
+activities remotely by using push
+notifications with the live activity
+push type
+for more information about how to update
+your live activities with push
+notifications you can check out Jeff's
+video
+your app's live activity goes through
+different phases during its life cycle
+I'm building a live activity where a
+person can choose a hero from the Emoji
+Rangers app and take them on an
+adventure
+during the adventure the hero will face
+challenges and fight with bosses
+all display important moments of this
+adventure in my live activity
+this live activity displays the most
+essential information about a hero's
+Adventure
+it includes the hero's name and
+statistics their Avatar help level
+and a description about what this hero
+experiences on their Adventure
+the life cycle of a live activity
+contains four main steps start by
+requesting an activity
+once the test started update it with
+your latest content
+in the meantime observe your activity to
+react to State changes such as people
+ending it
+when the task is completed make sure to
+end activity
+requesting a live activity is very
+straightforward
+make sure your app is in the foreground
+and configure your app so that you have
+an initial content and necessary
+activity request data
+before I can request a live activity in
+the Emoji Rangers app I have to start by
+defining a set of static and dynamic
+data for my live activity by
+implementing activity attributes
+I call it Adventure attributes
+Adventure attributes describes one
+static data which is the hero
+it also defines the required custom
+content state which encapsulates the
+hero's Health level and the event
+description
+as these properties change my live
+activity UI will get updated and I'll be
+able to show the current state of the
+adventure on the screen
+now that the dynamic and static data is
+ready I'll set up the adventure activity
+requests
+I'll start creating an instance of
+Adventure attributes with the hero
+and set up the initial contents with the
+hero's help level and an event
+description
+each activity content can be provided
+with a stale date to inform the system
+when the content is considered out of
+date
+for now I'll pass in now
+relevant score for the content
+determines the order in which each live
+activity appears when several adventure
+activities are started
+if I were going to start another
+adventure activity I would specify
+different relevant scores for each
+passing a relevant score is optional the
+default value is zero
+I can now request activity
+I'll pass in the attributes initial
+content and the push notification type
+push notification type indicates if the
+live activity receives updates to its
+Dynamic content with activity kit push
+notifications
+for this example I'll set it to nil
+which means this activity can receive
+updates locally
+in order to begin this live activity the
+live activity setting for the Emoji
+Rangers app needs to be enabled
+now that I can request my live activity
+I look into how I can update the
+adventure when my hero goes through
+trilling tasks
+the dynamic attributes tell me when to
+update my live activity
+whenever the event description or Hero's
+Health level changes I'll update my
+activity
+oh no the hero takes a critical hit from
+a boss
+so I create a Content state that
+reflects the change in the health level
+and describes the events
+since Hero's Health level reduced
+significantly I need to send an alert
+I'll create an alert configuration for
+that
+this will display an alert on iPhone
+iPad or on a synced Apple watch if some
+significant information changes with the
+live activity
+in this case the hero is injured badly
+and needs a potion to heal
+the configuration title and body are
+only used on Apple watch and displayed
+as a notification
+on iPhone and on iPad the activity UI
+with the updated content appears with
+the specified sound
+now I can call the update API on the
+activity object with the updated content
+and alert configuration
+this will make sure that the live
+activity UI is updated and the user is
+alerted with this update
+activity State changes can happen
+anytime during the life cycle of a live
+activity
+there are four possible States
+started finished dismissed and stale
+I observed these states using the
+activity State updates API on the
+activity object to receive the updates
+asynchronously
+when the activity gets dismissed I make
+sure that I'm not keeping track of the
+adventure data anymore
+an update the UI in the app so that I
+don't show an ongoing activity
+I can also check the state through
+activity State API to retrieve it
+synchronously when needed
+my hero went through a lot it's now time
+to end the adventure live activity
+to be able to end the activity I start
+by creating a final content
+my content will show the final state of
+the adventure where the hero defeats the
+boss
+then I'll determine a dismissal policy
+for my UI
+the default policy is suitable for this
+case
+this policy ensures that the adventure
+information appears on the lock screen
+for some time after it ends so that
+someone can glance at the lock screen to
+see what happened at the end of the
+adventure
+I can now end the adventure activity
+and give the hero a rest
+I built all the logic around my live
+activity life cycle it's time to focus
+on the activity UI
+Emoji Ranger widget extension currently
+has two widgets in its widget bundle
+I need to add the live activity
+configuration in the widget bundle
+I'll call it Adventure activity
+configuration
+Adventure activity configuration
+leverages widget infrastructure and it
+needs to return a widget configuration
+in its body
+I'll create an activity configuration
+object which describes the content of my
+live activity
+for each presentation closure activity
+configuration object provides an
+activity view context which stores my
+static and dynamic attributes and
+activity ID
+this context is created based on the
+attributes type passed into the
+configuration
+this type must match with the attribute
+that your activity is requested with
+I'll pass the adventure attributes type
+so that the activity configuration can
+be initialized successfully
+the first closure in activity
+configuration specifies the lock screen
+UI as my view context changes with the
+activity Updates this UI will be
+rendered for each update
+similar to widgets I don't provide the
+size of the lock screen UI for my live
+activity but let the system determine
+the appropriate dimensions
+for the Emoji Ranger activity I'll show
+the hero information name and Avatar
+help level and event description on the
+lock screen with the navy blue
+background
+Adventure live activity view will have
+all that information through the past
+view context
+my live activity on the lock screen
+looks simple elegant and it has all the
+information that I need about what the
+hero is going through in the adventure
+now that I wrapped up my lock screen UI
+I need to implement my Dynamic Island
+presentations there are three
+presentations compact minimal and
+expanded
+when my apps live activity is the only
+one running on the system it will be
+displayed using the compact presentation
+the compact presentation has two areas
+leading and trailing they appear
+together to form a cohesive presentation
+in the dynamic Islands
+choose essential content to show in the
+leading and trailing space
+since the space is limited
+users should be able to identify the
+specific activity by looking at the
+content here
+in the dynamic Island closure of the
+activity configuration object I again
+have access to the view context to
+create my expanded compact leading
+compact trailing and minimal views
+I need to create a dynamic Island View
+Builder to represent each of those
+presentations
+for my heroes adventure I'll add the
+hero Avatar to Leading content
+and the help level
+to the trailing View
+I'll also have a Dynamic Tint color
+based on my Hero's help level
+the compact presentation for the
+adventure is ready now
+when more than one app starts a live
+activity the system chooses which live
+activities are visible and displays both
+of them using the minimal presentation
+for each
+one minimal presentation appears
+attached to the dynamic Island
+while the other appears detached
+your minimal view should only have the
+most critical information as you have
+very limited space to work with
+for the minimal view in my live activity
+the most important information to show
+is who the hero is and heroes help
+so I'll show the Avatar and the help
+level with a Dynamic Tint color
+this way users will know when to help
+out their Hero by looking at the minimal
+View
+when users touch and hold a live
+activity in a compact or minimal
+presentation
+the system displays the content in an
+expanded presentation
+I need to support that too
+for the expanded presentation the system
+divides the expanded presentation into
+different areas
+the first closure of the dynamic Island
+View Builder represents the expanded
+content
+within that closure each section content
+can be defined with the expanded region
+passing the specific position
+I'll add the hero name and the Avatar to
+the leading space
+here are statistics to the trailing
+space
+and at last the help bar and the event
+description into the bottom space
+in the end my Dynamic Island UI looks
+simple and provides all the necessary
+information for the adventure
+now I'm ready to go on adventures with
+my favorite Heroes and follow along with
+the simple yet immersive live activity
+UI that I just created
+while designing your own UI display only
+the most essential content in the live
+activity
+keep it simple
+and Show additional details on your app
+when the user Taps on the live activity
+check out design Dynamic live activities
+for more information
+use live activities as a powerful tool
+to show your glancible and live
+information of an ongoing activity
+with its simple configuration create a
+dynamic way to engage with your users on
+iOS and iPad OS
+to learn more about pushing updates
+check out update live activities with
+push notifications
+I can't wait to see what you'll build
+with activity kit
+thank you for watching thank you
+[Music]
+
