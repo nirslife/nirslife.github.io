@@ -1,4 +1,4 @@
-import * as localBD from './global/localBD.js'
+import * as localBD from './js/global/localBD.js'
 
 
 function Init_GlobalVar(arg1) {
