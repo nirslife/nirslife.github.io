@@ -1,0 +1,147 @@
+<html> 
+<head> 
+<script src="./js/test.js"></script>
+<script type="text/javascript"> 
+
+// const firebaseConfig = {
+//     apiKey: "AIzaSyD30jGLtBWI9IhZdsOolPLPYo6MCqYj7Lw",
+//     authDomain: "engapp-2025.firebaseapp.com",
+//     databaseURL: "https://engapp-2025-default-rtdb.europe-west1.firebasedatabase.app",
+//     projectId: "engapp-2025",
+//     storageBucket: "engapp-2025.firebasestorage.app",
+//     messagingSenderId: "699324167945",
+//     appId: "1:699324167945:web:8e81198e670825faad45d8"
+// };
+
+// {
+//   "rules": {
+//     ".read": true,    
+//   "users": {
+//       "$uid": {
+//         ".write": "$uid === auth.uid"
+//       }      
+//     }
+//   }    
+// }
+var s;
+
+full1 = function(name){  
+  return 'result';
+}
+
+let gv = {};
+//************** BD *****************/
+function Init_LoginFireBaseSets() {
+  let oj = {};
+  let apiKey1 = "AIzaSyD30jGLtBWI9IhZdsOolPLPYo6MCqYj7Lw";  
+  //oj.email = "saps1@nukr.net";   
+  //oj.password = "po78L950001";  
+  oj.email = "saboo1@urm.se";
+  oj.password = "B0u_1hg81apAqw";  
+  oj.UrlTrans1 = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey1}`;
+  //oj.UrlPost1 = "https://nirsix-engapp-default-rtdb.europe-west1.firebasedatabase.app/mn.json?auth=";
+  //oj.UrlPost1 = "https://engapp-2025-default-rtdb.europe-west1.firebasedatabase.app/mnr.json?auth=";
+  oj.UrlPost1 = "https://engapp-2025-default-rtdb.europe-west1.firebasedatabase.app/mnroot.json?auth=";
+  return oj;
+}
+
+
+
+async function LoginFireBase(gv) {
+  email = gv.FBSets.email;
+  password = gv.FBSets.password;
+  aUrlTrans1 = gv.FBSets.UrlTrans1;
+  const response = await fetch(aUrlTrans1, {
+    method: 'POST',
+    body: JSON.stringify({email, password, returnSecureToken: true}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  const vdata = await response.json();
+  gv.FBSets.idToken = vdata.idToken;
+  CallBackLoginFireBase(gv);
+}
+
+
+function CallBackLoginFireBase(gv){
+  let arr1;  
+  RequestArrFireBase(gv, arr1, 'GET');
+}
+
+
+async function RequestArrFireBase(gv, vobj, ametod) {
+  let jsn1 = JSON.stringify(vobj);
+  let aurl = gv.FBSets.UrlPost1 + gv.FBSets.idToken;
+  const response = await fetch(aurl, {
+    method: ametod,
+    body: jsn1,
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  let vdata = await response.json();
+  if(ametod == 'GET'){CB_AfterGet(gv, vdata);}
+  //if(ametod == 'PATCH'){CB_AfterPatch(gv, vdata);}  
+}
+
+
+function B1_GET_OnClick(){
+  gv.FBSets = Init_LoginFireBaseSets();
+  LoginFireBase(gv);
+}
+
+function B2_PatchOnClick(){
+  let lev1 = document.getElementById("Level1");
+  if (lev1){
+    PatchRequest(gv);
+  }
+}
+
+
+function CB_AfterGet(gv, vdata){  
+  if (gv.FBSets.idToken) {
+    const div1 = document.createElement("div");
+    div1.id = 'Level1';    
+    div1.innerText = 'End req' + vdata;  
+    let mn = document.getElementById("OutputTest");
+    mn.appendChild(div1);
+  }  
+}
+
+function PatchRequest(gv){
+  let vobj = {};
+  let set1 = {};
+  let arr1 = [];
+  let el1 = {};
+  el1.l1 = 1;
+  el1.l2 = 0;
+  el1.l3 = 1;
+  arr1[6] = el1;
+  arr1[1] = el1;
+  arr1[2] = el1;
+  vobj["mark_arrles_1"] = arr1;
+  RequestArrFireBase(gv, vobj, 'PATCH');
+}
+
+
+</script> 
+
+</head> 
+
+<body>
+<br>
+<br>
+<div id="BlockTest1">
+  <input type="button" value="B1_TestAuth_GET" onclick="B1_GET_OnClick()">
+</div>
+<br><br><br>
+<div id="BlockTest2">
+  <input type="button" value="B1_TestAuth_Patch" onclick="B2_PatchOnClick()">
+</div>
+
+<div id="OutputTest">  
+</div>
+ 
+</body> 
+</html> 
