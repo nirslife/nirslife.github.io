@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- <script src="./JsonData111/data_json.js"></script> -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="uuid4" content="5659a0a8-cfda-4dfc-8334-87aec2d77ccc">
+    <title>JSON ===1==== CV_JSON_JOB Test 24_03_2025_22_17</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            margin-bottom: 10px;
+            color: #ffa500;
+        }
+
+        .section ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        .hidden_block {
+            display: none;
+        }
+
+        section {
+            margin-bottom: 40px; 
+        }        
+
+        pre code {
+            font-size: 0.3em; /* Smaller font size for code sections */
+        }        
+
+        #menu {
+            top: 20px;
+            left: 20px;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #menu a {
+            color: #00ff2d7d;
+            text-decoration: none;
+            margin-bottom: 5px;
+            margin-right: 15px;
+        }
+
+        #menu a:hover {
+            text-decoration: underline;
+        }        
+
+        .container-clp {
+            display: flex;
+            border: 1px solid #333;
+            background-color: #1e1e1e;
+            margin-top: 5px;            
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .copy-btn-clp {
+            min-height: 1px;
+            background-color: #bb86fc;
+            color: #121212;
+            border: none;
+            padding: 1px 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .copied-btn-clp {
+            background-color: #5f05f9;            
+        }
+
+        .copy-btn-clp:hover {
+            background-color: #3700b3;
+        }
+
+        .text-to-copy-clp {
+            margin-left: 5px;
+            background-color: #1e1e1e;            
+            flex-grow: 1;
+        }
+
+        .textseld-clp {
+            background-color:  #23015e;
+        }
+
+        .href-clp{
+            color: #00d9ffba;
+            text-decoration: none;
+            margin-bottom: 1px;
+            margin-right: 15px;
+        }
+
+        .href-edit{
+            color: #bf00ffba;
+            text-decoration: none;
+            margin-bottom: 1px;
+            margin-right: 15px;
+            display: inline;
+        }
+
+        .descr_copy-clp{
+            display: inline;
+            color: #ffa500;
+        }
+
+    </style>
+     <!-- <script src="./JsonData/data_json.js"></script> -->
+    <script>
+        var HtmlId_uuid = "5659a0a8-cfda-4dfc-8334-87aec2d77ccc";
+        const ActionNameEdit = "Edit";
+        const JsBaseUrl = "http://localhost/";
+        const speech = new SpeechSynthesisUtterance();
+
+function speakText(txt1) {
+            const text = txt1; // Text to be spoken
+            speech.text = text; // Set the text to be spoken
+            speech.lang = "en-US"; // Set language
+            speech.rate = 1; // Set speed
+            speech.volume = 1; // Set volume
+            window.speechSynthesis.speak(speech);
+}
+
+async function MainFunc() {            
+            try {
+                //if (!jsonDataJOBCV5543) {
+                    await checkScriptLoading();
+                //}
+                JsonToContent();
+            } catch (error) {
+                console.error("Error in MainFunc:", error);
+            }
+}
+
+function checkScriptLoading() {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = './JsonData/data_json.js';
+                script.type = 'text/javascript';
+
+                // Listen for the 'load' event
+                script.onload = function () {
+                    console.log('Script loaded successfully:', script.src);
+                    // const elem1 = document.createElement("div");
+                    // elem1.innerHTML = "Script loaded successfully";
+                    // document.body.appendChild(elem1);
+                    resolve();
+                };
+
+                // Listen for the 'error' event
+                script.onerror = function () {
+                    console.error('Error loading script:', script.src);
+                    const elem1 = document.createElement("div");
+                    elem1.innerHTML = "Error loading script: " + script.src;
+                    document.body.appendChild(elem1);
+                    reject(new Error('Script loading failed'));
+                };
+
+                // Append the script to the document
+                document.head.appendChild(script);
+            });
+      }
+
+
+
+function JsonToContent(){
+    let obj1 = JSON.parse(jsonDataJOBCV5543);
+
+    var visible_block = document.getElementById("visible_block");
+    var menu = document.getElementById("menu");
+    obj1.forEach(function(item, index) {
+        let urledit = JsBaseUrl + HtmlId_uuid + ActionNameEdit + item.datetime;
+        visible_block.innerHTML += `
+        <section id="section_${index + 1}">
+            <div>
+                <a class = "href-clp" href="#menu">menu</a> 
+                <a class = "href-edit" href="${urledit}">Edit</a>
+                <button class="speech-btn" onclick="SpeechBlock(this)" id="speech_btn_${index + 1}">Speach</button>
+            </div>
+            <div>
+               <div class="descr_copy-clp" id="name_field_${index + 1}">${item.name_field}</div> 
+            </div>
+            <div class="container-clp" onclick="copyToClipboard(this)">
+                <button class="copy-btn-clp">Copy</button>
+                <div class="text-to-copy-clp" id="description_${index + 1}">${item.description}</div>
+            </div>
+            ${item.short_descr}
+        </section>
+        `;
+        menu.innerHTML += `<a href="#section_${index + 1}">${item.promtfd}</a>`;
+    });
+}
+
+
+function GenerateMenu2() {
+    var visibleBlock = document.getElementById("visible_block");
+    var sections = visibleBlock.querySelectorAll("section");
+    
+
+    sections.forEach(function(section, index) {
+        var sectionText = section.textContent || section.innerText;
+        var shortName = sectionText.split(' ').slice(0, 3).join(' ') + '...'; // Extract first 3 words
+        var menuItem = document.createElement("a");
+        menuItem.href = `#section_${index}`;
+        menuItem.innerText = shortName;
+        menu.appendChild(menuItem);
+    });
+}
+
+function ExtractShortName(text) {
+    var shortName = text.trim();
+    // extract only first string all words between begin of string and
+    shortName = shortName.split("\n"); 
+    shortName = shortName[0];
+    shortName = shortName.replace(/[^a-zA-Z0-9 ]/g, ""); // Remove special characters    
+    return shortName;
+}
+
+
+function GenerateMenu() {
+    var visibleBlock = document.getElementById("visible_block");
+    var sections = visibleBlock.querySelectorAll("section");
+    var menu = document.getElementById("menu");
+
+    sections.forEach(function(section, index) {
+        var sectionText = section.textContent || section.innerText;
+        sectionText = ExtractShortName(sectionText);
+        var shortName = sectionText.split(' ').slice(0, 3).join(' '); // Extract first 3 words
+        var fr1 = shortName.split('menu ');
+        if (fr1[0].length < 3) {
+            shortName = fr1[1];
+        }
+        var menuItem = document.createElement("a");
+        menuItem.href = `#section_${index + 1}`;
+        menuItem.innerText = shortName;
+        menu.appendChild(menuItem);
+    });
+}
+
+function SpeechBlock(container) {
+    var st1 = "name_field_"+container.id.split("_")[2];
+    var t1 = document.getElementById(st1);
+    var st2 = "description_"+container.id.split("_")[2];
+    var t2 = document.getElementById(st2);
+    var textToSpeak = t1.innerText + " " + t2.innerText;
+    speakText(textToSpeak);
+}
+
+function copyToClipboard(container) {
+            var buttons = document.querySelectorAll('button.copy-btn-clp');
+            buttons.forEach(function(button) {
+                button.textContent = 'Copy';
+                button.classList.remove('copied-btn-clp');
+                button.nextElementSibling.classList.remove('textseld-clp');
+            });
+            var textToCopy = container.querySelector('.text-to-copy-clp').innerText;
+            var button = container.querySelector('.copy-btn-clp');
+
+                var textarea = document.createElement('textarea');
+                textarea.value = textToCopy;
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    button.classList.add('copied-btn-clp');
+                    button.nextElementSibling.classList.add('textseld-clp');
+                    button.textContent = 'Copied';
+                } catch (error) {
+                    console.error("Error copying text: ", error);
+                }
+                document.body.removeChild(textarea);
+
+}
+
+
+    
+</script>
+</head>
+<body onload="MainFunc()">
+    <div id="MarkCodeBlock_CopyCLP" class="hidden_block">
+    </div>
+
+    <div id="menu"></div>    
+    <div class="section" id="visible_block"></div>
+</body>
+</html>
+
+
