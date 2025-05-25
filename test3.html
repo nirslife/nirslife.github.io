@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Translation</title>
+    <style>
+        .sentence {
+            margin-bottom: 10px; /* Add some space between sentences */            
+            display: block;
+        }
+
+        .word_no-translation {            
+            display: inline-block;
+            position: relative;
+        }
+
+        .word {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+        }
+
+        .word:hover {
+            background-color: yellow;
+        }
+
+        .translation {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            padding: 10px; /* Increase padding for better spacing */
+            z-index: 1;
+            width: 250px; /* Set a larger width */
+            height: auto; /* Allow height to adjust based on content */
+            font-size: 14px; /* Adjust font size */
+            border-radius: 5px; /* Optional: Add rounded corners */
+        }
+
+        .translation button {
+            position: absolute;
+            top: 5px; /* Position the button 5px from the top */
+            right: 5px; /* Position the button 5px from the right */
+            background: transparent; /* Make the button background transparent */
+            border: none; /* Remove the button border */
+            font-size: 14px; /* Adjust the font size */
+            cursor: pointer; /* Change the cursor to a pointer */
+        }
+
+        .translation button:hover {
+            color: red; /* Optional: Change the color on hover */
+        }
+    </style>
+    <script>
+async function MainFunc() {
+    try {
+        JsonToContentMD();
+    } catch (error) {
+        console.error("Error in MainFunc:", error);
+    }
+}
+
+function JsonToContentMD() {
+    const jsonData = JSON.parse(jsonData20250502504410f);
+    const phrases = jsonData.phrases;
+    const sentences = jsonData.sentences;
+
+    
+    // Process the split related words
+    sentences.forEach(sentence => {
+        if (sentence.split_related && Array.isArray(sentence.split_related)) {
+            const div_sentence = document.createElement('div');
+            div_sentence.className = 'sentence';
+            const splitRelated = sentence.split_related;
+            splitRelated.forEach(item => {
+                console.log(item.word_en, item.idphrase);
+                const wordElement = document.createElement('span');
+                wordElement.className = 'word_no-translation';
+                wordElement.textContent = item.word_en; // Add the word text
+
+                // Add translation if available
+                if (item.idphrase && GetPhraseById(item.idphrase)) {
+                    wordElement.className = 'word';
+                    wordElement.setAttribute('rus-text', (GetPhraseById(item.idphrase)).phrase_ru);
+                    wordElement.setAttribute('eng-text', (GetPhraseById(item.idphrase)).phrase_en);
+                }
+
+                // Append the word element to the document body
+                div_sentence.appendChild(wordElement);
+
+                // Add a space after each word
+                const spaceElement = document.createTextNode(' ');
+                div_sentence.appendChild(spaceElement);
+                document.body.appendChild(div_sentence);
+            });
+        }
+    });
+}
+
+function GetPhraseById(id) {
+    const phrases = JSON.parse(jsonData20250502504410f).phrases;
+    const phrase = phrases.find(p => p.idphrase === id);
+    return phrase;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.body.addEventListener('click', function(event) {
+
+            // Hide all translation popups
+        const translations = document.querySelectorAll('.translation');
+            translations.forEach(translation => {
+                translation.style.display = 'none';
+        });
+
+        const target = event.target;
+        if (target.classList.contains('word')) {
+            event.stopPropagation(); // Prevent the click event from bubbling up to the document
+            const phraseRu = target.getAttribute('rus-text');
+            const phraseEn = target.getAttribute('eng-text');
+            if (!phraseRu || !phraseEn) {
+                return; // Exit if no translation is available
+            }
+            let translationElement = target.querySelector('.translation');
+            
+            if (!translationElement) {
+                translationElement = document.createElement('div');
+                translationElement.className = 'translation';
+                
+                // Add the English phrase (phrase_en)
+                const phraseEnEl = document.createElement('div');
+                phraseEnEl.textContent = `${phraseEn}`;
+                phraseEnEl.style.fontWeight = 'bold'; // Optional: Make it bold
+                translationElement.appendChild(phraseEnEl);
+                
+                // Add the Russian translation (phrase_ru)
+                const translationText = document.createElement('div');
+                translationText.textContent = `${phraseRu}`;
+                translationElement.appendChild(translationText);
+                
+                // Add a close button
+                const closeButton = document.createElement('button');
+                closeButton.textContent = 'X';
+                closeButton.onclick = function(event) {
+                    event.stopPropagation(); // Prevent the click event from bubbling up
+                    translationElement.style.display = 'none';
+                };
+                translationElement.appendChild(closeButton);
+
+                target.appendChild(translationElement);
+            }
+            
+            // Toggle the display of the translation popup
+            //translationElement.style.display = translationElement.style.display === 'block' ? 'none' : 'block';
+            translationElement.style.display = 'block';
+        } 
+        // else {
+        //     // Hide all translation popups when clicking outside
+        //     const translations = document.querySelectorAll('.translation');
+        //     translations.forEach(translation => {
+        //         translation.style.display = 'none';
+        //     });
+        // }
+    });
+});
+    </script>
+
+    <script>
+const jsonData20250502504410f = `
+{ 
+    "phrases": [
+    {
+        "idphrase": 1,
+        "phrase_en": "high throughput",
+        "phrase_ru": "высокая пропускная способность"
+    },
+    {
+        "idphrase": 2,
+        "phrase_en": "low latency",
+        "phrase_ru": "низкая задержка"
+    },
+    {
+        "idphrase": 3,
+        "phrase_en": "Can you elaborate",
+        "phrase_ru": "Можете ли вы подробнее рассказать"
+    },
+    {
+        "idphrase": 4,
+        "phrase_en": "how Kafka achieves",
+        "phrase_ru": "как Kafka достигает"
+    },
+    {
+        "idphrase": 6,
+        "phrase_en": "elaborate on",
+        "phrase_ru": "подробнее рассказать"
+    },
+    {
+        "idphrase": 7,
+        "phrase_en": "Can you elaborate on how Kafka achieves",
+        "phrase_ru": "Можете ли вы подробнее рассказать, как Kafka достигает"
+    },
+    {
+        "idphrase": 5,
+        "phrase_en": "distributed architecture",
+        "phrase_ru": "распределенная архитектура"
+    },
+    {
+        "idphrase": 8,
+        "phrase_en": "efficient data storage",
+        "phrase_ru": "эффективное хранение данных"
+    },
+    {
+        "idphrase": 9,
+        "phrase_en": "optimized message processing",
+        "phrase_ru": "оптимизированная обработка сообщений"
+    }
+],
+"sentences":
+[
+    {
+        "idsentenece": 3,
+        "sentenece_en": "Great. Can you elaborate on how Kafka achieves high throughput and low latency?",
+        "sentenece_ru": "Отлично. Можете ли вы подробнее рассказать, как Kafka достигает высокой пропускной способности и низкой задержки?",
+        "split_related": [
+            {
+                "word_en": "Great. ",            
+                "idphrase": 0
+            },
+            {
+                "word_en": "Can you ",            
+                "idphrase": 3
+            },
+            {
+                "word_en": "elaborate on ",
+                "idphrase": 6
+            },
+            {
+                "word_en": "how ",
+                "idphrase": 7
+            },
+            {
+                "word_en": "Kafka achieves ",
+                "idphrase": 4
+            },
+            {
+                "word_en": "high throughput",
+                "idphrase": 1
+            },
+            {
+                "word_en": " and ",
+                "idphrase": 0
+            },
+            {
+                "word_en": "low latency",
+                "idphrase": 2
+            },
+            {
+                "word_en": "?",
+                "idphrase": 0
+            }
+        ]
+    },
+    {
+        "idsentenece": 4,
+        "sentenece_en": "Kafka achieves high throughput and low latency by using a distributed architecture, efficient data storage, and optimized message processing.",
+        "sentenece_ru": "Kafka достигает высокой пропускной способности и низкой задержки благодаря распределенной архитектуре, эффективному хранению данных и оптимизированной обработке сообщений.",
+        "split_related": [
+            {
+                "word_en": "Kafka achieves ",
+                "idphrase": 0
+            },
+            {
+                "word_en": "high throughput",
+                "idphrase": 1
+            },
+            {
+                "word_en": " and ",
+                "idphrase": 0
+            },
+            {
+                "word_en": "low latency",
+                "idphrase": 2
+            },
+            {
+                "word_en": " by using ",
+                "idphrase": 0
+            },
+            {
+                "word_en": "a distributed architecture",
+                "idphrase": 5
+            },
+            {
+                "word_en": ", ",
+                "idphrase": 0
+            },
+            {
+                "word_en": "efficient data storage",
+                "idphrase": 8
+            },
+            {
+                "word_en": ", and ",
+                "idphrase": 0
+            },
+            {
+                "word_en": "optimized message processing",
+                "idphrase": 9
+            },
+            {
+                "word_en": ".",
+                "idphrase": 0
+            }
+        ]
+    }
+]
+}
+        
+`;
+
+    </script>
+
+</head>
+<body onload="MainFunc()">
+
+    <!-- <p>
+        <span class="word" data-translation="Привет">Hello</span>
+        <span class="word" data-translation="мир">world</span>!
+    </p>
+    <p>
+        <span class="word" data-translation="это">This</span>
+        <span class="word" data-translation="есть">is</span>
+        <span class="word" data-translation="один">an</span>
+        <span class="word" data-translation="пример">example</span>
+        <span class="word" data-translation="из">of</span>
+        <span class="word" data-translation="один">an</span>
+        <span class="word" data-translation="интерактивный">interactive</span>
+        <span class="word" data-translation="перевод">translation</span>
+        <span class="word" data-translation="страница">page</span>.
+    </p>
+
+    <p>
+        <span class="word" data-translation="Привет">Hello</span>
+        <span class="word" data-translation="мир">world</span>!
+    </p>
+    <p>
+        <span class="word" data-translation="это">This</span>
+        <span class="word" data-translation="есть">is</span>
+        <span class="word" data-translation="один">an</span>
+        <span class="word" data-translation="пример">example</span>
+        <span class="word" data-translation="из">of</span>
+        <span class="word" data-translation="один">an</span>
+        <span class="word" data-translation="интерактивный">interactive</span>
+        <span class="word" data-translation="перевод">translation</span>
+        <span class="word" data-translation="страница">page</span>.
+    </p> -->
+
+
+</body>
+</html>
