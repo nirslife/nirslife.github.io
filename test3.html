@@ -9,22 +9,22 @@
             margin-bottom: 10px; /* Add some space between sentences */            
             display: block;
         }
-
+        
         .word_no-translation {            
             display: inline-block;
             position: relative;
         }
-
+        
         .word {
             cursor: pointer;
             display: inline-block;
             position: relative;
         }
-
+        
         .word:hover {
             background-color: yellow;
         }
-
+        
         .translation {
             display: none;
             position: absolute;
@@ -36,8 +36,23 @@
             height: auto; /* Allow height to adjust based on content */
             font-size: 14px; /* Adjust font size */
             border-radius: 5px; /* Optional: Add rounded corners */
+            color: black; /* Set text color */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+            transition: opacity 0.3s ease; /* Smooth transition for visibility */
+            opacity: 0.9; /* Slightly transparent background */
+            max-width: 300px; /* Set a maximum width */
+            word-wrap: break-word; /* Allow long words to break and wrap */
+            line-height: 1.5; /* Increase line height for better readability */
+            text-align: left; /* Align text to the left */
+            font-family: Arial, sans-serif; /* Set a readable font */
+            box-sizing: border-box; /* Ensure padding is included in width */
+            padding: 15px; /* Increase padding for better spacing */
+            margin-top: 5px; /* Add some space above the translation box */
+            margin-left: 5px; /* Add some space to the left of the translation box */
+            display: none; /* Initially hidden */
+            transition: all 0.3s ease; /* Smooth transition for visibility */
         }
-
+        
         .translation button {
             position: absolute;
             top: 5px; /* Position the button 5px from the top */
@@ -47,9 +62,32 @@
             font-size: 14px; /* Adjust the font size */
             cursor: pointer; /* Change the cursor to a pointer */
         }
-
+        
         .translation button:hover {
             color: red; /* Optional: Change the color on hover */
+        }
+        
+        .phrase-container {
+            margin-top: 10px; /* Add some space above the phrase container */
+            margin-left: 20px; 
+            display: block;
+        }
+        .phrase-marker {
+            display: inline-block;
+            margin-right: 5px; /* Add some space between phrase markers */
+            cursor: pointer; /* Make it clickable */
+            color: blue; /* Optional: Change color to indicate it's clickable */
+        }
+        .phrase-marker:hover {
+            text-decoration: underline; /* Optional: Underline on hover */
+        }
+        
+        .sentence-container {
+            margin-bottom: 15px; /* Add some space between sentence containers */
+        }
+        
+        .sentence-container button {
+            margin-bottom: 5px; /* Add some spacing below the play button */
         }
     </style>
     <script>
@@ -80,13 +118,135 @@ function JsonToContentMD() {
     const phrases = jsonData.phrases;
     const sentences = jsonData.sentences;
 
-    
-    // Process the split related words
+    // Process the sentences
     sentences.forEach(sentence => {
+        if (sentence.sentenece_en && sentence.sentenece_ru) {
+            // Create a container for the sentence and the play button
+            const sentenceContainer = document.createElement('div');
+            sentenceContainer.className = 'sentence-container';
+            // Create the play button
+            const playButton = document.createElement('button');
+            playButton.textContent = 'Play';
+            playButton.style.marginBottom = '5px'; // Add some spacing
+            playButton.onclick = function () {
+                SpeechEngl(sentence.sentenece_en); // Speak the sentence text
+            };
+            sentenceContainer.appendChild(playButton);
+
+            // Create the sentence div
+            const div_sentence = document.createElement('div');
+            div_sentence.className = 'sentence';
+            div_sentence.textContent = sentence.sentenece_en; // Add the English sentence text
+            // Add the Russian translation as a data attribute
+            div_sentence.setAttribute('rus-text', sentence.sentenece_ru);
+            // Add the English sentence text as a data attribute
+            let engl1_text = sentence.sentenece_en;
+            div_sentence.setAttribute('eng-text', engl1_text);
+            // Append the sentence div to the container
+            sentenceContainer.appendChild(div_sentence);
+            // Append the container to the document body
+            document.body.appendChild(sentenceContainer);
+
+            //add below the sentence phrase containing in array of phrases
+            const phraseContainer = document.createElement('div');
+            phraseContainer.className = 'phrase-container';
+            let inx = 0;
+            phrases.forEach(phrase => {
+                if (phrase.idphrase && phrase.phrase_en && phrase.phrase_ru) {
+                    // if phrase contains in sentence, add it to the phraseText
+                    if (sentence.sentenece_en.includes(phrase.phrase_en)) {
+                        inx++;
+                        const phraseElement = document.createElement('div');
+                        phraseElement.className = 'phrase-marker';
+                        phraseElement.style.cursor = 'pointer'; // Make it clickable
+                        phraseElement.style.color = 'blue'; // Optional: Change color to indicate it's clickable
+                        phraseElement.textContent = inx;
+                        const newTranslationElement = document.createElement('div');
+                        newTranslationElement.className = 'translation';
+                        // Add the English phrase (phrase_en)
+                        const phraseEnEl = document.createElement('div');
+                        phraseEnEl.textContent = `${phrase.phrase_en}`;
+                        phraseEnEl.style.fontWeight = 'bold'; // Optional: Make it bold
+                        newTranslationElement.appendChild(phraseEnEl);
+                        
+                        // Add the Russian translation (phrase_ru)
+                        const translationText = document.createElement('div');
+                        translationText.textContent = `${phrase.phrase_ru}`;
+                        newTranslationElement.appendChild(translationText);
+                        
+                        // Add a close button
+                        const closeButton = document.createElement('button');
+                        closeButton.textContent = 'X';
+                        closeButton.onclick = function(event) {
+                            event.stopPropagation(); // Prevent the click event from bubbling up
+                            newTranslationElement.style.display = 'none';
+                        };
+                        newTranslationElement.appendChild(closeButton);
+                        // Add the translation popup to the phrase element
+                        phraseElement.appendChild(newTranslationElement);
+                        // Add click event to the phrase element
+                        phraseElement.onclick = function () {
+                            // Hide all translation popups
+                            const translations = document.querySelectorAll('.translation');
+                                translations.forEach(translation => {
+                                    translation.style.display = 'none';
+                            });
+                            // Prevent the click event from bubbling up to the document
+                            event.stopPropagation();
+
+                            // Toggle the display of the translation popup
+                            const translationElement = this.querySelector('.translation');                            
+                            if (translationElement) {
+                                translationElement.style.display =  'block';
+                            }
+                            SpeechEngl(phrase.phrase_en);  // Speak the English text
+                        };
+
+                        phraseElement.setAttribute('rus-text', phrase.phrase_ru); // Add the Russian translation
+                        phraseElement.setAttribute('eng-text', phrase.phrase_en); // Add the English text
+                        // Append the phrase element to the phrase container
+                        phraseContainer.appendChild(phraseElement);
+                    }
+                }
+            });
+            // Append the phrase container to the sentence container
+            if (phraseContainer.childElementCount > 0) {
+                sentenceContainer.appendChild(phraseContainer);
+            }
+        }
+    });
+}
+
+
+
+
+function JsonToContentMD_old() {
+    const jsonData = JSON.parse(jsonData20250502504410f);
+    const phrases = jsonData.phrases;
+    const sentences = jsonData.sentences;
+
+    // Process the sentences
+    sentences.forEach(sentence => {
+
         if (sentence.split_related && Array.isArray(sentence.split_related)) {
+            // Create a container for the sentence and the play button
+            const sentenceContainer = document.createElement('div');
+            sentenceContainer.className = 'sentence-container';
+
+            // Create the play button
+            const playButton = document.createElement('button');
+            playButton.textContent = 'Play';
+            playButton.style.marginBottom = '5px'; // Add some spacing
+            playButton.onclick = function () {
+                SpeechEngl(sentence.sentenece_en); // Speak the sentence text
+            };
+            sentenceContainer.appendChild(playButton);
+
+            // Create the sentence div
             const div_sentence = document.createElement('div');
             div_sentence.className = 'sentence';
             const splitRelated = sentence.split_related;
+
             splitRelated.forEach(item => {
                 console.log(item.word_en, item.idphrase);
                 const wordElement = document.createElement('span');
@@ -101,14 +261,19 @@ function JsonToContentMD() {
                     wordElement.setAttribute('eng-text', engl1_text);
                 }
 
-                // Append the word element to the document body
+                // Append the word element to the sentence div
                 div_sentence.appendChild(wordElement);
 
                 // Add a space after each word
                 const spaceElement = document.createTextNode(' ');
                 div_sentence.appendChild(spaceElement);
-                document.body.appendChild(div_sentence);
             });
+
+            // Append the sentence div to the container
+            sentenceContainer.appendChild(div_sentence);
+
+            // Append the container to the document body
+            document.body.appendChild(sentenceContainer);
         }
     });
 }
