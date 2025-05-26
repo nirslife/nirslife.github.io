@@ -102,9 +102,9 @@ async function MainFunc() {
 function SpeechEngl(text1){
   ms = new SpeechSynthesisUtterance();
   ms.text = text1;  
-  // if it is mobile device, use the 27 voice
+  // if it is mobile device, use the 195 voice
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    VoiceENIndex = 27; // Mobile voice index
+    VoiceENIndex = 195; // Mobile voice index
     const voices = window.speechSynthesis.getVoices();
     ms.voice = voices[VoiceENIndex];
   } else {
