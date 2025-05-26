@@ -48,6 +48,15 @@ Version 7_____23_06_2023
     </select>
   </div>
 
+  <div style="margin-top: 30px;"> </div>
+
+  <div>
+    <label for="voiceEN_US">Voice EN_US</label>
+    <select id="selectvoiceEN_US" onclick="VoiceENSelectOnClick(this)">
+    </select>
+  </div>
+
+
 
   <script type="text/javascript">
     var voices = [];
@@ -58,7 +67,7 @@ Version 7_____23_06_2023
       var selectElm = document.querySelector('#selectvoiceRU');
       selectElm.innerHTML = '';
       for (var i=0;i < voices.length;i++) {
-        var option = document.createElement('option');
+        var option = document.createElement('option');        
         option.innerHTML = voices[i].name + ' (' + voices[i].lang + ')';
         option.setAttribute('value', voices[i].voiceURI);
         option.voice = voices[i];
@@ -76,9 +85,11 @@ Version 7_____23_06_2023
       var selectElm = document.querySelector('#selectvoiceEN');
       selectElm.innerHTML = '';
       for (var i=0; i < voices.length;i++) {
+        if (voices[i].lang.indexOf('en') < 0) continue; // skip non-EN voices
         var option = document.createElement('option');
         option.innerHTML = voices[i].name + ' (' + voices[i].lang + ')';
         option.setAttribute('value', voices[i].voiceURI);
+        option.setAttribute('index_i', i);
         option.voice = voices[i];
         if (voices[i].default)
           option.selected = true;
@@ -89,10 +100,28 @@ Version 7_____23_06_2023
       }
     }
 
+    async function populateVoiceEN_USList() {
+      voices = await window.speechSynthesis.getVoices();
+      var selectElm = document.querySelector('#selectvoiceEN_US');
+      selectElm.innerHTML = '';
+      for (var i=0; i < voices.length;i++) {
+        if (voices[i].lang.indexOf('en-US') < 0) continue; // skip non-EN voices
+        var option = document.createElement('option');
+        option.innerHTML = voices[i].name + ' (' + voices[i].lang + ')';
+        option.setAttribute('value', voices[i].voiceURI);
+        option.setAttribute('index_i', i);
+        option.voice = voices[i];
+        if (voices[i].default)
+          option.selected = true;
+        selectElm.appendChild(option);
+      }
+    }
+
 
 function ReloadBtn1OnClick(athis){  
   populateVoiceRUList();
   populateVoiceENList();
+  populateVoiceEN_USList();
 }
 
 function RU_Btn1OnClick(athis){
@@ -122,13 +151,25 @@ function VoiceRUSelectOnClick(athis) {
 }
 
 function VoiceENSelectOnClick(athis) {  
-  //document.getElementById("SelVoiceValue").innerText = athis.selectedIndex;
-  document.getElementById("SelVoiceENValue").innerHTML = 
-   "EN<br><b>"+ voices[athis.selectedIndex].name + "</b><br>"
-   +
-   "<b>"+ athis.selectedIndex + "</b><br>";  
-   VoiceENIndex = athis.selectedIndex;
+  let selectedOption = athis.options[athis.selectedIndex];
+  let inx = selectedOption.getAttribute('index_i');
+  if (inx) {
+    document.getElementById("SelVoiceENValue").innerHTML = 
+      "EN<br><b>"+ voices[inx].name + "</b><br>"
+      + "<b>"+ inx + "</b><br>";  
+    VoiceENIndex = inx;
+  } else {    
+    document.getElementById("SelVoiceENValue").innerHTML = '';
+  }
 }  
+
+// function VoiceEN_USSelectOnClick(athis) {    
+//   document.getElementById("SelVoiceEN_USValue").innerHTML = 
+//    "EN_US<br><b>"+ voices[athis.selectedIndex].name + "</b><br>"
+//    +
+//    "<b>"+ athis.selectedIndex + "</b><br>";  
+//    VoiceEN_US_Index = athis.selectedIndex;
+// }
 
 function InitLoaded() {  
   ReloadBtn1OnClick(null);
