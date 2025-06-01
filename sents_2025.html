@@ -1,0 +1,476 @@
+<html><head>
+  <link rel="stylesheet" href="./css/sentences_nirsix2_css/sentences_nirsix2025.css">
+  <link rel="stylesheet" href="./css/setlisten_css/setlist_mm.css">
+  <script src="./js/sent_main.js"></script>
+  <script src="./js/global_var.js"></script>  
+    <title>New Phrase Sent</title>
+  </head>
+
+
+
+<script>
+
+
+
+
+// begin of  ./js/global_var.js - Global variable to hold the configuration and state
+var gv = {
+  cst: {
+    FBSets: null,
+    config_phrase: null
+  },
+  sts: {
+    vdata1: null
+  }
+};
+// end of ./js/global_var.js
+
+// begin of ./js/sent_main.js - Main functions for handling phrases and puzzle text
+function clickInputtext(element) {
+  // Remove the element from the DOM
+  const phrase = element.parentElement;
+  element.remove();
+  // Check if parent exists and is a phrase
+  if (phrase && phrase.classList.contains('phrase')) {
+    if (phrase.children.length === 0) {
+      phrase.remove();
+      return false;
+    }
+  }
+}
+function addNewPhrase() {
+  RefreshPuzzletext();
+  const inputTextDiv = document.getElementById('div_inputtextfrom1');
+  const newPhrase = document.createElement('div');
+  newPhrase.className = 'phrase';
+  newPhrase.setAttribute('phrase_id', inputTextDiv.children.length + 1);    
+  inputTextDiv.appendChild(newPhrase);
+}
+
+function RefreshPuzzletext() {
+  const div_puzzletextfrom1 = document.getElementById('div_puzzletextfrom1');
+  const puzzleBlocks = div_puzzletextfrom1.getElementsByClassName('puzzleblock inpoff');
+  Array.from(puzzleBlocks).forEach(element => {
+    element.setAttribute('class', 'puzzleblock inpon');
+    element.setAttribute('onclick', 'clickPuzzletext(this)');
+  });
+}
+
+function removeLastPhrase() {
+  RefreshPuzzletext();
+  const inputTextDiv = document.getElementById('div_inputtextfrom1');
+  const phrases = inputTextDiv.getElementsByClassName('phrase');
+  if (phrases.length > 0) {
+    phrases[phrases.length - 1].remove();
+  }
+}
+
+function clickPuzzletext(element) {
+  // find the last phrase in the input text
+  const inputTextDiv = document.getElementById('div_inputtextfrom1');
+  const phrases = inputTextDiv.getElementsByClassName('phrase');
+  if (phrases.length > 0) {
+    const lastPhrase = phrases[phrases.length - 1];
+    // create a new input text block
+    const newInputText = document.createElement('div');
+    newInputText.className = 'inputtext';
+    newInputText.setAttribute('onclick', 'clickInputtext(this)');
+    newInputText.setAttribute('indexarr', element.getAttribute('indexarr'));
+    newInputText.style.color = 'rgb(0, 0, 0)';
+    newInputText.style.background = 'rgb(90, 238, 120)';
+    newInputText.textContent = element.textContent;    
+    lastPhrase.appendChild(newInputText);
+    // change the attribute of the puzzle block     
+    element.setAttribute('class', 'puzzleblock inpoff');
+    element.setAttribute('onclick', '');
+    element.style.cursor = 'default';    
+  }
+
+}
+
+function MainFunc() {
+  init().then(() => {
+    console.log("Initialization complete.");
+  }).catch(error => {
+    console.error("Error during initialization:", error);
+  });
+}
+
+async function init() {  
+  gv.cst.FBSets = Init_LoginFireBaseSets();
+  await this.LoginFireBase(gv.cst);
+}
+
+
+function Init_LoginFireBaseSets(){
+  let apiKey1 = "AIzaSyD30jGLtBWI9IhZdsOolPLPYo6MCqYj7Lw";
+  let oj = {
+    email:"saboo1@urm.se",
+    password:"B0u_1hg81apAqw",
+    UrlTrans1: `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey1}`,
+    UrlPost1: "https://engapp-2025-default-rtdb.europe-west1.firebasedatabase.app/text_phrase_obj.json?auth=",  
+    idToken: ""
+  };      
+  return oj;
+}
+
+async function LoginFireBase(cst1) {
+    FBSets = cst1.FBSets;
+    //FBSets = cst1;
+    const email = FBSets.email;
+    const password = FBSets.password;
+    const aUrlTrans1 = FBSets.UrlTrans1;
+    const body1 = JSON.stringify({ email, password, returnSecureToken: true });
+    const post_obj = {
+        method: 'post',
+        body: body1,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    const response = await fetch(aUrlTrans1, post_obj);
+    const vdata = await response.json();
+    FBSets.idToken = vdata.idToken;
+    await this.CallBackLoginFireBase();
+}
+
+async function CallBackLoginFireBase() {
+  let arr1 = null;
+  await RequestArrFireBase(arr1, 'GET');
+}
+
+async function RequestArrFireBase(vobj, ametod) {
+    let cst1 = window.gv && window.gv.cst ? window.gv.cst : (this.gv ? this.gv.cst : null);
+    let jsn1 = "";
+    let post_obj = null;
+    if (vobj != null) {
+        jsn1 = JSON.stringify(vobj);
+        post_obj = {
+            method: ametod,
+            body: jsn1,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+    }
+    let aurl = cst1.FBSets.UrlPost1 + cst1.FBSets.idToken;
+    const response = await fetch(aurl, post_obj);
+    let vdata = await response.json();
+    if (ametod == 'GET') {
+        if (typeof CB_AfterGet === 'function') {
+            await CB_AfterGet(cst1, vdata);
+        }
+    }
+    if (ametod == 'PATCH') {
+        if (typeof CB_AfterPatch === 'function') {
+            await CB_AfterPatch(cst1, vdata);
+        }
+    }
+}
+
+async function CB_AfterGet(cst1, vdata) {
+    let sts1 = gv.sts;
+    gv.vdata1 = vdata;
+    sts1.sentences = vdata["sentences"];
+    sts1.phrases = vdata["phrases"];
+    sts1.article_text = vdata["article_text"];
+    sts1.config_phrase = vdata["config_phrase"];
+    sts1.sentences_for_processing = null;
+    MainLoadDataToHTML();
+}
+
+async function CB_AfterPatch(cst1, vdata) {
+    let sts1 = gv.sts;
+    gv.vdata1 = vdata;
+    sts1.sentences = vdata["sentences"];
+    sts1.phrases = vdata["phrases"];
+    sts1.article_text = vdata["article_text"];
+    sts1.config_phrase = vdata["config_phrase"];
+    sts1.sentences_for_processing = null;
+    MainLoadDataToHTML();
+}
+
+function MainLoadDataToHTML() {
+   LoadSentences();
+}
+
+function get_article_items(idarticle_text) {
+    let article_text = gv.sts.article_text;
+    if (!article_text) return null;
+    const item = article_text.find(item => item.idarticle_text == idarticle_text);
+    return item ? item.items : null;
+}
+
+function get_sentence(idsentence) {
+    let sentences = gv.sts.sentences;
+    if (!sentences) return null;
+    const item = sentences.find(item => item.idsentence == idsentence);
+    return item ? item : null;
+}
+
+
+function LoadNextSentenceNotProcessed(article_items, curpos_idsentence) {
+  let list_not_processed = article_items.filter(item => item.processed !== 1 && item.idsentence !== undefined);
+  if (list_not_processed.length > 0) {
+    gv.sts.config_phrase.count_not_processed = list_not_processed.length;
+    if (curpos_idsentence < 1) {f_founded = true;} else { f_founded = false;}    
+    let idsentence_found = -1;
+    let first_idsentence = list_not_processed[0].idsentence;
+    for (let i = 0; i < list_not_processed.length; i++) {
+      let item = list_not_processed[i];
+      if (f_founded) {
+        idsentence_found = item.idsentence;
+        break;
+      }
+    //  if (item.idsentence === gv.sts.config_phrase.idsentence) {
+      if (item.idsentence === curpos_idsentence) {        
+        // If the sentence is already loaded, skip it
+        f_founded = true;
+        continue;
+      }
+    }
+    if (idsentence_found > 0) {
+      gv.sts.config_phrase.idsentence = idsentence_found;
+      LoadSentencesToHTML(idsentence_found);
+      return;
+    }
+    // If no unprocessed sentence is found, load the first one
+    gv.sts.config_phrase.idsentence = first_idsentence;
+    LoadSentencesToHTML(first_idsentence);
+  }
+}
+
+function LoadSentencesToHTML(idsentence) {
+    let sentence = get_sentence(idsentence);
+    let sentence_en = sentence.sentence_en;
+    // split the sentence into words using space as a delimiter
+    let words = sentence_en.split(' ').map(word => word.trim()).filter(word => word.length > 0);
+   // return 0;
+    let puzzleBlockDiv = document.getElementById('div_puzzletextfrom1');
+    let div_inputtextfrom1 = document.getElementById('div_inputtextfrom1');
+    let textfrom1 = document.getElementById('textfrom1');
+    // Clear the input text div
+    puzzleBlockDiv.innerHTML = '';
+    div_inputtextfrom1.innerHTML = '';
+    textfrom1.textContent = sentence_en; // Set the text content of the textfrom1 div
+    // create a new puzzle block for each word
+    words.forEach((word, index) => {
+        let inputTextBlock = document.createElement('div');
+        inputTextBlock.className = 'puzzleblock inpon';
+        inputTextBlock.id = `Puzzid${index}`;
+        inputTextBlock.setAttribute('indexarr', index);
+        inputTextBlock.setAttribute('onclick', 'clickPuzzletext(this)');
+        inputTextBlock.style.cursor = 'pointer';
+        inputTextBlock.textContent = word;
+        puzzleBlockDiv.appendChild(inputTextBlock);
+    });
+
+    let info_div = document.getElementById('info_div');
+    if (info_div) {
+        info_div.textContent = `Current ID: ${idsentence} from count=${gv.sts.config_phrase.count_not_processed} `;
+    }else {
+        let new_info_div = document.createElement('div');
+        new_info_div.id = 'info_div';
+        new_info_div.textContent = `Current ID: ${idsentence} from count=${gv.sts.config_phrase.count_not_processed} `;
+        let divtextfrom1 = document.getElementById('textfrom1');
+        if (divtextfrom1) {
+            divtextfrom1.parentNode.insertBefore(new_info_div, divtextfrom1);
+        }        
+    }
+    addNewPhrase()
+}
+
+function LoadSentences() {
+    let sts1 = gv.sts;    
+    let idarticle_text = sts1.config_phrase.idarticle_text;
+    let article_items = get_article_items(idarticle_text);
+    if (article_items) {
+        LoadNextSentenceNotProcessed(article_items, -1);        
+    }
+}
+
+function SavePhraseToFireBase() {
+    let cst1 = window.gv && window.gv.cst ? window.gv.cst : (this.gv ? this.gv.cst : null);
+    let vdata = gv.vdata1;
+    if (!vdata) return;
+    let phrases = vdata["phrases"];
+    if (!phrases) return;
+    let gen_id_phrase = gv.sts.config_phrase.gen_id_phrase;
+    if (!gen_id_phrase) {
+        gen_id_phrase = 0;
+    }
+    let div_inputtextfrom1 = document.getElementById('div_inputtextfrom1');
+    // get children of div_inputtextfrom1
+    let phraseElements = div_inputtextfrom1.getElementsByClassName('phrase');
+    // create an array to hold the phrases
+    let newPhrases = [];
+    let idsrc_sentence = vdata["config_phrase"].idsentence;
+    // for each phrase element, get the text content of inputtext elements
+    for (let i = 0; i < phraseElements.length; i++) {        
+        let phraseElement = phraseElements[i];
+        let inputTexts = phraseElement.getElementsByClassName('inputtext');
+        let phraseText = Array.from(inputTexts).map(input => input.textContent).join(' ');
+        // if phraseText is empty, skip this phrase
+        if (phraseText.trim() === "") {
+            console.log("Skipping empty phrase.");
+            continue;
+        }
+        // increment gen_id_phrase
+        gen_id_phrase++;
+        // create a new phrase object
+        newPhrases.push({
+            idphrase: gen_id_phrase,
+            phrase_en: phraseText,
+            phrase_ru: "",            
+            src_sentence: idsrc_sentence
+        }); 
+    }
+    // if there are no new phrases, return
+    if (newPhrases.length === 0) {
+        console.log("No new phrases to save.");
+        return;
+    }
+    // add the new phrases to the existing phrases
+    phrases = phrases.concat(newPhrases);
+    // update the vdata object
+    vdata["phrases"] = phrases;
+    // update the gen_id_phrase in config_phrase
+    vdata["config_phrase"].gen_id_phrase = gen_id_phrase;
+    // set property processed to 1 for the current sentence in article_items
+    SetProcessedSentence(vdata, idsrc_sentence);
+    // send the updated vdata to Firebase
+    RequestArrFireBase(vdata, 'PATCH');
+}
+
+function SetProcessedSentence(vdata, idsrc_sentence) {
+    let sts1 = gv.sts;
+    let idarticle_text = sts1.config_phrase.idarticle_text;
+    let article_items = get_article_items(idarticle_text);
+    if (!article_items) return;          
+    let items = article_items; // Assuming article_items is an array of items
+    // Check if items is an array and has elements
+    if (Array.isArray(items) && items.length > 0) {
+        let item = items.find(item => item.idsentence === idsrc_sentence);
+        if (item) {
+            item.processed = 1; // Mark the sentence as processed
+        } else {
+            console.log(`No item found with idsentence: ${idsrc_sentence}`);
+        }
+    }
+    // let sentences = vdata["sentences"];
+    // if (!sentences) return;
+    // let sentence = sentences.find(item => item.idsentence === idsrc_sentence);
+    // if (sentence) {
+    //     sentence.processed = 1; 
+    // }
+}
+
+function NextSentence() {  
+    let sts1 = gv.sts;
+    let idarticle_text = sts1.config_phrase.idarticle_text;
+    let article_items = get_article_items(idarticle_text);
+    if (article_items) {
+        LoadNextSentenceNotProcessed(article_items, sts1.config_phrase.idsentence);
+    } else {
+        console.log("No article items found for the given idarticle_text.");
+    }
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Show button when scrolled down
+window.onscroll = function() {
+  const btn = document.getElementById('scrollToTopBtn');
+  if (!btn) return;
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+
+
+// end of ./js/sent_main.js - Main functions for handling phrases and puzzle text
+</script>
+
+
+<body onload="MainFunc()">
+
+<div id="header1">  
+</div>
+<div id="control_div"> 
+  <div class="button_controlsentences" onclick="NextSentence()">Next Sentence</div> 
+  <div class="button_controlsentences" onclick="SavePhraseToFireBase()">Save Phrase to Base</div>  
+</div>
+<div id="info_div"> </div>  
+<div id="textfrom1" onmousedown="clickTextfrom(this)">
+  Alex is a bus driver, but right now he is sleeping in bed. He is not driving a bus. But he drives a bus.
+</div>
+<div id="inputtextfrom1" style="background: rgb(255, 255, 255);">
+  <div id="div_inputtextfrom1">
+    <div class="phrase" phrase_id="1">
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="0" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">Alex</div>
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="1" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">is</div>
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="2" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">a</div>
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="3" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">bus</div>
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="4" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">driver,</div>
+    </div>
+    <!-- <div class="phrase" phrase_id="2">
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="5" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">but</div>
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="7" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">now</div>
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="6" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">he</div>
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="8" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">is</div>
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="9" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">in</div>
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="11" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">bed</div>
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="10" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">asleep.</div>
+    </div>
+    <div class="phrase" phrase_id="3">
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="12" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">He</div>
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="13" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">is</div>
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="14" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">not</div>
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="15" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">driving</div>
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="16" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">a</div>
+    <div class="inputtext" onclick="clickInputtext(this)" indexarr="17" style="color: rgb(0, 0, 0); background: rgb(90, 238, 120);">bus.</div>
+    </div> -->
+  </div>
+</div>
+
+<div id="control_div">
+  <div class="button_controlsentences" onclick="addNewPhrase()">Add Phrase</div>
+  <div class="button_controlsentences" onclick="removeLastPhrase()">Remove Last Phrase</div>
+</div>
+
+<div id="puzzletextfrom1">
+  <div id="div_puzzletextfrom1">
+<div class="puzzleblock inpon" id="Puzzid0" indexarr="0" onclick="clickPuzzletext(this)">Alex</div>
+<div class="puzzleblock inpon" id="Puzzid1" indexarr="1" onclick="clickPuzzletext(this)">is</div>
+<div class="puzzleblock inpon" id="Puzzid2" indexarr="2" onclick="clickPuzzletext(this)">a </div>
+<div class="puzzleblock inpon" id="Puzzid3" indexarr="3" onclick="clickPuzzletext(this)">bus</div>
+<div class="puzzleblock inpon" id="Puzzid4" indexarr="4" onclick="clickPuzzletext(this)">driver,</div>
+<div class="puzzleblock inpon" id="Puzzid5" indexarr="5" onclick="clickPuzzletext(this)">but</div>
+<div class="puzzleblock inpon" id="Puzzid6" indexarr="6" onclick="clickPuzzletext(this)">he</div>
+<div class="puzzleblock inpon" id="Puzzid7" indexarr="7" onclick="clickPuzzletext(this)">now</div>
+<div class="puzzleblock inpon" id="Puzzid8" indexarr="8" onclick="clickPuzzletext(this)">is</div>
+<div class="puzzleblock inpon" id="Puzzid9" indexarr="9" onclick="clickPuzzletext(this)">in</div>
+<div class="puzzleblock inpon" id="Puzzid10" indexarr="10" onclick="clickPuzzletext(this)">asleep.</div>
+<div class="puzzleblock inpon" id="Puzzid11" indexarr="11" onclick="clickPuzzletext(this)">bed</div>
+<div class="puzzleblock inpon" id="Puzzid12" indexarr="12" onclick="clickPuzzletext(this)">He</div>
+<div class="puzzleblock inpon" id="Puzzid13" indexarr="13" onclick="clickPuzzletext(this)">is</div>
+<div class="puzzleblock inpon" id="Puzzid14" indexarr="14" onclick="clickPuzzletext(this)">not</div>
+<div class="puzzleblock inpon" id="Puzzid15" indexarr="15" onclick="clickPuzzletext(this)">driving</div>
+<div class="puzzleblock inpon" id="Puzzid16" indexarr="16" onclick="clickPuzzletext(this)">a </div>
+<div class="puzzleblock inpon" id="Puzzid17" indexarr="17" onclick="clickPuzzletext(this)">bus.</div>
+  </div>
+</div>
+<div id="m_container1">
+</div>
+<div id="verify_cont1"></div>
+
+<button id="scrollToTopBtn" class="button_controlsentences" onclick="scrollToTop()" style="position:fixed;bottom:30px;right:30px;z-index:1000;display:none;">
+  ↑ Top
+</button>
+
+</body>
+</html>
