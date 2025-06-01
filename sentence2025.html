@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Translation</title>
+    <style>
+        .sentence {
+            margin-bottom: 10px; /* Add some space between sentences */            
+            display: block;
+        }
+        
+        .word_no-translation {            
+            display: inline-block;
+            position: relative;
+        }
+        
+        .word {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .word:hover {
+            background-color: yellow;
+        }
+        
+        .translation {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            padding: 10px; /* Increase padding for better spacing */
+            z-index: 1;
+            width: 250px; /* Set a larger width */
+            height: auto; /* Allow height to adjust based on content */
+            font-size: 14px; /* Adjust font size */
+            border-radius: 5px; /* Optional: Add rounded corners */
+            color: black; /* Set text color */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+            transition: opacity 0.3s ease; /* Smooth transition for visibility */
+            opacity: 0.9; /* Slightly transparent background */
+            max-width: 300px; /* Set a maximum width */
+            word-wrap: break-word; /* Allow long words to break and wrap */
+            line-height: 1.5; /* Increase line height for better readability */
+            text-align: left; /* Align text to the left */
+            font-family: Arial, sans-serif; /* Set a readable font */
+            box-sizing: border-box; /* Ensure padding is included in width */
+            padding: 15px; /* Increase padding for better spacing */
+            margin-top: 5px; /* Add some space above the translation box */
+            margin-left: 5px; /* Add some space to the left of the translation box */
+            display: none; /* Initially hidden */
+            transition: all 0.3s ease; /* Smooth transition for visibility */
+        }
+        
+        .translation button {
+            position: absolute;
+            top: 5px; /* Position the button 5px from the top */
+            right: 5px; /* Position the button 5px from the right */
+            background: transparent; /* Make the button background transparent */
+            border: none; /* Remove the button border */
+            font-size: 14px; /* Adjust the font size */
+            cursor: pointer; /* Change the cursor to a pointer */
+        }
+        
+        .translation button:hover {
+            color: red; /* Optional: Change the color on hover */
+        }
+        
+        .phrase-container {
+            margin-top: 10px; /* Add some space above the phrase container */
+            margin-left: 20px; 
+            display: block;
+        }
+        .phrase-marker {
+            display: inline-block;
+            margin-right: 35px; /* Add some space between phrase markers */
+            cursor: pointer; /* Make it clickable */
+            color: blue; /* Optional: Change color to indicate it's clickable */
+        }
+        .phrase-marker:hover {
+            text-decoration: underline; /* Optional: Underline on hover */
+        }
+        
+        .sentence-container {
+            margin-bottom: 15px; /* Add some space between sentence containers */
+        }
+        
+        .sentence-container button {
+            margin-bottom: 5px; /* Add some spacing below the play button */
+        }
+    </style>
+    <script>
+let voices = [];
+let VoiceENIndex = -1;
+let VoiceSamantha = -1;
+
+async function MainFunc() {
+    try {
+        // call add function to add the voice selection dropdown
+        addVoiceSelectionDropdown();
+        // Call the function to convert JSON to content
+        JsonToContentMD();
+    } catch (error) {
+        console.error("Error in MainFunc:", error);
+    }
+}
+
+function addVoiceSelectionDropdown() {
+    // Create a select element for voice selection
+    var selectElm = document.createElement('select');
+    selectElm.id = 'selectvoiceEN_US';
+    selectElm.style.marginBottom = '10px'; // Add some spacing below the dropdown
+    selectElm.onchange = function() {
+        let selectedOption = this.options[this.selectedIndex];
+        let inx = selectedOption.getAttribute('index_i');
+        if (inx) {        
+            VoiceENIndex = parseInt(inx, 10);
+            document.getElementById("idlabel_selected").innerHTML = 'Selected Voice (EN-US): ' + (voices[VoiceENIndex] ? voices[VoiceENIndex].name : 'None');
+        }        
+        var selectedVoiceURI = this.value;
+        var selectedVoice = voices.find(voice => voice.voiceURI === selectedVoiceURI);
+        if (selectedVoice) {
+            SpeechEngl("Selected voice: " + selectedVoice.name);
+        }
+    };
+    // selectElm.onclick = function(athis){
+    //    let selectedOption = athis.options[athis.selectedIndex];
+    //    let inx = selectedOption.getAttribute('index_i');
+    //    if (inx) {        
+    //        document.getElementById("idlabel_selected").innerHTML = 'Selected Voice (EN-US): ' + (voices[VoiceENIndex] ? voices[VoiceENIndex].name : 'None');
+    //    }    
+    // }
+    document.body.appendChild(selectElm);
+
+    // Populate the voice list and add labels after voices are loaded
+    populateVoiceEN_USList();
+}
+
+async function populateVoiceEN_USList() {
+    voices = await window.speechSynthesis.getVoices();
+    if (voices.length === 0) {
+        // If voices are not loaded yet, wait for them to load
+        window.speechSynthesis.onvoiceschanged = populateVoiceEN_USList;
+        return;
+    }
+    let selectElm = document.getElementById('selectvoiceEN_US');
+    if (!selectElm) return;
+    // Clear existing options
+    selectElm.innerHTML = '';
+    for (var i = 0; i < voices.length; i++) {
+        if (voices[i].lang.indexOf('en-US') < 0) continue; // skip non-EN voices
+        var option = document.createElement('option');
+        option.innerHTML = voices[i].name + ' (' + voices[i].lang + ')';
+        option.setAttribute('value', voices[i].voiceURI);
+        option.setAttribute('index_i', i);
+        option.voice = voices[i];
+        if (voices[i].default) {
+            option.selected = true;
+            VoiceENIndex = i;
+        }
+        if (voices[i].name.indexOf('Samantha') >= 0) {
+            VoiceSamantha = i;
+            option.selected = true;
+            VoiceENIndex = i;
+        }
+        selectElm.appendChild(option);
+    }
+
+    // Now add the labels, since voices is ready
+    var label1 = document.createElement('label');
+    label1.setAttribute('for', 'selected voice');
+    label1.id = 'idlabel_selected';
+    label1.innerHTML = 'Selected Voice (EN-US): ' + (voices[VoiceENIndex] ? voices[VoiceENIndex].name : 'None');
+    label1.style.display = 'block'; // Make the label block-level for better spacing
+    label1.style.marginBottom = '5px'; // Add some spacing below the label
+    document.body.insertBefore(label1, selectElm); // Insert label before the dropdown
+
+    // Add a label for the dropdown
+    var label = document.createElement('label');
+    label.setAttribute('for', 'selectvoiceEN_US');
+    label.innerHTML = 'Select Voice (EN-US): ';
+    label.style.display = 'block'; // Make the label block-level for better spacing
+    label.style.marginBottom = '5px'; // Add some spacing below the label
+    document.body.insertBefore(label, selectElm); // Insert label before the dropdown
+}
+
+
+function SpeechEngl(text1){
+  ms = new SpeechSynthesisUtterance();
+  ms.voice = voices[VoiceENIndex];
+  ms.text = text1;  
+  // if it is mobile device, use the 195 voice
+//   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+//     //VoiceENIndex = 195; // Mobile voice index
+// //    const voices = window.speechSynthesis.getVoices();
+//     ms.voice = voices[VoiceENIndex];
+//   } else {
+//     //VoiceENIndex = 0; // Desktop voice index
+//   } 
+  window.speechSynthesis.speak(ms);
+}
+
+function JsonToContentMD() {
+    const jsonData = JSON.parse(jsonData20250502504410f);
+    const phrases = jsonData.phrases;
+    const sentences = jsonData.sentences;
+
+    // Process the sentences
+    sentences.forEach(sentence => {
+        if (sentence.sentenece_en && sentence.sentenece_ru) {
+            // Create a container for the sentence and the play button
+            const sentenceContainer = document.createElement('div');
+            sentenceContainer.className = 'sentence-container';
+            // Create the play button
+            const playButton = document.createElement('button');
+            playButton.textContent = 'Play';
+            playButton.style.marginBottom = '5px'; // Add some spacing
+            playButton.onclick = function () {
+                SpeechEngl(sentence.sentenece_en); // Speak the sentence text
+            };
+            sentenceContainer.appendChild(playButton);
+
+            // Create the sentence div
+            const div_sentence = document.createElement('div');
+            div_sentence.className = 'sentence';
+            div_sentence.textContent = sentence.sentenece_en; // Add the English sentence text
+            // Add the Russian translation as a data attribute
+            div_sentence.setAttribute('rus-text', sentence.sentenece_ru);
+            // Add the English sentence text as a data attribute
+            let engl1_text = sentence.sentenece_en;
+            div_sentence.setAttribute('eng-text', engl1_text);
+            // Append the sentence div to the container
+            sentenceContainer.appendChild(div_sentence);
+            // Append the container to the document body
+            document.body.appendChild(sentenceContainer);
+
+            //add below the sentence phrase containing in array of phrases
+            const phraseContainer = document.createElement('div');
+            phraseContainer.className = 'phrase-container';
+            let inx = 0;
+            phrases.forEach(phrase => {
+                if (phrase.idphrase && phrase.phrase_en && phrase.phrase_ru) {
+                    // if phrase contains in sentence, add it to the phraseText
+                    if (sentence.sentenece_en.includes(phrase.phrase_en)) {
+                        inx++;
+                        const phraseElement = document.createElement('div');
+                        phraseElement.className = 'phrase-marker';
+                        phraseElement.style.cursor = 'pointer'; // Make it clickable
+                        phraseElement.style.color = 'blue'; // Optional: Change color to indicate it's clickable
+                        phraseElement.textContent = inx;
+                        const newTranslationElement = document.createElement('div');
+                        newTranslationElement.className = 'translation';
+                        // Add the English phrase (phrase_en)
+                        const phraseEnEl = document.createElement('div');
+                        phraseEnEl.textContent = `${phrase.phrase_en}`;
+                        phraseEnEl.style.fontWeight = 'bold'; // Optional: Make it bold
+                        newTranslationElement.appendChild(phraseEnEl);
+                        
+                        // Add the Russian translation (phrase_ru)
+                        const translationText = document.createElement('div');
+                        translationText.textContent = `${phrase.phrase_ru}`;
+                        newTranslationElement.appendChild(translationText);
+                        
+                        // Add a close button
+                        const closeButton = document.createElement('button');
+                        closeButton.textContent = 'X';
+                        closeButton.onclick = function(event) {
+                            event.stopPropagation(); // Prevent the click event from bubbling up
+                            newTranslationElement.style.display = 'none';
+                        };
+                        newTranslationElement.appendChild(closeButton);
+                        // Add the translation popup to the phrase element
+                        phraseElement.appendChild(newTranslationElement);
+                        // Add click event to the phrase element
+                        phraseElement.onclick = function () {
+                            // Hide all translation popups
+                            const translations = document.querySelectorAll('.translation');
+                                translations.forEach(translation => {
+                                    translation.style.display = 'none';
+                            });
+                            // Prevent the click event from bubbling up to the document
+                            event.stopPropagation();
+
+                            // Toggle the display of the translation popup
+                            const translationElement = this.querySelector('.translation');                            
+                            if (translationElement) {
+                                translationElement.style.display =  'block';
+                            }
+                            SpeechEngl(phrase.phrase_en);  // Speak the English text
+                        };
+
+                        phraseElement.setAttribute('rus-text', phrase.phrase_ru); // Add the Russian translation
+                        phraseElement.setAttribute('eng-text', phrase.phrase_en); // Add the English text
+                        // Append the phrase element to the phrase container
+                        phraseContainer.appendChild(phraseElement);
+                    }
+                }
+            });
+            // Append the phrase container to the sentence container
+            if (phraseContainer.childElementCount > 0) {
+                sentenceContainer.appendChild(phraseContainer);
+            }
+        }
+    });
+}
+
+
+
+
+function JsonToContentMD_old() {
+    const jsonData = JSON.parse(jsonData20250502504410f);
+    const phrases = jsonData.phrases;
+    const sentences = jsonData.sentences;
+
+    // Process the sentences
+    sentences.forEach(sentence => {
+
+        if (sentence.split_related && Array.isArray(sentence.split_related)) {
+            // Create a container for the sentence and the play button
+            const sentenceContainer = document.createElement('div');
+            sentenceContainer.className = 'sentence-container';
+
+            // Create the play button
+            const playButton = document.createElement('button');
+            playButton.textContent = 'Play';
+            playButton.style.marginBottom = '5px'; // Add some spacing
+            playButton.onclick = function () {
+                SpeechEngl(sentence.sentenece_en); // Speak the sentence text
+            };
+            sentenceContainer.appendChild(playButton);
+
+            // Create the sentence div
+            const div_sentence = document.createElement('div');
+            div_sentence.className = 'sentence';
+            const splitRelated = sentence.split_related;
+
+            splitRelated.forEach(item => {
+                console.log(item.word_en, item.idphrase);
+                const wordElement = document.createElement('span');
+                wordElement.className = 'word_no-translation';
+                wordElement.textContent = item.word_en; // Add the word text
+
+                // Add translation if available
+                if (item.idphrase && GetPhraseById(item.idphrase)) {
+                    wordElement.className = 'word';
+                    engl1_text = (GetPhraseById(item.idphrase)).phrase_en;
+                    wordElement.setAttribute('rus-text', (GetPhraseById(item.idphrase)).phrase_ru);
+                    wordElement.setAttribute('eng-text', engl1_text);
+                }
+
+                // Append the word element to the sentence div
+                div_sentence.appendChild(wordElement);
+
+                // Add a space after each word
+                const spaceElement = document.createTextNode(' ');
+                div_sentence.appendChild(spaceElement);
+            });
+
+            // Append the sentence div to the container
+            sentenceContainer.appendChild(div_sentence);
+
+            // Append the container to the document body
+            document.body.appendChild(sentenceContainer);
+        }
+    });
+}
+
+function GetPhraseById(id) {
+    const phrases = JSON.parse(jsonData20250502504410f).phrases;
+    const phrase = phrases.find(p => p.idphrase === id);
+    return phrase;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.body.addEventListener('click', function(event) {
+
+            // Hide all translation popups
+        const translations = document.querySelectorAll('.translation');
+            translations.forEach(translation => {
+                translation.style.display = 'none';
+        });
+
+        const target = event.target;
+        if (target.classList.contains('word')) {
+            event.stopPropagation(); // Prevent the click event from bubbling up to the document
+            const phraseRu = target.getAttribute('rus-text');
+            const phraseEn = target.getAttribute('eng-text');
+            if (!phraseRu || !phraseEn) {
+                return; // Exit if no translation is available
+            }
+            let translationElement = target.querySelector('.translation');
+            
+            if (!translationElement) {
+                translationElement = document.createElement('div');
+                translationElement.className = 'translation';
+                
+                // Add the English phrase (phrase_en)
+                const phraseEnEl = document.createElement('div');
+                phraseEnEl.textContent = `${phraseEn}`;
+                phraseEnEl.style.fontWeight = 'bold'; // Optional: Make it bold
+                translationElement.appendChild(phraseEnEl);
+                
+                // Add the Russian translation (phrase_ru)
+                const translationText = document.createElement('div');
+                translationText.textContent = `${phraseRu}`;
+                translationElement.appendChild(translationText);
+                
+                // Add a close button
+                const closeButton = document.createElement('button');
+                closeButton.textContent = 'X';
+                closeButton.onclick = function(event) {
+                    event.stopPropagation(); // Prevent the click event from bubbling up
+                    translationElement.style.display = 'none';
+                };
+                translationElement.appendChild(closeButton);
+
+                target.appendChild(translationElement);
+            }
+            
+            // Toggle the display of the translation popup
+            //translationElement.style.display = translationElement.style.display === 'block' ? 'none' : 'block';
+            translationElement.style.display = 'block';
+            SpeechEngl(phraseEn);  // Speak the English text
+        } 
+        // else {
+        //     // Hide all translation popups when clicking outside
+        //     const translations = document.querySelectorAll('.translation');
+        //     translations.forEach(translation => {
+        //         translation.style.display = 'none';
+        //     });
+        // }
+    });
+});
+    </script>
+
+    <script>
+const jsonData20250502504410f = `
+{ 
+    "phrases": [
+        {
+            "idphrase": 1,
+            "phrase_en": "This led to economic difficulties",
+            "phrase_ru": "Это привело к экономическим трудностям"
+        },        
+        {
+            "idphrase": 2,
+            "phrase_en": "elsewhere",
+            "phrase_ru": "других местах"
+        },
+        {
+            "idphrase": 3,
+            "phrase_en": "their lives",
+            "phrase_ru": "их жизнь"
+        },
+        {
+            "idphrase": 4,
+            "phrase_en": "understand different perspectives",
+            "phrase_ru": "понимать разные точки зрения"
+        },
+        {
+            "idphrase": 5,
+            "phrase_en": "and unite despite political differences.",
+            "phrase_ru": "и объединяться, несмотря на политические разногласия."
+        },                
+        {
+            "idphrase": 6,
+            "phrase_en": "times became even more difficult.",
+            "phrase_ru": "времена стали еще более трудными."
+        },
+        { "idphrase": 7,
+            "phrase_en": "we developed a desire to support",
+            "phrase_ru": "Мы развили желание поддерживать"
+        },
+        { "idphrase": 8,
+            "phrase_en": "This experience proved",
+            "phrase_ru": "Этот опыт доказал"            
+        },
+        {
+            "idphrase": 9,
+            "phrase_en": "hardships",
+            "phrase_ru": "трудности"            
+        },
+        {
+            "idphrase": 10,
+            "phrase_en": "make all the difference",
+            "phrase_ru": "имеют решающее значение"
+        },
+        {
+            "idphrase": 11,
+            "phrase_en": "make all the difference in overcoming hardships.",
+            "phrase_ru": "имеют решающее значение для преодоления трудностей."
+        },
+        {
+            "idphrase": 12,
+            "phrase_en": "we managed to recover 90% of operations within a month.",
+            "phrase_ru": "мы смогли восстановить 90% операций в течение месяца."
+        },
+        {
+            "idphrase": 13,
+            "phrase_en": "will have an advantage",
+            "phrase_ru": "получат преимущество"
+        }     
+
+        
+    ],
+
+"sentences":
+[
+    {
+        "idsentenece": 1,
+        "sentenece_en": "Since 2014, Ukraine has faced challenges after losing Crimea and a major industrial region.",
+        "sentenece_ru": "С 2014 года Украина столкнулась с трудностями после потери Крыма и крупного промышленного региона."
+        
+    },    
+    {
+        "idsentenece": 2,
+        "sentenece_en": "This led to economic difficulties, business struggles, and many people leaving the country to rebuild their lives elsewhere.",
+        "sentenece_ru": "Это привело к экономическим трудностям, проблемам в бизнесе и множеству людей, покидающих страну, чтобы начать жизнь заново в других местах."        
+    },
+    {
+        "idsentenece": 3,
+        "sentenece_en": "As a result, communities have learned to support each other, understand different perspectives, and unite despite political differences.",
+        "sentenece_ru": "в результате сообщества научились поддерживать друг друга, понимать разные точки зрения."
+        
+    },
+    {
+        "idsentenece": 4,
+        "sentenece_en": "Working together as a team has become essential for overcoming challenges and achieving success.",
+        "sentenece_ru": "Работа в команде стала необходимой для преодоления трудностей и достижения успеха."
+    },    
+    {
+        "idsentenece": 5,
+        "sentenece_en": "Since 2022, when the full-scale war began, times became even more difficult.",
+        "sentenece_ru": "С 2022 года, когда началась полномасштабная война, времена стали еще более трудными."
+    },
+    {
+        "idsentenece": 6,
+        "sentenece_en": "We learned to appreciate each other more and understood the true value of teamwork.",
+        "sentenece_ru": "Мы научились больше ценить друг друга и поняли истинную ценность командной работы."
+    },
+    {
+        "idsentenece": 7,
+        "sentenece_en": "Through this experience, we developed a desire to support and motivate one another, which helped us achieve great results—unlike other departments focused more on individual expertise, quick profits, and bonuses. One major challenge we faced was a serious hacker attack, where we lost a lot of critical data and systems.",
+        "sentenece_ru": "В результате этого опыта мы развили сильное желание поддерживать и мотивировать друг друга, что помогло нам достичь отличных результатов, в отличие от других отделов, сосредоточенных больше на индивидуальной экспертизе, быстрой прибыли и бонусах. Одной из основных проблем, с которыми мы столкнулись, была серьезная хакерская атака, в результате которой мы потеряли много критически важных данных и систем."
+    },
+    {
+        "idsentenece": 8,
+        "sentenece_en": "But thanks to our well-coordinated teamwork, we managed to recover 90% of operations within a month. This experience proved that working together, trusting each other, and staying focused make all the difference in overcoming hardships.",
+        "sentenece_ru": "Но благодаря нашей хорошо скоординированной командной работе мы смогли восстановить 90% операций в течение месяца. Этот опыт доказал, что совместная работа, доверие друг другу и сосредоточенность имеют решающее значение для преодоления трудностей."
+    },
+    {
+        "idsentenece": 9,
+        "sentenece_en": "This experience proved that working together, trusting each other, and staying focused make all the difference in overcoming hardships.",
+        "sentenece_ru": "Этот опыт доказал, что совместная работа, доверие друг другу и сосредоточенность имеют решающее значение для преодоления трудностей."
+    },
+    {
+        "idsentenece": 10,
+        "sentenece_en": "From Copilot. In the last 1–2 years, AI has started to be used in many types of work. In Ukraine, some companies are reducing the number of workers and using AI instead. Now, one worker with AI tools can do the job of 3–5 people.",
+        "sentenece_ru": "Из Копилота. В последние 1–2 года ИИ начал использоваться во многих типах работ. В Украине некоторые компании сокращают количество работников и вместо этого используют ИИ. Теперь один работник с инструментами ИИ может выполнять работу 3–5 человек."
+    },
+    {
+        "idsentenece": 11,
+        "sentenece_en": "Today, we see where AI is being used, but in the future, it might appear in unexpected places. Companies that start using AI quickly will have an advantage, while others who wait might fall behind.",
+        "sentenece_ru": "Сегодня мы видим, где используется ИИ, но в будущем он может появиться в неожиданных местах. Компании, которые начнут быстро использовать ИИ, получат преимущество, в то время как другие, кто будет ждать, могут отстать."
+    }
+
+]
+
+}
+        
+`;
+
+    </script>
+
+</head>
+<body onload="MainFunc()">
+
+    <!-- <p>
+        <span class="word" data-translation="Привет">Hello</span>
+        <span class="word" data-translation="мир">world</span>!
+    </p>
+    <p>
+        <span class="word" data-translation="это">This</span>
+        <span class="word" data-translation="есть">is</span>
+        <span class="word" data-translation="один">an</span>
+        <span class="word" data-translation="пример">example</span>
+        <span class="word" data-translation="из">of</span>
+        <span class="word" data-translation="один">an</span>
+        <span class="word" data-translation="интерактивный">interactive</span>
+        <span class="word" data-translation="перевод">translation</span>
+        <span class="word" data-translation="страница">page</span>.
+    </p>
+
+    <p>
+        <span class="word" data-translation="Привет">Hello</span>
+        <span class="word" data-translation="мир">world</span>!
+    </p>
+    <p>
+        <span class="word" data-translation="это">This</span>
+        <span class="word" data-translation="есть">is</span>
+        <span class="word" data-translation="один">an</span>
+        <span class="word" data-translation="пример">example</span>
+        <span class="word" data-translation="из">of</span>
+        <span class="word" data-translation="один">an</span>
+        <span class="word" data-translation="интерактивный">interactive</span>
+        <span class="word" data-translation="перевод">translation</span>
+        <span class="word" data-translation="страница">page</span>.
+    </p> -->
+
+
+</body>
+</html>
