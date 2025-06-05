@@ -1,0 +1,185 @@
+// begin of  ./js/global_var.js - Global variable to hold the configuration and state
+var gv = {
+  cst: {
+    FBSets: null,
+    config_phrase: null
+  },
+  sts: {
+    vdata1: null
+  }
+};
+// end of ./js/global_var.js
+
+
+
+// Function to handle control Phrase text click END
+
+
+function MainFunc() {  
+  init().then(() => {
+    console.log("Initialization complete.");
+  }).catch(error => {
+    console.error("Error during initialization:", error);
+  });
+}
+
+async function init() {  
+  gv.cst.FBSets = Init_LoginFireBaseSets();
+  await this.LoginFireBase(gv.cst);
+}
+
+function Init_LoginFireBaseSets(){
+  let apiKey1 = "AIzaSyD30jGLtBWI9IhZdsOolPLPYo6MCqYj7Lw";
+  let oj = {
+    email:"saboo1@urm.se",
+    password:"B0u_1hg81apAqw",
+    UrlTrans1: `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey1}`,
+    UrlPost1: "https://engapp-2025-default-rtdb.europe-west1.firebasedatabase.app/text_phrase_obj.json?auth=",  
+    idToken: ""
+  };      
+  return oj;
+}
+
+async function LoginFireBase(cst1) {
+    FBSets = cst1.FBSets;
+    //FBSets = cst1;
+    const email = FBSets.email;
+    const password = FBSets.password;
+    const aUrlTrans1 = FBSets.UrlTrans1;
+    const body1 = JSON.stringify({ email, password, returnSecureToken: true });
+    const post_obj = {
+        method: 'post',
+        body: body1,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    const response = await fetch(aUrlTrans1, post_obj);
+    const vdata = await response.json();
+    FBSets.idToken = vdata.idToken;
+    await this.CallBackLoginFireBase();
+}
+
+async function CallBackLoginFireBase() {
+  let arr1 = null;
+  await RequestArrFireBase(arr1, 'GET');
+}
+
+async function RequestArrFireBase(vobj, ametod) {
+    let cst1 = window.gv && window.gv.cst ? window.gv.cst : (this.gv ? this.gv.cst : null);
+    let jsn1 = "";
+    let post_obj = null;
+    if (vobj != null) {
+        jsn1 = JSON.stringify(vobj);
+        post_obj = {
+            method: ametod,
+            body: jsn1,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+    }
+    let aurl = cst1.FBSets.UrlPost1 + cst1.FBSets.idToken;
+    const response = await fetch(aurl, post_obj);
+    let vdata = await response.json();
+    if (ametod == 'GET') {
+        if (typeof CB_AfterGet === 'function') {
+            await CB_AfterGet(cst1, vdata);
+        }
+    }
+    if (ametod == 'PATCH') {
+        if (typeof CB_AfterPatch === 'function') {
+            await CB_AfterPatch(cst1, vdata);
+        }
+    }
+}
+
+async function CB_AfterGet(cst1, vdata) {
+    let sts1 = gv.sts;
+    gv.vdata1 = vdata;
+    sts1.sentences = vdata["sentences"];
+    sts1.phrases = vdata["phrases"];
+    sts1.article_text = vdata["article_text"];
+    sts1.config_phrase = vdata["config_phrase"];
+    sts1.sentences_for_processing = null;   
+    AfterRequest_FireBase();
+}
+
+async function CB_AfterPatch(cst1, vdata) {
+    let sts1 = gv.sts;
+    gv.vdata1 = vdata;
+    sts1.sentences = vdata["sentences"];
+    sts1.phrases = vdata["phrases"];
+    sts1.article_text = vdata["article_text"];
+    sts1.config_phrase = vdata["config_phrase"];
+    sts1.sentences_for_processing = null;    
+    AfterRequest_FireBase();
+}
+
+
+function AfterRequest_FireBase() {
+  TypeProgram = gv.sts.config_phrase.CurProgramType;
+   if (TypeProgram === "ArticleText") {
+       Main_ArticleText_LoadDataToHTML();
+   } else if (TypeProgram === "Phrase") {
+       Main_Phrase_LoadDataToHTML();
+   } else if (TypeProgram === "VoiceArticleText") {
+       Main_VoiceArticleText_LoadDataToHTML();
+   }
+   else {
+       SetDBCurProgramType("Phrase");
+   }
+}
+
+
+function Click_Main_Phrase_LoadDataToHTML() {
+    SetDBCurProgramType("Phrase");  
+    Main_Phrase_LoadDataToHTML();
+}
+function Click_Main_ArticleText_LoadDataToHTML() {
+    SetDBCurProgramType("ArticleText");
+    Main_ArticleText_LoadDataToHTML();
+}
+
+function Main_Phrase_LoadDataToHTML() {
+   build_Phrase_MainUI();
+   LoadSentences();
+}
+
+function Main_ArticleText_LoadDataToHTML(){
+    build_ArticleTextEnter_MainUI();    
+}
+
+function Click_Main_VoiceArticleText_LoadDataToHTML(){
+   SetDBCurProgramType("VoiceArticleText");
+   Main_VoiceArticleText_LoadDataToHTML();
+}
+function Main_VoiceArticleText_LoadDataToHTML() {
+  build_VoiceArticleText_MainUI();
+}
+
+
+function get_article_items(cur_idarticle_text) {
+    let article_text = gv.sts.article_text;
+    if (!article_text) return null;
+    const item = article_text.find(item => item.idarticle_text == cur_idarticle_text);
+    return item ? item.items : null;
+}
+
+function get_sentence(idsentence) {
+    let sentences = gv.sts.sentences;
+    if (!sentences) return null;
+    const item = sentences.find(item => item.idsentence == idsentence);
+    return item ? item : null;
+}
+
+
+function SetDBCurProgramType(programType) {
+  config = gv.sts.config_phrase;
+  config.CurProgramType = programType;
+  gv.sts.config_phrase = config;
+  let vdata = gv.vdata1;
+  if (!vdata) return;
+  vdata["config_phrase"] = config;
+  RequestArrFireBase(vdata, 'PATCH');  
+}
