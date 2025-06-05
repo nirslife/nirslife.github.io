@@ -1,4 +1,7 @@
 function build_Phrase_MainUI() {
+
+  Phrase_createStyles();
+  
   // Clear body
   document.body.innerHTML = '';
 
@@ -13,6 +16,7 @@ function build_Phrase_MainUI() {
   controlDivTop.innerHTML = `
     <div class="button_controlsentences" onclick="NextSentence()">Next Sentence</div>
     <div class="button_controlsentences" onclick="SavePhraseToFireBase()">Save Phrase to Base</div>
+    <div class="button_controlsentences" onclick="EditSentence()">Edit Sentence</div>
   `;
   document.body.appendChild(controlDivTop);
 
@@ -60,64 +64,6 @@ function build_Phrase_MainUI() {
 
 }
 
-function build_ArticleTextEnter_MainUI(){
-  // Clear body
-  document.body.innerHTML = '';
-
-  // Header
-  const header = document.createElement('div');
-  header.id = 'header1';
-  document.body.appendChild(header);
-
-  // // Top controls
-  // const controlDivTop = document.createElement('div');
-  // controlDivTop.id = 'control_div';
-  // controlDivTop.innerHTML = `
-  //   <div class="button_controlsentences" onclick="NextSentence()">Next Sentence</div>
-  //   <div class="button_controlsentences" onclick="SavePhraseToFireBase()">Save Article Text to Base</div>
-  // `;
-  // document.body.appendChild(controlDivTop);
-
-
-    // English Name text
-  const textArt_Name = document.createElement('div');
-  textArt_Name.id = 'articletext_name';
-  textArt_Name.innerHTML = `
-<div id="input_text_area_container">
-  <label for="input_name_text_area">Enter name article:</label><br>
-  <input type="text" id="input_name_text_area" placeholder="Type your name here..." />
-</div>
-  `;
-  document.body.appendChild(textArt_Name);
-
-  // English text area
-  const textArtInPut = document.createElement('div');
-  textArtInPut.id = 'article_text_input';
-  textArtInPut.innerHTML = `
-  <label for="input_textbody_area">Enter your article text:</label><br>
-  <textarea id="input_textbody_area" rows="50" cols="50" placeholder="Type your article text here..."></textarea>
-  <br>
-  <button id="checksplit_text_button" class="button_controlsentences" onclick="CheckSplitArticleText()">Check Article Text</button>
-
-  `;
-
-
-
-  document.body.appendChild(textArtInPut);
-
-    // Info
-  const infoDiv = document.createElement('div');
-  infoDiv.id = 'info_div';
-  document.body.appendChild(infoDiv);
-
-
-  build_forall_MainUI();
-}
-
-  
-
-
-
 function build_VoiceArticleText_MainUI() {
   // Clear body
   document.body.innerHTML = '';
@@ -133,3 +79,77 @@ function build_VoiceArticleText_MainUI() {
   build_forall_MainUI();
 };
 
+
+function Phrase_createStyles() {
+  const style = document.createElement('style');
+  style.textContent = `
+
+.phrase {
+  margin: 12px 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #f0f8ff;
+  border: 1px solid #b3d8fd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.button_add_phrase,
+.button_remove_phrase {
+  display: inline-block;
+  background: #4da6ff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 22px;
+  margin: 10px 8px 0 0;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 6px rgba(77,166,255,0.08);
+  text-align: center;
+  user-select: none;
+}
+
+.button_add_phrase:hover,
+.button_remove_phrase:hover {
+  background: #357ec7;
+}
+
+.button_controlsentences {
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  min-height: 30px;
+  border-radius: 7px;
+  padding: 12px 28px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 12px 20px 12px 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(30,144,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+.button_controlsentences:hover {
+  background: #156ec1;
+  box-shadow: 0 4px 16px rgba(30,144,255,0.18);
+}
+
+#control_div {
+  margin: 24px 0 24px 0;
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+  `;
+  document.head.appendChild(style);
+}

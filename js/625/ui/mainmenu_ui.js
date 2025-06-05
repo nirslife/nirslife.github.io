@@ -24,6 +24,7 @@ function build_forall_MainUI() {
 
   const mainMenu = document.createElement('div');
   mainMenu.id = 'main_menu';
+  mainMenu.style.display = 'none';
     mainMenu.innerHTML = `
       <div class="button_mmenu_items btn_next1" onclick="Click_Next_ArticleText()"> NEXT Article Text -> </div>
       <div class="button_mmenu_items" onclick="Click_Main_Phrase_LoadDataToHTML()">..1.. Phrase</div>
@@ -39,7 +40,7 @@ function build_forall_MainUI() {
   toggleMenuButton.id = 'toggleMainMenuButton';
   toggleMenuButton.innerText = '☰ Main Menu';
   toggleMenuButton.onclick = function() {
-    if (mainMenu.style.display === 'none') {
+  if (mainMenu.style.display === 'none') {
       mainMenu.style.display = 'block';
     } else {
       mainMenu.style.display = 'none';
@@ -48,9 +49,6 @@ function build_forall_MainUI() {
   document.body.appendChild(toggleMenuButton);
   // Close main menu function
 
-  function CloseMainMenu() {
-    mainMenu.style.display = 'none';
-  }
 
 
   // Scroll to top button
@@ -67,38 +65,6 @@ function build_forall_MainUI() {
   scrollToTop();
 }
 
-function MainMenu_createStyleForAll() {
-   MainMenu_createStyleForMainMenu();
-   MainMenu_createStyleForscrollBtn();
-   MainMenu_createStyleForItemsMenu();
-}
-
-function MainMenu_createStyleForscrollBtn() {
-  const style = document.createElement('style');
-  style.innerHTML = `
-    #scrollToTopBtn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 1000;
-      display: none;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      padding: 10px 15px;
-      font-size: 18px;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: background 0.2s;
-    }
-    #scrollToTopBtn:hover {
-      background-color: #0056b3;
-    }
-  `;
-  document.head.appendChild(style);   
-
-}
 
 function MainMenu_createStyleForMainMenu() {
   const style = document.createElement('style');
@@ -133,6 +99,8 @@ function MainMenu_createStyleForMainMenu() {
       border: none;
       padding: 10px 15px;
       cursor: pointer;
+      display: block; /* Make it visible */
+      border-radius: 5px;
     }
     #toggleMainMenuButton:hover {
       background-color: #0056b3;
@@ -184,3 +152,36 @@ function MainMenu_createStyleForItemsMenu() {
 //     }
 }
 
+
+function MainMenu_createStyleForAll() {
+   MainMenu_createStyleForMainMenu();
+   MainMenu_createStyleForscrollBtn();
+   MainMenu_createStyleForItemsMenu();
+}
+
+function MainMenu_createStyleForscrollBtn() {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    #scrollToTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+      display: none;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: background 0.2s;
+    }
+    #scrollToTopBtn:hover {
+      background-color: #0056b3;
+    }
+  `;
+  document.head.appendChild(style);   
+
+}

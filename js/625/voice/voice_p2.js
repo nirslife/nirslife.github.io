@@ -74,7 +74,7 @@ function JsonToContentMD() {
                         inx++;
                         const phraseElement = document.createElement('div');
                         phraseElement.className = 'phrase-marker_voice';
-                        phraseElement.textContent = phrase.phrase_en.substring(0, 8);
+                        phraseElement.textContent = phrase.phrase_en.substring(0, 15);
                         const newTranslationElement = document.createElement('div');
                         newTranslationElement.className = 'translation_voice';
                         // Add the English phrase (phrase_en)
@@ -201,13 +201,15 @@ function VoiceP2_createStyles() {
 
 .phrase-marker_voice {
     display: inline-block;
-    min-width: 20px;
-    margin-left: 35px;
+    min-width: 40px;
+    min-height: 30px;
+    margin-left: 45px;
+    border-radius: 3px;
     cursor: pointer;
     color: white;
     background-color:rgb(46, 157, 167);
     font-weight: normal;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .phrase-marker_voice:hover {

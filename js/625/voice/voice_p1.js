@@ -20,13 +20,6 @@ function addVoiceSelectionDropdown() {
             SpeechEngl("Selected voice: " + selectedVoice.name);
         }
     };
-    // selectElm.onclick = function(athis){
-    //    let selectedOption = athis.options[athis.selectedIndex];
-    //    let inx = selectedOption.getAttribute('index_i');
-    //    if (inx) {        
-    //        document.getElementById("idlabel_selected").innerHTML = 'Selected Voice (EN-US): ' + (voices[VoiceENIndex] ? voices[VoiceENIndex].name : 'None');
-    //    }    
-    // }
     
     // add the div for margin
     var marginDiv = document.createElement('div');
@@ -100,13 +93,5 @@ function SpeechEngl(text1){
   ms = new SpeechSynthesisUtterance();
   ms.voice = voices[VoiceENIndex];
   ms.text = text1;  
-  // if it is mobile device, use the 195 voice
-//   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-//     //VoiceENIndex = 195; // Mobile voice index
-// //    const voices = window.speechSynthesis.getVoices();
-//     ms.voice = voices[VoiceENIndex];
-//   } else {
-//     //VoiceENIndex = 0; // Desktop voice index
-//   } 
   window.speechSynthesis.speak(ms);
 }

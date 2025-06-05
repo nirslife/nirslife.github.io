@@ -38,6 +38,7 @@ function LoadSentencesToHTML(idsentence) {
     let puzzleBlockDiv = document.getElementById('div_puzzletextfrom1');
     let div_inputtextfrom1 = document.getElementById('div_inputtextfrom1');
     let textfrom1 = document.getElementById('textfrom1');
+    textfrom1.setAttribute('idsentence', idsentence);
     // Clear the input text div
     puzzleBlockDiv.innerHTML = '';
     div_inputtextfrom1.innerHTML = '';
@@ -146,12 +147,6 @@ function SetProcessedSentence(vdata, idsrc_sentence) {
             console.log(`No item found with idsentence: ${idsrc_sentence}`);
         }
     }
-    // let sentences = vdata["sentences"];
-    // if (!sentences) return;
-    // let sentence = sentences.find(item => item.idsentence === idsrc_sentence);
-    // if (sentence) {
-    //     sentence.processed = 1; 
-    // }
 }
 
 function NextSentence() {  
@@ -164,3 +159,59 @@ function NextSentence() {
         console.log("No article items found for the given cur_idarticle_text.");
     }
 }
+
+function EditSentence() {
+    // Get the current sentence ID from the textfrom1 div
+    const textfrom1 = document.getElementById('textfrom1');
+    if (!textfrom1) {
+        console.error("textfrom1 div not found.");
+        return;
+    }
+    const idsentence = Number(textfrom1.getAttribute('idsentence'));
+    if (!idsentence) {
+        console.error("No idsentence attribute found in textfrom1 div.");
+        return;
+    }
+    // Get the current sentence text
+    const sentence = get_sentence(idsentence);
+    if (!sentence) {
+        console.error(`No sentence found with id: ${idsentence}`);
+        return;
+    }
+    // Create a new input field to edit the sentence
+    const inputField = document.createElement('textarea');
+    // <textarea id="input_textbody_area" rows="50" cols="50" placeholder="Type your article text here..."></textarea>
+    inputField.type = 'textarea';
+    inputField.id = 'input_textbody_area';
+    inputField.rows = 7; // Set the number of rows for the textarea
+    inputField.cols = 80; // Set the number of columns for the textarea
+    inputField.value = sentence.sentence_en; // Set the current sentence text
+    inputField.style.width = '100%'; // Make the input field take full width
+    // Set the input field to be editable
+    inputField.onblur = function() {
+    // Update the sentence in the global variable    
+        const sentenceObj = gv.sts.sentences.find(s => s.idsentence === idsentence);
+        if (sentenceObj) {
+            sentenceObj.sentence_en = this.value;
+        }
+        textfrom1.textContent = this.value; // Update the textfrom1 div with the new sentence
+        this.remove(); // Remove the input field after editing
+        gv.sts.config_phrase.curpos_idsentence = idsentence;
+        SaveSentenceToFirebase();
+    };
+
+    //add the input field to the textfrom1 div
+    textfrom1.innerHTML = ''; // Clear the current content
+    textfrom1.appendChild(inputField); // Append the input field
+    inputField.focus(); // Focus on the input field for editing  
+
+}
+
+function SaveSentenceToFirebase() {
+  let vdata = gv.vdata1;
+  if (!vdata) return;
+  vdata["sentences"] = gv.sts.sentences;
+  vdata["config_phrase"].curpos_idsentence = gv.sts.config_phrase.curpos_idsentence;
+  RequestArrFireBase(vdata, 'PATCH');
+}
+
