@@ -73,9 +73,11 @@ function LoadSentencesToHTML(idsentence) {
 function LoadSentences() {
     let sts1 = gv.sts;    
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
+    let curpos_idsentence = sts1.config_phrase.idsentence;
+    if (!cur_idarticle_text) { cur_idarticle_text = -1; }     
     let article_items = get_article_items(cur_idarticle_text);
     if (article_items) {
-        LoadNextSentenceNotProcessed(article_items, -1);        
+        LoadNextSentenceNotProcessed(article_items, curpos_idsentence);
     }
 }
 
@@ -196,7 +198,7 @@ function EditSentence() {
         }
         textfrom1.textContent = this.value; // Update the textfrom1 div with the new sentence
         this.remove(); // Remove the input field after editing
-        gv.sts.config_phrase.curpos_idsentence = idsentence;
+        gv.sts.config_phrase.idsentence = idsentence;
         SaveSentenceToFirebase();
     };
 
@@ -211,7 +213,7 @@ function SaveSentenceToFirebase() {
   let vdata = gv.vdata1;
   if (!vdata) return;
   vdata["sentences"] = gv.sts.sentences;
-  vdata["config_phrase"].curpos_idsentence = gv.sts.config_phrase.curpos_idsentence;
+  vdata["config_phrase"].idsentence = gv.sts.config_phrase.idsentence;
   RequestArrFireBase(vdata, 'PATCH');
 }
 

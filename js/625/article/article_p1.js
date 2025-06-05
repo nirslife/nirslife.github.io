@@ -46,9 +46,13 @@ function CheckSplitArticleText() {
     if (infoDiv) {
         infoDiv.innerHTML = `<h3>Sentences from the article text:</h3>`;
         sentences.forEach((sentence, index) => {
+            const sentNumDiv = document.createElement('span');
+            sentNumDiv.className = 'sentence-number';
+            sentNumDiv.textContent = `${index + 1}. `;
+            infoDiv.appendChild(sentNumDiv);
             const sentenceDiv = document.createElement('div');
             sentenceDiv.className = 'sentence-item-article';
-            sentenceDiv.textContent = `${index + 1}. ${sentence}`;
+            sentenceDiv.textContent = `${sentence}`;
             infoDiv.appendChild(sentenceDiv);
         });
     } else {
@@ -112,6 +116,10 @@ function SaveArticleTextToFireBase(){
         items: itemsart
     };
     article_text.push(articletextData);
+
+    gv.sts.config_phrase.gen_id_sentence = gen_id_sentence;
+    vdata["config_phrase"].gen_id_sentence = gv.sts.config_phrase.gen_id_sentence;
+
     // Send the updated vdata to Firebase
     RequestArrFireBase(vdata, 'PATCH');
 }

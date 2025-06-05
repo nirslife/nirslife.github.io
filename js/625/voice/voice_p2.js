@@ -129,7 +129,70 @@ function JsonToContentMD() {
             }
         }
     });
+
+    AddExportButton();
+
 }
+
+function AddExportButton() {
+    // add button in the end of the body for the export 
+    const exportButton = document.createElement('button');
+    exportButton.textContent = 'Export to Markdown';
+    exportButton.className = 'button_controlsentences';
+    exportButton.onclick = function () {
+        let sts1 = gv.sts;    
+        let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
+        let article_items = get_article_items(cur_idarticle_text);    
+        if (!article_items) {
+            console.error("No article items found for the given cur_idarticle_text.");
+            return;        
+        }
+
+        let exp_phrases = [];
+        let phrases = gv.sts.phrases || [];
+        article_items.forEach(item => {
+            phrases.forEach(phrase => {
+                if (phrase.src_sentence === item.idsentence) {
+                    if (!phrase.phrase_ru || phrase.phrase_ru.length < 3) {
+                        exp_phrases.push(phrase);
+                    }
+                }
+            });
+        });
+        if (exp_phrases.length > 0) { SaveExportedPhrasesToFirebase(exp_phrases); }
+
+    };
+    document.body.appendChild(exportButton);
+}
+
+function SaveExportedPhrasesToFirebase(exp_phrases) {
+  // create a logic for download json exp_phrases from html
+  const json = JSON.stringify(exp_phrases);
+  // add after every phrase new line  
+  const jsonWithNewLines = json.replace(/},/g, '},\n');
+  // add new line after  `,"`
+  const jsonWithNewLines2 = jsonWithNewLines.replace(/,"/g, ',\n"');
+  // create a blob from the json string
+  const blob = new Blob([jsonWithNewLines2], { type: 'application/json' });  
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'exported_phrases.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+
+  let vdata = gv.vdata1;
+  if (!vdata) return;
+  if (!vdata["exp_phrases"]) {
+      vdata["exp_phrases"] = [];
+  }
+  vdata["exp_phrases"] = exp_phrases;
+  RequestArrFireBase(vdata, 'PATCH');
+}
+
 
 function VoiceP2_createStyles() {
     const style = document.createElement('style');
