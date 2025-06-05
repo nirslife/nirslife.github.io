@@ -1,19 +1,4 @@
-function Click_Next_ArticleText() {
-  // Logic to handle the next article text action
-  let article_text = vdata["article_text"];
-  // Get the current article text ID
-  let cur_idarticle_text = vdata["config_phrase"].cur_idarticle_text;  
-  // Find the next article text
-  let nextArticleText = article_text.find(item => item.idarticle_text > cur_idarticle_text);
-  if (nextArticleText) {
-    // Update the current article text ID
-    vdata["config_phrase"].cur_idarticle_text = nextArticleText.idarticle_text;
-    // Load the next article text into the HTML
-    Main_ArticleText_LoadDataToHTML();
-  } else {
-    alert("No more article texts available.");
-  }
-}
+
 
 
 function CheckSplitArticleText() {
@@ -144,12 +129,28 @@ function Click_Next_ArticleText() {
     gv.sts.config_phrase.cur_idarticle_text = nextArticleText.idarticle_text;
   } else {
     // find the first article text
-    firstArticleText = article_text[0].idarticle_text;
+  let firstArticleText = article_text[0].idarticle_text;
     if (firstArticleText) {
       gv.sts.config_phrase.cur_idarticle_text = firstArticleText;
     }
-  }
-  // Load the next article text into the HTML
-  Main_Phrase_LoadDataToHTML();
+  }  
+  AfterRequest_FireBase();
 }
+
+// function Click_Next_ArticleText() {
+//   // Logic to handle the next article text action
+//   let article_text = vdata["article_text"];
+//   // Get the current article text ID
+//   let cur_idarticle_text = vdata["config_phrase"].cur_idarticle_text;  
+//   // Find the next article text
+//   let nextArticleText = article_text.find(item => item.idarticle_text > cur_idarticle_text);
+//   if (nextArticleText) {
+//     // Update the current article text ID
+//     vdata["config_phrase"].cur_idarticle_text = nextArticleText.idarticle_text;
+//     // Load the next article text into the HTML
+//     Main_ArticleText_LoadDataToHTML();
+//   } else {
+//     alert("No more article texts available.");
+//   }
+// }
 

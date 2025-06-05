@@ -115,52 +115,7 @@ function build_ArticleTextEnter_MainUI(){
 }
 
   
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
 
-// Show button when scrolled down
-window.onscroll = function() {
-  const btn = document.getElementById('scrollToTopBtn');
-  if (!btn) return;
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-    btn.style.display = "block";
-  } else {
-    btn.style.display = "none";
-  }
-};
-
-function build_forall_MainUI() {
-
-  // Main menu bottom
-  const mainMenuBottom = document.createElement('div');
-  mainMenuBottom.id = 'main_menu_bottom';
-  if (mainMenuBottom) {
-      mainMenuBottom.innerHTML = `
-    <div class="button_controlsentences" onclick="Click_Main_Phrase_LoadDataToHTML()">Phrase</div>
-    <div class="button_controlsentences" onclick="Click_Main_ArticleText_LoadDataToHTML()">Import Article Text</div>
-    <div class="button_controlsentences" onclick="Click_Main_VoiceArticleText_LoadDataToHTML()">Voice Article Text</div>
-    <div class="button_controlsentences" onclick="Click_Next_ArticleText()"> NEXT Article Text</div>
-    `;
-
-  }
-  document.body.appendChild(mainMenuBottom);
-
-  // Scroll to top button
-  const scrollBtn = document.createElement('button');
-  scrollBtn.id = 'scrollToTopBtn';
-  scrollBtn.className = 'button_controlsentences';
-  scrollBtn.setAttribute('onclick', 'scrollToTop()');
-  scrollBtn.style.position = 'fixed';
-  scrollBtn.style.bottom = '30px';
-  scrollBtn.style.right = '30px';
-  scrollBtn.style.zIndex = '1000';
-  scrollBtn.style.display = 'none';
-  scrollBtn.innerText = '↑ Top';
-  document.body.appendChild(scrollBtn);
-
-  scrollToTop();
-}
 
 
 function build_VoiceArticleText_MainUI() {

@@ -378,87 +378,86 @@
   align-items: center;
 }
 
-        .sentence_voice {
-            margin-bottom: 10px; /* Add some space between sentences */            
-            display: block;
-        }
-        
-        .word_no-translation_voice {            
-            display: inline-block;
-            position: relative;
-        }
-        
-        .word_voice {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-        }
-        
-        .word_voice:hover {
-            background-color: yellow;
-        }
-        
-        .translation_voice {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            border: 1px solid #ccc;
-            padding: 10px; /* Increase padding for better spacing */
-            z-index: 1;
-            width: 250px; /* Set a larger width */
-            height: auto; /* Allow height to adjust based on content */
-            font-size: 14px; /* Adjust font size */
-            border-radius: 5px; /* Optional: Add rounded corners */
-            color: black; /* Set text color */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
-            transition: opacity 0.3s ease; /* Smooth transition for visibility */
-            opacity: 0.9; /* Slightly transparent background */
-            max-width: 300px; /* Set a maximum width */
-            word-wrap: break-word; /* Allow long words to break and wrap */
-            line-height: 1.5; /* Increase line height for better readability */
-            text-align: left; /* Align text to the left */
-            font-family: Arial, sans-serif; /* Set a readable font */
-            box-sizing: border-box; /* Ensure padding is included in width */
-            padding: 15px; /* Increase padding for better spacing */
-            margin-top: 5px; /* Add some space above the translation box */
-            margin-left: 5px; /* Add some space to the left of the translation box */
-            display: none; /* Initially hidden */
-            transition: all 0.3s ease; /* Smooth transition for visibility */
-        }
-        
-        .translation_voice button {
-            position: absolute;
-            top: 5px; /* Position the button 5px from the top */
-            right: 5px; /* Position the button 5px from the right */
-            background: transparent; /* Make the button background transparent */
-            border: none; /* Remove the button border */
-            font-size: 14px; /* Adjust the font size */
-            cursor: pointer; /* Change the cursor to a pointer */
-        }
+/* .sentence_voice {
+    margin-bottom: 10px; 
+    display: block;
+}
 
-        .translation_voice button:hover {
-            color: red; /* Optional: Change the color on hover */
-        }
-        
-        .phrase-container_voice {
-            margin-top: 10px; /* Add some space above the phrase container */
-            margin-left: 20px; 
-            display: block;
-        }
-        .phrase-marker_voice {
-            display: inline-block;
-            margin-right: 35px; /* Add some space between phrase markers */
-            cursor: pointer; /* Make it clickable */
-            color: blue; /* Optional: Change color to indicate it's clickable */
-        }
-        .phrase-marker_voice:hover {
-            text-decoration: underline; /* Optional: Underline on hover */
-        }
+.word_no-translation_voice {            
+    display: inline-block;
+    position: relative;
+}
 
-        .sentence-container_voice {
-            margin-bottom: 15px; /* Add some space between sentence containers */
-        }
+.word_voice {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+}
 
-        .sentence-container_voice button {
-            margin-bottom: 5px; /* Add some spacing below the play button */
-        }
+.word_voice:hover {
+    background-color: yellow;
+}
+
+.translation_voice {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 15px;
+    z-index: 1;
+    width: 250px;
+    height: auto;
+    font-size: 14px;
+    border-radius: 5px;
+    color: black;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    opacity: 0.9;
+    max-width: 300px;
+    word-wrap: break-word;
+    line-height: 1.5;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.translation_voice button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.translation_voice button:hover {
+    color: red;
+}
+
+.phrase-container_voice {
+    margin-top: 10px;
+    margin-left: 20px;
+    display: block;
+}
+
+.phrase-marker_voice {
+    display: inline-block;
+    margin-right: 35px;
+    cursor: pointer;
+    color: blue;
+}
+
+.phrase-marker_voice:hover {
+    text-decoration: underline;
+}
+
+.sentence-container_voice {
+    margin-bottom: 15px;
+}
+
+.sentence-container_voice button {
+    margin-bottom: 5px;
+} */

@@ -27,13 +27,27 @@ function addVoiceSelectionDropdown() {
     //        document.getElementById("idlabel_selected").innerHTML = 'Selected Voice (EN-US): ' + (voices[VoiceENIndex] ? voices[VoiceENIndex].name : 'None');
     //    }    
     // }
-    document.body.appendChild(selectElm);
+    
+    // add the div for margin
+    var marginDiv = document.createElement('div');
+    marginDiv.id = 'marginDivVoiceEN_US';
+    marginDiv.style.marginBottom = '10px'; // Add some spacing below the dropdown
+    marginDiv.style.borderRadius = '5px'; // Add some border radius for better appearance
+    marginDiv.style.border = '1px solid #ccc'; // Add a border for better visibility
+    marginDiv.style.padding = '10px'; // Add some padding for better appearance
+    marginDiv.style.backgroundColor = '#f9f9f9'; // Add a light background color for better visibility
+
+
+    marginDiv.appendChild(selectElm);
+    document.body.appendChild(marginDiv); // Append the margin div to the body   
 
     // Populate the voice list and add labels after voices are loaded
     populateVoiceEN_USList();
 }
 
 async function populateVoiceEN_USList() {
+     let marginDiv = document.getElementById('marginDivVoiceEN_US');    
+
     voices = await window.speechSynthesis.getVoices();
     if (voices.length === 0) {
         // If voices are not loaded yet, wait for them to load
@@ -70,7 +84,7 @@ async function populateVoiceEN_USList() {
     label1.innerHTML = 'Selected Voice (EN-US): ' + (voices[VoiceENIndex] ? voices[VoiceENIndex].name : 'None');
     label1.style.display = 'block'; // Make the label block-level for better spacing
     label1.style.marginBottom = '5px'; // Add some spacing below the label
-    document.body.insertBefore(label1, selectElm); // Insert label before the dropdown
+    marginDiv.insertBefore(label1, selectElm); // Insert label before the dropdown
 
     // Add a label for the dropdown
     var label = document.createElement('label');
@@ -78,7 +92,7 @@ async function populateVoiceEN_USList() {
     label.innerHTML = 'Select Voice (EN-US): ';
     label.style.display = 'block'; // Make the label block-level for better spacing
     label.style.marginBottom = '5px'; // Add some spacing below the label
-    document.body.insertBefore(label, selectElm); // Insert label before the dropdown
+    marginDiv.insertBefore(label, selectElm); // Insert label before the dropdown
 }
 
 
