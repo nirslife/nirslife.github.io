@@ -109,7 +109,7 @@ function LookForExistingPhraseinBD() {
             words.forEach((word, index) => {
                 let inputTextBlock = document.createElement('div');
                 inputTextBlock.className = 'inputtext';
-                inputTextBlock.setAttribute('indexarr', index);
+                inputTextBlock.setAttribute('indexarr', -1);
                 inputTextBlock.setAttribute('onclick', 'clickInputtext(this)');
                 inputTextBlock.style.cursor = 'pointer';
                 inputTextBlock.textContent = word;

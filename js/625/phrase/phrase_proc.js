@@ -3,14 +3,17 @@
 function clickInputtext(element) {
   // Remove the element from the DOM
   const phrase = element.parentElement;
+  let indexarr = element.getAttribute('indexarr');
   element.remove();
-  // Check if parent exists and is a phrase
-  if (phrase && phrase.classList.contains('phrase')) {
-    if (phrase.children.length === 0) {
-      phrase.remove();
-      return false;
+  let div_puzzletextfrom1 = document.getElementById('div_puzzletextfrom1');
+  let puzzleBlocks = div_puzzletextfrom1.getElementsByClassName('puzzleblock inpoff');
+  // Find the puzzle block with the matching indexarr
+  Array.from(puzzleBlocks).forEach(block => {
+    if (block.getAttribute('indexarr') === indexarr) {
+      // Change the class and onclick attribute of the puzzle block
+      block.setAttribute('class', 'puzzleblock inpon');     
     }
-  }
+  });
 }
 
 function addNewPhrase() {  
