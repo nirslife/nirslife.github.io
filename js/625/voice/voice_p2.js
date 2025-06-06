@@ -12,8 +12,6 @@ function SetBodyHtmlWidthIfMobile() {
 
 function JsonToContentMD() {    
 
-    // Set the body width based on device type
-    SetBodyHtmlWidthIfMobile();
     // Ensure the styles are applied
     VoiceP2_createStyles();
 
@@ -214,6 +212,7 @@ function VoiceP2_createStyles() {
     style.textContent = `
 .sentence_voice {
     margin-bottom: 10px; 
+    font-size: 18px;
     display: block;
 }
 
@@ -279,15 +278,15 @@ function VoiceP2_createStyles() {
 
 .phrase-marker_voice {
     display: inline-block;
-    min-width: 40px;
-    min-height: 30px;
+    min-width: 50px;
+    height: 40px;
     margin-left: 45px;
     border-radius: 3px;
     cursor: pointer;
     color: white;
     background-color:rgb(46, 157, 167);
     font-weight: normal;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .phrase-marker_voice:hover {
@@ -295,7 +294,7 @@ function VoiceP2_createStyles() {
 }
 
 .sentence-container_voice {
-    margin-bottom: 15px;
+    margin-bottom: 35px;
 }
 
 .sentence-container_voice button {
@@ -305,10 +304,10 @@ function VoiceP2_createStyles() {
 .button_voice_play {
     background-color:rgb(19, 70, 21);
     color: white;
-    border: none;
-    padding: 5px 5px;
+    border: none;    
     border-radius: 3px;
-    width: 30px;
+    width: 50px;
+    height: 40px;
     text-align: center;
     cursor: pointer;
     display: inline-block;
