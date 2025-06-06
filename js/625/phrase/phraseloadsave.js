@@ -150,6 +150,7 @@ function SavePhraseToFireBase() {
     // for each phrase element, get the text content of inputtext elements
     for (let i = 0; i < phraseElements.length; i++) {        
         let phraseElement = phraseElements[i];
+        if (phraseElement.getAttribute('phrase_id') > -1) { continue; } // skip if phrase_id is already set
         let inputTexts = phraseElement.getElementsByClassName('inputtext');
         let phraseText = Array.from(inputTexts).map(input => input.textContent).join(' ');
         // if phraseText is empty, skip this phrase
@@ -179,7 +180,7 @@ function SavePhraseToFireBase() {
     // update the gen_id_phrase in config_phrase
     vdata["config_phrase"].gen_id_phrase = gen_id_phrase;
     // set property processed to 1 for the current sentence in article_items
-    SetProcessedSentence(vdata, idsrc_sentence);
+    SetProcessedSentence(idsrc_sentence);
     // send the updated vdata to Firebase
     RequestArrFireBase(vdata, 'PATCH');
 }
@@ -201,7 +202,7 @@ function SetProcessedSentence(idsrc_sentence) {
     let items = article_items; // Assuming article_items is an array of items
     // Check if items is an array and has elements
     if (Array.isArray(items) && items.length > 0) {
-        let item = items.find(item => item.idsentence === idsrc_sentence);
+        let item = items.find(item => item.idsentence === Number(idsrc_sentence));
         if (item) {
             item.processed = 1; // Mark the sentence as processed
         } else {

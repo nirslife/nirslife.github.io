@@ -1,5 +1,19 @@
+function SetBodyHtmlWidthIfMobile() {
+    // Check if the device is mobile
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+        // Set the body width to 400px for mobile devices
+        document.body.style.width = '400px';
+    } else {
+        // Set the body width to 80% for desktop devices
+        document.body.style.width = '97%';
+    }
+}
+
+
 function JsonToContentMD() {    
 
+    // Set the body width based on device type
+    SetBodyHtmlWidthIfMobile();
     // Ensure the styles are applied
     VoiceP2_createStyles();
 
@@ -192,6 +206,7 @@ function SaveExportedPhrasesToFirebase(exp_phrases) {
   vdata["exp_phrases"] = exp_phrases;
   RequestArrFireBase(vdata, 'PATCH');
 }
+
 
 
 function VoiceP2_createStyles() {
