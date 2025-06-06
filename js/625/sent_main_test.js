@@ -5,7 +5,7 @@ var gv = {
     config_phrase: null
   },
   sts: {
-    vdata1: null
+    vdata1: null    
   }
 };
 // end of ./js/global_var.js
@@ -24,7 +24,8 @@ function MainFunc() {
 }
 
 async function init() {  
-  gv.cst.FBSets = Init_LoginFireBaseSets('text_phrase_obj.json');
+  //gv.cst.FBSets = Init_LoginFireBaseSets('text_phrase_obj.json');
+  gv.cst.FBSets = Init_LoginFireBaseSets('backups_ph1.json');
   await this.LoginFireBase(gv.cst);
 }
 
@@ -82,6 +83,7 @@ async function RequestArrFireBase(vobj, ametod) {
     let aurl = cst1.FBSets.UrlPost1 + cst1.FBSets.idToken;
     const response = await fetch(aurl, post_obj);
     let vdata = await response.json();
+    return 0;
     if (ametod == 'GET') {
         if (typeof CB_AfterGet === 'function') {
             await CB_AfterGet(cst1, vdata);

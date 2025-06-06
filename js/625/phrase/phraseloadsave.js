@@ -31,12 +31,16 @@ function LoadNextSentenceNotProcessed(article_items, curpos_idsentence) {
   }
 }
 
+// split the sentence into words using space as a delimiter 
+function splitStringIntoWords(str1) {    
+    let words = str1.split(' ').map(word => word.trim()).filter(word => word.length > 0);
+    return words;
+}
+
 function LoadSentencesToHTML(idsentence) {
     let sentence = get_sentence(idsentence);
     let sentence_en = sentence.sentence_en;
-    // split the sentence into words using space as a delimiter
-    let words = sentence_en.split(' ').map(word => word.trim()).filter(word => word.length > 0);
-   // return 0;
+    let words = splitStringIntoWords(sentence_en);
     let puzzleBlockDiv = document.getElementById('div_puzzletextfrom1');
     let div_inputtextfrom1 = document.getElementById('div_inputtextfrom1');
     let textfrom1 = document.getElementById('textfrom1');
@@ -69,7 +73,48 @@ function LoadSentencesToHTML(idsentence) {
             divtextfrom1.parentNode.insertBefore(new_info_div, divtextfrom1);
         }        
     }
-    addNewPhrase()
+    addNewPhrase();
+}
+
+// if sentence contains a specific phrase
+function ContainsPhraseInSentence(phrase, sentence) {
+    function leaveonlyletter(str) {
+        str = str.toLowerCase();
+        return str.replace(/[^a-zA-Zа-яА-ЯёЁ0-9\s]/g, ''); // remove all non-letter characters
+    }
+    let ph1 = leaveonlyletter(phrase);
+    let se1 = leaveonlyletter(sentence);
+    return se1.includes(ph1);
+}
+
+
+function LookForExistingPhraseinBD() {
+    let vdata = gv.vdata1;
+    if (!vdata) return;
+    let phrases = vdata["phrases"];
+    let textfrom1 = document.getElementById('textfrom1');
+    let sentence_en = textfrom1.textContent;
+    phrases.forEach(phrase => {
+        let phrase_en = phrase.phrase_en;
+        if (ContainsPhraseInSentence(phrase_en, sentence_en)) {
+            // add phrase to the input text div
+            let inputTextDiv = document.getElementById('div_inputtextfrom1');
+            let words = splitStringIntoWords(phrase_en);
+            let divPhrase = document.createElement('div');
+            divPhrase.className = 'phrase';
+            divPhrase.setAttribute('phrase_id', phrase.idphrase);
+            words.forEach((word, index) => {
+                let inputTextBlock = document.createElement('div');
+                inputTextBlock.className = 'inputtext';
+                inputTextBlock.setAttribute('indexarr', index);
+                inputTextBlock.setAttribute('onclick', 'clickInputtext(this)');
+                inputTextBlock.style.cursor = 'pointer';
+                inputTextBlock.textContent = word;
+                divPhrase.appendChild(inputTextBlock);
+            });
+            inputTextDiv.appendChild(divPhrase);
+        }
+    });
 }
 
 function LoadSentences() {

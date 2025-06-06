@@ -1,0 +1,71 @@
+<html><head>
+  <link rel="stylesheet" href="./css/sentences_nirsix2_css/sentences_nirsix2025.css">
+  <link rel="stylesheet" href="./css/setlisten_css/setlist_mm.css">
+  <!-- <script src="./js/625/main_loadscripts.js"></script> -->
+  
+  <script src="./js/625/sent_main_test.js"></script>
+
+  <!-- <script src="./js/625/global_var.js"></script>
+  <script src="./js/625/phrase_p1.js"></script>  
+  <script src="./js/625/phrase_proc.js"></script>
+  <script src="./js/625/voice_p1.js"></script>
+  <script src="./js/625/article_p1.js"></script>
+  <script src="./js/625/ui/buildUI.js"></script>
+  <script src="./js/625/ui/mainmenu_ui.js"></script>  -->
+
+    <title>New Phrase Sent</title>
+  </head>
+
+
+<script>
+
+
+
+// function GetPhraseById(id) {
+//     const phrases = JSON.parse(jsonData20250502504410f).phrases;
+//     const phrase = phrases.find(p => p.idphrase === id);
+//     return phrase;
+// }
+
+
+
+// end of ./js/sent_main.js - Main functions for handling phrases and puzzle text
+</script>
+
+
+<body onload="MainFunc()">
+
+<div id="header1">  
+</div>
+<div id="control_div"> 
+  <div class="button_controlsentences" onclick="NextSentence()">Next Sentence</div> 
+  <div class="button_controlsentences" onclick="SavePhraseToFireBase()">Save Phrase to Base</div>  
+</div>
+<div id="info_div"> </div>  
+<div id="textfrom1" onmousedown="clickTextfrom(this)">
+</div>
+<div id="inputtextfrom1" style="background: rgb(255, 255, 255);">
+  <div id="div_inputtextfrom1">
+  </div>
+</div>
+<div id="control_div">
+  <div class="button_controlsentences" onclick="addNewPhrase()">Add Phrase</div>
+  <div class="button_controlsentences" onclick="removeLastPhrase()">Remove Last Phrase</div>
+</div>
+
+<div id="puzzletextfrom1">
+  <div id="div_puzzletextfrom1">
+  </div>
+</div>
+<div id="m_container1">
+</div>
+<div id="verify_cont1"></div>
+<div id="main_menu_bottom"></div>
+
+
+<button id="scrollToTopBtn" class="button_controlsentences" onclick="scrollToTop()" style="position:fixed;bottom:30px;right:30px;z-index:1000;display:none;">
+  ↑ Top
+</button>
+
+</body>
+</html>

@@ -30,7 +30,8 @@ function build_forall_MainUI() {
       <div class="button_mmenu_items" onclick="Click_Main_Phrase_LoadDataToHTML()">..1.. Phrase</div>
       <div class="button_mmenu_items" onclick="Click_Main_ArticleText_LoadDataToHTML()">..2.. Import Article Text</div>
       <div class="button_mmenu_items" onclick="Click_Main_VoiceArticleText_LoadDataToHTML()">..3.. Voice Article Text</div>
-       <div id="closeMainMenuButton" class="button_mmenu_items" onclick="CloseMainMenu()">Close Menu</div>
+      <div class="button_mmenu_items" onclick="Click_Main_SaveAllBase()">..4.. Save All</div>
+      <div id="closeMainMenuButton" class="button_mmenu_items" onclick="CloseMainMenu()">Close Menu</div>
     `;
   document.body.appendChild(mainMenu);
 
