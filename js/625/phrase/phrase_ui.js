@@ -44,6 +44,7 @@ function build_Phrase_MainUI() {
   controlDivPhrase.innerHTML = `
     <div class="button_controlsentences" onclick="addNewPhrase()">Add Phrase</div>
     <div class="button_controlsentences" onclick="removeLastPhrase()">Remove Last Phrase</div>
+    <div class="button_controlsentences" onclick="SetProcessedAndNext()">Set Processed and Next</div>    
   `;
   document.body.appendChild(controlDivPhrase);
 

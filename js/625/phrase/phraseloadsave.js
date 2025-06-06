@@ -1,3 +1,5 @@
+
+
 function LoadNextSentenceNotProcessed(article_items, curpos_idsentence) {
   let list_not_processed = article_items.filter(item => item.processed !== 1 && item.idsentence !== undefined);
   if (list_not_processed.length > 0) {
@@ -134,7 +136,16 @@ function SavePhraseToFireBase() {
     RequestArrFireBase(vdata, 'PATCH');
 }
 
-function SetProcessedSentence(vdata, idsrc_sentence) {
+
+function SetProcessedAndNext(){
+    let textfrom1 = document.getElementById('textfrom1');
+    let cur_idsentence = textfrom1.getAttribute('idsentence');
+    SetProcessedSentence(cur_idsentence);
+    // After setting the sentence as processed, load the next sentence
+    NextSentence();
+}
+
+function SetProcessedSentence(idsrc_sentence) {
     let sts1 = gv.sts;
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
     let article_items = get_article_items(cur_idarticle_text);
