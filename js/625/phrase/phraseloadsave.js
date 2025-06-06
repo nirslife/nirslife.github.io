@@ -73,6 +73,9 @@ function LoadSentencesToHTML(idsentence) {
             divtextfrom1.parentNode.insertBefore(new_info_div, divtextfrom1);
         }        
     }
+    // Look for existing phrases in the sentence
+    LookForExistingPhraseinBD();
+    // Add a new phrase if there are no phrases
     addNewPhrase();
 }
 

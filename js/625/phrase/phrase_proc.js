@@ -13,7 +13,11 @@ function clickInputtext(element) {
   }
 }
 
-function addNewPhrase() {
+function addNewPhrase() {  
+  let div_inputtextfrom1 = document.getElementById('div_inputtextfrom1');
+  let phrases = div_inputtextfrom1.getElementsByClassName('phrase');
+  if (phrases.length > 0) { return false; }
+  // If there are no phrases, create a new one
   RefreshPuzzletext();
   const inputTextDiv = document.getElementById('div_inputtextfrom1');
   const newPhrase = document.createElement('div');
