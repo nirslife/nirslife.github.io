@@ -142,6 +142,9 @@ function Click_Next_ArticleText() {
       gv.sts.config_phrase.cur_idarticle_text = firstArticleText;
     }
   }  
+ 
+  SetDBCurArticleText(gv.sts.config_phrase.cur_idarticle_text);
+  // Load the next article text into the HTML
   AfterRequest_FireBase();
 }
 

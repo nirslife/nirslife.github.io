@@ -174,18 +174,27 @@ function get_sentence(idsentence) {
 }
 
 
-function SetDBCurProgramType(programType) {
-  config = gv.sts.config_phrase;
-  config.CurProgramType = programType;
-  gv.sts.config_phrase = config;
+function SetDBCurProgramType(programType) {  
+  gv.sts.config_phrase.CurProgramType = programType;
+  SetDBConfigPhrase(gv.sts.config_phrase);
+}
+
+function SetDBCurArticleText(cur_idarticle_text) {  
+  gv.sts.config_phrase.cur_idarticle_text = cur_idarticle_text;
+  SetDBConfigPhrase(gv.sts.config_phrase);
+}
+
+function SetDBConfigPhrase(configPhrase) {
+  gv.sts.config_phrase = configPhrase;
   let vdata = gv.vdata1;
   if (!vdata) return;
-  vdata["config_phrase"] = config;
-  RequestArrFireBase(vdata, 'PATCH');  
+  vdata["config_phrase"] = configPhrase;
+  RequestArrFireBase(vdata, 'PATCH');
 }
 
 function Click_Main_SaveAllBase() {
-    let vdata = gv.vdata1;
+    return;
+    let vdata = gv.data1;
     if (!vdata) return;
     let datetime1 = new Date().toISOString();
     datetime1 = datetime1.replace(/[-:T]/g, '').slice(0, 15); // Format datetime to YYYYMMDDHHMMSS

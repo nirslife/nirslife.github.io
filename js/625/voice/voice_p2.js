@@ -1,3 +1,4 @@
+
 function SetBodyHtmlWidthIfMobile() {
     // Check if the device is mobile
     if (/Mobi|Android/i.test(navigator.userAgent)) {
@@ -39,9 +40,20 @@ function JsonToContentMD() {
       
     });
 
-    // const jsonData = JSON.parse(jsonData20250502504410f);
-    // const phrases = jsonData.phrases;
-    // const sentences = jsonData.sentences;
+    const startname_id_div_sentence_ru = 'idsentence_ru_';
+    const attribute_name_id_ru = 'idsentence_ru';
+
+
+    function HideAllExternalsInfo() {
+        const translations = document.querySelectorAll('.sentence_ru_voice');
+        translations.forEach(translation => {
+            translation.style.display = 'none';        
+        });
+        const phraseContents = document.querySelectorAll('.div_phrase_content_voice');
+        phraseContents.forEach(phraseContent => {
+            phraseContent.style.display = 'none';        
+        });
+    }
 
     // Process the sentences
     sentences.forEach(sentence => {
@@ -61,38 +73,39 @@ function JsonToContentMD() {
             sentenceContainer.appendChild(div_sentence_en);
             // Create the Russian sentence div
             const div_sentence_ru = document.createElement('div');
-            div_sentence_ru.setAttribute('idsentence_ru', sentence.idsentence); // Add the sentence ID as an attribute
+            const id_div_sentence_ru = startname_id_div_sentence_ru + sentence.idsentence; // Unique ID for the Russian sentence div
+            div_sentence_ru.id = id_div_sentence_ru;
             div_sentence_ru.className = 'sentence_ru_voice';
             div_sentence_ru.textContent = sentence.sentenece_ru; // Add the Russian sentence text
-            div_sentence_ru.style.display = 'none'; // Hide the Russian sentence by default
-            sentenceContainer.appendChild(div_sentence_ru);
+            div_sentence_ru.style.display = 'none'; // Hide the Russian sentence by default            
             // Append the container to the document body
             document.body.appendChild(sentenceContainer);
 
             //add below the sentence phrase containing in array of phrases
-            const phraseContainer = document.createElement('div');
-            phraseContainer.className = 'phrase-control-container';
+            const phraseControlContainer = document.createElement('div');
+            phraseControlContainer.className = 'phrase-control-container';
 
             // Create the ShowTranslation button
-            const TransitionButton = document.createElement('div');
-            TransitionButton.className = 'button_voice_translation';
-            TransitionButton.textContent = 'Transl';            
-            TransitionButton.onclick = function () {
-                // hide all translation 
-                const translations = document.querySelectorAll('.sentence_ru_voice');
-                translations.forEach(translation => {
-                    translation.style.display = 'none';
-                }
-                );
-                // Toggle the display of the Russian sentence
-                if (div_sentence_ru.style.display === 'none') {
-                    div_sentence_ru.style.display = 'block';
+            const TransButton = document.createElement('div');
+            TransButton.className = 'button_voice_translation';
+            TransButton.textContent = 'Transl';
+            TransButton.setAttribute(attribute_name_id_ru, id_div_sentence_ru); // Add the sentence ID as an attribute
+            TransButton.onclick = function () {
+                // Get the ID of the Russian sentence div from the button's attribute               
+               let div_sentence_ru = document.getElementById(id_div_sentence_ru);
+               let current_state = div_sentence_ru.style.display;
+                // hide all translation
+                HideAllExternalsInfo();
+                if (current_state === 'none' || current_state === '') {
+                    div_sentence_ru.style.display = 'block'; // Show the Russian sentence
                 } else {
-                    div_sentence_ru.style.display = 'none';
+                    div_sentence_ru.style.display = 'none'; // Hide the Russian sentence
                 }
             };
-            phraseContainer.appendChild(TransitionButton);
+            phraseControlContainer.appendChild(TransButton);            
 
+            const startname_id_content_phrase = 'idcontent_phrase_';
+            const phraseInfoContainer = document.createElement('div');
 
             let inx = 0;
             phrases.forEach(phrase => {
@@ -100,61 +113,52 @@ function JsonToContentMD() {
                     // if phrase contains in sentence, add it to the phraseText
                     if (sentence.sentenece_en.includes(phrase.phrase_en)) {
                         inx++;
-                        const phraseElement = document.createElement('div');
-                        phraseElement.className = 'phrase-marker_voice';
-                        phraseElement.textContent = phrase.phrase_en.substring(0, 15);
-                        const newTranslationElement = document.createElement('div');
-                        newTranslationElement.className = 'translation_voice';
-                        // Add the English phrase (phrase_en)
-                        const phraseEnEl = document.createElement('div');
-                        phraseEnEl.textContent = `${phrase.phrase_en}`;
-                        phraseEnEl.style.fontWeight = 'bold'; // Optional: Make it bold
-                        newTranslationElement.appendChild(phraseEnEl);
-                        
-                        // Add the Russian translation (phrase_ru)
-                        const translationText = document.createElement('div');
-                        translationText.textContent = `${phrase.phrase_ru}`;
-                        newTranslationElement.appendChild(translationText);
-                        
-                        // Add a close button
-                        const closeButton = document.createElement('button');
-                        closeButton.textContent = 'X';
-                        closeButton.onclick = function(event) {
-                            event.stopPropagation(); // Prevent the click event from bubbling up
-                            newTranslationElement.style.display = 'none';
-                        };
-                        newTranslationElement.appendChild(closeButton);
-                        // Add the translation popup to the phrase element
-                        phraseElement.appendChild(newTranslationElement);
-                        // Add click event to the phrase element
-                        phraseElement.onclick = function () {
-                            // Hide all translation popups
-                            const translations = document.querySelectorAll('.translation_voice');
-                                translations.forEach(translation => {
-                                    translation.style.display = 'none';
-                            });
-                            // Prevent the click event from bubbling up to the document
-                            event.stopPropagation();
+                        const div_MarkPhrase = document.createElement('div');
+                        div_MarkPhrase.className = 'phrase-marker_voice';            
+                        div_MarkPhrase.textContent = phrase.phrase_en.substring(0, 15);
+                        div_MarkPhrase.setAttribute(startname_id_content_phrase, phrase.idphrase); 
+                        phraseControlContainer.appendChild(div_MarkPhrase);
 
-                            // Toggle the display of the translation popup
-                            const translationElement = this.querySelector('.translation_voice');                            
-                            if (translationElement) {
-                                translationElement.style.display =  'block';
+                        const div_PhraseContent = document.createElement('div');
+                        div_PhraseContent.className = 'div_phrase_content_voice';
+                        div_PhraseContent.id = startname_id_content_phrase + phrase.idphrase; 
+                        // Add the English phrase (phrase_en)
+                        const el_phraseEng = document.createElement('div');
+                        el_phraseEng.textContent = `${phrase.phrase_en}`;
+                        el_phraseEng.className = 'phrase_en_voice';                        
+                        div_PhraseContent.appendChild(el_phraseEng);                        
+                        // Add the Russian phrase (phrase_ru)
+                        const el_phraseRus = document.createElement('div');
+                        el_phraseRus.textContent = `${phrase.phrase_ru}`;
+                        el_phraseRus.className = 'phrase_ru_voice';
+                        div_PhraseContent.appendChild(el_phraseRus);                        
+                        
+                        // Add click event to the phrase element
+                        div_MarkPhrase.onclick = function () {
+                            let g_idphrase  = Number(this.getAttribute(startname_id_content_phrase));
+                            const div_PhraseContent1 = document.getElementById(startname_id_content_phrase + g_idphrase);
+                            let current_state_contentphrase = div_PhraseContent1.style.display;
+                            // hide all translation
+                            HideAllExternalsInfo();
+                            if (current_state_contentphrase === 'none' || current_state_contentphrase === '') {
+                                div_PhraseContent1.style.display = 'block';
+                            } else {
+                                div_PhraseContent1.style.display = 'none';
                             }
                             SpeechEngl(phrase.phrase_en);  // Speak the English text
                         };
-
-                        phraseElement.setAttribute('rus-text', phrase.phrase_ru); // Add the Russian translation
-                        phraseElement.setAttribute('eng-text', phrase.phrase_en); // Add the English text
-                        // Append the phrase element to the phrase container
-                        phraseContainer.appendChild(phraseElement);
+                        phraseInfoContainer.appendChild(div_PhraseContent);                        
+                        
                     }
                 }
             });
             // Append the phrase container to the sentence container
-            if (phraseContainer.childElementCount > 0) {
-                sentenceContainer.appendChild(phraseContainer);
+            if (phraseControlContainer.childElementCount > 0) {
+                sentenceContainer.appendChild(phraseControlContainer);
+                sentenceContainer.appendChild(phraseInfoContainer);
             }
+            // Append the Russian sentence div to the sentence container
+            sentenceContainer.appendChild(div_sentence_ru);
         }
     });
 
@@ -254,16 +258,41 @@ function VoiceP2_createStyles() {
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color:rgb(203, 209, 248);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
-    color: #333;
+    color: rgb(18, 87, 23);
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
+phrase_en_voice {
+    font-size: 24px;
+    display: block;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: #333;
+    cursor: pointer;    
+}
 
-.word_no-translation_voice {            
+.phrase_ru_voice {
+    font-size: 24px;
+    display: block;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(203, 209, 248);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: rgb(18, 87, 23);
+    cursor: pointer;    
+}
+
+.word_no-translation_voice {
     display: inline-block;
     position: relative;
 }
@@ -278,21 +307,17 @@ function VoiceP2_createStyles() {
     background-color: yellow;
 }
 
-.translation_voice {
-    display: none;
-    position: absolute;
+.div_phrase_content_voice {
+    display: none;    
     background-color: #f1f1f1;
     border: 1px solid #ccc;
-    padding: 15px;
-    z-index: 1;
+    padding: 15px;    
     width: 350px;
     height: auto;
     font-size: 24px;
     border-radius: 5px;
     color: black;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    opacity: 0.9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);        
     min-width: 350px;
     word-wrap: break-word;
     line-height: 1.5;
@@ -303,7 +328,7 @@ function VoiceP2_createStyles() {
     margin-left: 5px;
 }
 
-.translation_voice button {
+.div_phrase_content_voice button {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -313,7 +338,7 @@ function VoiceP2_createStyles() {
     cursor: pointer;
 }
 
-.translation_voice button:hover {
+.div_phrase_content_voice button:hover {
     color: red;
 }
 
@@ -337,6 +362,7 @@ function VoiceP2_createStyles() {
     min-width: 50px;
     height: 40px;
     margin-left: 45px;
+    margin-bottom: 20px;
     border-radius: 3px;
     cursor: pointer;
     color: white;
