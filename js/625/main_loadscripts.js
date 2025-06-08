@@ -6,7 +6,7 @@ function loadAppScripts() {
     "./js/625/phrase/phrase_proc.js",
     "./js/625/voice/voice_p1.js",
     "./js/625/article/article_p1.js",
-    "./js/625/ui/mainmenu_ui.js",
+    "./js/625/mainmenu_ui.js",
     "./js/625/voice/voice_p2.js",
     "./js/625/phrase/phrase_ui.js",
     "./js/625/article/enter_article_ui.js",
