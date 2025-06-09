@@ -14,7 +14,8 @@ function build_Phrase_MainUI() {
   const controlDivTop = document.createElement('div');
   controlDivTop.id = 'control_div';
   controlDivTop.innerHTML = `
-    <div class="button_controlsentences" onclick="NextSentence()">Next Sentence</div>
+    <div class="button_controlsentences" onclick="PrevSentence()">Prev</div>
+    <div class="button_controlsentences" onclick="NextSentence()">Next Sent</div>
     <div class="button_controlsentences" onclick="SavePhraseToFireBase()">Save Phrase to Base</div>
     <div class="button_controlsentences" onclick="EditSentence()">Edit Sentence</div>
   `;

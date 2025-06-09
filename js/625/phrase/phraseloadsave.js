@@ -31,6 +31,41 @@ function LoadNextSentenceNotProcessed(article_items, curpos_idsentence) {
   }
 }
 
+function LoadMoveSentenceNotProcessed(article_items, curpos_idsentence, direction) {
+  let list_not_processed = article_items.filter(item => item.processed !== 1 && item.idsentence !== undefined);
+  if (list_not_processed.length > 0) {
+    gv.sts.config_phrase.count_not_processed = list_not_processed.length;
+    for (let i = 0; i < list_not_processed.length; i++) {
+      let item = list_not_processed[i];
+      if (item.idsentence === curpos_idsentence) {
+        // If the sentence is already loaded, skip it
+        if (direction === 'next') {
+          // Load the next unprocessed sentence
+          if (i + 1 < list_not_processed.length) {
+            gv.sts.config_phrase.idsentence = list_not_processed[i + 1].idsentence;
+          } else {
+            // If there is no next sentence, load the first one
+            gv.sts.config_phrase.idsentence = list_not_processed[0].idsentence;
+          }
+        } else if (direction === 'prev') {
+          // Load the previous unprocessed sentence
+          if (i - 1 >= 0) {
+            gv.sts.config_phrase.idsentence = list_not_processed[i - 1].idsentence;
+          } else {
+            // If there is no previous sentence, load the last one
+            gv.sts.config_phrase.idsentence = list_not_processed[list_not_processed.length - 1].idsentence;
+          }
+        }
+        LoadSentencesToHTML(gv.sts.config_phrase.idsentence);
+        return;
+      }
+    }
+
+
+  }
+}
+
+
 // split the sentence into words using space as a delimiter 
 function splitStringIntoWords(str1) {    
     let words = str1.split(' ').map(word => word.trim()).filter(word => word.length > 0);
@@ -215,12 +250,24 @@ function NextSentence() {
     let sts1 = gv.sts;
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
     let article_items = get_article_items(cur_idarticle_text);
-    if (article_items) {
-        LoadNextSentenceNotProcessed(article_items, sts1.config_phrase.idsentence);
+    if (article_items) {        
+        LoadMoveSentenceNotProcessed(article_items, sts1.config_phrase.idsentence, 'next');
     } else {
         console.log("No article items found for the given cur_idarticle_text.");
     }
 }
+
+function PrevSentence() {  
+    let sts1 = gv.sts;
+    let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
+    let article_items = get_article_items(cur_idarticle_text);
+    if (article_items) {
+        LoadMoveSentenceNotProcessed(article_items, sts1.config_phrase.idsentence, 'prev');        
+    } else {
+        console.log("No article items found for the given cur_idarticle_text.");
+    }
+}
+
 
 function EditSentence() {
     // Get the current sentence ID from the textfrom1 div
