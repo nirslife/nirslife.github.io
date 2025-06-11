@@ -118,44 +118,29 @@ async function CB_AfterPatch(cst1, vdata) {
 
 
 function AfterRequest_FireBase() {
-  TypeProgram = gv.sts.config_phrase.CurProgramType;
+ let TypeProgram = gv.sts.config_phrase.CurProgramType;
    if (TypeProgram === "ArticleText") {
        Main_ArticleText_LoadDataToHTML();
    } else if (TypeProgram === "Phrase") {
        Main_Phrase_LoadDataToHTML();
    } else if (TypeProgram === "VoiceArticleText") {
        Main_VoiceArticleText_LoadDataToHTML();
-   }
-   else {
+   } else if (TypeProgram === "ExpImpForTrans_Sent") {
+        Main_ExpImpForTrans_Sent_LoadDataToHTML();
+   } else if (TypeProgram === "ExpImpForTrans_Phrase") {
+       Main_ExpImpForTrans_Phrase_LoadDataToHTML();
+   } else {
        SetDBCurProgramType("Phrase");
    }
 }
 
 
-function Click_Main_Phrase_LoadDataToHTML() {
-    SetDBCurProgramType("Phrase");  
-    Main_Phrase_LoadDataToHTML();
-}
-function Click_Main_ArticleText_LoadDataToHTML() {
-    SetDBCurProgramType("ArticleText");
-    Main_ArticleText_LoadDataToHTML();
-}
 
-function Main_Phrase_LoadDataToHTML() {
-   build_Phrase_MainUI();
-   LoadSentences();
-}
-
-function Main_ArticleText_LoadDataToHTML(){
-    build_ArticleTextEnter_MainUI();    
-}
-
-function Click_Main_VoiceArticleText_LoadDataToHTML(){
-   SetDBCurProgramType("VoiceArticleText");
-   Main_VoiceArticleText_LoadDataToHTML();
-}
-function Main_VoiceArticleText_LoadDataToHTML() {
-  build_VoiceArticleText_MainUI();
+function get_article_name_text(cur_idarticle_text) {
+    let article_text = gv.sts.article_text;
+    if (!article_text) return null;
+    const item = article_text.find(item => item.idarticle_text == cur_idarticle_text);
+    return item ? item.name_article_text : null;
 }
 
 

@@ -7,9 +7,13 @@ function loadAppScripts() {
     "./js/625/voice/voice_p1.js",
     "./js/625/article/article_p1.js",
     "./js/625/mainmenu_ui.js",
-    "./js/625/voice/voice_p2.js",
+    "./js/625/voice/arttxt_voice.js",    
     "./js/625/phrase/phrase_ui.js",
     "./js/625/article/enter_article_ui.js",
+    "./js/625/trans/trans_ui.js",
+    "./js/625/main_click.js",    
+    "./js/625/trans/phrase_trans_loadsave.js",
+    "./js/625/trans/sent_trans_loadsave.js"    
   ];
   scripts.forEach(src => {
     const script = document.createElement('script');

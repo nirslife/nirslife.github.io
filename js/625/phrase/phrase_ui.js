@@ -66,20 +66,6 @@ function build_Phrase_MainUI() {
 
 }
 
-function build_VoiceArticleText_MainUI() {
-  // Clear body
-  document.body.innerHTML = '';
-  try {
-        // call add function to add the voice selection dropdown
-        addVoiceSelectionDropdown();
-        // Call the function to convert JSON to content
-        JsonToContentMD();
-    } catch (error) {
-        console.error("Error in MainFunc:", error);
-    }
-
-  build_forall_MainUI();
-};
 
 
 function Phrase_createStyles() {
@@ -121,27 +107,6 @@ function Phrase_createStyles() {
   background: #357ec7;
 }
 
-.button_controlsentences {
-  background: #1e90ff;
-  color: #fff;
-  border: none;
-  min-height: 30px;
-  border-radius: 7px;
-  padding: 12px 28px;
-  font-size: 18px;
-  font-weight: 600;
-  margin: 12px 20px 12px 20px;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(30,144,255,0.08);
-  transition: background 0.2s, box-shadow 0.2s;
-  display: inline-block;
-  letter-spacing: 0.5px;
-}
-
-.button_controlsentences:hover {
-  background: #156ec1;
-  box-shadow: 0 4px 16px rgba(30,144,255,0.18);
-}
 
 #control_div {
   margin: 24px 0 24px 0;

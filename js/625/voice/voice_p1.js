@@ -95,3 +95,5 @@ function SpeechEngl(text1){
   ms.text = text1;  
   window.speechSynthesis.speak(ms);
 }
+
+

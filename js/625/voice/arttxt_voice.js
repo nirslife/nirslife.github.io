@@ -16,8 +16,12 @@ function JsonToContentMD() {
     // Ensure the styles are applied
     VoiceP2_createStyles();
 
+    
+
+
     let sts1 = gv.sts;    
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
+    let name_article_text = get_article_name_text(cur_idarticle_text);
     let article_items = get_article_items(cur_idarticle_text);    
     if (!article_items) {
         console.error("No article items found for the given cur_idarticle_text.");
@@ -25,6 +29,12 @@ function JsonToContentMD() {
     }
     let sentences = [];
     let phrases = gv.sts.phrases || []; // Ensure phrases is defined
+
+    // add div with Title = Name of Article Text
+    const articleTextName = document.createElement('div');
+    articleTextName.id = 'title-name-article_text';
+    articleTextName.innerHTML = `<h1>${name_article_text}</h1>`;
+    document.body.appendChild(articleTextName);
 
     // Process the article items
     article_items.forEach(item => {
@@ -233,10 +243,37 @@ function ExtractPhrasesForDownloading(exp_phrases) {
 }
 
 
+function build_VoiceArticleText_MainUI() {
+  // Clear body
+  document.body.innerHTML = '';
+  try {
+        // call add function to add the voice selection dropdown
+        addVoiceSelectionDropdown();
+        // Call the function to convert JSON to content
+        JsonToContentMD();
+    } catch (error) {
+        console.error("Error in MainFunc:", error);
+    }
+
+  build_forall_MainUI();
+};
+
+
+
 
 function VoiceP2_createStyles() {
     const style = document.createElement('style');
     style.textContent = `
+.title-name-article_text {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 3px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    color: #333;
+}    
 .sentence_en_voice {
     margin-bottom: 20px; 
     font-size: 24px;

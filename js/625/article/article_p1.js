@@ -112,7 +112,7 @@ function SaveArticleTextToFireBase(){
     const articleName = articleNameInput.value.trim();
     const articletextData = {
         idarticle_text: gen_idarticle_text,
-        name: articleName,
+        name_article_text: articleName,
         items: itemsart
     };
     article_text.push(articletextData);

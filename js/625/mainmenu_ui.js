@@ -31,6 +31,7 @@ function build_forall_MainUI() {
       <div class="button_mmenu_items" onclick="Click_Main_ArticleText_LoadDataToHTML()">..2.. Import Article Text</div>
       <div class="button_mmenu_items" onclick="Click_Main_VoiceArticleText_LoadDataToHTML()">..3.. Voice Article Text</div>
       <div class="button_mmenu_items" onclick="Click_Main_SaveAllBase()">..4.. Save All</div>      
+      <div class="button_mmenu_items" onclick="Click_Main_ExpImpForTrans_LoadDataToHTML()">..5.. Exports/Import For Translation</div>            
     `;
   document.body.appendChild(mainMenu);
 
@@ -144,6 +145,29 @@ function MainMenu_createStyleForItemsMenu() {
     .btn_next1 {
       background-color: rgb(44, 155, 24);
     }
+
+  .button_controlsentences {
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  min-height: 30px;
+  border-radius: 7px;
+  padding: 12px 28px;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 12px 20px 12px 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(30,144,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+.button_controlsentences:hover {
+  background: #156ec1;
+  box-shadow: 0 4px 16px rgba(30,144,255,0.18);
+}
+
   `;
   document.head.appendChild(style);
 //   // Show the close button when the main menu is open
