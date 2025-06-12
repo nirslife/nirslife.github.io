@@ -19,7 +19,7 @@ function ExpImpForTrans_Sentence_loadDataToHTML() {
         return;        
     }
     let tr_sentences = [];
-    let phrases = gv.sts.phrases || []; // Ensure phrases is defined
+    
 
     // Process the article items
     article_items.forEach(item => {
@@ -59,6 +59,9 @@ function ExpImpForTrans_Sentence_loadDataToHTML() {
     // Extract every countSentences portion in one div block with copy button to clipboard
 
     for (let i = 0; i < tr_sentences.length; i += countSentences) {
+        let containerUI_Block = document.createElement('div');
+        containerUI_Block.className = 'containerUI_Block';
+        infoDiv.appendChild(containerUI_Block);
         let sentencesBlock = document.createElement('div');
         sentencesBlock.className = 'sentences-block';
         let id_block = Math.floor(i / countSentences);
@@ -97,55 +100,59 @@ function ExpImpForTrans_Sentence_loadDataToHTML() {
             TextArea_copyToClipboard(TextToCopy1);          
         };        
 
-        let pasteButton = document.createElement('button');
-        pasteButton.textContent = 'Paste From Clipboard';
-        pasteButton.setAttribute('rusvalueid', `sentences-rus-block-${id_block}`);
-        pasteButton.className = 'button_controlsentences';
-        pasteButton.onclick = function() {
-            if (document.hasFocus()) {
-                navigator.clipboard.readText().then(text => {
-                    // Split the text by the delimiter and process each sentence
-                    
-                    
-                    let sentences = text.split('973524_');
-                    sentences.forEach(sentence => {
-                         let trimmedSentence = sentence.trim();
-                         trimmedSentence = trimmedSentence.replace('\n', '');
-                        if (trimmedSentence) { // Check if sentence is not empty
-                            // extract the id from the sentence
-                            let idsentenceMatch = trimmedSentence.match(/352725_(\d+)/); // Match the id at the beginning
-                            if (idsentenceMatch) {
-                                let idSentence = idsentenceMatch[1]; // Get the matched id
-                                trimmedSentence = trimmedSentence.replace(/352725_\d+ /, ''); // Remove the id from the sentence
-                                let sentenceDiv = document.createElement('div');
-                                sentenceDiv.className = 'sentence-paste-rus-item';
-                                sentenceDiv.id = `sentence-paste-${idSentence}`;
-                                sentenceDiv.setAttribute('idsentence', idSentence);
-                                sentenceDiv.innerHTML = trimmedSentence;
-                                // Append the sentence div after the button pasteButton
-                                let sentencesRusBlock = document.getElementById(this.getAttribute('rusvalueid'));
-                                if (!sentencesRusBlock) {
-                                    console.error(`Element with id ${this.getAttribute('rusvalueid')} not found.`);
-                                    return;
-                                }
-                                sentencesRusBlock.appendChild(sentenceDiv);                               
-                            }
+        let parseButton = document.createElement('button');
+        parseButton.textContent = 'Parse input';
+        parseButton.setAttribute('rusvalueid', `sentences-rus-block-${id_block}`);
+        parseButton.className = 'button_controlsentences';
+        parseButton.onclick = function() {
+            let textareaB1 = document.getElementById(`textareaB1-${id_block}`);
+            textareaB1.style.display = 'block'; // Show the textarea
+            let sentencesRusBlock = document.getElementById(this.getAttribute('rusvalueid'));
+            if (!sentencesRusBlock) {
+                console.error(`Element with id ${this.getAttribute('rusvalueid')} not found.`);
+                return;
+            }
+            if (!textareaB1) {
+                console.error(`Textarea with id textareaB1-${id_block} not found.`);
+                return;
+            }
+            textareaB1.focus();             
+            textareaB1.select(); 
 
-                        }
-                    });
-                    // Show the save button
-                    let saveToBaseButton = document.getElementById(`button-save-to-db-${id_block}`);
-                    if (saveToBaseButton) {
-                        saveToBaseButton.style.display = 'block'; // Show the button
-                    } else {
-                        console.error(`Save button with id button-save-to-db-${id_block} not found.`);
+            sentencesRusBlock.innerHTML = ''; // Clear previous phrases
+
+            let text_1 = textareaB1.value;
+            let sentences = text_1.split('973524_');
+            sentences.forEach(sentence => {
+                let trimmedSentence = sentence.trim();
+                trimmedSentence = trimmedSentence.replace('\n', '');
+                if (trimmedSentence) { // Check if sentence is not empty
+                    // extract the id from the sentence
+                    let idsentenceMatch = trimmedSentence.match(/352725_(\d+)/); // Match the id at the beginning
+                    if (idsentenceMatch) {
+                        let idSentence = idsentenceMatch[1]; // Get the matched id
+                        trimmedSentence = trimmedSentence.replace(/352725_\d+ /, ''); // Remove the id from the sentence
+                        let sentenceDiv = document.createElement('div');
+                        sentenceDiv.className = 'sentence-paste-rus-item';
+                        sentenceDiv.id = `sentence-paste-${idSentence}`;
+                        sentenceDiv.setAttribute('idsentence', idSentence);
+                        sentenceDiv.innerHTML = trimmedSentence;            
+                        sentencesRusBlock.appendChild(sentenceDiv);                               
                     }
-                }).catch(err => {
-                    alert('Clipboard access failed. Please make sure the page is focused and you have granted permission.');
-                    console.error('Failed to read clipboard contents: ', err);
-                });
+
+                }
+            });
+            // Show the save button
+            let saveToBaseButton = document.getElementById(`button-save-to-db-${id_block}`);
+            if (saveToBaseButton) {
+                if (sentencesRusBlock.childElementCount > 0) {
+                   saveToBaseButton.style.display = 'block'; // Show the button
+                }
+                else {
+                    saveToBaseButton.style.display = 'none'; // Hide the button if no phrases
+                }
             } else {
-                alert('Please click on the page to focus it before pasting from clipboard.');
+                console.error(`Save button with id button-save-to-db-${id_block} not found.`);
             }
         };
 
@@ -170,13 +177,23 @@ function ExpImpForTrans_Sentence_loadDataToHTML() {
             Save_1Block_ToBase_Sent_TransRus(id_block);
         };
 
+                // textareaB1 Create a textarea for the block
+        let textareaB1 = document.createElement('textarea');
+        textareaB1.className = 'textareaB1';        
+        textareaB1.id = `textareaB1-${id_block}`;
+        textareaB1.style.display = 'none';
+        textareaB1.rows = 3;
+        textareaB1.cols = 50;
+        // Add the textarea to the block
+        textareaB1.innerHTML = ''; // Clear any previous content
         
         
-        infoDiv.appendChild(sentencesBlock);
-        infoDiv.appendChild(copyButton);
-        infoDiv.appendChild(pasteButton);
-        infoDiv.appendChild(sentencesRusBlock1);
-        infoDiv.appendChild(saveToBaseButton);
+        containerUI_Block.appendChild(sentencesBlock);
+        containerUI_Block.appendChild(copyButton);
+        containerUI_Block.appendChild(parseButton);
+        containerUI_Block.appendChild(textareaB1);
+        containerUI_Block.appendChild(sentencesRusBlock1);
+        containerUI_Block.appendChild(saveToBaseButton);
     }
 
 }
@@ -237,6 +254,11 @@ function SaveTransReadyDataToFireBase(dataToSave) {
         if (existingSentence) {
             // Update the existing sentence with the new Russian translation
             existingSentence.sentence_ru = sentence_ru;
+            //datetime in format YYYY-MM-DDTHH:mm:ss
+            let strdt1 = new Date().toISOString();
+            strdt1 = strdt1.replace('T', ' ').substring(0, 19); // Format to YYYY-MM-DD HH:mm:ss
+            existingSentence.datetimetrans = strdt1; // Update the translation date
+
         } 
     }
     // Send the updated vdata to Firebase
