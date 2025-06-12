@@ -126,12 +126,13 @@ function JsonToContentMD() {
                         const div_MarkPhrase = document.createElement('div');
                         div_MarkPhrase.className = 'phrase-marker_voice';            
                         div_MarkPhrase.textContent = phrase.phrase_en.substring(0, 15);
-                        div_MarkPhrase.setAttribute(startname_id_content_phrase, phrase.idphrase); 
+                        let mark_phrase_id = startname_id_content_phrase + phrase.idphrase + sentence.idsentence; // Unique ID for the phrase marker
+                        div_MarkPhrase.setAttribute(startname_id_content_phrase, mark_phrase_id); 
                         phraseControlContainer.appendChild(div_MarkPhrase);
 
                         const div_PhraseContent = document.createElement('div');
                         div_PhraseContent.className = 'div_phrase_content_voice';
-                        div_PhraseContent.id = startname_id_content_phrase + phrase.idphrase; 
+                        div_PhraseContent.id = mark_phrase_id; 
                         // Add the English phrase (phrase_en)
                         const el_phraseEng = document.createElement('div');
                         el_phraseEng.textContent = `${phrase.phrase_en}`;
@@ -145,17 +146,18 @@ function JsonToContentMD() {
                         
                         // Add click event to the phrase element
                         div_MarkPhrase.onclick = function () {
-                            let g_idphrase  = Number(this.getAttribute(startname_id_content_phrase));
-                            const div_PhraseContent1 = document.getElementById(startname_id_content_phrase + g_idphrase);
+                            let mark_phrase_id  = this.getAttribute(startname_id_content_phrase);                            
+                            const div_PhraseContent1 = document.getElementById(mark_phrase_id);
                             let current_state_contentphrase = div_PhraseContent1.style.display;
                             // hide all translation
                             HideAllExternalsInfo();
                             if (current_state_contentphrase === 'none' || current_state_contentphrase === '') {
                                 div_PhraseContent1.style.display = 'block';
+                                SpeechEngl(phrase.phrase_en);  // Speak the English text
                             } else {
                                 div_PhraseContent1.style.display = 'none';
                             }
-                            SpeechEngl(phrase.phrase_en);  // Speak the English text
+                            
                         };
                         phraseInfoContainer.appendChild(div_PhraseContent);                        
                         
