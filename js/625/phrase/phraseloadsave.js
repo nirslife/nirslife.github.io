@@ -158,6 +158,11 @@ function LookForExistingPhraseinBD() {
 function LoadSentences() {
     let sts1 = gv.sts;    
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
+    let name_article_text = get_article_name_text(cur_idarticle_text);
+    // add info into id_info_margin_phrases_head
+    let id_info_margin_phrases_head = document.getElementById('id_info_margin_phrases_head');
+    id_info_margin_phrases_head.innerHTML = `ID: ${cur_idarticle_text} --- ${name_article_text}`;
+
     let curpos_idsentence = sts1.config_phrase.idsentence;
     if (!cur_idarticle_text) { cur_idarticle_text = -1; }     
     let article_items = get_article_items(cur_idarticle_text);
@@ -324,3 +329,29 @@ function SaveSentenceToFirebase() {
   RequestArrFireBase(vdata, 'PATCH');
 }
 
+function Click_Set_Not_Processed() {
+   // Save the updated article_items to Firebase
+   let vdata = gv.vdata1;
+   if (!vdata) return;
+   let article_text = gv.vdata1["article_text"];
+   let sts1 = gv.sts; 
+   let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
+
+   // set for all items in article_items processed = 0
+   let article_items = get_article_items(cur_idarticle_text);
+   if (!article_items) return;
+
+   article_items.forEach(item => {
+       item.processed = 0; // Set processed to 0 for all items
+   });
+    // Update the article_text with the modified items    
+    let article_text_item = article_text.find(item => item.idarticle_text === cur_idarticle_text);
+    if (article_text_item) {
+        article_text_item.items = article_items;
+    }
+    // set in vdata
+    //vdata["article_text"] = article_text;
+    RequestArrFireBase(vdata, 'PATCH');
+    //alert
+    alert("All sentences have been set to not processed.");
+}

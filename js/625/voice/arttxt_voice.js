@@ -33,7 +33,7 @@ function JsonToContentMD() {
     // add div with Title = Name of Article Text
     const articleTextName = document.createElement('div');
     articleTextName.id = 'title-name-article_text';
-    articleTextName.innerHTML = `<h1>${name_article_text}</h1>`;
+    articleTextName.innerHTML = `<h1>ID:${cur_idarticle_text} --- ${name_article_text}</h1>`;
     document.body.appendChild(articleTextName);
 
     // Process the article items

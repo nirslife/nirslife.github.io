@@ -10,14 +10,19 @@ function build_Phrase_MainUI() {
   header.id = 'header1';
   document.body.appendChild(header);
 
+  const infoDivTop = document.createElement('div');
+  infoDivTop.className = 'margin_head_info';
+  infoDivTop.id = 'id_info_margin_phrases_head';
+  document.body.appendChild(infoDivTop);
+
   // Top controls
   const controlDivTop = document.createElement('div');
   controlDivTop.id = 'control_div';
   controlDivTop.innerHTML = `
-    <div class="button_controlsentences" onclick="PrevSentence()">Prev</div>
-    <div class="button_controlsentences" onclick="NextSentence()">Next Sent</div>
-    <div class="button_controlsentences" onclick="SavePhraseToFireBase()">Save Phrase to Base</div>
-    <div class="button_controlsentences" onclick="EditSentence()">Edit Sentence</div>
+      <div class="button_controlsentences" onclick="PrevSentence()">Prev</div>
+      <div class="button_controlsentences" onclick="NextSentence()">Next Sent</div>
+      <div class="button_controlsentences" onclick="SavePhraseToFireBase()">Save Phrase to Base</div>
+      <div class="button_controlsentences" onclick="EditSentence()">Edit Sentence</div>
   `;
   document.body.appendChild(controlDivTop);
 
@@ -62,6 +67,15 @@ function build_Phrase_MainUI() {
     document.body.appendChild(div);
   });
 
+  let block_bottom = document.createElement('div');
+  block_bottom.id = 'block_bottom';
+  block_bottom.innerHTML = `
+    <div class="buttons_bottom_block">
+      <div class="button_controlsentences" onclick="Click_Set_Not_Processed()">Set Not Processed</div>
+    </div>
+  `;
+  document.body.appendChild(block_bottom);
+
   build_forall_MainUI();
 
 }
@@ -84,7 +98,7 @@ function Phrase_createStyles() {
   flex-wrap: wrap;
 }
 
-.button_add_phrase,
+
 .button_remove_phrase {
   display: inline-block;
   background: #4da6ff;
@@ -116,6 +130,25 @@ function Phrase_createStyles() {
   align-items: center;
 }
 
+.margin_head_info {
+  font-size: 28px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 20px;
+  display: block;
+  width: 100%;
+}
+
+.buttons_top_block {
+  display: block;
+  width: 100%;  
+}
+
+.buttons_bottom_block {
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+}
 
   `;
   document.head.appendChild(style);
