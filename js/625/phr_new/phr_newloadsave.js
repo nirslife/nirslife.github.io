@@ -1,37 +1,6 @@
 
 
-// function LoadNextSentenceNotProcessed(article_items, curpos_idsentence) {
-//   let list_not_processed = article_items.filter(item => item.processed !== 1 && item.idsentence !== undefined);
-//   if (list_not_processed.length > 0) {
-//     gv.sts.config_phrase.count_not_processed = list_not_processed.length;
-//     if (curpos_idsentence < 1) {f_founded = true;} else { f_founded = false;}    
-//     let idsentence_found = -1;
-//     let first_idsentence = list_not_processed[0].idsentence;
-//     for (let i = 0; i < list_not_processed.length; i++) {
-//       let item = list_not_processed[i];
-//       if (f_founded) {
-//         idsentence_found = item.idsentence;
-//         break;
-//       }
-//     //  if (item.idsentence === gv.sts.config_phrase.idsentence) {
-//       if (item.idsentence === curpos_idsentence) {        
-//         // If the sentence is already loaded, skip it
-//         f_founded = true;
-//         continue;
-//       }
-//     }
-//     if (idsentence_found > 0) {
-//       gv.sts.config_phrase.idsentence = idsentence_found;
-//       LoadSentencesToHTML(idsentence_found);
-//       return;
-//     }
-//     // If no unprocessed sentence is found, load the first one
-//     gv.sts.config_phrase.idsentence = first_idsentence;
-//     LoadSentencesToHTML(first_idsentence);
-//   }
-// }
-
-function Get_NextSentenceNotProcessed(article_items, curpos_idsentence, direction) {
+function Get_phr_NextSentenceNotProcessed(article_items, curpos_idsentence, direction) {
   let ret_idsentence = -1;  
   let list_not_processed = article_items.filter(item => item.processed !== 1 && item.idsentence !== undefined);
   if (list_not_processed.length > 0) {
@@ -59,7 +28,7 @@ function Get_NextSentenceNotProcessed(article_items, curpos_idsentence, directio
           }
           ret_idsentence = gv.sts.config_phrase.prev_idsentence;
         }
-        //LoadSentencesToHTML(gv.sts.config_phrase.idsentence);
+        //Load_phr_SentencesToHTML(gv.sts.config_phrase.idsentence);
         return ret_idsentence;
       }
     }
@@ -76,19 +45,19 @@ function Get_NextSentenceNotProcessed(article_items, curpos_idsentence, directio
 
 
 // split the sentence into words using space as a delimiter 
-function splitStringIntoWords(str1) {    
+function split_phr_StringIntoWords(str1) {    
     let words = str1.split(' ').map(word => word.trim()).filter(word => word.length > 0);
     return words;
 }
 
-function LoadSentencesToHTML(idsentence) {
+function Load_phr_SentencesToHTML(idsentence) {
     let sentence = get_sentence(idsentence);
     if (!sentence) {
         console.error(`No sentence found with id: ${idsentence}`);
         return;
     }
     let sentence_en = sentence.sentence_en;
-    let words = splitStringIntoWords(sentence_en);
+    let words = split_phr_StringIntoWords(sentence_en);
     let puzzleBlockDiv = document.getElementById('div_puzzletextfrom1');
     let div_inputtextfrom1 = document.getElementById('div_inputtextfrom1');
     let textfrom1 = document.getElementById('textfrom1');
@@ -103,7 +72,7 @@ function LoadSentencesToHTML(idsentence) {
         inputTextBlock.className = 'puzzleblock inpon';
         inputTextBlock.id = `Puzzid${index}`;
         inputTextBlock.setAttribute('indexarr', index);
-        inputTextBlock.setAttribute('onclick', 'clickPuzzletext(this)');
+        inputTextBlock.setAttribute('onclick', 'click_phr_Puzzletext(this)');
         inputTextBlock.style.cursor = 'pointer';
         inputTextBlock.textContent = word;
         puzzleBlockDiv.appendChild(inputTextBlock);
@@ -122,13 +91,13 @@ function LoadSentencesToHTML(idsentence) {
         }        
     }
     // Look for existing phrases in the sentence
-    LookForExistingPhraseinBD();
+    Look_phr_ForExistingPhraseinBD();
     // Add a new phrase if there are no phrases
     addNewPhrase();
 }
 
 // if sentence contains a specific phrase
-function ContainsPhraseInSentence(phrase, sentence) {
+function Contains_phr_PhraseInSentence(phrase, sentence) {
     function leaveonlyletter(str) {
         str = str.toLowerCase();
         return str.replace(/[^a-zA-Zа-яА-ЯёЁ0-9\s]/g, ''); // remove all non-letter characters
@@ -139,7 +108,7 @@ function ContainsPhraseInSentence(phrase, sentence) {
 }
 
 
-function LookForExistingPhraseinBD() {
+function Look_phr_ForExistingPhraseinBD() {
     let vdata = gv.vdata1;
     if (!vdata) return;
     let phrases = vdata["phrases"];
@@ -147,10 +116,10 @@ function LookForExistingPhraseinBD() {
     let sentence_en = textfrom1.textContent;
     phrases.forEach(phrase => {
         let phrase_en = phrase.phrase_en;
-        if (ContainsPhraseInSentence(phrase_en, sentence_en)) {
+        if (Contains_phr_PhraseInSentence(phrase_en, sentence_en)) {
             // add phrase to the input text div
             let inputTextDiv = document.getElementById('div_inputtextfrom1');
-            let words = splitStringIntoWords(phrase_en);
+            let words = split_phr_StringIntoWords(phrase_en);
             let divPhrase = document.createElement('div');
             divPhrase.className = 'phrase';
             divPhrase.setAttribute('phrase_id', phrase.idphrase);
@@ -158,7 +127,8 @@ function LookForExistingPhraseinBD() {
                 let inputTextBlock = document.createElement('div');
                 inputTextBlock.className = 'inputtext';
                 inputTextBlock.setAttribute('indexarr', -1);
-                inputTextBlock.setAttribute('onclick', 'clickInputtext(this)');
+                //inputTextBlock.setAttribute('onclick', 'clickInputtext(this)');
+                inputTextBlock.setAttribute('onclick', 'click_phr_Inputtext(this)');                
                 inputTextBlock.style.cursor = 'pointer';
                 inputTextBlock.textContent = word;
                 divPhrase.appendChild(inputTextBlock);
@@ -168,25 +138,25 @@ function LookForExistingPhraseinBD() {
     });
 }
 
-function LoadSentences() {
+function Load_phr_Sentences() {
     let sts1 = gv.sts;    
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
     let name_article_text = get_article_name_text(cur_idarticle_text);
     // add info into id_info_margin_phrases_head
     let id_info_margin_phrases_head = document.getElementById('id_info_margin_phrases_head');
-    id_info_margin_phrases_head.innerHTML = `ID: ${cur_idarticle_text} --- ${name_article_text}`;
+    id_info_margin_phrases_head.innerHTML = `*ID*: ${cur_idarticle_text} - - - ${name_article_text}`;
 
     let curpos_idsentence = sts1.config_phrase.idsentence;
     if (!cur_idarticle_text) { cur_idarticle_text = -1; }     
     let article_items = get_article_items(cur_idarticle_text);
     if (article_items) {
         //LoadNextSentenceNotProcessed(article_items, curpos_idsentence);
-        let next_idsentence = Get_NextSentenceNotProcessed(article_items, curpos_idsentence, 'next');
-        LoadSentencesToHTML(next_idsentence);
+        let next_idsentence = Get_phr_NextSentenceNotProcessed(article_items, curpos_idsentence, 'next');
+        Load_phr_SentencesToHTML(next_idsentence);
     }
 }
 
-function SavePhraseToFireBase() {
+function Save_phr_PhraseToFireBase() {
     let cst1 = window.gv && window.gv.cst ? window.gv.cst : (this.gv ? this.gv.cst : null);
     let vdata = gv.vdata1;
     if (!vdata) return;
@@ -219,8 +189,8 @@ function SavePhraseToFireBase() {
         newPhrases.push({
             idphrase: gen_id_phrase,
             phrase_en: phraseText,
-            phrase_ru: "",
-            datetime_create: new Date().toISOString().substring(0, 19), // Format to YYYY-MM-DD HH:mm:ss
+            phrase_ru: "",       
+            datetime_create: new Date().toISOString().replace('T', ' ').substring(0, 19), // Format to YYYY-MM-DD HH:mm:ss            
             src_sentence: idsrc_sentence
         }); 
     }
@@ -236,21 +206,21 @@ function SavePhraseToFireBase() {
     // update the gen_id_phrase in config_phrase
     vdata["config_phrase"].gen_id_phrase = gen_id_phrase;
     // set property processed to 1 for the current sentence in article_items
-    SetProcessedSentence_Localy(idsrc_sentence);
+    Set_phr_ProcessedSentence_Localy(idsrc_sentence);
     // send the updated vdata to Firebase
     RequestArrFireBase(vdata, 'PATCH');
 }
 
 
-function SetProcessedAndNext(){
+function Set_phr_ProcessedAndNext(){
     let textfrom1 = document.getElementById('textfrom1');
     let cur_idsentence = textfrom1.getAttribute('idsentence');
-    Set_ProcessedSentence_SaveToFB(cur_idsentence);
+    Set_phr_ProcessedSentence_SaveToFB(cur_idsentence);
     // After setting the sentence as processed, load the next sentence
-    NextSentence();
+    Next_phr_Sentence();
 }
 
-function SetProcessedSentence_Localy(idsrc_sentence) {
+function Set_phr_ProcessedSentence_Localy(idsrc_sentence) {
     let sts1 = gv.sts;
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
     let article_items = get_article_items(cur_idarticle_text);
@@ -267,7 +237,7 @@ function SetProcessedSentence_Localy(idsrc_sentence) {
     }
 }
 
-function Set_ProcessedSentence_SaveToFB(idsrc_sentence) {
+function Set_phr_ProcessedSentence_SaveToFB(idsrc_sentence) {
     let sts1 = gv.sts;    
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
     let article_items = get_article_items(cur_idarticle_text);
@@ -298,36 +268,36 @@ function Set_ProcessedSentence_SaveToFB(idsrc_sentence) {
 
 
 
-function NextSentence() {  
+function Next_phr_Sentence() {  
     let sts1 = gv.sts;
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
     let article_items = get_article_items(cur_idarticle_text);
     if (article_items) {        
         // Get the current sentence ID
         let curpos_idsentence = sts1.config_phrase.idsentence;        
-        let next_idsentence = Get_NextSentenceNotProcessed(article_items, curpos_idsentence, 'next');        
+        let next_idsentence = Get_phr_NextSentenceNotProcessed(article_items, curpos_idsentence, 'next');        
         if (next_idsentence > 0) {
             sts1.config_phrase.idsentence = next_idsentence; // Update the current sentence ID
             // Load the next sentence
-            LoadSentencesToHTML(next_idsentence);
+            Load_phr_SentencesToHTML(next_idsentence);
         }        
     } else {
         console.log("No article items found for the given cur_idarticle_text.");
     }
 }
 
-function PrevSentence() {  
+function Prev_phr_Sentence() {  
     let sts1 = gv.sts;
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
     let article_items = get_article_items(cur_idarticle_text);
     if (article_items) {        
         // Get the current sentence ID
         let curpos_idsentence = sts1.config_phrase.idsentence;
-        let prev_idsentence = Get_NextSentenceNotProcessed(article_items, curpos_idsentence, 'prev');        
+        let prev_idsentence = Get_phr_NextSentenceNotProcessed(article_items, curpos_idsentence, 'prev');        
         if (prev_idsentence > 0) {
             sts1.config_phrase.idsentence = prev_idsentence; // Update the current sentence ID
             // Load the previous sentence
-            LoadSentencesToHTML(prev_idsentence);
+            Load_phr_SentencesToHTML(prev_idsentence);
         }
     } else {
         console.log("No article items found for the given cur_idarticle_text.");
@@ -335,7 +305,7 @@ function PrevSentence() {
 }
 
 
-function EditSentence() {
+function Edit_phr_Sentence() {
     // Get the current sentence ID from the textfrom1 div
     const textfrom1 = document.getElementById('textfrom1');
     if (!textfrom1) {
@@ -372,7 +342,7 @@ function EditSentence() {
         textfrom1.textContent = this.value; // Update the textfrom1 div with the new sentence
         this.remove(); // Remove the input field after editing
         gv.sts.config_phrase.idsentence = idsentence;
-        SaveSentenceToFirebase();
+        Save_phr_SentenceToFirebase();
     };
 
     //add the input field to the textfrom1 div
@@ -382,7 +352,7 @@ function EditSentence() {
 
 }
 
-function SaveSentenceToFirebase() {
+function Save_phr_SentenceToFirebase() {
   let vdata = gv.vdata1;
   if (!vdata) return;
   vdata["sentences"] = gv.sts.sentences;
@@ -390,34 +360,8 @@ function SaveSentenceToFirebase() {
   RequestArrFireBase(vdata, 'PATCH');
 }
 
-// function Click_Set_Not_Processed() {
-//    // Save the updated article_items to Firebase
-//    let vdata = gv.vdata1;
-//    if (!vdata) return;
-//    let article_text = gv.vdata1["article_text"];
-//    let sts1 = gv.sts; 
-//    let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
 
-//    // set for all items in article_items processed = 0
-//    let article_items = get_article_items(cur_idarticle_text);
-//    if (!article_items) return;
-
-//    article_items.forEach(item => {
-//        item.processed = 0; // Set processed to 0 for all items
-//    });
-//     // Update the article_text with the modified items    
-//     let article_text_item = article_text.find(item => item.idarticle_text === cur_idarticle_text);
-//     if (article_text_item) {
-//         article_text_item.items = article_items;
-//     }
-//     // set in vdata
-//     //vdata["article_text"] = article_text;
-//     RequestArrFireBase(vdata, 'PATCH');
-//     //alert
-//     alert("All sentences have been set to not processed.");
-// }
-
-function Click_Set_Not_Processed() {
+function Click_phr_Set_Not_Processed() {
 
     let sts1 = gv.sts;    
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;

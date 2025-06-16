@@ -208,7 +208,9 @@ function AfterRequest_FireBase() {
    if (TypeProgram === "ArticleText") {
        Main_ArticleText_LoadDataToHTML();
    } else if (TypeProgram === "Phrase") {
-       Main_Phrase_LoadDataToHTML();
+       Main_Phrase_LoadDataToHTML();   
+   } else if (TypeProgram === "Phr_New") {
+       Main_Phr_New_LoadDataToHTML();       
    } else if (TypeProgram === "VoiceArticleText") {
        Main_VoiceArticleText_LoadDataToHTML();
    } else if (TypeProgram === "ExpImpForTrans_Sent") {

@@ -9,6 +9,18 @@ function Main_Phrase_LoadDataToHTML() {
 }
 
 
+// Phr_New
+function Click_Main_Phr_New_LoadDataToHTML() {
+    SetDBCurProgramType("Phr_New");
+    Main_Phr_New_LoadDataToHTML();
+}
+function Main_Phr_New_LoadDataToHTML() {
+   build_phr_new_MainUI();
+   Load_phr_Sentences();
+}
+
+
+
 // ArticleText
 function Click_Main_ArticleText_LoadDataToHTML() {
     SetDBCurProgramType("ArticleText");

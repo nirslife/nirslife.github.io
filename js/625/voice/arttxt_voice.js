@@ -75,6 +75,8 @@ function JsonToContentMD() {
             // create the english sentence div
             const div_sentence_en = document.createElement('div');
             div_sentence_en.setAttribute('idsentence_en', sentence.idsentence); // Add the sentence ID as an attribute
+            let startname_id_div_sentence_en = 'idsentence_en_'; // Prefix for the English sentence div ID
+            div_sentence_en.id = startname_id_div_sentence_en + sentence.idsentence; // Unique ID for the English sentence div
             div_sentence_en.className = 'sentence_en_voice';
             div_sentence_en.textContent = sentence.sentenece_en; // Add the English sentence text
             div_sentence_en.onclick = function () {
@@ -113,6 +115,27 @@ function JsonToContentMD() {
                 }
             };
             phraseControlContainer.appendChild(TransButton);            
+
+            // Create the ShowTranslation button
+            const SomeButton = document.createElement('div');
+            SomeButton.className = 'button_voice_somebutton';
+            SomeButton.textContent = 'Some';            
+            SomeButton.setAttribute("idsentence", sentence.idsentence); // Add the sentence ID as an attribute
+            //div_sentence_en.id = 'idsentence_en_' + sentence.idsentence; // Unique ID for the English sentence div
+
+            SomeButton.onclick = function (element) {
+                let id_sentence = this.getAttribute("idsentence");
+                let div_sentence_en = document.getElementById(startname_id_div_sentence_en + id_sentence);
+                // select the text in the div_sentence_en
+                window.getSelection().removeAllRanges(); // Clear any existing selection
+                const range = document.createRange();
+                range.selectNodeContents(div_sentence_en); // Select the contents of the div
+                window.getSelection().addRange(range); // Add the new selection
+            };
+            phraseControlContainer.appendChild(SomeButton);
+
+
+
 
             const startname_id_content_phrase = 'idcontent_phrase_';
             const phraseInfoContainer = document.createElement('div');
@@ -436,6 +459,20 @@ phrase_en_voice {
 
 .button_voice_translation:hover {
     background-color:rgb(14, 47, 15);
+}
+
+.button_voice_somebutton {
+    background-color: rgb(44, 155, 24);
+    color: white;
+    border: none;    
+    border-radius: 3px;
+    width: 50px;
+    height: 40px;
+    margin-left: 30px;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    -webkit-touch-callout: default;
 }
 
 .button_control_phrases {

@@ -126,22 +126,39 @@ function SaveArticleTextToFireBase(){
 
 
 function Click_Next_ArticleText() {
+    Click_Move_ArticleText_Custom('next');
+}
+
+function Click_Prev_ArticleText() {
+    Click_Move_ArticleText_Custom('prev');
+}
+
+function Click_Move_ArticleText_Custom(direction) {
   // Your code for handling the next article text click
   let article_text = gv.vdata1["article_text"];
   // Get the current article text ID
   let cur_idarticle_text = gv.sts.config_phrase.cur_idarticle_text;
-  // Find the next article text
-  let nextArticleText = article_text.find(item => item.idarticle_text > cur_idarticle_text);
-  if (nextArticleText) {
-    // Update the current article text ID
-    gv.sts.config_phrase.cur_idarticle_text = nextArticleText.idarticle_text;
-  } else {
-    // find the first article text
-  let firstArticleText = article_text[0].idarticle_text;
-    if (firstArticleText) {
-      gv.sts.config_phrase.cur_idarticle_text = firstArticleText;
+  // Find the next article text  
+  let pos_i = -1;
+  for(let i = 0; i < article_text.length; i++) {
+    if (article_text[i].idarticle_text === cur_idarticle_text) {
+        pos_i = i;
+        break; 
     }
-  }  
+  }
+  if (direction === 'next') {
+    pos_i++;
+  }
+  if (direction === 'prev') {
+    pos_i--;
+  }
+  if (pos_i < 0) {
+    pos_i = article_text.length - 1; // wrap around to the last item
+  }
+  if (pos_i >= article_text.length) {
+    pos_i = 0; // wrap around to the first item
+  }
+  gv.sts.config_phrase.cur_idarticle_text = article_text[pos_i].idarticle_text;  
  
   SetDBCurArticleText(gv.sts.config_phrase.cur_idarticle_text);
   // Load the next article text into the HTML

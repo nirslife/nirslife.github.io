@@ -13,7 +13,10 @@ function loadAppScripts() {
     "./js/625/trans/trans_ui.js",
     "./js/625/main_click.js",    
     "./js/625/trans/phrase_trans_loadsave.js",
-    "./js/625/trans/sent_trans_loadsave.js"    
+    "./js/625/trans/sent_trans_loadsave.js",
+    "./js/625/phr_new/phr_new_ui.js",    
+    "./js/625/phr_new/phr_new_proc.js",    
+    "./js/625/phr_new/phr_newloadsave.js",
   ];
   scripts.forEach(src => {
     const script = document.createElement('script');

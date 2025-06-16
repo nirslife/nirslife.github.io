@@ -26,12 +26,22 @@ function build_forall_MainUI() {
   mainMenu.id = 'main_menu';
   mainMenu.style.display = 'none';
     mainMenu.innerHTML = `
-      <div class="button_mmenu_items btn_next1" onclick="Click_Next_ArticleText()"> NEXT Article Text -> </div>
-      <div class="button_mmenu_items" onclick="Click_Main_Phrase_LoadDataToHTML()">..1.. Phrase</div>
-      <div class="button_mmenu_items" onclick="Click_Main_ArticleText_LoadDataToHTML()">..2.. Import Article Text</div>
-      <div class="button_mmenu_items" onclick="Click_Main_VoiceArticleText_LoadDataToHTML()">..3.. Voice Article Text</div>
-      <div class="button_mmenu_items" onclick="Click_Main_SaveAllBase()">..4.. Save All</div>      
-      <div class="button_mmenu_items" onclick="Click_Main_ExpImpForTrans_LoadDataToHTML()">..5.. Exports/Import For Translation</div>            
+      <div class="pair_items">
+        <div class="button_mmenu_items btn_next1" onclick="Click_Prev_ArticleText()"> PREV Article Text </div>
+        <div class="button_mmenu_items btn_next1" onclick="Click_Next_ArticleText()"> NEXT Article Text -> </div>
+      </div>
+      <div class="pair_items">
+        <div class="button_mmenu_items" onclick="Click_Main_Phrase_LoadDataToHTML()">..1.. Phrase</div>        
+        <div class="button_mmenu_items" onclick="Click_Main_Phr_New_LoadDataToHTML()">..1.1.. NEW Phrase</div>
+      </div>  
+      <div class="pair_items">
+        <div class="button_mmenu_items" onclick="Click_Main_ArticleText_LoadDataToHTML()">..2.. Import Article Text</div>
+        <div class="button_mmenu_items" onclick="Click_Main_VoiceArticleText_LoadDataToHTML()">..3.. Voice Article Text</div>
+      </div>
+      <div class="pair_items">
+        <div class="button_mmenu_items" onclick="Click_Main_SaveAllBase()">..4.. Save All</div>      
+        <div class="button_mmenu_items" onclick="Click_Main_ExpImpForTrans_LoadDataToHTML()">..5.. Translation Exports/Import</div>            
+      </div>
     `;
   document.body.appendChild(mainMenu);
 
@@ -78,7 +88,7 @@ function MainMenu_createStyleForMainMenu() {
       position: absolute;         /* Make menu absolute */
       top: 0;                     /* Stick to the top */
       left: 0;
-      width: 400px;               /* Fixed width */
+      width: 800px;               /* Fixed width */
       max-width: 95vw;            /* Responsive on small screens */
       z-index: 1001;              /* Above other content */
       display: none;              /* Hidden by default, shown when toggled */
@@ -95,6 +105,8 @@ function MainMenu_createStyleForMainMenu() {
       top: 10px;
       right: 10px;
       z-index: 1002;
+      width: 150px; /* Fixed width for the button */
+      height: 65px; /* Fixed height for the button */
       background-color: #007bff;
       color: white;
       border: none;
@@ -113,18 +125,22 @@ function MainMenu_createStyleForMainMenu() {
 function MainMenu_createStyleForItemsMenu() {
   const style = document.createElement('style');
   style.innerHTML = `
+    .pair_items {
+      display: block;
+    }
+    
     .button_mmenu_items {
       background-color: #007bff;
       color: white;
       border: none;
       padding: 10px 15px;
       cursor: pointer;
-      margin: 20px 0;      
+      margin: 20px 60px;
       min-height: 50px;     
       border-radius: 5px;
       text-align: center;
       font-size: 16px;
-      display: block;
+      display: inline-block;
     }
     .button_mmenu_items:hover {
       background-color: #0056b3;
