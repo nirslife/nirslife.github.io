@@ -297,7 +297,7 @@ function VoiceP2_createStyles() {
     const style = document.createElement('style');
     style.textContent = `
 .title-name-article_text {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
@@ -308,7 +308,7 @@ function VoiceP2_createStyles() {
 }    
 .sentence_en_voice {
     margin-bottom: 20px; 
-    font-size: 24px;
+    font-size: 30px;
     display: block;
     border: 1px solid #ccc;
     padding: 10px;
@@ -322,7 +322,7 @@ function VoiceP2_createStyles() {
 }
 .sentence_ru_voice {
     margin-bottom: 20px; 
-    font-size: 24px;
+    font-size: 26px;
     display: block;
     border: 1px solid #ccc;
     padding: 10px;
@@ -336,7 +336,7 @@ function VoiceP2_createStyles() {
 }
 
 phrase_en_voice {
-    font-size: 24px;
+    font-size: 28px;
     display: block;
     border: 1px solid #ccc;
     padding: 10px;
@@ -349,7 +349,7 @@ phrase_en_voice {
 }
 
 .phrase_ru_voice {
-    font-size: 24px;
+    font-size: 26px;
     display: block;
     border: 1px solid #ccc;
     padding: 10px;
@@ -383,7 +383,7 @@ phrase_en_voice {
     padding: 15px;    
     width: 350px;
     height: auto;
-    font-size: 24px;
+    font-size: 28px;
     border-radius: 5px;
     color: black;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);        
@@ -403,7 +403,7 @@ phrase_en_voice {
     right: 5px;
     background: transparent;
     border: none;
-    font-size: 18px;
+    font-size: 28px;
     cursor: pointer;
 }
 
@@ -415,7 +415,7 @@ phrase_en_voice {
     margin-top: 10px;
     margin-left: 10px;
     display: block;
-    font-size: 20px;
+    font-size: 28px;
     font-family: Arial, sans-serif;
     color: #333;
     background-color: #f9f9f9;
@@ -437,7 +437,7 @@ phrase_en_voice {
     color: white;
     background-color:rgb(46, 157, 167);
     font-weight: normal;
-    font-size: 18px;
+    font-size: 28px;
 }
 
 .phrase-marker_voice:hover {
@@ -488,8 +488,8 @@ phrase_en_voice {
     border: none;
     border-radius: 5px;
     padding: 10px 15px;
-    font-size: 18px;
-    cursor: pointer;    
+    font-size: 28px;
+    cursor: pointer;
     bottom: 30px;
     right: 30px;
     height: 50px;
