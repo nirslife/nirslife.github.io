@@ -182,8 +182,12 @@ function JsonToContentMD() {
                             // }
                             div_PhraseContent1.style.display = 'block';
                             SpeechEngl(phrase.phrase_en);  // Speak the English text
-
-                            
+                            const div_phrase_en = div_PhraseContent1.querySelector('.phrase_en_voice');
+                            // select the text in the div_sentence_en
+                            window.getSelection().removeAllRanges(); // Clear any existing selection
+                            const range = document.createRange();
+                            range.selectNodeContents(div_phrase_en); // Select the contents of the div
+                            window.getSelection().addRange(range); // Add the new selection
                         };
                         phraseInfoContainer.appendChild(div_PhraseContent);                        
                         
