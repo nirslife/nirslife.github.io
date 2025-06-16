@@ -139,7 +139,7 @@ function MainMenu_createStyleForItemsMenu() {
       min-height: 50px;     
       border-radius: 5px;
       text-align: center;
-      font-size: 16px;
+      font-size: 26px;
       display: inline-block;
     }
     .button_mmenu_items:hover {
@@ -169,7 +169,7 @@ function MainMenu_createStyleForItemsMenu() {
   min-height: 30px;
   border-radius: 7px;
   padding: 12px 28px;
-  font-size: 18px;
+  font-size: 26px;
   font-weight: 600;
   margin: 12px 20px 12px 20px;
   cursor: pointer;
