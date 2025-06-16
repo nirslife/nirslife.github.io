@@ -51,7 +51,9 @@ function addNewPhr_new() {
 }
 
 function OnClickPhrase(phraseElement) {
-   SpeechEngl(phraseElement.textContent);  // Speak the English text
+   let inputTexts = phraseElement.getElementsByClassName('inputtext');
+   let phraseText = Array.from(inputTexts).map(input => input.textContent).join(' ');
+   SpeechEngl(phraseText);  // Speak the English text
 }
 
 
