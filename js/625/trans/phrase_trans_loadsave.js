@@ -3,7 +3,7 @@
 function ExpImpForTrans_Phrase_loadDataToHTML() {
    ExpImpForTrans_createStyles_3();    
 
-   const countPhrases = 10; // Number of phrases to display in one block
+   const countPhrases = 27; // Number of phrases to display in one block
 
     let sts1 = gv.sts;    
     let phrases = gv.sts.phrases;

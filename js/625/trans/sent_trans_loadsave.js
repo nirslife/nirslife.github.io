@@ -9,7 +9,7 @@ function ExpImpForTrans_loadDataToHTML() {
 function ExpImpForTrans_Sentence_loadDataToHTML() {
    ExpImpForTrans_createStyles_2();    
 
-   const countSentences = 5;
+   const countSentences = 15;
 
     let sts1 = gv.sts;    
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
