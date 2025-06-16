@@ -1,6 +1,7 @@
 function build_phr_new_MainUI() {
 
   Phr_new_createStyles();
+  InitDefaultVoice();
   
   // Clear body
   document.body.innerHTML = '';

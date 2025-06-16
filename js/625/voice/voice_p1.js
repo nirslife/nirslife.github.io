@@ -38,6 +38,13 @@ function addVoiceSelectionDropdown() {
     populateVoiceEN_USList();
 }
 
+async function InitDefaultVoice() {
+    voices = await window.speechSynthesis.getVoices();
+    if (voices.length > 0) {
+        VoiceENIndex = voices.findIndex(voice => voice.name.indexOf('Samantha') >= 0);
+    }
+}
+
 async function populateVoiceEN_USList() {
      let marginDiv = document.getElementById('marginDivVoiceEN_US');    
 

@@ -39,7 +39,7 @@ function build_forall_MainUI() {
         <div class="button_mmenu_items" onclick="Click_Main_VoiceArticleText_LoadDataToHTML()">..3.. Voice Article Text</div>
       </div>
       <div class="pair_items">
-        <div class="button_mmenu_items" onclick="Click_Main_SaveAllBase()">..4.. Save All</div>      
+        <div class="button_mmenu_items" onclick="Click_Main_OpenSettings()">..4.. Open Settings</div>      
         <div class="button_mmenu_items" onclick="Click_Main_ExpImpForTrans_LoadDataToHTML()">..5.. Translation Exports/Import</div>            
       </div>
     `;
