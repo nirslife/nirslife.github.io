@@ -174,12 +174,15 @@ function JsonToContentMD() {
                             let current_state_contentphrase = div_PhraseContent1.style.display;
                             // hide all translation
                             HideAllExternalsInfo();
-                            if (current_state_contentphrase === 'none' || current_state_contentphrase === '') {
-                                div_PhraseContent1.style.display = 'block';
-                                SpeechEngl(phrase.phrase_en);  // Speak the English text
-                            } else {
-                                div_PhraseContent1.style.display = 'none';
-                            }
+                            // if (current_state_contentphrase === 'none' || current_state_contentphrase === '') {
+                            //     div_PhraseContent1.style.display = 'block';
+                            //     SpeechEngl(phrase.phrase_en);  // Speak the English text
+                            // } else {
+                            //     div_PhraseContent1.style.display = 'none';
+                            // }
+                            div_PhraseContent1.style.display = 'block';
+                            SpeechEngl(phrase.phrase_en);  // Speak the English text
+
                             
                         };
                         phraseInfoContainer.appendChild(div_PhraseContent);                        
@@ -450,7 +453,7 @@ phrase_en_voice {
     color: white;
     border: none;    
     border-radius: 3px;
-    width: 50px;
+    width: 100px;
     height: 40px;
     text-align: center;
     cursor: pointer;
@@ -466,7 +469,7 @@ phrase_en_voice {
     color: white;
     border: none;    
     border-radius: 3px;
-    width: 50px;
+    width: 100px;
     height: 40px;
     margin-left: 30px;
     text-align: center;
