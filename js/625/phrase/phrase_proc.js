@@ -27,9 +27,10 @@ function addNewPhrase() {
   const inputTextDiv = document.getElementById('div_inputtextfrom1');
   const newPhrase = document.createElement('div');
   newPhrase.className = 'phrase';
-  newPhrase.setAttribute('phrase_id', -1);    
+  newPhrase.setAttribute('phrase_id', -1);
   inputTextDiv.appendChild(newPhrase);
 }
+
 
 function RefreshPuzzletext() {
   const div_puzzletextfrom1 = document.getElementById('div_puzzletextfrom1');

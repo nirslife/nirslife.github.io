@@ -33,6 +33,7 @@ function addNewPhr_new() {
       const newPhrase = document.createElement('div');
       newPhrase.className = 'phrase';
       newPhrase.setAttribute('phrase_id', -1);    
+      newPhrase.setAttribute('onclick', 'OnClickPhrase(this)');
       inputTextDiv.appendChild(newPhrase);
       Array.from(selectedElements).forEach(element => {
           // create a new input text block
@@ -48,6 +49,11 @@ function addNewPhr_new() {
       Clear_Selection_In_Puzzletext();
     }
 }
+
+function OnClickPhrase(phraseElement) {
+   SpeechEngl(phraseElement.textContent);  // Speak the English text
+}
+
 
 function Refresh_phr_Puzzletext() {
   const div_puzzletextfrom1 = document.getElementById('div_puzzletextfrom1');
