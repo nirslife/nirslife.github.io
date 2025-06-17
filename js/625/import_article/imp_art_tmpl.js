@@ -1,3 +1,4 @@
+
 function build_ArticleTextEnter_MainUI(){
   // Clear body
   document.body.innerHTML = '';
@@ -12,10 +13,10 @@ function build_ArticleTextEnter_MainUI(){
   const textArt_Name = document.createElement('div');
   textArt_Name.id = 'articletext_name';
   textArt_Name.innerHTML = `
-<div id="input_text_area_container">
-  <label for="input_name_text_area">Enter name article:</label><br>
-  <input type="text" id="input_name_text_area" placeholder="Type your name here..." />
-</div>
+    <div id="input_text_area_container">
+      <label for="input_name_text_area">Enter name article:</label><br>
+      <input type="text" id="input_name_text_area" placeholder="Type your name here..." />
+    </div>
   `;
   document.body.appendChild(textArt_Name);
 

@@ -125,13 +125,6 @@ function SaveArticleTextToFireBase(){
 }
 
 
-function Click_Next_ArticleText() {
-    Click_Move_ArticleText_Custom('next');
-}
-
-function Click_Prev_ArticleText() {
-    Click_Move_ArticleText_Custom('prev');
-}
 
 function Click_Move_ArticleText_Custom(direction) {
   // Your code for handling the next article text click

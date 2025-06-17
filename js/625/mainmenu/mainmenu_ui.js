@@ -21,36 +21,19 @@ function build_forall_MainUI() {
   // 3) create close button for the main menu.
 
   MainMenu_createStyleForAll();
+  const mainMenu = Create_MainMenu_Elem();
 
-  const mainMenu = document.createElement('div');
-  mainMenu.id = 'main_menu';
-  mainMenu.style.display = 'none';
-    mainMenu.innerHTML = `
-      <div class="pair_items">
-        <div class="button_mmenu_items btn_next1" onclick="Click_Prev_ArticleText()"> PREV Article Text </div>
-        <div class="button_mmenu_items btn_next1" onclick="Click_Next_ArticleText()"> NEXT Article Text -> </div>
-      </div>
-      <div class="pair_items">
-        <div class="button_mmenu_items" onclick="Click_Main_Phrase_LoadDataToHTML()">..1.. Phrase</div>        
-        <div class="button_mmenu_items" onclick="Click_Main_Phr_New_LoadDataToHTML()">..1.1.. NEW Phrase</div>
-      </div>  
-      <div class="pair_items">
-        <div class="button_mmenu_items" onclick="Click_Main_ArticleText_LoadDataToHTML()">..2.. Import Article Text</div>
-        <div class="button_mmenu_items" onclick="Click_Main_VoiceArticleText_LoadDataToHTML()">..3.. Voice Article Text</div>
-      </div>
-      <div class="pair_items">
-        <div class="button_mmenu_items" onclick="Click_Main_OpenSettings()">..4.. Open Settings</div>      
-        <div class="button_mmenu_items" onclick="Click_Main_ExpImpForTrans_LoadDataToHTML()">..5.. Translation Exports/Import</div>            
-      </div>
-    `;
-  document.body.appendChild(mainMenu);
-
-    
   // Button to toggle main menu visibility
   const toggleMenuButton = document.createElement('button');
   toggleMenuButton.id = 'toggleMainMenuButton';
   toggleMenuButton.innerText = '☰ Main Menu';
   toggleMenuButton.onclick = function() {
+    const mainMenu = document.getElementById('main_menu');
+    if (!mainMenu) {
+      console.error("Main menu element not found.");
+      return;
+    }
+  
   if (mainMenu.style.display === 'none') {
       mainMenu.style.display = 'block';
     } else {

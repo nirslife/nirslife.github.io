@@ -14,3 +14,12 @@
     {id: "14", partgrname: "Conjunctions and prepositions",longdesc: "Conjunctions and prepositions",shortdesc: "Conjunctions and prepositions"},
     {id: "15", partgrname: "Prepositions",longdesc: "Prepositions",shortdesc: "Prepositions"},
     {id: "16", partgrname: "Phrasal verbs",longdesc: "Phrasal verbs",shortdesc: "Phrasal verbs"}
+
+Give me a similar job search platform like djinni
+Here are some job search platforms similar to Djinni that focus on tech professionals and direct hiring:
+Dou.ua – A Ukrainian IT community with job listings, salary analytics, and company reviews.
+LinkedIn – A global professional network where companies post jobs and connect with candidates.
+Wellfound (formerly AngelList Talent) – A platform for startup job opportunities, allowing direct communication with founders.
+Upwork – A freelance marketplace where tech professionals can find remote work.
+Dice – A specialized job board for tech roles, popular in the U.S.
+You can explore more alternatives on Similarweb or Ahrefs. Let me know if you need recommendations for a specific region or industry! 🚀

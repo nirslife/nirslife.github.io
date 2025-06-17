@@ -1,22 +1,4 @@
-// Function to handle control Phrase text click BEGIN
 
-// function click_phr_Inputtext(element) {
-//   // Remove the element from the DOM
-//   const phrase = element.parentElement;
-//   let indexarr = element.getAttribute('indexarr');
-//   element.remove();
-//   let div_puzzletextfrom1 = document.getElementById('div_puzzletextfrom1');
-//   let puzzleBlocks = div_puzzletextfrom1.getElementsByClassName('puzzleblock inpoff');
-//   // Find the puzzle block with the matching indexarr
-//   Array.from(puzzleBlocks).forEach(block => {
-//     if (block.getAttribute('indexarr') === indexarr) {
-//       // Change the class and onclick attribute of the puzzle block
-//       block.setAttribute('class', 'puzzleblock inpon');     
-//       block.setAttribute('onclick', 'click_phr_Puzzletext(this)');
-//       block.style.cursor = 'pointer';
-//     }
-//   });
-// }
 
 function click_phr_Inputtext(element) {
    const phrase = element.parentElement;
@@ -78,28 +60,6 @@ function remove_phr_LastPhrase() {
   }
 }
 
-// function click_phr_Puzzletext(element) {
-//   // find the last phrase in the input text
-//   const inputTextDiv = document.getElementById('div_inputtextfrom1');
-//   const phrases = inputTextDiv.getElementsByClassName('phrase');
-//   if (phrases.length > 0) {
-//     const lastPhrase = phrases[phrases.length - 1];
-//     // create a new input text block
-//     const newInputText = document.createElement('div');
-//     newInputText.className = 'inputtext';
-//     newInputText.setAttribute('onclick', 'click_phr_Inputtext(this)');
-//     newInputText.setAttribute('indexarr', element.getAttribute('indexarr'));
-//     newInputText.style.color = 'rgb(0, 0, 0)';
-//     newInputText.style.background = 'rgb(90, 238, 120)';
-//     newInputText.textContent = element.textContent;    
-//     lastPhrase.appendChild(newInputText);
-//     // change the attribute of the puzzle block     
-//     element.setAttribute('class', 'puzzleblock inpoff');
-//     element.setAttribute('onclick', '');
-//     element.style.cursor = 'default';    
-//   }
-
-// }
 function click_phr_Puzzletext(element) {
    let pos_beg_or_end = element.getAttribute('position_be');
    if (pos_beg_or_end === 'begin') {

@@ -126,18 +126,17 @@ async function RequestArrFireBase(vobj, ametod) {
     let vdata = await response.json();
     if (ametod == 'GET') {
         if (typeof CB_AfterGet === 'function') {
-            await CB_AfterGet(cst1, vdata);
+            await CB_AfterGet(vdata);
         }
     }
     if (ametod == 'PATCH') {
         if (typeof CB_AfterPatch === 'function') {
-            await CB_AfterPatch(cst1, vdata);
+            await CB_AfterPatch(vdata);
         }
     }
 }
 
 async function RequestArrFireBase_AddUrl(vobj, ametod, addUrl) {
-    let cst1 = window.gv && window.gv.cst ? window.gv.cst : (this.gv ? this.gv.cst : null);
     let jsn1 = "";
     let post_obj = null;
     if (vobj != null) {
@@ -155,17 +154,17 @@ async function RequestArrFireBase_AddUrl(vobj, ametod, addUrl) {
     let vdata = await response.json();
     if (ametod == 'GET') {
         if (typeof CB_AfterGet_URL === 'function') {
-            await CB_AfterGet_URL(cst1, vdata);
+            await CB_AfterGet_URL(vdata);
         }
     }
     if (ametod == 'PATCH') {
         if (typeof CB_AfterPatch_URL === 'function') {
-            await CB_AfterPatch_URL(cst1, vdata);
+            await CB_AfterPatch_URL(vdata);
         }
     }
 }
 
-async function CB_AfterPatch_URL(cst1, vdata) {
+async function CB_AfterPatch_URL(vdata) {
  //   AfterRequest_FireBase();
  if (vdata) {
    console.log("updated");
@@ -173,53 +172,71 @@ async function CB_AfterPatch_URL(cst1, vdata) {
  }
 }
 
-async function CB_AfterGet_URL(cst1, vdata) {
+async function CB_AfterGet_URL(vdata) {
  //   AfterRequest_FireBase();
 }
 
 
-async function CB_AfterGet(cst1, vdata) {
-    let sts1 = gv.sts;
-    gv.vdata1 = vdata;
-    sts1.sentences = vdata["sentences"];
-    sts1.phrases = vdata["phrases"];
-    sts1.article_text = vdata["article_text"];
-    sts1.config_phrase = vdata["config_phrase"];
-    sts1.sentences_for_processing = null;   
-    AfterRequest_FireBase();
+async function CB_AfterGet(vdata) {
+   Update_StateData(vdata);
+   AfterRequest_FireBase();
 }
 
-async function CB_AfterPatch(cst1, vdata) {
-    let sts1 = gv.sts;
-    gv.vdata1 = vdata;
-    sts1.sentences = vdata["sentences"];
-    sts1.phrases = vdata["phrases"];
-    sts1.article_text = vdata["article_text"];
-    sts1.config_phrase = vdata["config_phrase"];
-    sts1.sentences_for_processing = null;    
-    AfterRequest_FireBase();
+async function CB_AfterPatch(vdata) {
+   Update_StateData(vdata);    
+   AfterRequest_FireBase();
 }
 
 
 
+
+// function AfterRequest_FireBase() {
+//  let TypeProgram = gv.sts.config_phrase.CurProgramType;
+//    if (TypeProgram === "ArticleText") {
+//        Main_ArticleText_LoadDataToHTML();
+//    } else if (TypeProgram === "Phrase") {
+//        Main_Phrase_LoadDataToHTML();   
+//    } else if (TypeProgram === "Phr_New") {
+//        Main_Phr_New_LoadDataToHTML();       
+//    } else if (TypeProgram === "VoiceArticleText") {
+//        Main_VoiceArticleText_LoadDataToHTML();
+//    } else if (TypeProgram === "ExpImpForTrans_Sent") {
+//         Main_ExpImpForTrans_Sent_LoadDataToHTML();
+//    } else if (TypeProgram === "ExpImpForTrans_Phrase") {
+//        Main_ExpImpForTrans_Phrase_LoadDataToHTML();
+//    } else {
+//        SetDBCurProgramType("Phrase");
+//    }
+// }
 
 function AfterRequest_FireBase() {
- let TypeProgram = gv.sts.config_phrase.CurProgramType;
-   if (TypeProgram === "ArticleText") {
-       Main_ArticleText_LoadDataToHTML();
-   } else if (TypeProgram === "Phrase") {
-       Main_Phrase_LoadDataToHTML();   
-   } else if (TypeProgram === "Phr_New") {
-       Main_Phr_New_LoadDataToHTML();       
-   } else if (TypeProgram === "VoiceArticleText") {
-       Main_VoiceArticleText_LoadDataToHTML();
-   } else if (TypeProgram === "ExpImpForTrans_Sent") {
-        Main_ExpImpForTrans_Sent_LoadDataToHTML();
-   } else if (TypeProgram === "ExpImpForTrans_Phrase") {
-       Main_ExpImpForTrans_Phrase_LoadDataToHTML();
-   } else {
-       SetDBCurProgramType("Phrase");
-   }
+    let TypeProgram = gv.sts.config_phrase.CurProgramType;
+    switch (TypeProgram) {
+        case "ArticleText":
+            Main_ArticleText_LoadDataToHTML();
+            break;
+        case "Phrase":
+            Main_Phrase_LoadDataToHTML();
+            break;
+        case "Phr_New":
+            Main_Phr_New_LoadDataToHTML();
+            break;
+        case "VoiceArticleText":
+            Main_VoiceArticleText_LoadDataToHTML();
+            break;
+        case "ExpImpForTrans_Sent":
+            Main_ExpImpForTrans_Sent_LoadDataToHTML();
+            break;
+        case "ExpImpForTrans_Phrase":
+            Main_ExpImpForTrans_Phrase_LoadDataToHTML();
+            break;
+        case "SortPhrase":
+            Main_SortPhrase_LoadDataToHTML();
+            break;
+        default:
+            SetDBCurProgramType("Phrase");
+            break;
+    }    
 }
 
 
@@ -270,6 +287,17 @@ function SetDBConfigPhrase(configPhrase) {
   if (!vdata) return;
   vdata["config_phrase"] = configPhrase;
   RequestArrFireBase(vdata, 'PATCH');
+}
+
+function Update_StateData(vdata) {
+    if (!vdata) return;
+    let sts1 = gv.sts;
+    sts1.sentences = vdata["sentences"];
+    sts1.phrases = vdata["phrases"];
+    sts1.article_text = vdata["article_text"];
+    sts1.config_phrase = vdata["config_phrase"];
+    sts1.sentences_for_processing = null;        
+    gv.vdata1 = vdata;
 }
 
 function Click_Main_SaveAllBase() {
