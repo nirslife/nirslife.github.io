@@ -36,10 +36,10 @@ function Load_Sort_Phrase_HtmlContent() {
     // Set the current partition to 1 if it exceeds total partitions
     if (cnf_sort_phr.cur_partition > total_partitions) {
         // set last partition
-        cnf_sort_phr.cur_partition = total_partitions;
+        cnf_sort_phr.cur_partition = 1;
     }else if (cnf_sort_phr.cur_partition < 1) {
         // set first partition
-        cnf_sort_phr.cur_partition = 1;
+        cnf_sort_phr.cur_partition = total_partitions;
     }
     // Save the configuration to Firebase
     Set_Sort_Phrase_Config_SaveToFB(cnf_sort_phr);
