@@ -21,9 +21,12 @@ function Set_Sort_Phrase_Config_SaveToFB(cnf_sort_phrase) {
 
 function Load_Sort_Phrase_HtmlContent() {
 
-    CreateMainSortPhraseStyles();
     // clear the body content
-    document.body.innerHTML = ''; // Clear existing content
+    document.body.innerHTML = '';
+    RemoveAllStylesSortPhrase();
+
+    CreateMainSortPhraseStyles();
+
 
     const cnf_sort_phr = Get_Config_Sort_Phrase();
     const count_at_1_portion = 50; // Number of phrases per partition
@@ -34,8 +37,23 @@ function Load_Sort_Phrase_HtmlContent() {
     if (cnf_sort_phr.cur_partition > total_partitions) {
         // set last partition
         cnf_sort_phr.cur_partition = total_partitions;
-        Set_Sort_Phrase_Config_SaveToFB(cnf_sort_phr);
+    }else if (cnf_sort_phr.cur_partition < 1) {
+        // set first partition
+        cnf_sort_phr.cur_partition = 1;
     }
+    // Save the configuration to Firebase
+    Set_Sort_Phrase_Config_SaveToFB(cnf_sort_phr);
+
+     // Top controls
+    const controlDivTop = document.createElement('div');
+    controlDivTop.id = 'control_div';
+    controlDivTop.innerHTML = `
+        <div class="button_control" id="Prev_part_button_control_Sort_Phrase" onclick="">Prev part</div>
+        <div class="button_control" id="Next_part_button_control_Sort_Phrase" onclick="">Next part</div>
+    `;
+    document.body.appendChild(controlDivTop);
+    UpdateControlButtonsSortPhrase();
+
 
     // Create info
     const div_cur_partition = document.createElement('div');
@@ -69,7 +87,53 @@ function Load_Sort_Phrase_HtmlContent() {
         UpdateToolsButtonForPhrase_Label(phrase, 'L2');
         UpdateToolsButtonForPhrase_Label(phrase, 'L3');
     });
+    build_forall_MainUI();
+
 }
+
+function UpdateControlButtonsSortPhrase() {
+
+    // Update Prev button
+    const prevButton = document.getElementById('Prev_part_button_control_Sort_Phrase');
+    // Add event listeners to the buttons
+    prevButton.setAttribute('onclick', 'Click_Prev_Part_Sort_Phrase()');
+    
+
+   
+    // if (cnf_sort_phr.cur_partition > 1) {
+    //     prevButton.style.display = 'block';
+    // } else {
+    //     prevButton.style.display = 'none';
+    // }
+
+    // Update Next button
+    const nextButton = document.getElementById('Next_part_button_control_Sort_Phrase');
+    // Add event listeners to the buttons
+    nextButton.setAttribute('onclick', 'Click_Next_Part_Sort_Phrase()');
+
+
+    // if (cnf_sort_phr.cur_partition < total_partitions) {
+    //     nextButton.style.display = 'block';
+    // } else {
+    //     nextButton.style.display = 'none';
+    // }
+
+}
+
+
+function Click_Prev_Part_Sort_Phrase(){
+    const cnf_sort_phr = Get_Config_Sort_Phrase();
+    cnf_sort_phr.cur_partition--;
+    Load_Sort_Phrase_HtmlContent();
+}
+         
+function Click_Next_Part_Sort_Phrase() {
+    const cnf_sort_phr = Get_Config_Sort_Phrase();
+    cnf_sort_phr.cur_partition++;
+    Load_Sort_Phrase_HtmlContent();
+}
+
+
 
 function HideAllPopupsElements() {
     // Hide all phrase translation divs
@@ -77,6 +141,10 @@ function HideAllPopupsElements() {
     allPhraseDivs.forEach(div => {
         div.style.display = 'none';
     });    
+}
+
+function UpDatePartEnPhraseOnCLick(phrase) {
+   const cust_idphrase_en = `sort-phrase-part-en${phrase.idphrase}`;
 }
 
 function CreateToolsButtonForPhrase_Trans(cust_idphrase_ru, idphrase) {
@@ -194,7 +262,56 @@ function Patch_Phrase_Label_Firebase(idphrase, name_label, value) {
 function CreateMainSortPhraseStyles() {
 
     CreateCustomSortPhraseStyles1();
+    CreateCustomSortPhraseStyles2();
 }
+
+function RemoveAllStylesSortPhrase() {
+    const styles = document.querySelectorAll('style');
+    styles.forEach(style => {
+             style.remove(); 
+    });
+}
+
+function CreateCustomSortPhraseStyles2(){    
+
+    const style = document.createElement('style');
+    style.textContent = `
+      #control_div {
+        margin: 24px 0 24px 0;
+        display: flex;
+        gap: 16px;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+
+      .button_control {
+        background: #1e90ff;
+        color: #fff;
+        border: none;
+        min-height: 50px;
+        border-radius: 7px;
+        padding: 12px 28px;
+        font-size: 26px;
+        font-weight: 600;
+        margin: 10px 80px 12px 20px;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(30,144,255,0.08);
+        transition: background 0.2s, box-shadow 0.2s;
+        display: flex;              
+        align-items: center;        
+        justify-content: center;    
+        letter-spacing: 0.5px;
+        text-align: center;
+      }
+      .button_control:hover {
+          background-color: #e0e0e0;
+      }
+    `;
+    document.head.appendChild(style);
+
+}
+
 
 function CreateCustomSortPhraseStyles1() {
     const style = document.createElement('style');
