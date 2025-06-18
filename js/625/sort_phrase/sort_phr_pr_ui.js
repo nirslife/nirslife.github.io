@@ -26,7 +26,7 @@ function Load_Sort_Phrase_HtmlContent() {
     document.body.innerHTML = ''; // Clear existing content
 
     const cnf_sort_phr = Get_Config_Sort_Phrase();
-    const count_at_1_portion = 200; // Number of phrases per partition
+    const count_at_1_portion = 50; // Number of phrases per partition
     // Calculate the total number of partitions
     const total_phrases = gv.sts.phrases.length;
     const total_partitions = Math.ceil(total_phrases / count_at_1_portion);
@@ -99,35 +99,6 @@ function CreateToolsButtonForPhrase_Trans(cust_idphrase_ru, idphrase) {
     tools_div.appendChild(button);    
 }
 
-// function UpdateToolsButtonForPhrase_L1(phrase) {
-//     const tools_div = document.getElementById(`sort-phrase-part-tools${phrase.idphrase}`);
-//     // Check if the button already exists
-//     let existingButton = document.getElementById(`sort-phrase-tools-l1-${phrase.idphrase}`);
-//     // If it exists, remove it
-//     if (existingButton) {
-//         existingButton.remove();
-//     }
-//     const button = document.createElement('div');
-//     button.className = 'sort-phrase-tools-button bkg_clr_off';
-//     button.id = `sort-phrase-tools-l1-${phrase.idphrase}`;
-//     if (phrase.l1 && phrase.l1 > 0) {
-//         button.classList.add('bkg_clr_red');
-//         button.setAttribute('L1', '1');
-//     }
-//     button.innerHTML = 'L1';
-//     button.setAttribute('idphrase', phrase.idphrase);
-//     button.onclick = function(element) {
-//         const idphrase = element.target.getAttribute('idphrase');
-//         const phrase_l1 = element.target.getAttribute('L1');
-//         if (phrase_l1 === '1') {
-//             Patch_Phrase_Label_Firebase(idphrase,'L1', 0);
-//         } else {
-//             Patch_Phrase_Label_Firebase(idphrase,'L1',1);
-//         }
-//     };
-//     tools_div.appendChild(button);
-// }
-
 function RemoveClassesFromLabelButtons(button1) {
     button1.classList.remove('bkg_clr_off');
     button1.classList.remove('bkg_clr_green');
@@ -193,20 +164,24 @@ function UpdateToolsButtonForPhrase_Label(phrase, label) {
 
 function Patch_Phrase_Label_Firebase(idphrase, name_label, value) {
     const index = gv.sts.phrases.findIndex(p => p.idphrase == idphrase);
+    const addurl = `phrases/${index}`;    
     if (index !== -1) {
         let phrase = gv.sts.phrases[index];
         switch (name_label.toUpperCase()) {
         case 'L1':
             phrase.l1 = value;
             UpdateToolsButtonForPhrase_Label(phrase, 'L1');
+            RequestArrFireBase_AddUrl({ [name_label]: value }, 'PATCH', addurl);
             break;
         case 'L2':
             phrase.l2 = value;
             UpdateToolsButtonForPhrase_Label(phrase, 'L2');
+            RequestArrFireBase_AddUrl({ [name_label]: value }, 'PATCH', addurl);
             break;
         case 'L3':
             phrase.l3 = value;
             UpdateToolsButtonForPhrase_Label(phrase, 'L3');
+            RequestArrFireBase_AddUrl({ [name_label]: value }, 'PATCH', addurl);
             break;
         default:
             return; 
@@ -229,7 +204,7 @@ function CreateCustomSortPhraseStyles1() {
             margin: 20px 0;
         }
         .sort-block-phrase-item {
-            margin: 10px 10px;            
+            margin: 40px 10px;            
             border: 1px solid #ccc;
             border-radius: 5px;            
         }
