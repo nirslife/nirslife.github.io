@@ -76,7 +76,8 @@ function Click_Main_Sort_Phrase_HTML() {
     Main_SortPhrase_LoadDataToHTML();
 }
 function Main_SortPhrase_LoadDataToHTML() {
-    build_SortPhrase_MainUI();    
+    //build_SortPhrase_MainUI();
+    Load_Sort_Phrase_HtmlContent();    
 }
 
 

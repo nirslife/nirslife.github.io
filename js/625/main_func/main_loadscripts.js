@@ -30,6 +30,8 @@ function loadAppScripts() {
     "./js/625/phr_new/phr_newloadsave.js",
 
     "./js/625/sort_phrase/sort_phr_tmpl.js",
+    "./js/625/sort_phrase/sort_phr_pr_ui.js",
+
 
   ];
 
