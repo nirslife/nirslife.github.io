@@ -82,6 +82,7 @@ function Load_Sort_Phrase_HtmlContent() {
             <div class="sort-phrase-part-tools" id="${cust_idphrase_tools}"></div>
         `;        
         document.body.appendChild(phrase_div);
+        UpdateClickEngDivSortPhrase(cust_idphrase_en);
         CreateToolsButtonForPhrase_Trans(cust_idphrase_ru, phrase.idphrase);
         UpdateToolsButtonForPhrase_Label(phrase, 'L1');
         UpdateToolsButtonForPhrase_Label(phrase, 'L2');
@@ -92,32 +93,14 @@ function Load_Sort_Phrase_HtmlContent() {
 }
 
 function UpdateControlButtonsSortPhrase() {
-
     // Update Prev button
     const prevButton = document.getElementById('Prev_part_button_control_Sort_Phrase');
     // Add event listeners to the buttons
-    prevButton.setAttribute('onclick', 'Click_Prev_Part_Sort_Phrase()');
-    
-
-   
-    // if (cnf_sort_phr.cur_partition > 1) {
-    //     prevButton.style.display = 'block';
-    // } else {
-    //     prevButton.style.display = 'none';
-    // }
-
+    prevButton.setAttribute('onclick', 'Click_Prev_Part_Sort_Phrase()');    
     // Update Next button
     const nextButton = document.getElementById('Next_part_button_control_Sort_Phrase');
     // Add event listeners to the buttons
     nextButton.setAttribute('onclick', 'Click_Next_Part_Sort_Phrase()');
-
-
-    // if (cnf_sort_phr.cur_partition < total_partitions) {
-    //     nextButton.style.display = 'block';
-    // } else {
-    //     nextButton.style.display = 'none';
-    // }
-
 }
 
 
@@ -143,9 +126,18 @@ function HideAllPopupsElements() {
     });    
 }
 
-function UpDatePartEnPhraseOnCLick(phrase) {
-   const cust_idphrase_en = `sort-phrase-part-en${phrase.idphrase}`;
+
+function UpdateClickEngDivSortPhrase(cust_idphrase_en, idphrase) {
+    const div_phrase_en = document.getElementById(cust_idphrase_en);
+    if (!div_phrase_en) {
+        console.error(`Element with id ${cust_idphrase_en} not found.`);
+        return;
+    }
+    div_phrase_en.onclick = function(element) {
+        SpeechEngl(this.textContent);
+    };
 }
+
 
 function CreateToolsButtonForPhrase_Trans(cust_idphrase_ru, idphrase) {
     const tools_div = document.getElementById(`sort-phrase-part-tools${idphrase}`);
