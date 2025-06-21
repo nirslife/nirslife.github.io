@@ -263,7 +263,11 @@ function Set_phr_ProcessedSentence_SaveToFB(idsrc_sentence) {
         }
     }
     let addurl = "article_text/" + index_article_text + "/items/" + index_article_text_items_item;
-    RequestArrFireBase_AddUrl(article_text_items_item, 'PATCH', addurl);
+    let ObjRequest = GetObjForRequest();
+    ObjRequest.addUrl = addurl;
+    ObjRequest.ametod = 'PATCH';
+    ObjRequest.vobj = article_text_items_item; // Use the item found above
+    RequestArrFireBase_AddUrl(ObjRequest);
 }
 
 
@@ -378,7 +382,11 @@ function Click_phr_Set_Not_Processed() {
        item.processed = 0; // Set processed to 0 for all items
     });
     let addurl = "article_text/" + index_article_text;
-    RequestArrFireBase_AddUrl(article_text_item, 'PATCH', addurl);
+    let ObjRequest = GetObjForRequest();
+    ObjRequest.addUrl = addurl;
+    ObjRequest.ametod = 'PATCH';
+    ObjRequest.vobj = article_text_item; // Use the updated article_text_item
+    RequestArrFireBase_AddUrl(ObjRequest);
     //alert
     alert("All sentences have been set to not processed.");
 }

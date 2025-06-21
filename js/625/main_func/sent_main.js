@@ -136,7 +136,20 @@ async function RequestArrFireBase(vobj, ametod) {
     }
 }
 
-async function RequestArrFireBase_AddUrl(vobj, ametod, addUrl) {
+function GetObjForRequest() {
+    let ObjRequest = {    
+        vobj: null,
+        ametod: null,
+        addUrl: null,
+        CallBackFunction: null
+    };
+    return ObjRequest;
+}
+
+//async function RequestArrFireBase_AddUrl(vobj, ametod, addUrl) {
+async function RequestArrFireBase_AddUrl(ObjRequest) {
+    let { vobj, ametod, addUrl } = ObjRequest;
+
     let jsn1 = "";
     let post_obj = null;
     if (vobj != null) {
@@ -152,19 +165,23 @@ async function RequestArrFireBase_AddUrl(vobj, ametod, addUrl) {
     let aurl = GetUrlPathWithAddUrl(addUrl);
     const response = await fetch(aurl, post_obj);
     let vdata = await response.json();
-    if (ametod == 'GET') {
-        if (typeof CB_AfterGet_URL === 'function') {
-            await CB_AfterGet_URL(vdata);
-        }
+    let CallBackFunction = ObjRequest.CallBackFunction;
+    if (CallBackFunction && typeof CallBackFunction === 'function') {
+        await CallBackFunction(vdata, ametod);
     }
-    if (ametod == 'PATCH') {
-        if (typeof CB_AfterPatch_URL === 'function') {
-            await CB_AfterPatch_URL(vdata);
-        }
-    }
+    // if (ametod == 'GET') {
+    //     if (typeof CB_AfterGet_URL === 'function') {
+    //         await CB_AfterGet_URL(vdata, ametod);
+    //     }
+    // }
+    // if (ametod == 'PATCH') {
+    //     if (typeof CB_AfterPatch_URL === 'function') {
+    //         await CB_AfterPatch_URL(vdata, ametod);
+    //     }
+    // }
 }
 
-async function CB_AfterPatch_URL(vdata) {
+async function CB_AfterPatch_URL(vdata, ametod) {
  //   AfterRequest_FireBase();
  if (vdata) {
    console.log("updated");
@@ -172,7 +189,7 @@ async function CB_AfterPatch_URL(vdata) {
  }
 }
 
-async function CB_AfterGet_URL(vdata) {
+async function CB_AfterGet_URL(vdata, ametod) {
  //   AfterRequest_FireBase();
 }
 
@@ -187,27 +204,6 @@ async function CB_AfterPatch(vdata) {
    AfterRequest_FireBase();
 }
 
-
-
-
-// function AfterRequest_FireBase() {
-//  let TypeProgram = gv.sts.config_phrase.CurProgramType;
-//    if (TypeProgram === "ArticleText") {
-//        Main_ArticleText_LoadDataToHTML();
-//    } else if (TypeProgram === "Phrase") {
-//        Main_Phrase_LoadDataToHTML();   
-//    } else if (TypeProgram === "Phr_New") {
-//        Main_Phr_New_LoadDataToHTML();       
-//    } else if (TypeProgram === "VoiceArticleText") {
-//        Main_VoiceArticleText_LoadDataToHTML();
-//    } else if (TypeProgram === "ExpImpForTrans_Sent") {
-//         Main_ExpImpForTrans_Sent_LoadDataToHTML();
-//    } else if (TypeProgram === "ExpImpForTrans_Phrase") {
-//        Main_ExpImpForTrans_Phrase_LoadDataToHTML();
-//    } else {
-//        SetDBCurProgramType("Phrase");
-//    }
-// }
 
 function AfterRequest_FireBase() {
     let TypeProgram = gv.sts.config_phrase.CurProgramType;
@@ -233,6 +229,9 @@ function AfterRequest_FireBase() {
         case "SortPhrase":
             Main_SortPhrase_LoadDataToHTML();
             break;
+        case "CollectNewWords":
+            Load_Collect_New_Words_HtmlContent();
+            break;
         default:
             SetDBCurProgramType("Phrase");
             break;
@@ -241,34 +240,7 @@ function AfterRequest_FireBase() {
 
 
 
-function get_article_name_text(cur_idarticle_text) {
-    let article_text = gv.sts.article_text;
-    if (!article_text) return null;
-    const item = article_text.find(item => item.idarticle_text == cur_idarticle_text);
-    return item ? item.name_article_text : null;
-}
 
-
-function get_article_items(cur_idarticle_text) {
-    let article_text = gv.sts.article_text;
-    if (!article_text) return null;
-    const item = article_text.find(item => item.idarticle_text == cur_idarticle_text);
-    return item ? item.items : null;
-}
-
-function get_article_text_index(cur_idarticle_text) {
-    let article_text = gv.sts.article_text;
-    if (!article_text) return null;
-    const index = article_text.findIndex(item => item.idarticle_text == cur_idarticle_text);
-    return index !== -1 ? index : null;
-}
-
-function get_sentence(idsentence) {
-    let sentences = gv.sts.sentences;
-    if (!sentences) return null;
-    const item = sentences.find(item => item.idsentence == idsentence);
-    return item ? item : null;
-}
 
 
 function SetDBCurProgramType(programType) {  
@@ -296,6 +268,7 @@ function Update_StateData(vdata) {
     sts1.phrases = vdata["phrases"];
     sts1.article_text = vdata["article_text"];
     sts1.config_phrase = vdata["config_phrase"];
+    sts1.collect_new_words = vdata["collect_new_words"];
     sts1.sentences_for_processing = null;        
     gv.vdata1 = vdata;
 }

@@ -1,36 +1,4 @@
 
-
-// function LoadNextSentenceNotProcessed(article_items, curpos_idsentence) {
-//   let list_not_processed = article_items.filter(item => item.processed !== 1 && item.idsentence !== undefined);
-//   if (list_not_processed.length > 0) {
-//     gv.sts.config_phrase.count_not_processed = list_not_processed.length;
-//     if (curpos_idsentence < 1) {f_founded = true;} else { f_founded = false;}    
-//     let idsentence_found = -1;
-//     let first_idsentence = list_not_processed[0].idsentence;
-//     for (let i = 0; i < list_not_processed.length; i++) {
-//       let item = list_not_processed[i];
-//       if (f_founded) {
-//         idsentence_found = item.idsentence;
-//         break;
-//       }
-//     //  if (item.idsentence === gv.sts.config_phrase.idsentence) {
-//       if (item.idsentence === curpos_idsentence) {        
-//         // If the sentence is already loaded, skip it
-//         f_founded = true;
-//         continue;
-//       }
-//     }
-//     if (idsentence_found > 0) {
-//       gv.sts.config_phrase.idsentence = idsentence_found;
-//       LoadSentencesToHTML(idsentence_found);
-//       return;
-//     }
-//     // If no unprocessed sentence is found, load the first one
-//     gv.sts.config_phrase.idsentence = first_idsentence;
-//     LoadSentencesToHTML(first_idsentence);
-//   }
-// }
-
 function Get_NextSentenceNotProcessed(article_items, curpos_idsentence, direction) {
   let ret_idsentence = -1;  
   let list_not_processed = article_items.filter(item => item.processed !== 1 && item.idsentence !== undefined);
@@ -72,13 +40,6 @@ function Get_NextSentenceNotProcessed(article_items, curpos_idsentence, directio
   }
     // If no unprocessed sentence is found, return -1
     return ret_idsentence; // Return -1 if no unprocessed sentence is found
-}
-
-
-// split the sentence into words using space as a delimiter 
-function splitStringIntoWords(str1) {    
-    let words = str1.split(' ').map(word => word.trim()).filter(word => word.length > 0);
-    return words;
 }
 
 function LoadSentencesToHTML(idsentence) {
@@ -292,7 +253,11 @@ function Set_ProcessedSentence_SaveToFB(idsrc_sentence) {
         }
     }
     let addurl = "article_text/" + index_article_text + "/items/" + index_article_text_items_item;
-    RequestArrFireBase_AddUrl(article_text_items_item, 'PATCH', addurl);
+    let ObjRequest = GetObjForRequest();
+    ObjRequest.addUrl = addurl;
+    ObjRequest.ametod = 'PATCH';
+    ObjRequest.vobj = article_text_items_item; // Use the item found in the article_items
+    RequestArrFireBase_AddUrl(ObjRequest);
 }
 
 
@@ -433,7 +398,11 @@ function Click_Set_Not_Processed() {
        item.processed = 0; // Set processed to 0 for all items
     });
     let addurl = "article_text/" + index_article_text;
-    RequestArrFireBase_AddUrl(article_text_item, 'PATCH', addurl);
+    let ObjRequest = GetObjForRequest();
+    ObjRequest.addUrl = addurl;
+    ObjRequest.ametod = 'PATCH';
+    ObjRequest.vobj = article_text_item; // Use the modified article_text_item
+    RequestArrFireBase_AddUrl(ObjRequest);
     //alert
     alert("All sentences have been set to not processed.");
 }

@@ -15,7 +15,11 @@ function Get_Config_Sort_Phrase() {
 
 function Set_Sort_Phrase_Config_SaveToFB(cnf_sort_phrase) {
     let addurl = "config_phrase/sort_phrase";
-    RequestArrFireBase_AddUrl(cnf_sort_phrase, 'PATCH', addurl);
+    let ObjRequest = GetObjForRequest();
+    ObjRequest.addUrl = addurl;
+    ObjRequest.ametod = 'PATCH';
+    ObjRequest.vobj = cnf_sort_phrase;
+    RequestArrFireBase_AddUrl(ObjRequest);
 }
 
 
@@ -224,24 +228,27 @@ function UpdateToolsButtonForPhrase_Label(phrase, label) {
 
 function Patch_Phrase_Label_Firebase(idphrase, name_label, value) {
     const index = gv.sts.phrases.findIndex(p => p.idphrase == idphrase);
-    const addurl = `phrases/${index}`;    
+//    const addurl = `phrases/${index}`;    
     if (index !== -1) {
         let phrase = gv.sts.phrases[index];
         switch (name_label.toUpperCase()) {
         case 'L1':
             phrase.l1 = value;
-            UpdateToolsButtonForPhrase_Label(phrase, 'L1');
-            RequestArrFireBase_AddUrl({ [name_label]: value }, 'PATCH', addurl);
+            UpdateToolsButtonForPhrase_Label(phrase, 'L1');            
+            SaveLabelToFirebase({ [name_label]: value }, index);
+            //R equestArrFireBase_AddUrl({ [name_label]: value }, 'PATCH', addurl);
             break;
         case 'L2':
             phrase.l2 = value;
             UpdateToolsButtonForPhrase_Label(phrase, 'L2');
-            RequestArrFireBase_AddUrl({ [name_label]: value }, 'PATCH', addurl);
+//            R equestArrFireBase_AddUrl({ [name_label]: value }, 'PATCH', addurl);
+            SaveLabelToFirebase({ [name_label]: value }, index);
             break;
         case 'L3':
             phrase.l3 = value;
             UpdateToolsButtonForPhrase_Label(phrase, 'L3');
-            RequestArrFireBase_AddUrl({ [name_label]: value }, 'PATCH', addurl);
+//            R equestArrFireBase_AddUrl({ [name_label]: value }, 'PATCH', addurl);
+            SaveLabelToFirebase({ [name_label]: value }, index);
             break;
         default:
             return; 
@@ -251,8 +258,16 @@ function Patch_Phrase_Label_Firebase(idphrase, name_label, value) {
     console.log(`Patching phrase ${idphrase} with label ${name_label}`);
 }
 
-function CreateMainSortPhraseStyles() {
+function SaveLabelToFirebase(obj_label, index) {
+    const addurl = `phrases/${index}`;    
+    let ObjRequest = GetObjForRequest();
+    ObjRequest.ametod = 'PATCH';
+    ObjRequest.vobj = obj_label;
+    ObjRequest.addUrl = addurl;
+    RequestArrFireBase_AddUrl(ObjRequest);
+}
 
+function CreateMainSortPhraseStyles() {
     CreateCustomSortPhraseStyles1();
     CreateCustomSortPhraseStyles2();
 }

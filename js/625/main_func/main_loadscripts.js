@@ -2,7 +2,7 @@ function loadAppScripts() {
   const scripts = [
 
     "./js/625/main_func/sent_main.js",
-    "./js/625/main_func/global_var.js",
+    "./js/625/main_func/help_func.js",
     "./js/625/mainmenu/mainmenu_ui.js",
     "./js/625/mainmenu/main_click.js",
 
@@ -31,6 +31,8 @@ function loadAppScripts() {
 
     "./js/625/sort_phrase/sort_phr_tmpl.js",
     "./js/625/sort_phrase/sort_phr_pr_ui.js",
+
+    "./js/625/collect_words/coll_wrds_pr_ui.js"
 
 
   ];

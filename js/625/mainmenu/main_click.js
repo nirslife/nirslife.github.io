@@ -14,6 +14,7 @@ function Click_Main_Phrase_LoadDataToHTML() {
     SetDBCurProgramType("Phrase");  
     Main_Phrase_LoadDataToHTML();
 }
+
 function Main_Phrase_LoadDataToHTML() {
    build_Phrase_MainUI();
    LoadSentences();
@@ -52,7 +53,7 @@ function Main_VoiceArticleText_LoadDataToHTML() {
 }
 
 
-// ExImpForTrans
+// ExImpForTrans  //for Sentences and Phrases
 function Click_Main_ExpImpForTrans_LoadDataToHTML() {
     SetDBCurProgramType("ExpImpForTrans_Sent");
     Main_ExpImpForTrans_Sent_LoadDataToHTML();
@@ -70,6 +71,9 @@ function Main_ExpImpForTrans_Phrase_LoadDataToHTML() {
     ExpImpForTrans_Phrase_loadDataToHTML();        
 }
 
+
+
+
 // SortPhrase
 function Click_Main_Sort_Phrase_HTML() {
     SetDBCurProgramType("SortPhrase");
@@ -78,6 +82,16 @@ function Click_Main_Sort_Phrase_HTML() {
 function Main_SortPhrase_LoadDataToHTML() {
     //build_SortPhrase_MainUI();
     Load_Sort_Phrase_HtmlContent();    
+}
+
+
+// CollectNewWords
+function Click_Main_CollectNewWords() {
+    SetDBCurProgramType("CollectNewWords");
+    Main_CollectNewWords_LoadDataToHTML();
+}
+function Main_CollectNewWords_LoadDataToHTML() { 
+    Load_CollectNewWords_HtmlContent();
 }
 
 
@@ -109,7 +123,7 @@ function Create_MainMenu_Elem() {
       </div>
       <div class="pair_items">
         <div class="button_mmenu_items" id = "main_sort_phrase_mm" >..6.. Sort Phrase</div>      
-        <div class="button_mmenu_items" id = "main_other777_mm" >..7..</div>            
+        <div class="button_mmenu_items" id = "main_collect_new_words_mm" >..7.. Collect New Words</div>            
       </div>
 
     `;
@@ -124,7 +138,7 @@ function  Click_Main_Other777() {
 }
 
 
-function InitOnClickFunc_MainMenu() {
+function InitOnClickFunc_MainMenu() { 
 
   // Add event listeners to the buttons
   document.getElementById('prev_article_text_mm').setAttribute('onclick', 'Click_Prev_ArticleText()');
@@ -136,43 +150,10 @@ function InitOnClickFunc_MainMenu() {
   document.getElementById('main_open_settings_mm').setAttribute('onclick', 'Click_Main_OpenSettings()');
   document.getElementById('main_exp_imp_for_trans_mm').setAttribute('onclick', 'Click_Main_ExpImpForTrans_LoadDataToHTML()');
   document.getElementById('main_sort_phrase_mm').setAttribute('onclick', 'Click_Main_Sort_Phrase_HTML()');
-  document.getElementById('main_other777_mm').setAttribute('onclick', 'Click_Main_Other777()');
+  document.getElementById('main_collect_new_words_mm').setAttribute('onclick', 'Click_Main_CollectNewWords()');
 
 }
 
 
 
 
-// function Create_MainMenu_Elem_OLD() {
-
-//   const mainMenu = document.createElement('div');
-//   mainMenu.id = 'main_menu';
-//   mainMenu.style.display = 'none'; // Initially hidden
-//   document.body.appendChild(mainMenu);  
-
-//   // can be deleted
-//     mainMenu.innerHTML = `
-//       <div class="pair_items">
-//         <div class="button_mmenu_items btn_next1" id = "prev_article_text_mm" onclick="Click_Prev_ArticleText()"> PREV Article Text </div>
-//         <div class="button_mmenu_items btn_next1" id = "next_article_text_mm" onclick="Click_Next_ArticleText()"> NEXT Article Text -> </div>
-//       </div>
-//       <div class="pair_items">
-//         <div class="button_mmenu_items" id = "main_phrase_mm" onclick="Click_Main_Phrase_LoadDataToHTML()">..1.. Phrase</div>        
-//         <div class="button_mmenu_items" id = "main_phr_new_mm" onclick="Click_Main_Phr_New_LoadDataToHTML()">..1.1.. NEW Phrase</div>
-//       </div>  
-//       <div class="pair_items">
-//         <div class="button_mmenu_items" id = "main_article_text_mm" onclick="Click_Main_ArticleText_LoadDataToHTML()">..2.. Import Article Text</div>
-//         <div class="button_mmenu_items" id = "main_voice_article_text_mm" onclick="Click_Main_VoiceArticleText_LoadDataToHTML()">..3.. Voice Article Text</div>
-//       </div>
-//       <div class="pair_items">
-//         <div class="button_mmenu_items" id = "main_open_settings_mm" onclick="Click_Main_OpenSettings()">..4.. Open Settings</div>      
-//         <div class="button_mmenu_items" id = "main_exp_imp_for_trans_mm" onclick="Click_Main_ExpImpForTrans_LoadDataToHTML()">..5.. Translation Exports/Import</div>            
-//       </div>
-//       <div class="pair_items">
-//         <div class="button_mmenu_items" id = "main_sort_phrase_mm" onclick="Click_Main_Sort_Phrase_HTML()">..6.. Sort Phrase</div>      
-//         <div class="button_mmenu_items" id = "main_other777_mm" onclick="">..7..</div>            
-//       </div>
-
-//     `;
-
-// }
