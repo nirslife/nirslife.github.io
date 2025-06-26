@@ -32,7 +32,7 @@ function Set_Collect_New_Words_Config_SaveToFB(cnf_collect_new_words) {
     RequestArrFireBase_AddUrl(ObjRequest);
 }
 
-async function get_collected_words_items() {
+async function get_collected_words_items_from_firebase() {
     let ObjRequest = GetObjForRequest();
     ObjRequest.addUrl = "collect_new_words";
     ObjRequest.ametod = 'GET';
@@ -247,7 +247,7 @@ function SaveSelectedWords_New_Words(span_word) {
         indx_word_i++;
         const wordsData = {
             word: span_word.textContent.trim(),
-            idsentence: span_word.getAttribute('idsentence_of_word'),
+            idsentence: Number(span_word.getAttribute('idsentence_of_word')),
             timestamp: get_now_n19_datefromat_fb(),
         };
         items_words.push(wordsData);

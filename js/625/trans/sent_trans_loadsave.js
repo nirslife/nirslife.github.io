@@ -6,20 +6,57 @@ function ExpImpForTrans_loadDataToHTML() {
    ExpImpForTrans_Sentence_loadDataToHTML();  
 }
 
-function ExpImpForTrans_Sentence_loadDataToHTML() {
-   ExpImpForTrans_createStyles_2();    
+function Click_SetModeCollectedWords(athis) {
+  const mode1 = athis.className.includes('button_control_transl_on') ? true : false;
+  if (!mode1) {
+    athis.className = 'button_control_transl button_control_transl_on';
+  }
+  else {
+    athis.className = 'button_control_transl';
+  }
+  ExpImpForTrans_Sentence_loadDataToHTML(); 
+}
 
-   const countSentences = 15;
+function SelectArticleItemsByMode(cur_idarticle_text) {
+    const but_id_SetModeCollectedWords  = document.getElementById('id_SetModeCollectedWords');
+    const mode_trans = but_id_SetModeCollectedWords.className.includes('button_control_transl_on') ? true : false;
+    if (mode_trans) {
+        // Select article items for translation
+        let items = get_unique_collected_words_items(cur_idarticle_text);
+        if (!items) {
+            alert("No collected words items found for the given cur_idarticle_text.");
+            return get_article_items(cur_idarticle_text);
+        }
+        return items;
+    } 
+    else {        
+        return get_article_items(cur_idarticle_text);
+    }
+
+}
+
+
+function ExpImpForTrans_Sentence_loadDataToHTML() {
+    
+    // const divsaveMode1 = document.getElementById('id_SetModeCollectedWords');
+    // const save_Mode1 = false; // Default value
+    // if (!divsaveMode1) {
+    //     save_Mode1 = divsaveMode1.className.includes('button_control_transl_on') ? false : true;
+    // }            
+
+    const countSentences = 15;
 
     let sts1 = gv.sts;    
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
-    let article_items = get_article_items(cur_idarticle_text);    
+    //let article_items = get_article_items(cur_idarticle_text);    
+    let article_items = SelectArticleItemsByMode(cur_idarticle_text);
     if (!article_items) {
         console.error("No article items found for the given cur_idarticle_text.");
         return;        
     }
     let tr_sentences = [];
-    
+
+
 
     // Process the article items
     article_items.forEach(item => {
@@ -279,6 +316,14 @@ function TextArea_copyToClipboard(TextToCopy1) {
     // Remove the temporary textarea
     document.body.removeChild(tempTextarea);
 }
+
+function RemoveAllStylesExpImpForTrans() {
+    const styles = document.querySelectorAll('style');
+    styles.forEach(style => {
+             style.remove(); 
+    });
+}
+
 
 
 function ExpImpForTrans_createStyles_2() {

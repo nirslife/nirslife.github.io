@@ -2,7 +2,8 @@
 var gv = {
   cst: {
     FBSets: null,
-    config_phrase: null
+    config_phrase: null,
+    SaveBasicUrl: 'text_phrase_obj'
   },
   sts: {
     vdata1: null
@@ -23,8 +24,7 @@ function MainFunc() {
   });
 }
 
-async function init() {  
-  //gv.cst.FBSets = Init_LoginFireBaseSets('text_phrase_obj.json');
+async function init() {    
   gv.cst.FBSets = Init_LoginFireBaseSets('text_phrase_obj');
   await this.LoginFireBase(gv.cst);
 }
@@ -280,4 +280,23 @@ function Click_Main_SaveAllBase() {
     let datetime1 = new Date().toISOString();
     datetime1 = datetime1.replace(/[-:T]/g, '').slice(0, 15); // Format datetime to YYYYMMDDHHMMSS
     Init_LoginFireBaseSets('text_phrase_obj'+datetime1);
+}
+
+
+function Main_Backup_Text_Phrase_Obj_WithTS(){
+  let vdata = gv.vdata1;
+  if (!vdata) return;
+  let datetime1 = get_nowBackUp_n19_datefromat_fb();
+  let addUrl = `text_phrase_obj_${datetime1}`;
+  let ObjRequest = GetObjForRequest();
+  ObjRequest.vobj = vdata;
+  ObjRequest.ametod = 'PATCH';
+  ObjRequest.addUrl = addUrl;  
+  gv.cst.FBSets.DataSet_Basic = '';
+  ObjRequest.CallBackFunction = function(vdata, ametod) {
+     gv.cst.FBSets.DataSet_Basic = gv.cst.SaveBasicUrl;  
+  };
+  RequestArrFireBase_AddUrl(ObjRequest);
+  console.log("Backup Text Phrase Object with timestamp: " + datetime1);
+  alert("Backup Text Phrase Object with timestamp: " + datetime1);
 }

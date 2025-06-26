@@ -95,6 +95,11 @@ function Main_CollectNewWords_LoadDataToHTML() {
 }
 
 
+// Backup Text Phrase Object
+function Click_Main_Backup_Text_Phrase_Obj() { 
+    Main_Backup_Text_Phrase_Obj_WithTS();    
+}
+
 
 function Create_MainMenu_Elem() {
 
@@ -125,6 +130,10 @@ function Create_MainMenu_Elem() {
         <div class="button_mmenu_items" id = "main_sort_phrase_mm" >..6.. Sort Phrase</div>      
         <div class="button_mmenu_items" id = "main_collect_new_words_mm" >..7.. Collect New Words</div>            
       </div>
+      <div class="pair_items">
+        <div class="button_mmenu_items" id = "main_backup_text_phrase_obj_mm" >..8.. BackUP TEXT_PHRASE_OBJ</div>      
+
+      </div>
 
     `;
   InitOnClickFunc_MainMenu();
@@ -151,6 +160,7 @@ function InitOnClickFunc_MainMenu() {
   document.getElementById('main_exp_imp_for_trans_mm').setAttribute('onclick', 'Click_Main_ExpImpForTrans_LoadDataToHTML()');
   document.getElementById('main_sort_phrase_mm').setAttribute('onclick', 'Click_Main_Sort_Phrase_HTML()');
   document.getElementById('main_collect_new_words_mm').setAttribute('onclick', 'Click_Main_CollectNewWords()');
+  document.getElementById('main_backup_text_phrase_obj_mm').setAttribute('onclick', 'Click_Main_Backup_Text_Phrase_Obj()');
 
 }
 
