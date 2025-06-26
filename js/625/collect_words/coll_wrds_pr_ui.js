@@ -163,11 +163,10 @@ function IfExistsWord_In_Collect(idsentence, word, indx_coll_words) {
         return false; // Invalid index or no collected words
     }
     let items_words = coll_words_array[indx_coll_words].items;
-    if (!items_words) {
-        return false; // No items in the collection
+    if (!Array.isArray(items_words)) {
+        return false; // No items in the collection or not an array
     }
     let fres = items_words.some(item => item.word === word && Number(item.idsentence) === Number(idsentence));
-//    let fres = items_words.some(item => item.word === word );
     return fres;
 }
 
