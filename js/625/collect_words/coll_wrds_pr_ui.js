@@ -107,7 +107,7 @@ async function Load_Collect_New_Words_HtmlContent() {
     let cur_test_position = config_collect_new_words.cur_test_position;
     let htmlContent = `
         <div id="title-name-article_text">
-            <h1>Collect New Words</h1>
+            <h1>Collect New Words ID: ${cur_idarticle_text}</h1>
             <h2>${name_article_text}</h2>
         </div>
         <div id="control_div">
@@ -238,7 +238,7 @@ function Get_Collected_New_Words_Item_index(span_word) {
 }
 
 function SaveSelectedWords_New_Words(span_word) {    
-    let indx_coll_words = span_word.getAttribute('indx_coll_words');
+    let indx_coll_words = Number(span_word.getAttribute('indx_coll_words'));
     let coll_words_array = gv.sts.collect_new_words;
     let items_words = coll_words_array[indx_coll_words].items;
     let indx_word_i = Get_Collected_New_Words_Item_index(span_word);

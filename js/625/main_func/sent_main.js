@@ -270,7 +270,7 @@ function Update_StateData(vdata) {
     sts1.config_phrase = vdata["config_phrase"];
     sts1.collect_new_words = vdata["collect_new_words"];
     sts1.sentences_for_processing = null;        
-    gv.vdata1 = vdata;
+    gv.vdata1 = vdata;    
 }
 
 function Click_Main_SaveAllBase() {

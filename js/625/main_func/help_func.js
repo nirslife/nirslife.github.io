@@ -74,3 +74,25 @@ function get_nowBackUp_n19_datefromat_fb() {
     let seconds = String(now.getSeconds()).padStart(2, '0');    
     return `${year}-${month}-${day}_${hours}_${minutes}_${seconds}`;
 }
+
+
+function fixproblem_correct_value_in_collect_new_words(cur_idarticle_text) {
+    let collect_new_words = gv.sts.collect_new_words;
+    if (!collect_new_words) return;   
+    const coll_word_obj = collect_new_words.find(item => item.idarticle_text == cur_idarticle_text);
+    const coll_word_arr = coll_word_obj.items;
+    if (!coll_word_arr || coll_word_arr.length == 0) return;
+    const index_coll_by_idarticle_text = collect_new_words.findIndex(item => item.idarticle_text == cur_idarticle_text);
+    for (let i = 0; i < coll_word_arr.length; i++) {
+        let item = coll_word_arr[i];
+        item.idsentence = Number(item.idsentence);
+    }
+    gv.sts.collect_new_words[index_coll_by_idarticle_text] = coll_word_arr;    
+    let addurl = "collect_new_words/" + index_coll_by_idarticle_text + "/items";
+    let ObjRequest = GetObjForRequest();
+    ObjRequest.addUrl = addurl;
+    //ObjRequest.ametod = 'PATCH';
+    ObjRequest.ametod = 'PUT';
+    ObjRequest.vobj = coll_word_arr;
+    RequestArrFireBase_AddUrl(ObjRequest);
+}
