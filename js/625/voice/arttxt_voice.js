@@ -80,7 +80,7 @@ function JsonToContentMD() {
             div_sentence_en.className = 'sentence_en_voice';
             div_sentence_en.textContent = sentence.sentenece_en; // Add the English sentence text
             div_sentence_en.onclick = function () {
-                SpeechEngl(this.textContent);
+//                SpeechEngl(this.textContent);
             };
             sentenceContainer.appendChild(div_sentence_en);
             // Create the Russian sentence div
@@ -119,19 +119,27 @@ function JsonToContentMD() {
             // Create the ShowTranslation button
             const SomeButton = document.createElement('div');
             SomeButton.className = 'button_voice_somebutton';
-            SomeButton.textContent = 'Some';            
+            //SomeButton.textContent = 'Some';
+            SomeButton.textContent = 'Play';            
             SomeButton.setAttribute("idsentence", sentence.idsentence); // Add the sentence ID as an attribute
             //div_sentence_en.id = 'idsentence_en_' + sentence.idsentence; // Unique ID for the English sentence div
 
+
+            // SomeButton.onclick = function (element) {
+            //     let id_sentence = this.getAttribute("idsentence");
+            //     let div_sentence_en = document.getElementById(startname_id_div_sentence_en + id_sentence);
+            //     // select the text in the div_sentence_en
+            //     window.getSelection().removeAllRanges(); // Clear any existing selection
+            //     const range = document.createRange();
+            //     range.selectNodeContents(div_sentence_en); // Select the contents of the div
+            //     window.getSelection().addRange(range); // Add the new selection
+            // };
             SomeButton.onclick = function (element) {
-                let id_sentence = this.getAttribute("idsentence");
-                let div_sentence_en = document.getElementById(startname_id_div_sentence_en + id_sentence);
-                // select the text in the div_sentence_en
-                window.getSelection().removeAllRanges(); // Clear any existing selection
-                const range = document.createRange();
-                range.selectNodeContents(div_sentence_en); // Select the contents of the div
-                window.getSelection().addRange(range); // Add the new selection
+                 let id_sentence = this.getAttribute("idsentence");
+                 let div_sentence_en = document.getElementById(startname_id_div_sentence_en + id_sentence);
+                SpeechEngl(div_sentence_en.textContent);
             };
+
             phraseControlContainer.appendChild(SomeButton);
 
 
