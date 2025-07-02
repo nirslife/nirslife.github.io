@@ -14,6 +14,8 @@ function SetBodyHtmlWidthIfMobile() {
 function JsonToContentMD() {    
 
     // Ensure the styles are applied
+    RemoveAllStylesCollect_New_Words();
+    CreateMainCollect_New_Words_Styles();
     VoiceP2_createStyles();
 
     
@@ -213,6 +215,7 @@ function JsonToContentMD() {
     });
 
     AddExportButton();
+    
 
 }
 
@@ -291,12 +294,26 @@ function build_VoiceArticleText_MainUI() {
         addVoiceSelectionDropdown();
         // Call the function to convert JSON to content
         JsonToContentMD();
+        Load_Label_Collect_New_Words_HtmlContent();
     } catch (error) {
         console.error("Error in MainFunc:", error);
     }
 
   build_forall_MainUI();
 };
+
+
+function Load_Label_Collect_New_Words_HtmlContent() {
+    sts1 = gv.sts;
+    let indx_coll_words = sts1.config_phrase.collect_new_words.indx_coll_words;
+    let list_sent_en_voice = document.querySelectorAll(".sentence_en_voice");
+    list_sent_en_voice.forEach((element) => {
+        sentence_en = element.textContent;
+        element.textContent = '';
+        let idsentence = Number(element.getAttribute("idsentence_en"));
+        SplitWordsIntoContent(idsentence, sentence_en, element, indx_coll_words);
+    });
+}
 
 
 

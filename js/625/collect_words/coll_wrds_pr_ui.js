@@ -170,6 +170,22 @@ function IfExistsWord_In_Collect(idsentence, word, indx_coll_words) {
     return fres;
 }
 
+function onClick_SelectProc_New_Words(span) {
+    let isSpanSelected = span.classList.contains('pofart_words_sel');
+    let isSpanSaved = span.classList.contains('pofart_words_sav');
+    // Clear previous selection
+    ClearStyleForWordsSpan();
+    // Toggle selection
+    if (isSpanSelected) {        
+        span.classList.add('pofart_words_sav');
+        SaveSelectedWords_New_Words(span);
+    } 
+    if (!isSpanSelected && !isSpanSaved) {
+        span.classList.add('pofart_words_sel');
+    }
+}
+
+
 function SplitWordsIntoContent(idsentence, sentence_en, divEng, indx_coll_words){
     let coll_words_array = gv.sts.collect_new_words;
     let items_words = coll_words_array[indx_coll_words].items;
@@ -199,20 +215,6 @@ function ClearStyleForWordsSpan() {
     });
 }
 
-function onClick_SelectProc_New_Words(span) {
-    let isSpanSelected = span.classList.contains('pofart_words_sel');
-    let isSpanSaved = span.classList.contains('pofart_words_sav');
-    // Clear previous selection
-    ClearStyleForWordsSpan();
-    // Toggle selection
-    if (isSpanSelected) {        
-        span.classList.add('pofart_words_sav');
-        SaveSelectedWords_New_Words(span);
-    } 
-    if (!isSpanSelected && !isSpanSaved) {
-        span.classList.add('pofart_words_sel');
-    }
-}
 
 function Get_Collected_New_Words_Item_index(span_word) {
     let indx_coll_words = span_word.getAttribute('indx_coll_words');
