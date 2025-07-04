@@ -10,6 +10,35 @@ function SetBodyHtmlWidthIfMobile() {
     }
 }
 
+function UpdateBookmarkBlockMenu(article_marks) {
+    // create a div for article marks
+    // if not exists, create it
+    let articleMarksDiv = document.getElementById('article-marks');
+    if (!articleMarksDiv) {
+        articleMarksDiv = document.createElement('div');
+        articleMarksDiv.id = 'article-marks';
+        articleMarksDiv.className = 'menu-for-bookmark-block';
+        document.body.appendChild(articleMarksDiv);
+    }else {
+       articleMarksDiv.innerHTML = ''; // Clear existing content
+    }
+
+    // create a button for each article mark with order by desc
+    for (let i = article_marks.length - 1; i >= 0; i--) {
+        const mark = article_marks[i];
+        const markButton = document.createElement('button');
+        markButton.textContent = mark.idsentence;
+        markButton.onclick = function () {
+            // Scroll to the corresponding sentence or section
+            const id_target_name = `idsentence_en_${mark.idsentence}`;
+            const targetSentence = document.getElementById(id_target_name);
+            if (targetSentence) {
+                targetSentence.scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+        articleMarksDiv.appendChild(markButton);
+    }
+}
 
 function JsonToContentMD() {    
 
@@ -17,6 +46,7 @@ function JsonToContentMD() {
     RemoveAllStylesCollect_New_Words();
     CreateMainCollect_New_Words_Styles();
     VoiceP2_createStyles();
+    MarkAndOther_createStyles();
 
     
 
@@ -24,7 +54,8 @@ function JsonToContentMD() {
     let sts1 = gv.sts;    
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
     let name_article_text = get_article_name_text(cur_idarticle_text);
-    let article_items = get_article_items(cur_idarticle_text);    
+    let article_items = get_article_items(cur_idarticle_text);
+    let article_marks = get_article_marks(cur_idarticle_text);
     if (!article_items) {
         console.error("No article items found for the given cur_idarticle_text.");
         return;        
@@ -37,6 +68,9 @@ function JsonToContentMD() {
     articleTextName.id = 'title-name-article_text';
     articleTextName.innerHTML = `<h1>ID:${cur_idarticle_text} --- ${name_article_text}</h1>`;
     document.body.appendChild(articleTextName);
+
+    // Create a bookmark block menu
+    UpdateBookmarkBlockMenu(article_marks);
 
     // Process the article items
     article_items.forEach(item => {
@@ -55,17 +89,6 @@ function JsonToContentMD() {
     const startname_id_div_sentence_ru = 'idsentence_ru_';
     const attribute_name_id_ru = 'idsentence_ru';
 
-
-    function HideAllExternalsInfo() {
-        const translations = document.querySelectorAll('.sentence_ru_voice');
-        translations.forEach(translation => {
-            translation.style.display = 'none';        
-        });
-        const phraseContents = document.querySelectorAll('.div_phrase_content_voice');
-        phraseContents.forEach(phraseContent => {
-            phraseContent.style.display = 'none';        
-        });
-    }
 
     // Process the sentences
     sentences.forEach(sentence => {
@@ -99,53 +122,9 @@ function JsonToContentMD() {
             const phraseControlContainer = document.createElement('div');
             phraseControlContainer.className = 'phrase-control-container';
 
-            // Create the ShowTranslation button
-            const TransButton = document.createElement('div');
-            TransButton.className = 'button_voice_translation';
-            TransButton.textContent = 'Transl';
-            TransButton.setAttribute(attribute_name_id_ru, id_div_sentence_ru); // Add the sentence ID as an attribute
-            TransButton.onclick = function () {
-                // Get the ID of the Russian sentence div from the button's attribute               
-               let div_sentence_ru = document.getElementById(id_div_sentence_ru);
-               let current_state = div_sentence_ru.style.display;
-                // hide all translation
-                HideAllExternalsInfo();
-                if (current_state === 'none' || current_state === '') {
-                    div_sentence_ru.style.display = 'block'; // Show the Russian sentence
-                } else {
-                    div_sentence_ru.style.display = 'none'; // Hide the Russian sentence
-                }
-            };
-            phraseControlContainer.appendChild(TransButton);            
-
-            // Create the ShowTranslation button
-            const SomeButton = document.createElement('div');
-            SomeButton.className = 'button_voice_somebutton';
-            //SomeButton.textContent = 'Some';
-            SomeButton.textContent = 'Play';            
-            SomeButton.setAttribute("idsentence", sentence.idsentence); // Add the sentence ID as an attribute
-            //div_sentence_en.id = 'idsentence_en_' + sentence.idsentence; // Unique ID for the English sentence div
-
-
-            // SomeButton.onclick = function (element) {
-            //     let id_sentence = this.getAttribute("idsentence");
-            //     let div_sentence_en = document.getElementById(startname_id_div_sentence_en + id_sentence);
-            //     // select the text in the div_sentence_en
-            //     window.getSelection().removeAllRanges(); // Clear any existing selection
-            //     const range = document.createRange();
-            //     range.selectNodeContents(div_sentence_en); // Select the contents of the div
-            //     window.getSelection().addRange(range); // Add the new selection
-            // };
-            SomeButton.onclick = function (element) {
-                 let id_sentence = this.getAttribute("idsentence");
-                 let div_sentence_en = document.getElementById(startname_id_div_sentence_en + id_sentence);
-                SpeechEngl(div_sentence_en.textContent);
-            };
-
-            phraseControlContainer.appendChild(SomeButton);
-
-
-
+            PhraseCtrl_AddTranslationButton(phraseControlContainer, attribute_name_id_ru, id_div_sentence_ru);
+            PhraseCtrl_AddMenuButton(phraseControlContainer, sentence.idsentence);
+            PhraseCtrl_AddSomeButton(phraseControlContainer, sentence.idsentence);
 
             const startname_id_content_phrase = 'idcontent_phrase_';
             const phraseInfoContainer = document.createElement('div');
@@ -214,9 +193,146 @@ function JsonToContentMD() {
         }
     });
 
-    AddExportButton();
-    
+    AddExportButton();    
 
+}
+
+function HideAllExternalsInfo() {
+    const translations = document.querySelectorAll('.sentence_ru_voice');
+    translations.forEach(translation => {
+        translation.style.display = 'none';        
+    });
+    const phraseContents = document.querySelectorAll('.div_phrase_content_voice');
+    phraseContents.forEach(phraseContent => {
+        phraseContent.style.display = 'none';        
+    });
+}
+
+
+function PhraseCtrl_AddSomeButton(phraseControlContainer, idsentence){            
+    // Create the ShowTranslation button
+    const SomeButton = document.createElement('div');
+    SomeButton.className = 'button_voice_somebutton';
+    //SomeButton.textContent = 'Some';
+    SomeButton.textContent = 'Play';            
+    SomeButton.setAttribute("idsentence", idsentence); // Add the sentence ID as an attribute
+    //div_sentence_en.id = 'idsentence_en_' + sentence.idsentence; // Unique ID for the English sentence div
+
+
+    // SomeButton.onclick = function (element) {
+    //     let id_sentence = this.getAttribute("idsentence");
+    //     let div_sentence_en = document.getElementById(startname_id_div_sentence_en + id_sentence);
+    //     // select the text in the div_sentence_en
+    //     window.getSelection().removeAllRanges(); // Clear any existing selection
+    //     const range = document.createRange();
+    //     range.selectNodeContents(div_sentence_en); // Select the contents of the div
+    //     window.getSelection().addRange(range); // Add the new selection
+    // };
+    SomeButton.onclick = function (element) {
+            let id_sentence = this.getAttribute("idsentence");
+            let div_sentence_en = document.getElementById(startname_id_div_sentence_en + id_sentence);
+        SpeechEngl(div_sentence_en.textContent);
+    };
+    phraseControlContainer.appendChild(SomeButton);
+}
+
+// if exists idsentence in marks return true, else false
+function isIdsentenceInMarks(idsentence) {
+    let cur_idarticle_text = gv.sts.config_phrase.cur_idarticle_text;
+    let article_marks = get_article_marks(cur_idarticle_text);
+    return article_marks.some(mark => mark.idsentence === idsentence);
+}
+
+
+function PhraseCtrl_AddMenuButton(phraseControlContainer, idsentence) {
+    // create the phrase_menu button
+    const phraseMenuButton = document.createElement('button');
+    phraseMenuButton.className = 'button_voice_somebutton';
+    phraseMenuButton.textContent = 'Menu';
+    phraseMenuButton.setAttribute("idsentence", idsentence);
+    // Check if the idsentence is already marked
+    if (isIdsentenceInMarks(idsentence)) {
+        phraseMenuButton.textContent = 'Marked'; // Change the text to "Marked"
+        phraseMenuButton.style.backgroundColor = 'red'; // Change the background color to red
+        phraseMenuButton.setAttribute("mark_saved", 'true'); // Add a custom attribute to track saved state
+    } else {
+        phraseMenuButton.style.backgroundColor = ''; // Change the background color to default by like in style .button_voice_somebutton
+        phraseMenuButton.setAttribute("mark_saved", 'false'); // Add a custom attribute to track saved state
+    }    
+    phraseMenuButton.onclick = function () {                
+        HideAllExternalsInfo();
+        let idsentence = Number(this.getAttribute("idsentence"));
+        let mark_saved = this.getAttribute("mark_saved");
+        if (mark_saved === 'false') {
+           SaveMarkCurrentIdsentence(idsentence); 
+           this.setAttribute("mark_saved", 'true'); 
+           //change the text of the button to "Marked" and background color to red
+           this.textContent = 'Marked';
+           this.style.backgroundColor = 'red';
+        }else{
+           DeleteMarkCurrentIdsentence(idsentence); 
+           this.setAttribute("mark_saved", 'false'); 
+           //change the text of the button to "Menu" and background color to blue
+           this.textContent = 'Menu';
+           this.style.backgroundColor = '';
+        }
+    }
+    phraseControlContainer.appendChild(phraseMenuButton);
+}
+
+function DeleteMarkCurrentIdsentence(idsentence) {
+    let cur_idarticle_text = gv.sts.config_phrase.cur_idarticle_text;
+    let article_marks = get_article_marks(cur_idarticle_text);
+    // look for the index of the mark with the given idsentence
+    let mark_index = article_marks.findIndex(mark => mark.idsentence === idsentence);
+    if (mark_index !== -1) {
+        // Remove the mark from the array
+        article_marks.splice(mark_index, 1);
+        // Save the updated marks to Firebase
+        save_article_marks_to_fb(cur_idarticle_text, article_marks);
+    }
+    UpdateBookmarkBlockMenu(article_marks);
+}
+
+function SaveMarkCurrentIdsentence(idsentence) {
+    let cur_idarticle_text = gv.sts.config_phrase.cur_idarticle_text;
+    let article_marks = get_article_marks(cur_idarticle_text);
+    // look if idsentence already exists in article_marks
+    let mark_exists = article_marks.some(mark => mark.idsentence === idsentence);
+    if (!mark_exists) {
+        // Create a new mark
+        let new_mark = {
+            idsentence: idsentence,
+            datetime: get_now_n19_datefromat_fb() // Get the current date in the required format
+        };
+        article_marks.push(new_mark);
+        // Save the updated marks to Firebase
+        save_article_marks_to_fb(cur_idarticle_text, article_marks);
+    }
+    // Update the bookmark block menu
+    UpdateBookmarkBlockMenu(article_marks);
+}
+
+
+function PhraseCtrl_AddTranslationButton(phraseControlContainer, attribute_name_id_ru, id_div_sentence_ru) {
+    // Create the ShowTranslation button
+    const TransButton = document.createElement('div');
+    TransButton.className = 'button_voice_translation';
+    TransButton.textContent = 'Transl';
+    TransButton.setAttribute(attribute_name_id_ru, id_div_sentence_ru); // Add the sentence ID as an attribute
+    TransButton.onclick = function () {
+        // Get the ID of the Russian sentence div from the button's attribute               
+        let div_sentence_ru = document.getElementById(id_div_sentence_ru);
+        let current_state = div_sentence_ru.style.display;
+        // hide all translation
+        HideAllExternalsInfo();
+        if (current_state === 'none' || current_state === '') {
+            div_sentence_ru.style.display = 'block'; // Show the Russian sentence
+        } else {
+            div_sentence_ru.style.display = 'none'; // Hide the Russian sentence
+        }
+    };
+    phraseControlContainer.appendChild(TransButton);            
 }
 
 function AddExportButton() {
@@ -315,6 +431,30 @@ function Load_Label_Collect_New_Words_HtmlContent() {
     });
 }
 
+
+function MarkAndOther_createStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+       .menu-for-bookmark-block {
+           margin: 10px 0;
+           padding: 10px;
+           border: 1px solid #ccc;
+           border-radius: 5px;
+           background-color: #f9f9f9;
+       }
+         .menu-for-bookmark-block button {
+              margin-right: 10px;
+              padding: 5px 10px;
+              font-size: 16px;
+              cursor: pointer;
+              border: none;
+              border-radius: 3px;
+              background-color: #007bff;
+              color: white;
+         }
+    `;
+    document.head.appendChild(style);
+}
 
 
 
@@ -507,7 +647,7 @@ phrase_en_voice {
     -webkit-touch-callout: default;
 }
 
-.button_control_phrases {
+.button_control_phrases1 {
     background-color: rgb(44, 155, 24);
     color: white;
     border: none;
@@ -515,9 +655,10 @@ phrase_en_voice {
     padding: 10px 15px;
     font-size: 28px;
     cursor: pointer;
+    margin-left: 30px;
     bottom: 30px;
     right: 30px;
-    height: 50px;
+    height: 45px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }

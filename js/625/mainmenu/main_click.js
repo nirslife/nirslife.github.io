@@ -102,13 +102,12 @@ function Click_Main_Backup_Text_Phrase_Obj() {
 
 
 function Create_MainMenu_Elem() {
+    const mainMenu = document.createElement('div');
+    mainMenu.id = 'main_menu';
+    mainMenu.style.display = 'none'; // Initially hidden
+    document.body.appendChild(mainMenu);  
 
-  const mainMenu = document.createElement('div');
-  mainMenu.id = 'main_menu';
-  mainMenu.style.display = 'none'; // Initially hidden
-  document.body.appendChild(mainMenu);  
-
-  // can be deleted
+    // can be deleted
     mainMenu.innerHTML = `
       <div class="pair_items">
         <div class="button_mmenu_items btn_next1" id = "prev_article_text_mm"> PREV Article Text </div>
@@ -136,8 +135,8 @@ function Create_MainMenu_Elem() {
       </div>
 
     `;
-  InitOnClickFunc_MainMenu();
-  return mainMenu;
+    InitOnClickFunc_MainMenu();
+    return mainMenu;
 }
 
 function  Click_Main_OpenSettings() {

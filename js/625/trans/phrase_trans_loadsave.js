@@ -126,7 +126,7 @@ function ExpImpForTrans_Phrase_loadDataToHTML() {
                     let idphraseMatch = trimmedPhrase.match(/352725_(\d+)/); // Match the id at the beginning
                     if (idphraseMatch) {
                         let idPhrase = idphraseMatch[1]; // Get the matched id
-                        trimmedPhrase = trimmedPhrase.replace(/352725_\d+ /, ''); // Remove the id from the phrase
+                        trimmedPhrase = trimmedPhrase.replace(/352725_\d+/, ''); // Remove the id from the phrase
                         let phraseDiv = document.createElement('div');
                         phraseDiv.className = 'phrase-paste-rus-item';
                         phraseDiv.id = `phrase-paste-${idPhrase}`;

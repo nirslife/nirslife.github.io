@@ -28,11 +28,11 @@ function build_forall_MainUI() {
   toggleMenuButton.id = 'toggleMainMenuButton';
   toggleMenuButton.innerText = '☰ Main Menu';
   toggleMenuButton.onclick = function() {
-    const mainMenu = document.getElementById('main_menu');
-    if (!mainMenu) {
-      console.error("Main menu element not found.");
-      return;
-    }
+  const mainMenu = document.getElementById('main_menu');
+  if (!mainMenu) {
+    console.error("Main menu element not found.");
+    return;
+  }
   
   if (mainMenu.style.display === 'none') {
       mainMenu.style.display = 'block';

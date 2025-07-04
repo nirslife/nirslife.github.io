@@ -5,6 +5,37 @@ function get_article_name_text(cur_idarticle_text) {
     return item ? item.name_article_text : null;
 }
 
+function get_article_marks(cur_idarticle_text) {
+    let article_text = gv.sts.article_text;
+    if (!article_text) return null;
+    const item = article_text.find(item => item.idarticle_text == cur_idarticle_text);
+    if (!item.article_marks || item.article_marks.length == 0) {
+        item.article_marks = [];
+        let mark_item = {
+            idsentence: item.items[0].idsentence,
+            datetime: get_now_n19_datefromat_fb()            
+        } 
+        item.article_marks.push(mark_item);
+        save_article_marks_to_fb(cur_idarticle_text, item.article_marks);
+    }
+    return item.article_marks;
+}
+
+function save_article_marks_to_fb(cur_idarticle_text, article_marks) {
+    let article_text_index = get_article_text_index(cur_idarticle_text);
+    if (article_text_index === null) return;
+    let vdata = {
+        article_marks: article_marks
+    };    
+    let addurl = "article_text/" + article_text_index + "/";
+    let ObjRequest = GetObjForRequest();
+    ObjRequest.vobj = vdata;
+    ObjRequest.ametod = 'PATCH';
+    ObjRequest.addUrl = addurl;      
+    ObjRequest.CallBackFunction = function(vdata, ametod) {        
+    };
+    RequestArrFireBase_AddUrl(ObjRequest);    
+}
 
 function get_article_items(cur_idarticle_text) {
     let article_text = gv.sts.article_text;
