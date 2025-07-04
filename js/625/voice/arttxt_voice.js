@@ -210,6 +210,7 @@ function HideAllExternalsInfo() {
 
 
 function PhraseCtrl_AddSomeButton(phraseControlContainer, idsentence){            
+    let startname_id_div_sentence_en = 'idsentence_en_'; // Prefix for the English sentence div ID
     // Create the ShowTranslation button
     const SomeButton = document.createElement('div');
     SomeButton.className = 'button_voice_somebutton';
@@ -443,9 +444,12 @@ function MarkAndOther_createStyles() {
            background-color: #f9f9f9;
        }
          .menu-for-bookmark-block button {
-              margin-right: 10px;
+              margin-right: 40px;
+              margin-bottom: 30px;
               padding: 5px 10px;
-              font-size: 16px;
+              height: 40px;
+              width: 100px;
+              font-size: 26px;
               cursor: pointer;
               border: none;
               border-radius: 3px;
