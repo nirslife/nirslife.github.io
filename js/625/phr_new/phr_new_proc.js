@@ -44,10 +44,11 @@ function addNewPhr_new() {
           newInputText.setAttribute('indexarr', element.getAttribute('indexarr'));
           newInputText.textContent = element.textContent;
           newPhrase.appendChild(newInputText);
-          if (speech_phrase_after_adding) {
-            SpeechEngl(element.textContent);  // Speak the English text
-          }
       });
+      if (speech_phrase_after_adding) {
+         SpeechEngl(newPhrase.textContent);  // Speak the English text
+      }
+
       Clear_End_SelElem_In_Puzzletext();
       Clear_Beg_SelElem_In_Puzzletext();
       Clear_Selection_In_Puzzletext();
