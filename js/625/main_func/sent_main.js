@@ -206,6 +206,7 @@ async function CB_AfterPatch(vdata) {
 
 
 function AfterRequest_FireBase() {
+    Save_DeviceInfo_ToFB();
     let TypeProgram = gv.sts.config_phrase.CurProgramType;
     switch (TypeProgram) {
         case "ArticleText":
@@ -299,4 +300,15 @@ function Main_Backup_Text_Phrase_Obj_WithTS(){
   RequestArrFireBase_AddUrl(ObjRequest);
   console.log("Backup Text Phrase Object with timestamp: " + datetime1);
   alert("Backup Text Phrase Object with timestamp: " + datetime1);
+}
+
+function Save_DeviceInfo_ToFB() {
+  let vdata = gv.vdata1;
+  if (!vdata) return;
+  let deviceInfo = {
+    userAgent: navigator.userAgent,
+    platform: navigator.platform,
+  };
+  vdata["device_info"] = deviceInfo;
+  RequestArrFireBase(vdata, 'PATCH');
 }
