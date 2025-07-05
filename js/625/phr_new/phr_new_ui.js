@@ -20,10 +20,11 @@ function build_phr_new_MainUI() {
   const controlDivTop = document.createElement('div');
   controlDivTop.id = 'control_div';
   controlDivTop.innerHTML = `
-      <div class="button_controlsentences" onclick="Prev_phr_Sentence()">Prev</div>
-      <div class="button_controlsentences" onclick="Next_phr_Sentence()">Next Sent</div>
-      <div class="button_controlsentences" onclick="Save_phr_PhraseToFireBase()">Save Phrase to Base</div>
-      <div class="button_controlsentences" onclick="Edit_phr_Sentence()">Edit Sentence</div>
+      <div class="button_ctrl_sentences" onclick="SwitchVoicePhraseWhenAdded()">VoicePhrase</div>
+      <div class="button_ctrl_sentences" onclick="Prev_phr_Sentence()">Prev</div>
+      <div class="button_ctrl_sentences" onclick="Next_phr_Sentence()">Next Sent</div>
+      <div class="button_ctrl_sentences" onclick="Set_phr_ProcessedAndNext()">Set Processed and Next</div>      
+      <div class="button_ctrl_sentences" onclick="Edit_phr_Sentence()">Edit Sentence</div>
   `;
   document.body.appendChild(controlDivTop);
 
@@ -49,9 +50,9 @@ function build_phr_new_MainUI() {
   const controlDivPhrase = document.createElement('div');
   controlDivPhrase.id = 'control_div';
   controlDivPhrase.innerHTML = `
-    <div class="button_controlsentences" onclick="addNewPhr_new()">Add Phrase</div>
-    <div class="button_controlsentences" onclick="remove_phr_LastPhrase()">Remove Last Phrase</div>
-    <div class="button_controlsentences" onclick="Set_phr_ProcessedAndNext()">Set Processed and Next</div>
+    <div class="button_ctrl_sentences" onclick="addNewPhr_new()">Add Phrase</div>
+    <div class="button_ctrl_sentences" onclick="remove_phr_LastPhrase()">Remove Last Phrase</div>
+    <div class="button_ctrl_sentences" onclick="Save_phr_PhraseToFireBase()">Save Phrase to Base</div>    
   `;
   document.body.appendChild(controlDivPhrase);
 
@@ -72,7 +73,7 @@ function build_phr_new_MainUI() {
   block_bottom.id = 'block_bottom';
   block_bottom.innerHTML = `
     <div class="buttons_bottom_block">
-      <div class="button_controlsentences" onclick="Click_Set_Not_Processed()">Set Not Processed</div>
+      <div class="button_ctrl_sentences" onclick="Click_Set_Not_Processed()">Set Not Processed</div>
     </div>
   `;
   document.body.appendChild(block_bottom);
@@ -157,6 +158,29 @@ function Phr_new_createStyles_1() {
   display: block;
   width: 100%;
 }
+
+  .button_ctrl_sentences {
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  min-height: 60px;
+  border-radius: 7px;
+  padding: 12px 28px;
+  font-size: 26px;
+  font-weight: 600;
+  margin: 12px 20px 12px 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(30,144,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+.button_ctrl_sentences:hover {
+  background: #156ec1;
+  box-shadow: 0 4px 16px rgba(30,144,255,0.18);
+}
+
 
   `;
   document.head.appendChild(style);

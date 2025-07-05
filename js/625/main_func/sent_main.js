@@ -324,7 +324,6 @@ function Save_DeviceInfo_ToFB() {
   let addurl = 'device_info';
   let ObjRequest = GetObjForRequest();
   ObjRequest.vobj = deviceInfo;
-  //ObjRequest.ametod = 'PATCH';
   ObjRequest.ametod = 'PUT';
   ObjRequest.addUrl = addurl;      
   ObjRequest.CallBackFunction = function(vdata, ametod) {        
