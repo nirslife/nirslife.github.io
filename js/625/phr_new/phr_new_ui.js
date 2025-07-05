@@ -5,16 +5,20 @@ function build_phr_new_MainUI() {
   
   // Clear body
   document.body.innerHTML = '';
+  const main_screen = document.createElement('div');
+  main_screen.id = 'main_screen';
+  document.body.appendChild(main_screen);
+
 
   // Header
   const header = document.createElement('div');
   header.id = 'header1';
-  document.body.appendChild(header);
+  main_screen.appendChild(header);
 
   const infoDivTop = document.createElement('div');
   infoDivTop.className = 'margin_head_info';
   infoDivTop.id = 'id_info_margin_phrases_head';
-  document.body.appendChild(infoDivTop);
+  main_screen.appendChild(infoDivTop);
 
   // Top controls
   const controlDivTop = document.createElement('div');
@@ -26,25 +30,25 @@ function build_phr_new_MainUI() {
       <div class="button_ctrl_sentences" onclick="Set_phr_ProcessedAndNext()">Set Processed and Next</div>      
       <div class="button_ctrl_sentences" onclick="Edit_phr_Sentence()">Edit Sentence</div>
   `;
-  document.body.appendChild(controlDivTop);
+  main_screen.appendChild(controlDivTop);
 
   // Info
   const infoDiv = document.createElement('div');
   infoDiv.id = 'info_div';
-  document.body.appendChild(infoDiv);
+  main_screen.appendChild(infoDiv);
 
   // English text
   const textFrom1 = document.createElement('div');
   textFrom1.id = 'textfrom1';
   textFrom1.setAttribute('onmousedown', 'clickTextfrom(this)');
-  document.body.appendChild(textFrom1);
+  main_screen.appendChild(textFrom1);
 
   // Input phrase container
   const inputTextFrom1 = document.createElement('div');
   inputTextFrom1.id = 'inputtextfrom1';
   inputTextFrom1.style.background = 'rgb(255, 255, 255)';
   inputTextFrom1.innerHTML = `<div id="div_inputtextfrom1"></div>`;
-  document.body.appendChild(inputTextFrom1);
+  main_screen.appendChild(inputTextFrom1);
 
   // Phrase controls
   const controlDivPhrase = document.createElement('div');
@@ -54,19 +58,19 @@ function build_phr_new_MainUI() {
     <div class="button_ctrl_sentences" onclick="remove_phr_LastPhrase()">Remove Last Phrase</div>
     <div class="button_ctrl_sentences" onclick="Save_phr_PhraseToFireBase()">Save Phrase to Base</div>    
   `;
-  document.body.appendChild(controlDivPhrase);
+  main_screen.appendChild(controlDivPhrase);
 
   // Puzzle text
   const puzzleTextFrom1 = document.createElement('div');
   puzzleTextFrom1.id = 'puzzletextfrom1';
   puzzleTextFrom1.innerHTML = `<div id="div_puzzletextfrom1"></div>`;
-  document.body.appendChild(puzzleTextFrom1);
+  main_screen.appendChild(puzzleTextFrom1);
 
   // Other containers
   ['m_container1', 'verify_cont1', 'main_menu_bottom'].forEach(id => {
     const div = document.createElement('div');
     div.id = id;
-    document.body.appendChild(div);
+    main_screen.appendChild(div);
   });
 
   let block_bottom = document.createElement('div');
@@ -76,9 +80,9 @@ function build_phr_new_MainUI() {
       <div class="button_ctrl_sentences" onclick="Click_Set_Not_Processed()">Set Not Processed</div>
     </div>
   `;
-  document.body.appendChild(block_bottom);
+  main_screen.appendChild(block_bottom);
 
-  build_forall_MainUI();
+  build_forall_MainUI(main_screen);
 
 }
 
@@ -94,6 +98,11 @@ function Phr_new_createStyles() {
 function Phr_new_createStyles_1() {
   const style = document.createElement('style');
   style.textContent = `
+#main_screen {
+  width: 97%;
+  margin: 10px 10px 10px 10px;
+}
+
 
 .phrase {
   margin: 12px 0;
@@ -130,13 +139,18 @@ function Phr_new_createStyles_1() {
   background: #357ec7;
 }
 
-
 #control_div {
+  margin: 24px 0 24px 0;  
+  gap: 16px;
+}
+
+
+#control_div10000 {
   margin: 24px 0 24px 0;
   display: flex;
   gap: 16px;
   justify-content: flex-start;
-  align-items: center;
+  align-items: center;  
 }
 
 .margin_head_info {

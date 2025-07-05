@@ -148,7 +148,7 @@ async function Load_Collect_New_Words_HtmlContent() {
     }
     document.body.innerHTML += `</div>`; // Close collect_new_words_content
     
-    build_forall_MainUI();
+    build_forall_MainUI(document.body);
 }
 
 //-----END---------- MAIN HTML content for Collect New Words

@@ -76,7 +76,7 @@ function build_Phrase_MainUI() {
   `;
   document.body.appendChild(block_bottom);
 
-  build_forall_MainUI();
+  build_forall_MainUI(document.body);
 
 }
 

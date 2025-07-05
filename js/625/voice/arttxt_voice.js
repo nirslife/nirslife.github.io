@@ -416,7 +416,7 @@ function build_VoiceArticleText_MainUI() {
         console.error("Error in MainFunc:", error);
     }
 
-  build_forall_MainUI();
+  build_forall_MainUI(document.body);
 };
 
 

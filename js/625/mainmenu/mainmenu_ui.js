@@ -14,7 +14,7 @@ window.onscroll = function() {
   }
 };
 
-function build_forall_MainUI() {
+function build_forall_MainUI(main_screen) {
   // build the main menu in top of the page. 
   // 1) create one button for opening the main menu in absolute position
   // 2) create the main menu with buttons for each section.
@@ -40,7 +40,7 @@ function build_forall_MainUI() {
       mainMenu.style.display = 'none';
     }
   };
-  document.body.appendChild(toggleMenuButton);
+  main_screen.appendChild(toggleMenuButton);
   // Close main menu function
 
 
@@ -54,7 +54,7 @@ function build_forall_MainUI() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   scrollBtn.innerText = '↑ Top';
-  document.body.appendChild(scrollBtn);
+  main_screen.appendChild(scrollBtn);
 
   scrollToTop();
 }

@@ -92,7 +92,7 @@ function Load_Sort_Phrase_HtmlContent() {
         UpdateToolsButtonForPhrase_Label(phrase, 'L2');
         UpdateToolsButtonForPhrase_Label(phrase, 'L3');
     });
-    build_forall_MainUI();
+    build_forall_MainUI(document.body);
 
 }
 
