@@ -205,8 +205,7 @@ async function CB_AfterPatch(vdata) {
 }
 
 
-function AfterRequest_FireBase() {
-    Save_DeviceInfo_ToFB();
+function AfterRequest_FireBase() {    
     let TypeProgram = gv.sts.config_phrase.CurProgramType;
     switch (TypeProgram) {
         case "ArticleText":
@@ -272,6 +271,7 @@ function Update_StateData(vdata) {
     sts1.collect_new_words = vdata["collect_new_words"];
     sts1.sentences_for_processing = null;        
     gv.vdata1 = vdata;    
+    Save_DeviceInfo_ToFB();
 }
 
 function Click_Main_SaveAllBase() {
