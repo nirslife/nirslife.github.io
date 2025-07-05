@@ -123,7 +123,7 @@ function Look_phr_ForExistingPhraseinBD() {
             let divPhrase = document.createElement('div');
             divPhrase.className = 'phrase';
             divPhrase.setAttribute('phrase_id', phrase.idphrase);
-            divPhrase.setAttribute('onclick', 'OnClickPhrase(this)');
+            divPhrase.setAttribute('onclick', 'OnClickPhrase_Speech(this)');
             words.forEach((word, index) => {
                 let inputTextBlock = document.createElement('div');
                 inputTextBlock.className = 'inputtext';

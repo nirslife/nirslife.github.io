@@ -34,7 +34,7 @@ function addNewPhr_new() {
       const newPhrase = document.createElement('div');
       newPhrase.className = 'phrase';
       newPhrase.setAttribute('phrase_id', -1);    
-      newPhrase.setAttribute('onclick', 'OnClickPhrase(this)');
+      newPhrase.setAttribute('onclick', 'OnClickPhrase_Speech(this)');
       inputTextDiv.appendChild(newPhrase);
       Array.from(selectedElements).forEach(element => {
           // create a new input text block
@@ -46,7 +46,7 @@ function addNewPhr_new() {
           newPhrase.appendChild(newInputText);
       });
       if (speech_phrase_after_adding) {
-         SpeechEngl(newPhrase.textContent);  // Speak the English text
+         OnClickPhrase_Speech(newPhrase);  // Call the function to handle the phrase click
       }
 
       Clear_End_SelElem_In_Puzzletext();
@@ -55,7 +55,7 @@ function addNewPhr_new() {
     }
 }
 
-function OnClickPhrase(phraseElement) {
+function OnClickPhrase_Speech(phraseElement) {
    let inputTexts = phraseElement.getElementsByClassName('inputtext');
    let phraseText = Array.from(inputTexts).map(input => input.textContent).join(' ');
    SpeechEngl(phraseText);  // Speak the English text
