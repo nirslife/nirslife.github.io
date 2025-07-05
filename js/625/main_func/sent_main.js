@@ -269,6 +269,7 @@ function Update_StateData(vdata) {
     sts1.article_text = vdata["article_text"];
     sts1.config_phrase = vdata["config_phrase"];
     sts1.collect_new_words = vdata["collect_new_words"];
+    sts1.device_info = vdata["device_info"];
     sts1.sentences_for_processing = null;        
     gv.vdata1 = vdata;    
     Save_DeviceInfo_ToFB();
@@ -303,10 +304,16 @@ function Main_Backup_Text_Phrase_Obj_WithTS(){
 }
 
 function Save_DeviceInfo_ToFB() {
-  let deviceInfo = {
+  let deviceInfo  = gv.sts.device_info;
+  let deviceInfo_item = {
     userAgent: navigator.userAgent,
     platform: navigator.platform,
   };
+  if (!Array.isArray(deviceInfo)) {
+    deviceInfo = [];
+  }
+  deviceInfo.push(deviceInfo_item);
+  gv.sts.device_info = deviceInfo;
   let addurl = 'device_info';
   let ObjRequest = GetObjForRequest();
   ObjRequest.vobj = deviceInfo;
