@@ -315,6 +315,10 @@ function Save_DeviceInfo_ToFB() {
   if (!Array.isArray(deviceInfo)) {
     deviceInfo = [];
   }
+  if (IfExists_DeviceInfo_Item(deviceInfo_item)) {
+    console.log("Device info already exists.");
+    return;
+  }
   deviceInfo.push(deviceInfo_item);
   gv.sts.device_info = deviceInfo;
   let addurl = 'device_info';
@@ -326,4 +330,24 @@ function Save_DeviceInfo_ToFB() {
   ObjRequest.CallBackFunction = function(vdata, ametod) {        
   };
   RequestArrFireBase_AddUrl(ObjRequest);    
+}
+
+function IfExists_DeviceInfo_Item(deviceInfo_item) {
+  let deviceInfo = gv.sts.device_info;
+  if (!deviceInfo) {
+    return false;
+  }
+  if (!Array.isArray(deviceInfo)) {
+    return false;
+  }
+  if (deviceInfo.length === 0) {
+    return false;
+  }
+  for (let i = 0; i < deviceInfo.length; i++) {
+    let item = deviceInfo[i];
+    if (item.userAgent === deviceInfo_item.userAgent && item.platform === deviceInfo_item.platform) {
+      return true;
+    }
+  }
+  return false;
 }
