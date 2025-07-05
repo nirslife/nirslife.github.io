@@ -6,7 +6,26 @@ function click_phr_Inputtext(element) {
 }
 
 
+function save_config_speech_phrase_after_adding() {
+    let speech_phrase_after_adding = gv.sts.config_phrase.speech_phrase_after_adding;
+    if (speech_phrase_after_adding === undefined || speech_phrase_after_adding === null) {
+        speech_phrase_after_adding = true;
+    }
+    let addurl = "config_phrase";
+    let ObjRequest = GetObjForRequest();
+    ObjRequest.addUrl = addurl;
+    ObjRequest.ametod = 'PATCH';
+    ObjRequest.vobj = { speech_phrase_after_adding }; // Use the item found above
+    RequestArrFireBase_AddUrl(ObjRequest);
+}
+
 function addNewPhr_new() {  
+    let speech_phrase_after_adding = gv.sts.config_phrase.speech_phrase_after_adding;
+    if (speech_phrase_after_adding === undefined || speech_phrase_after_adding === null) {
+      save_config_speech_phrase_after_adding();
+      gv.sts.config_phrase.speech_phrase_after_adding = true;
+      speech_phrase_after_adding = true;      
+    }
     const div_puzzletextfrom1 = document.getElementById('div_puzzletextfrom1');
     let selectedElements = div_puzzletextfrom1.querySelectorAll('.puzzleblock[selected_position="true"]');
     if (selectedElements.length > 0) {
@@ -25,6 +44,9 @@ function addNewPhr_new() {
           newInputText.setAttribute('indexarr', element.getAttribute('indexarr'));
           newInputText.textContent = element.textContent;
           newPhrase.appendChild(newInputText);
+          if (speech_phrase_after_adding) {
+            SpeechEngl(element.textContent);  // Speak the English text
+          }
       });
       Clear_End_SelElem_In_Puzzletext();
       Clear_Beg_SelElem_In_Puzzletext();
