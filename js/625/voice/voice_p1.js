@@ -79,7 +79,7 @@ async function populateVoiceEN_USList() {
 
     // Now add the labels, since voices is ready
     var label1 = document.createElement('label');
-    label1.setAttribute('for', 'selected voice');
+    // label1.setAttribute('for', 'selected voice'); // Remove or comment out this line
     label1.id = 'idlabel_selected';
     label1.innerHTML = 'Selected Voice (EN-US): ' + (voices[VoiceENIndex] ? voices[VoiceENIndex].name : 'None');
     label1.style.display = 'block'; // Make the label block-level for better spacing

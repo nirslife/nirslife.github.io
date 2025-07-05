@@ -303,12 +303,16 @@ function Main_Backup_Text_Phrase_Obj_WithTS(){
 }
 
 function Save_DeviceInfo_ToFB() {
-  let vdata = gv.vdata1;
-  if (!vdata) return;
   let deviceInfo = {
     userAgent: navigator.userAgent,
     platform: navigator.platform,
   };
-  vdata["device_info"] = deviceInfo;
-  RequestArrFireBase(vdata, 'PATCH');
+  let addurl = 'device_info';
+  let ObjRequest = GetObjForRequest();
+  ObjRequest.vobj = deviceInfo;
+  ObjRequest.ametod = 'PATCH';
+  ObjRequest.addUrl = addurl;      
+  ObjRequest.CallBackFunction = function(vdata, ametod) {        
+  };
+  RequestArrFireBase_AddUrl(ObjRequest);    
 }
