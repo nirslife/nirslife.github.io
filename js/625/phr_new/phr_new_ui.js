@@ -23,12 +23,12 @@ function build_phr_new_MainUI() {
   // Top controls
   const controlDivTop = document.createElement('div');
   controlDivTop.id = 'control_div';
-  controlDivTop.innerHTML = `
-      <div class="button_ctrl_sentences" onclick="SwitchVoicePhraseWhenAdded()">VoicePhrase</div>
+  controlDivTop.innerHTML = `      
       <div class="button_ctrl_sentences" onclick="Prev_phr_Sentence()">Prev</div>
-      <div class="button_ctrl_sentences" onclick="Next_phr_Sentence()">Next Sent</div>
-      <div class="button_ctrl_sentences" onclick="Set_phr_ProcessedAndNext()">Set Processed and Next</div>      
-      <div class="button_ctrl_sentences" onclick="Edit_phr_Sentence()">Edit Sentence</div>
+      <div class="button_ctrl_sentences" onclick="Next_phr_Sentence()">Next</div>
+      <div class="button_ctrl_sentences" onclick="Set_phr_ProcessedAndNext()">SetPR -> </div>      
+      <div class="button_ctrl_sentences" onclick="Edit_phr_Sentence()">Edit Sent</div>
+      <div class="button_ctrl_sentences" onclick="SwitchVoicePhraseWhenAdded()">Sp_ech</div>
   `;
   main_screen.appendChild(controlDivTop);
 
@@ -54,9 +54,9 @@ function build_phr_new_MainUI() {
   const controlDivPhrase = document.createElement('div');
   controlDivPhrase.id = 'control_div';
   controlDivPhrase.innerHTML = `
-    <div class="button_ctrl_sentences" onclick="addNewPhr_new()">Add Phrase</div>
-    <div class="button_ctrl_sentences" onclick="remove_phr_LastPhrase()">Remove Last Phrase</div>
-    <div class="button_ctrl_sentences" onclick="Save_phr_PhraseToFireBase()">Save Phrase to Base</div>    
+    <div class="button_ctrl_sentences" onclick="addNewPhr_new()">Add Phr</div>
+    <div class="button_ctrl_sentences" onclick="remove_phr_LastPhrase()">Del Last Phr</div>
+    <div class="button_ctrl_sentences" onclick="Save_phr_PhraseToFireBase()">Save Phrs FB</div>    
   `;
   main_screen.appendChild(controlDivPhrase);
 
@@ -182,7 +182,7 @@ function Phr_new_createStyles_1() {
   padding: 12px 28px;
   font-size: 26px;
   font-weight: 600;
-  margin: 12px 20px 12px 20px;
+  margin: 35px 50px 35px 20px;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(30,144,255,0.08);
   transition: background 0.2s, box-shadow 0.2s;
