@@ -25,7 +25,8 @@ function MainFunc() {
 }
 
 async function init() {    
-  gv.cst.FBSets = Init_LoginFireBaseSets('text_phrase_obj');
+  const pltf = navigator.platform + '/text_phrase_obj';
+  gv.cst.FBSets = Init_LoginFireBaseSets(pltf);
   await this.LoginFireBase(gv.cst);
 }
 
@@ -49,9 +50,10 @@ function Init_LoginFireBaseSets(dataset1){
   let oj = {
     email:"saboo1@urm.se",
     password:"B0u_1hg81apAqw",
-    UrlTrans1: `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey1}`,
+    UrlTrans1: `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey1}`,    
     UrlPost1: `https://engapp-2025-default-rtdb.europe-west1.firebasedatabase.app/${dataset1_json}?auth=`,
     DataSet_Basic: `${dataset1}`,
+    platform: navigator.platform,    
     idToken: ""
   };      
   return oj;
@@ -77,35 +79,17 @@ async function LoginFireBase(cst1) {
     await this.CallBackLoginFireBase();
 }
 
+async function CallBackLoginFireBase() {
+  let arr1 = null;
+  await RequestArrFireBase(arr1, 'GET');
+}
+
+
 // after 
 // https://engapp-2025-default-rtdb.europe-west1.firebasedatabase.app/text_phrase_obj/article_text/0.json/?auth=
 // i got 
 // 'Bad Request'
 
-
-function GetUrlPathWithAddUrl(addUrl) {
-    let cst1 = window.gv && window.gv.cst ? window.gv.cst : (this.gv ? this.gv.cst : null);
-    if (!addUrl) {
-        addUrl = "";
-    }
-    if (addUrl && !addUrl.endsWith('.json')) {
-        addUrl += '.json';
-    }
-    if (addUrl && !addUrl.endsWith('/')) {
-        addUrl += '/';
-    }
-    if (addUrl.startsWith('/')) {
-        addUrl = addUrl.substring(1);
-    }
-    let ret_pathurl = `https://engapp-2025-default-rtdb.europe-west1.firebasedatabase.app/${cst1.FBSets.DataSet_Basic}/${addUrl}?auth=`;
-
-    return ret_pathurl + cst1.FBSets.idToken;
-}
-
-async function CallBackLoginFireBase() {
-  let arr1 = null;
-  await RequestArrFireBase(arr1, 'GET');
-}
 
 async function RequestArrFireBase(vobj, ametod) {
     let cst1 = window.gv && window.gv.cst ? window.gv.cst : (this.gv ? this.gv.cst : null);
@@ -136,6 +120,7 @@ async function RequestArrFireBase(vobj, ametod) {
     }
 }
 
+
 function GetObjForRequest() {
     let ObjRequest = {    
         vobj: null,
@@ -145,6 +130,28 @@ function GetObjForRequest() {
     };
     return ObjRequest;
 }
+
+function GetUrlPathWithAddUrl(addUrl) {
+    let cst1 = window.gv && window.gv.cst ? window.gv.cst : (this.gv ? this.gv.cst : null);
+    if (!addUrl) {
+        addUrl = "";
+    }
+    if (addUrl && !addUrl.endsWith('.json')) {
+        addUrl += '.json';
+    }
+    if (addUrl && !addUrl.endsWith('/')) {
+        addUrl += '/';
+    }
+    if (addUrl.startsWith('/')) {
+        addUrl = addUrl.substring(1);
+    }
+    const DS_Basic1 = cst1.FBSets.DataSet_Basic;
+    let ret_pathurl = `https://engapp-2025-default-rtdb.europe-west1.firebasedatabase.app/${DS_Basic1}/${addUrl}?auth=`;
+
+    return ret_pathurl + cst1.FBSets.idToken;
+}
+
+
 
 //async function RequestArrFireBase_AddUrl(vobj, ametod, addUrl) {
 async function RequestArrFireBase_AddUrl(ObjRequest) {
@@ -239,10 +246,6 @@ function AfterRequest_FireBase() {
 }
 
 
-
-
-
-
 function SetDBCurProgramType(programType) {  
   gv.sts.config_phrase.CurProgramType = programType;
   SetDBConfigPhrase(gv.sts.config_phrase);
@@ -290,11 +293,13 @@ function Main_Backup_Text_Phrase_Obj_WithTS(){
   if (!vdata) return;
   let datetime1 = get_nowBackUp_n19_datefromat_fb();
   let addUrl = `text_phrase_obj_${datetime1}`;
+  //let addUrl = `text_phrase_obj`;
   let ObjRequest = GetObjForRequest();
   ObjRequest.vobj = vdata;
   ObjRequest.ametod = 'PATCH';
   ObjRequest.addUrl = addUrl;  
-  gv.cst.FBSets.DataSet_Basic = '';
+  let pltf = 'backups_all_big/'+navigator.platform;
+  gv.cst.FBSets.DataSet_Basic = `${pltf}`;
   ObjRequest.CallBackFunction = function(vdata, ametod) {
      gv.cst.FBSets.DataSet_Basic = gv.cst.SaveBasicUrl;  
   };
@@ -349,4 +354,9 @@ function IfExists_DeviceInfo_Item(deviceInfo_item) {
     }
   }
   return false;
+}
+
+function Create_For_Each_Platform_DataBase() {
+   
+
 }

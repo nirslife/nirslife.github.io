@@ -1,5 +1,3 @@
-
-
 function click_phr_Inputtext(element) {
    const phrase = element.parentElement;
    element.remove();  
@@ -18,6 +16,7 @@ function save_config_speech_phrase_after_adding() {
     ObjRequest.vobj = { speech_phrase_after_adding }; // Use the item found above
     RequestArrFireBase_AddUrl(ObjRequest);
 }
+
 
 function addNewPhr_new() {  
     let speech_phrase_after_adding = gv.sts.config_phrase.speech_phrase_after_adding;
@@ -55,6 +54,7 @@ function addNewPhr_new() {
     }
 }
 
+
 function OnClickPhrase_Speech(phraseElement) {
    let inputTexts = phraseElement.getElementsByClassName('inputtext');
    let phraseText = Array.from(inputTexts).map(input => input.textContent).join(' ');
@@ -74,6 +74,7 @@ function Refresh_phr_Puzzletext() {
   });
 }
 
+
 function remove_phr_LastPhrase() {
   Refresh_phr_Puzzletext();
   const inputTextDiv = document.getElementById('div_inputtextfrom1');
@@ -82,6 +83,7 @@ function remove_phr_LastPhrase() {
     phrases[phrases.length - 1].remove();
   }
 }
+
 
 function click_phr_Puzzletext(element) {
    let pos_beg_or_end = element.getAttribute('position_be');

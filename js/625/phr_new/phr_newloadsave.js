@@ -1,5 +1,3 @@
-
-
 function Get_phr_NextSentenceNotProcessed(article_items, curpos_idsentence, direction) {
   let ret_idsentence = -1;  
   let list_not_processed = article_items.filter(item => item.processed !== 1 && item.idsentence !== undefined);
@@ -39,16 +37,17 @@ function Get_phr_NextSentenceNotProcessed(article_items, curpos_idsentence, dire
     gv.sts.config_phrase.idsentence = ret_idsentence; // Set current to the first unprocessed sentence
     return ret_idsentence;    
   }
-    // If no unprocessed sentence is found, return -1
-    return ret_idsentence; // Return -1 if no unprocessed sentence is found
+  // If no unprocessed sentence is found, return -1
+  return ret_idsentence; // Return -1 if no unprocessed sentence is found
 }
 
 
 // split the sentence into words using space as a delimiter 
 function split_phr_StringIntoWords(str1) {    
-    let words = str1.split(' ').map(word => word.trim()).filter(word => word.length > 0);
-    return words;
+   let words = str1.split(' ').map(word => word.trim()).filter(word => word.length > 0);
+   return words;
 }
+
 
 function Load_phr_SentencesToHTML(idsentence) {
     let sentence = get_sentence(idsentence);
@@ -95,6 +94,7 @@ function Load_phr_SentencesToHTML(idsentence) {
     // Add a new phrase if there are no phrases
     addNewPhrase();
 }
+
 
 // if sentence contains a specific phrase
 function Contains_phr_PhraseInSentence(phrase, sentence) {
@@ -156,6 +156,7 @@ function Load_phr_Sentences() {
         Load_phr_SentencesToHTML(next_idsentence);
     }
 }
+
 
 function Save_phr_PhraseToFireBase() {
     let cst1 = window.gv && window.gv.cst ? window.gv.cst : (this.gv ? this.gv.cst : null);
@@ -271,8 +272,6 @@ function Set_phr_ProcessedSentence_SaveToFB(idsrc_sentence) {
 }
 
 
-
-
 function Next_phr_Sentence() {  
     let sts1 = gv.sts;
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
@@ -290,6 +289,8 @@ function Next_phr_Sentence() {
         console.log("No article items found for the given cur_idarticle_text.");
     }
 }
+
+
 
 function Prev_phr_Sentence() {  
     let sts1 = gv.sts;
@@ -357,6 +358,7 @@ function Edit_phr_Sentence() {
 
 }
 
+
 function Save_phr_SentenceToFirebase() {
   let vdata = gv.vdata1;
   if (!vdata) return;
@@ -367,7 +369,6 @@ function Save_phr_SentenceToFirebase() {
 
 
 function Click_phr_Set_Not_Processed() {
-
     let sts1 = gv.sts;    
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
     let article_text = sts1.article_text;

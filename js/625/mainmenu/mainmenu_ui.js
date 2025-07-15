@@ -108,6 +108,12 @@ function MainMenu_createStyleForMainMenu() {
 function MainMenu_createStyleForItemsMenu() {
   const style = document.createElement('style');
   style.innerHTML = `
+    .info_platform {
+      font-size: 12px;
+      color: #333;
+      margin: 10px 0;
+      text-align: center;
+    }
     .pair_items {
       display: block;
     }

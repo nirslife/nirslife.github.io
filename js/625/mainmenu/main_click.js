@@ -105,10 +105,13 @@ function Create_MainMenu_Elem() {
     const mainMenu = document.createElement('div');
     mainMenu.id = 'main_menu';
     mainMenu.style.display = 'none'; // Initially hidden
-    document.body.appendChild(mainMenu);  
+    document.body.appendChild(mainMenu); 
+    
+    const info1 = gv.cst.FBSets.DataSet_Basic;  
 
-    // can be deleted
+    
     mainMenu.innerHTML = `
+      <div class="info_platform"> ${info1} </div>
       <div class="pair_items">
         <div class="button_mmenu_items btn_next1" id = "prev_article_text_mm"> PREV Article Text </div>
         <div class="button_mmenu_items btn_next1" id = "next_article_text_mm"> NEXT Article Text -> </div>
