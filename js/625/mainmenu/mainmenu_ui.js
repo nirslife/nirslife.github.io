@@ -22,28 +22,14 @@ function build_forall_MainUI(main_screen) {
 
   MainMenu_createStyleForAll();
   const mainMenu = Create_MainMenu_Elem();
+  build_forall_MenuListArtUI(main_screen);
 
   // Button to toggle main menu visibility
   const toggleMenuButton = document.createElement('button');
   toggleMenuButton.id = 'toggleMainMenuButton';
-  toggleMenuButton.innerText = '☰ Main Menu';
-  toggleMenuButton.onclick = function() {
-  const mainMenu = document.getElementById('main_menu');
-  if (!mainMenu) {
-    console.error("Main menu element not found.");
-    return;
-  }
-  
-  if (mainMenu.style.display === 'none') {
-      mainMenu.style.display = 'block';
-    } else {
-      mainMenu.style.display = 'none';
-    }
-  };
+  toggleMenuButton.innerText = '☰ Main Menu';  
+  toggleMenuButton.onclick = OnClick_toggleMainMenuButton;
   main_screen.appendChild(toggleMenuButton);
-  // Close main menu function
-
-
 
   // Scroll to top button
   const scrollBtn = document.createElement('button');
@@ -57,6 +43,106 @@ function build_forall_MainUI(main_screen) {
   main_screen.appendChild(scrollBtn);
 
   scrollToTop();
+}
+
+function OnClick_toggleMainMenuButton() {
+  //const toggleMenuButton = document.getElementById('toggleMainMenuButton');
+  const mainMenu = document.getElementById('main_menu');
+  if (!mainMenu) {
+      console.error("Main menu element not found.");
+      return;
+  }    
+  if (mainMenu.style.display === 'none') {
+      mainMenu.style.display = 'block';
+  } else {
+     mainMenu.style.display = 'none';
+     const MenuListArt = document.getElementById('menulistart');
+     if (MenuListArt) { MenuListArt.style.display = 'none'; }
+  }
+}
+
+
+
+function Create_MainMenu_Elem() {
+    const mainMenu = document.createElement('div');
+    mainMenu.id = 'main_menu';
+    mainMenu.style.display = 'none'; // Initially hidden
+    document.body.appendChild(mainMenu); 
+    
+    const info1 = gv.cst.FBSets.DataSet_Basic;  
+
+    
+    mainMenu.innerHTML = `
+      <div class="info_platform"> ${info1} </div>
+    `;
+    // mainMenu.innerHTML += `  
+    //   <div class="pair_items">
+    //     <div class="button_mmenu_items btn_next1" id = "prev_article_text_mm"> PREV Article Text </div>
+    //     <div class="button_mmenu_items btn_next1" id = "next_article_text_mm"> NEXT Article Text -> </div>
+    //   </div>
+    // `;
+    mainMenu.innerHTML += `      
+      <div class="pair_items">
+        <div class="button_mmenu_items" id="popupListArtNames_mm"> Choose Article </div>
+      </div>
+    `;
+
+    mainMenu.innerHTML += `
+      <div class="pair_items">
+        <div class="button_mmenu_items" id = "main_phrase_mm" >..1.. Phrase</div>
+        <div class="button_mmenu_items" id = "main_phr_new_mm">..1.1.. NEW Phrase</div>
+      </div>
+      <div class="pair_items">
+        <div class="button_mmenu_items" id = "main_article_text_mm" >..2.. Import Article Text</div>
+        <div class="button_mmenu_items" id = "main_voice_article_text_mm" >..3.. Voice Article Text</div>
+      </div>
+      <div class="pair_items">
+        <div class="button_mmenu_items" id = "main_open_settings_mm" >..4.. Open Settings</div>
+        <div class="button_mmenu_items" id = "main_exp_imp_for_trans_mm" >..5.. Translation Exports/Import</div>
+      </div>
+      <div class="pair_items">
+        <div class="button_mmenu_items" id = "main_sort_phrase_mm" >..6.. Sort Phrase</div>
+        <div class="button_mmenu_items" id = "main_collect_new_words_mm" >..7.. Collect New Words</div>
+      </div>
+      <div class="pair_items">
+        <div class="button_mmenu_items" id = "main_backup_text_phrase_obj_mm" >..8.. BackUP TEXT_PHRASE_OBJ</div>
+      </div>
+    `;
+    InitOnClickFunc_MainMenu();
+    return mainMenu;
+}
+
+function InitOnClickFunc_MainMenu() { 
+  // Add event listeners to the buttons
+  let prevBtn = document.getElementById('prev_article_text_mm');
+  let nextBtn = document.getElementById('next_article_text_mm');
+  if (prevBtn && nextBtn) {
+//    prevBtn.setAttribute('onclick', 'Click_Prev_ArticleText()');
+//    nextBtn.setAttribute('onclick', 'Click_Next_ArticleText()');
+    document.getElementById('prev_article_text_mm').setAttribute('onclick', 'Click_Prev_ArticleText()');
+    document.getElementById('next_article_text_mm').setAttribute('onclick', 'Click_Next_ArticleText()');
+  }
+  document.getElementById('main_phrase_mm').setAttribute('onclick', 'Click_Main_Phrase_LoadDataToHTML()');
+  document.getElementById('main_phr_new_mm').setAttribute('onclick', 'Click_Main_Phr_New_LoadDataToHTML()');
+  document.getElementById('main_article_text_mm').setAttribute('onclick', 'Click_Main_ArticleText_LoadDataToHTML()');
+  document.getElementById('main_voice_article_text_mm').setAttribute('onclick', 'Click_Main_VoiceArticleText_LoadDataToHTML()');
+  document.getElementById('main_open_settings_mm').setAttribute('onclick', 'Click_Main_OpenSettings()');
+  document.getElementById('main_exp_imp_for_trans_mm').setAttribute('onclick', 'Click_Main_ExpImpForTrans_LoadDataToHTML()');
+  document.getElementById('main_sort_phrase_mm').setAttribute('onclick', 'Click_Main_Sort_Phrase_HTML()');
+  document.getElementById('main_collect_new_words_mm').setAttribute('onclick', 'Click_Main_CollectNewWords()');
+  document.getElementById('main_backup_text_phrase_obj_mm').setAttribute('onclick', 'Click_Main_Backup_Text_Phrase_Obj()');
+
+  let popupListArtNames = document.getElementById('popupListArtNames_mm');
+  if (popupListArtNames) {
+    popupListArtNames.setAttribute('onclick', 'OnClick_Popup_ListArtNames()');
+  }
+
+}
+
+function MainMenu_createStyleForAll() {
+   MainMenu_createStyleForMainMenu();
+   MainMenu_createStyleForscrollBtn();
+   MainMenu_createStyleForItemsMenu();
 }
 
 
@@ -152,20 +238,20 @@ function MainMenu_createStyleForItemsMenu() {
     }
 
   .button_controlsentences {
-  background: #1e90ff;
-  color: #fff;
-  border: none;
-  min-height: 30px;
-  border-radius: 7px;
-  padding: 12px 28px;
-  font-size: 26px;
-  font-weight: 600;
-  margin: 12px 20px 12px 20px;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(30,144,255,0.08);
-  transition: background 0.2s, box-shadow 0.2s;
-  display: inline-block;
-  letter-spacing: 0.5px;
+      background: #1e90ff;
+      color: #fff;
+      border: none;
+      min-height: 30px;
+      border-radius: 7px;
+      padding: 12px 28px;
+      font-size: 26px;
+      font-weight: 600;
+      margin: 12px 20px 12px 20px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(30,144,255,0.08);
+      transition: background 0.2s, box-shadow 0.2s;
+      display: inline-block;
+      letter-spacing: 0.5px;
 }
 
 .button_controlsentences:hover {
@@ -180,13 +266,6 @@ function MainMenu_createStyleForItemsMenu() {
 //     if (closeButton) {
 //         closeButton.style.display = 'block';
 //     }
-}
-
-
-function MainMenu_createStyleForAll() {
-   MainMenu_createStyleForMainMenu();
-   MainMenu_createStyleForscrollBtn();
-   MainMenu_createStyleForItemsMenu();
 }
 
 function MainMenu_createStyleForscrollBtn() {

@@ -356,7 +356,3 @@ function IfExists_DeviceInfo_Item(deviceInfo_item) {
   return false;
 }
 
-function Create_For_Each_Platform_DataBase() {
-   
-
-}

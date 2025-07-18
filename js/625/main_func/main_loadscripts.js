@@ -4,7 +4,8 @@ function loadAppScripts() {
     "./js/625/main_func/sent_main.js",
     "./js/625/main_func/help_func.js",
     "./js/625/mainmenu/mainmenu_ui.js",
-    "./js/625/mainmenu/main_click.js",
+    "./js/625/mainmenu/main_click.js",    
+    "./js/625/mainmenu/m_list_art.js",
 
 
     "./js/625/phrase/phraseloadsave.js",

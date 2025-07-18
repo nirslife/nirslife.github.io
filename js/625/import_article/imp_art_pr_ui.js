@@ -158,6 +158,16 @@ function Click_Move_ArticleText_Custom(direction) {
   AfterRequest_FireBase();
 }
 
+function Proc_Select_ArticleText_Custom(selected_idarticle_text) {
+  gv.sts.config_phrase.cur_idarticle_text = selected_idarticle_text; 
+  SetDBCurArticleText(gv.sts.config_phrase.cur_idarticle_text);
+  // Load the next article text into the HTML
+  AfterRequest_FireBase();
+}
+
+
+
+
 // function Click_Next_ArticleText() {
 //   // Logic to handle the next article text action
 //   let article_text = vdata["article_text"];
