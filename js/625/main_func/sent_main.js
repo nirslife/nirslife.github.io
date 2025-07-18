@@ -276,6 +276,7 @@ function Update_StateData(vdata) {
     sts1.sentences_for_processing = null;        
     gv.vdata1 = vdata;    
     Save_DeviceInfo_ToFB();
+    All_Configs_IfNotExists_CreateAndSaveDefault();
 }
 
 function Click_Main_SaveAllBase() {
@@ -356,3 +357,29 @@ function IfExists_DeviceInfo_Item(deviceInfo_item) {
   return false;
 }
 
+
+function All_Configs_IfNotExists_CreateAndSaveDefault() {
+   Cnf_Phr_New_IfNotExists_CreateAndSaveDefault();
+}
+
+function Cnf_Phr_New_IfNotExists_CreateAndSaveDefault() {
+    let cnf_phr_new = gv.sts.config_phrase.phr_new;
+    if (!cnf_phr_new) {
+        cnf_phr_new = {
+            speech_phrase_after_adding: true,
+            filter_marked_sent: false
+        };
+        gv.sts.config_phrase.phr_new = cnf_phr_new;
+    }
+    save_config_phr_new_all(cnf_phr_new);
+}
+
+function save_config_phr_new_all(cnf_phr_new){
+    gv.sts.config_phrase.phr_new = cnf_phr_new;
+    let addurl = "config_phrase/phr_new";
+    let ObjRequest = GetObjForRequest();
+    ObjRequest.addUrl = addurl;
+    ObjRequest.ametod = 'PUT';
+    ObjRequest.vobj = cnf_phr_new; // Use the item found above
+    RequestArrFireBase_AddUrl(ObjRequest);
+}

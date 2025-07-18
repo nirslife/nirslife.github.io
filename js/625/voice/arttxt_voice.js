@@ -408,7 +408,7 @@ function build_VoiceArticleText_MainUI() {
   document.body.innerHTML = '';
   try {
         // call add function to add the voice selection dropdown
-        addVoiceSelectionDropdown();
+        //addVoiceSelectionDropdown();
         // Call the function to convert JSON to content
         JsonToContentMD();
         Load_Label_Collect_New_Words_HtmlContent();

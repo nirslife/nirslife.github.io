@@ -44,6 +44,22 @@ function get_article_items(cur_idarticle_text) {
     return item ? item.items : null;
 }
 
+function get_marked_article_items(cur_idarticle_text) {    
+    let marks = get_article_marks(cur_idarticle_text);
+    let article_items = get_article_items(cur_idarticle_text);
+    if (!marks || !article_items) return null;
+    // Filter items based on marks
+    const markedItems = [];
+    marks.forEach(mark => {
+        const item = article_items.find(item => item.idsentence === mark.idsentence);
+        if (item) {
+            markedItems.push(item);
+        }
+    });
+    return markedItems.length > 0 ? markedItems : null;
+}
+
+
 function get_article_text_index(cur_idarticle_text) {
     let article_text = gv.sts.article_text;
     if (!article_text) return null;

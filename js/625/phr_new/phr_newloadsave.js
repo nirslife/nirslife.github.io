@@ -1,3 +1,34 @@
+
+
+function OnClick_SwitchFilterMarkedSent(){
+  SwitchFilterMarkedSent();
+  Load_phr_Sentences();
+}
+
+function SwitchFilterMarkedSent(){
+    let cnf_phr_new = gv.sts.config_phrase.phr_new;    
+    if (cnf_phr_new.filter_marked_sent) {        
+        cnf_phr_new.filter_marked_sent = false; // Disable filter        
+    } else {
+        cnf_phr_new.filter_marked_sent = true; // Enable filter            
+    }    
+    save_config_phr_new_all(cnf_phr_new); // Save the updated configuration    
+    SetClass_ButtonFilterMarkedSent();
+}
+
+function SetClass_ButtonFilterMarkedSent(){
+    let cnf_phr_new = gv.sts.config_phrase.phr_new;
+    let div_SwitchFilterMarkedSent = document.getElementById('id_SwitchFilterMarkedSent');
+    if (cnf_phr_new.filter_marked_sent) {
+        div_SwitchFilterMarkedSent.classList.remove('btn_ctrl_on');
+        div_SwitchFilterMarkedSent.classList.add('btn_ctrl_on');
+    } else {
+        div_SwitchFilterMarkedSent.classList.remove('btn_ctrl_on');        
+    }      
+}
+
+
+
 function Get_phr_NextSentenceNotProcessed(article_items, curpos_idsentence, direction) {
   let ret_idsentence = -1;  
   let list_not_processed = article_items.filter(item => item.processed !== 1 && item.idsentence !== undefined);
@@ -89,12 +120,27 @@ function Load_phr_SentencesToHTML(idsentence) {
             divtextfrom1.parentNode.insertBefore(new_info_div, divtextfrom1);
         }        
     }
+
     // Look for existing phrases in the sentence
     Look_phr_ForExistingPhraseinBD();
     // Add a new phrase if there are no phrases
     addNewPhrase();
 }
 
+// function output_info_div_pht_new(idsentence) {
+//     let info_div = document.getElementById('info_div');
+//     if (info_div) {
+//         info_div.textContent = `Current ID: ${idsentence} from count=${gv.sts.config_phrase.count_not_processed} `;
+//     }else {
+//         let new_info_div = document.createElement('div');
+//         new_info_div.id = 'info_div';
+//         new_info_div.textContent = `Current ID: ${idsentence} from count=${gv.sts.config_phrase.count_not_processed} `;
+//         let divtextfrom1 = document.getElementById('textfrom1');
+//         if (divtextfrom1) {
+//             divtextfrom1.parentNode.insertBefore(new_info_div, divtextfrom1);
+//         }        
+//     }
+// }
 
 // if sentence contains a specific phrase
 function Contains_phr_PhraseInSentence(phrase, sentence) {
@@ -149,7 +195,8 @@ function Load_phr_Sentences() {
 
     let curpos_idsentence = sts1.config_phrase.idsentence;
     if (!cur_idarticle_text) { cur_idarticle_text = -1; }     
-    let article_items = get_article_items(cur_idarticle_text);
+    let article_items = Get_ArticleItems_Phr_New();
+    //let article_items = get_article_items(cur_idarticle_text);
     if (article_items) {
         //LoadNextSentenceNotProcessed(article_items, curpos_idsentence);
         let next_idsentence = Get_phr_NextSentenceNotProcessed(article_items, curpos_idsentence, 'next');
@@ -272,10 +319,27 @@ function Set_phr_ProcessedSentence_SaveToFB(idsrc_sentence) {
 }
 
 
-function Next_phr_Sentence() {  
+function Get_ArticleItems_Phr_New() {  
     let sts1 = gv.sts;
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
-    let article_items = get_article_items(cur_idarticle_text);
+    const cnf_phr_new = gv.sts.config_phrase.phr_new;
+    let article_items = null;
+    if (cnf_phr_new.filter_marked_sent) {
+        // If filter_marked_sent is enabled, get only marked items
+        article_items = get_marked_article_items(cur_idarticle_text);
+    }else {
+        // If filter_marked_sent is disabled, get all items
+        article_items = get_article_items(cur_idarticle_text);
+    }
+    return article_items;
+}
+
+
+function Next_phr_Sentence() {  
+    let sts1 = gv.sts;
+    // let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
+    // let article_items = get_article_items(cur_idarticle_text);
+    let article_items = Get_ArticleItems_Phr_New();
     if (article_items) {        
         // Get the current sentence ID
         let curpos_idsentence = sts1.config_phrase.idsentence;        
@@ -294,8 +358,7 @@ function Next_phr_Sentence() {
 
 function Prev_phr_Sentence() {  
     let sts1 = gv.sts;
-    let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
-    let article_items = get_article_items(cur_idarticle_text);
+    let article_items = Get_ArticleItems_Phr_New();
     if (article_items) {        
         // Get the current sentence ID
         let curpos_idsentence = sts1.config_phrase.idsentence;

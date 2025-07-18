@@ -1,5 +1,6 @@
 function build_phr_new_MainUI() {
 
+  RemoveAllStylesCollect_New_Words();
   Phr_new_createStyles();
   InitDefaultVoice();
   
@@ -24,11 +25,17 @@ function build_phr_new_MainUI() {
   const controlDivTop = document.createElement('div');
   controlDivTop.id = 'control_div';
   controlDivTop.innerHTML = `      
+      <div class="buttons_top_block">
+        <div class="switcher_ctrl_sentences" id="id_SwitchFilterMarkedSent"  onclick="OnClick_SwitchFilterMarkedSent()">Marked</div>
+        <div class="button_ctrl_sentences" onclick="SwitchVoicePhraseWhenAdded()">Sp_ech</div>
+      </div>
+      <div class="buttons_top_block">
       <div class="button_ctrl_sentences" onclick="Prev_phr_Sentence()">Prev</div>
       <div class="button_ctrl_sentences" onclick="Next_phr_Sentence()">Next</div>
       <div class="button_ctrl_sentences" onclick="Set_phr_ProcessedAndNext()">SetPR -> </div>      
       <div class="button_ctrl_sentences" onclick="Edit_phr_Sentence()">Edit Sent</div>
-      <div class="button_ctrl_sentences" onclick="SwitchVoicePhraseWhenAdded()">Sp_ech</div>
+      </div>
+      
   `;
   main_screen.appendChild(controlDivTop);
 
@@ -81,6 +88,7 @@ function build_phr_new_MainUI() {
     </div>
   `;
   main_screen.appendChild(block_bottom);
+  SetClass_ButtonFilterMarkedSent();
 
   build_forall_MainUI(main_screen);
 
@@ -173,6 +181,25 @@ function Phr_new_createStyles_1() {
   width: 100%;
 }
 
+
+.switcher_ctrl_sentences {
+  background: #1e90ff;
+  color: #fff;
+  border: none;
+  min-height: 60px;
+  border-radius: 7px;
+  padding: 12px 28px;
+  font-size: 26px;
+  font-weight: 600;
+  margin: 35px 50px 35px 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(30,144,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+
   .button_ctrl_sentences {
   background: #1e90ff;
   color: #fff;
@@ -195,6 +222,9 @@ function Phr_new_createStyles_1() {
   box-shadow: 0 4px 16px rgba(30,144,255,0.18);
 }
 
+.btn_ctrl_on {
+  background:rgb(175, 76, 129);
+}
 
   `;
   document.head.appendChild(style);
