@@ -247,7 +247,7 @@ function isIdsentenceInMarks(idsentence) {
 
 function PhraseCtrl_AddMenuButton(phraseControlContainer, idsentence) {
     // create the phrase_menu button
-    const phraseMenuButton = document.createElement('button');
+    const phraseMenuButton = document.createElement('div');
     phraseMenuButton.className = 'button_voice_somebutton';
     phraseMenuButton.textContent = 'Menu';
     phraseMenuButton.setAttribute("idsentence", idsentence);
@@ -631,6 +631,7 @@ phrase_en_voice {
     text-align: center;
     cursor: pointer;
     display: inline-block;
+    font-size: 28px;
 }
 
 .button_voice_translation:hover {
@@ -647,8 +648,8 @@ phrase_en_voice {
     margin-left: 30px;
     text-align: center;
     cursor: pointer;
-    display: inline-block;
-    -webkit-touch-callout: default;
+    display: inline-block;    
+    font-size: 28px;
 }
 
 .button_control_phrases1 {

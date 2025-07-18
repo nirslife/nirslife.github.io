@@ -173,7 +173,7 @@ function MainMenu_createStyleForMainMenu() {
       position: absolute;
       top: 10px;
       right: 10px;
-      z-index: 1002;
+      z-index: 1001;
       width: 150px; /* Fixed width for the button */
       height: 65px; /* Fixed height for the button */
       background-color: #007bff;

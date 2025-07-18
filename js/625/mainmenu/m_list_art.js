@@ -97,7 +97,7 @@ function MenuListArt_createStyleForMenuListArt() {
       max-width: 95vw;            /* Responsive on small screens */
       /* fix max height and fix content inner only this */      
       max-height: 30vh;           /* Limit height for better usability */
-      z-index: 1001;              /* Above other content */
+      z-index: 1009;              /* Above other content */
       display: none;              /* Hidden by default, shown when toggled */
     }
 
@@ -106,7 +106,7 @@ function MenuListArt_createStyleForMenuListArt() {
       position: absolute;
       top: 10px;
       right: 10px;
-      z-index: 1002;
+      z-index: 1008;
       width: 150px; /* Fixed width for the button */
       height: 65px; /* Fixed height for the button */
       background-color: #007bff;
@@ -136,7 +136,7 @@ function MenuListArt_createStyleForItemsMenu() {
       padding: 10px 15px;
       cursor: pointer;
       margin: 5px 60px;
-      min-height: 30px;     
+      min-height: 50px;     
       border-radius: 5px;
       text-align: center;
       font-size: 26px;
