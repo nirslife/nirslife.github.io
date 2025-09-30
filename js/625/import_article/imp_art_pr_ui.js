@@ -41,6 +41,29 @@ function CheckSplitArticleText() {
         return;
     }
 
+    // norlmalize sentences
+    sentences.forEach((sentence, index) => {
+        let s1 = sentence.replace(/(\r\n|\n|\r)/gm, ' '); // replace new lines with space
+        // replace multiple spaces with a single space
+        s1 = s1.replace(/\s+/g, ' ').trim();
+        // in loop by all  '.' add space after '.' if it is not at the end of the sentence 
+        // look for first  '.' and add space after it if it is not at the end of the sentence
+        // replace if after '.' is not space
+        s1 = s1.replace(/([^\s])(\.)([^\s])/g, '$1$2 $3');
+        // replace if after ',' is not space
+        s1 = s1.replace(/([^\s])(\,)([^\s])/g, '$1$2 $3');
+        // replace if after '?' is not space
+        s1 = s1.replace(/([^\s])(\?)([^\s])/g, '$1$2 $3');
+        // replace if after '!' is not space
+        s1 = s1.replace(/([^\s])(\!)([^\s])/g, '$1$2 $3');
+        // replace if after ':' is not space
+        s1 = s1.replace(/([^\s])(\:)([^\s])/g, '$1$2 $3');
+        // replace if after ';' is not space
+        s1 = s1.replace(/([^\s])(\;)([^\s])/g, '$1$2 $3');
+        sentences[index] = s1;
+
+    });
+
     // create a info div to show sentences text
     const infoDiv = document.getElementById('info_div');
     if (infoDiv) {

@@ -44,7 +44,7 @@ function ExpImpForTrans_Sentence_loadDataToHTML() {
     //     save_Mode1 = divsaveMode1.className.includes('button_control_transl_on') ? false : true;
     // }            
 
-    const countSentences = 15;
+    const countSentences = 25;
 
     let sts1 = gv.sts;    
     let cur_idarticle_text = sts1.config_phrase.cur_idarticle_text;
